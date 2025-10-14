@@ -3,45 +3,28 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 3.5f;
+    [Header("Player Settings")]
+    [Min(0.1f), SerializeField] private float speed = 1f;
 
-    public InputActionAsset inputAction;
-
-    private Rigidbody2D rb;
-    private Vector2 playerVelocity;
-
-    private InputAction moveAction;
-
-    private void OnEnable()
-    {
-        inputAction.FindActionMap("Player").Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputAction.FindActionMap("Player").Disable();
-    }
+    private Rigidbody2D _rigidbody;
+    private Vector2 _playerVelocity;
 
     private void Awake()
     {
-        moveAction = InputSystem.actions.FindAction("Move");
-
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Start()
-    {
-  
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        Move();
+        _playerVelocity = Vector2.zero;
+
+        if (Gamepad.current == null) return;
+        _playerVelocity = Gamepad.current.leftStick.ReadValue();
     }
 
-    private void Move()
+    private void FixedUpdate()
     {
-        Vector2 _input = moveAction.ReadValue<Vector2>();
-        rb.MovePosition(rb.position + _input * (speed * Time.deltaTime));
+        Vector2 velocity = _playerVelocity.normalized * speed;
+        _rigidbody.MovePosition(_rigidbody.position + velocity *  Time.fixedDeltaTime);
     }
 }
