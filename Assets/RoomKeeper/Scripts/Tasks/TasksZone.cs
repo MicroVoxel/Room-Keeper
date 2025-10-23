@@ -4,7 +4,6 @@ using UnityEngine;
 public class TasksZone : MonoBehaviour
 {
     public TaskBase task; // อ้างไปยังคอมโพเนนต์มินิเกมตัวจริง (ซ่อนไว้ใน Canvas)
-    bool inZone;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,7 +14,7 @@ public class TasksZone : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.GetComponent<PlayerController>()) { inZone = false; task.Close(); }
+        if (other.GetComponent<PlayerController>()) { task.Close(); }
     }
 
 }

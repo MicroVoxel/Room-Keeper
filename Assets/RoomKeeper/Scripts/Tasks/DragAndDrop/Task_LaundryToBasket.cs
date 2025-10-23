@@ -12,27 +12,57 @@ public class Task_LaundryToBasket : TaskBase
     [Header("Progress")]
     public int itemsToCollect = 5;
     private int collected = 0;
+    private Vector2[] initialPositions;
+
+    public override void Awake()
+    {
+        base.Awake();
+        // เก็บตำแหน่งเริ่มต้นของผ้าทั้งหมด
+        if (clothItems.Length > 0)
+        {
+            initialPositions = new Vector2[clothItems.Length];
+            for (int i = 0; i < clothItems.Length; i++)
+            {
+                if (clothItems[i] != null && clothItems[i].TryGetComponent<RectTransform>(out var rt))
+                {
+                    initialPositions[i] = rt.anchoredPosition;
+                }
+            }
+        }
+    }
 
     public override void Open()
     {
         base.Open();
         ResetTask();
     }
+    public override void Close()
+    {
+        base.Close();
+
+    }
 
     void ResetTask()
     {
         collected = 0;
-        // เปิดผ้าทั้งหมด และกระจายตำแหน่งแบบสุ่มนิด ๆ
-        foreach (var c in clothItems)
+
+        for (int i = 0; i < clothItems.Length; i++)
         {
+            var c = clothItems[i];
             if (!c) continue;
+
             c.gameObject.SetActive(true);
             var rt = c.GetComponent<RectTransform>();
-            if (rt != null)
+
+            if (rt != null && initialPositions != null && i < initialPositions.Length)
             {
-                rt.anchoredPosition += new Vector2(Random.Range(-20f, 20f), Random.Range(-20f, 20f));
+                // ใช้ตำแหน่งเริ่มต้นที่เก็บไว้ (เอา Random ออกเพื่อให้ตำแหน่งคงที่)
+                rt.anchoredPosition = initialPositions[i];
             }
+
             c.EnableReturnToStart(true); // ให้เด้งกลับถ้ายังไม่ลงตะกร้า
+
+            c.ResetRaycastBlock();
         }
         UpdateCounter();
     }

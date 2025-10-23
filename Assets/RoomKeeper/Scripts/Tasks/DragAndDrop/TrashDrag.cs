@@ -20,6 +20,13 @@ public class TrashDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void EnableReturnToStart(bool enable) => returnToStart = enable;
 
+    public void ResetRaycastBlock()
+    {
+        var cg = GetComponent<CanvasGroup>();
+        // ถ้า CanvasGroup มีอยู่ ให้ตั้งค่า blocksRaycasts เป็น true
+        if (cg) cg.blocksRaycasts = true;
+    }
+
     public void OnBeginDrag(PointerEventData e)
     {
         startPos = rt.anchoredPosition;

@@ -1,56 +1,94 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private static readonly int AnimWalking = Animator.StringToHash("Walk");
-    private static readonly int AnimDirection = Animator.StringToHash("Direction");
-    
+    #region Animator Parameters
+    private string StrIsWalk = "IsWalk";
+    private string StrXInput = "XInput";
+    private string StrYInput = "YInput";
+    #endregion
+
     [Header("Player Settings")]
-    [Min(0.1f), SerializeField] private float speed = 1f;
+    [SerializeField, Min(0.1f)] private float speed = 1f;
+    [SerializeField] private InputActionAsset inputActions;
+
+    public static PlayerController playerInstance;
 
     private Animator _animator;
     private Rigidbody2D _rigidbody;
-    private Vector2 _playerVelocity;
+    private InputAction _moveAction;
+
+    private Vector2 _moveInput;
+    private bool canMove = true;
 
     private void Awake()
     {
+        if (playerInstance == null)
+        {
+            playerInstance = this;
+        }
+
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
+
+        var map = inputActions.FindActionMap("Player");
+        _moveAction = map.FindAction("Move");
     }
 
-    void Update()
+    private void OnEnable()
     {
-        _playerVelocity = Vector2.zero;
+        _moveAction.Enable();
+    }
 
-        if (Gamepad.current == null) return;
-        _playerVelocity = Gamepad.current.leftStick.ReadValue();
-        
-        if (_playerVelocity.magnitude < 0.1f)
+    private void OnDisable()
+    {
+        _moveAction.Disable();
+    }
+
+    private void Update()
+    {
+        if (!canMove)
         {
-            _animator.SetBool(AnimWalking, false);
+            _moveInput = Vector2.zero;
+            HandleAnimation(Vector2.zero);
             return;
         }
-        
-        float angle = Mathf.Atan2(_playerVelocity.y, _playerVelocity.x) * Mathf.Rad2Deg;
-        int direction = 0;
-        
-        if (angle >= 45f && angle < 135f)
-            direction = 2;
-        else if (angle >= -135f && angle < -45f)
-            direction = 0;
-        else if (angle >= -45f && angle < 45f)
-            direction = 1;
-        else
-            direction = 3;
-        
-        _animator.SetBool(AnimWalking, true);
-        _animator.SetInteger(AnimDirection, direction);
+
+        _moveInput = _moveAction.ReadValue<Vector2>();
+        HandleAnimation(_moveInput);
     }
 
     private void FixedUpdate()
     {
-        Vector2 velocity = _playerVelocity.normalized * speed;
-        _rigidbody.MovePosition(_rigidbody.position + velocity *  Time.fixedDeltaTime);
+        if (!canMove) return;
+
+        Vector2 velocity = _moveInput.normalized * speed;
+        _rigidbody.MovePosition(_rigidbody.position + velocity * Time.fixedDeltaTime);
+    }
+
+    private void HandleAnimation(Vector2 input)
+    {
+        if (input.magnitude < 0.1f)
+        {
+            _animator.SetBool(StrIsWalk, false);
+            return;
+        }
+
+        _animator.SetBool(StrIsWalk, true);
+        _animator.SetFloat(StrXInput, input.x);
+        _animator.SetFloat(StrYInput, input.y);
+    }
+
+    public void SetMovement(bool active)
+    {
+        canMove = active;
+
+        if (!active)
+        {
+            // หยุดอนิเมชันและความเร็ว
+            _moveInput = Vector2.zero;
+            _animator.SetBool(StrIsWalk, false);
+        }
     }
 }
