@@ -1,30 +1,45 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement; // ใช้สำหรับการโหลด Scene ใหม่เมื่อเกมจบ
+using UnityEngine.SceneManagement;
+using TMPro; 
+using System;
 
+/// <summary>
+/// จัดการ Game Loop หลัก, รับ Event จาก RoomData, และสั่งการทำลาย/สร้างห้อง
+/// ระบบทำงานโดยอิสระ ไม่ขึ้นอยู่กับการเคลื่อนที่ของผู้เล่น (Player)
+/// </summary>
 public class GameCoreManager : MonoBehaviour
 {
     public static GameCoreManager Instance { get; private set; }
 
     [Header("Game Time Settings")]
     [Tooltip("เวลารวมทั้งหมดของเกม (วินาที)")]
-    public float totalGameDuration = 300f; // 5 นาที = 300 วินาที
+    public float totalGameDuration = 300f; // 5 นาที
 
-    [Tooltip("เวลาที่ผู้เล่นใช้ได้ในแต่ละห้อง (วินาที)")]
-    public float roomTimeLimit = 60f; // 1 นาทีต่อห้อง
+    [Header("Room Generation Settings")]
+    [Tooltip("จำนวนห้องที่ต้องการสร้างใหม่ เมื่อห้องเก่าถูกทำลายหรือเสร็จสิ้น")]
+    public int roomsToCreatePerEvent = 2; // สร้าง 2 ห้องพร้อมกัน/ต่อครั้ง
 
-    [Header("References")]
-    [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private GameObject spawnPoint; // GameObject ที่ระบุจุดเกิด (Spawn Room)
+    [Tooltip("ช่วงเวลา (วินาที) ในการสร้างห้องใหม่โดยอัตโนมัติ")]
+    public float roomCreationInterval = 10f; 
+    [SerializeField] private float roomCreationTimer; 
 
-    // อ้างอิงถึง Script อื่นๆ
+    [Header("Global UI Reference")]
+    [Tooltip("ลาก TextMeshProUGUI Component ที่จะแสดงเวลารวมของเกมมาใส่")]
+    [SerializeField] private TextMeshProUGUI globalTimeDisplay;
+
+    [Header("Core Systems")]
     [SerializeField] private DungeonGenerator dungeonGenerator;
-    [SerializeField]private TaskManager taskManager; // สมมติว่ามี TaskManager สำหรับสุ่ม Task
 
-    private float currentRoomTimer;
     private bool isGameActive = false;
-    private RoomData currentRoomData;
-    private GameObject playerInstance;
+    private RoomData spawnRoom;
+
+    private List<RoomData> activeRooms = new List<RoomData>();
+
+    [Header("Player Reference")]
+    [SerializeField] private PlayerController playerController;
 
     private void Awake()
     {
@@ -47,28 +62,26 @@ public class GameCoreManager : MonoBehaviour
         }
 
         StartGameInitialization();
+
+        if (playerController == null)
+        {
+            playerController = FindAnyObjectByType<PlayerController>();
+        }
     }
 
-    // ⭐ 1. เริ่มเกมและสร้าง Spawn Room/Player
+    // -------------------------------------------------------------------
+    // ⭐ 1. เริ่มเกมและสร้าง Spawn Room
+    // -------------------------------------------------------------------
+
     private void StartGameInitialization()
     {
-        // สร้าง Spawn Room (DungeonGenerator.Generate() จะจัดการเอง)
-        dungeonGenerator.Generate();
+        spawnRoom = dungeonGenerator.GenerateSpawn();
 
-        // หาจุดเกิด (สมมติว่า RoomData แรกที่สร้างคือ Spawn Room)
-        if (dungeonGenerator.GetGeneratedRooms().Count > 0)
+        if (spawnRoom != null)
         {
-            currentRoomData = dungeonGenerator.GetGeneratedRooms()[0];
-            spawnPoint = currentRoomData.transform.Find("SpawnPoint")?.gameObject;
-            if (spawnPoint == null)
-            {
-                spawnPoint = currentRoomData.gameObject; // ใช้ Room เป็นจุดเกิดสำรอง
-            }
+            roomCreationTimer = roomCreationInterval;
 
-            // สร้างผู้เล่น
-            playerInstance = playerPrefab;
-
-            // เริ่มลูปเกมหลัก
+            // เริ่มลูปเกมหลัก (ตรวจจับเวลาเกมรวมเท่านั้น)
             StartCoroutine(GameLoopCoroutine());
         }
         else
@@ -77,161 +90,267 @@ public class GameCoreManager : MonoBehaviour
         }
     }
 
-    // ⭐ 2. ลูปเกมหลัก (Game Loop)
+    // -------------------------------------------------------------------
+    // ⭐ 2. ลูปเกมหลัก (Game Loop - ตรวจจับเวลาเกมรวมเท่านั้น)
+    // -------------------------------------------------------------------
+
     private IEnumerator GameLoopCoroutine()
     {
         isGameActive = true;
-
-        // ตัวจับเวลาเกมโดยรวม
         float gameTimeRemaining = totalGameDuration;
 
         while (gameTimeRemaining > 0 && isGameActive)
         {
-            // Update UI/HUD (แสดงเวลาที่เหลือ)
-            // UIManager.UpdateGameTimer(gameTimeRemaining); 
+            UpdateGameTimeDisplay(gameTimeRemaining);
 
-            // ตรวจสอบสถานะ Task ในห้องปัจจุบัน
-            if (taskManager != null && taskManager.IsRoomTaskCompleted(currentRoomData))
+            roomCreationTimer += Time.deltaTime;
+
+            if (roomCreationTimer >= roomCreationInterval)
             {
-                // ถ้า Task เสร็จ ให้สร้างห้องใหม่ทันที
-                TransitionToNewRoom();
+                TryCreateMultipleRooms(roomsToCreatePerEvent);
+                roomCreationTimer = 0f; // รีเซ็ตตัวนับเวลา
             }
 
-            // ลดเวลาเกมรวม
             gameTimeRemaining -= Time.deltaTime;
-
             yield return null;
         }
 
         // 4. จบเกมเมื่อหมดเวลา
+        UpdateGameTimeDisplay(0f); // อัปเดตเป็น 0 ก่อนจบ
         EndGame(gameTimeRemaining <= 0);
     }
 
-    // ⭐ 3.1 & 3.2 จัดการการเปลี่ยนห้อง (Room Transition)
-    public void TransitionToNewRoom()
+    /// <summary>
+    /// ⭐ NEW: เมธอดอัปเดตค่าเวลาเกมรวมที่แสดงบน Canvas
+    /// </summary>
+    private void UpdateGameTimeDisplay(float time)
     {
-        // 1. ตรวจสอบว่ามีห้องใหม่ที่จะเชื่อมต่อหรือไม่
-        RoomData nextRoom = null;
-        Transform startConnector = null;
+        if (globalTimeDisplay == null) return;
 
-        // พยายามหา Connector ที่ว่างบนห้องปัจจุบัน
-        if (currentRoomData.HasAvailableConnector(out startConnector))
+        // แปลงเวลาให้เป็นรูปแบบ M:SS
+        TimeSpan t = TimeSpan.FromSeconds(Mathf.Max(0, time));
+        string timeText = string.Format("{0:0}:{1:00}", (int)t.TotalMinutes, t.Seconds);
+
+        globalTimeDisplay.text = timeText;
+    }
+
+    // -------------------------------------------------------------------
+    // ⭐ 3. Event Handlers (รับการแจ้งเตือนจาก RoomData)
+    // -------------------------------------------------------------------
+
+    private void SubscribeToRoomEvents(RoomData room)
+    {
+        // เชื่อมต่อ Event เมื่อ Task เสร็จ
+        room.OnRoomCompletion += HandleRoomCompletion;
+        // เชื่อมต่อ Event เมื่อหมดเวลา
+        room.OnRoomTimeout += HandleRoomTimeout;
+    }
+
+    private void UnsubscribeFromRoomEvents(RoomData room)
+    {
+        room.OnRoomCompletion -= HandleRoomCompletion;
+        room.OnRoomTimeout -= HandleRoomTimeout;
+    }
+
+    private void HandleRoomCompletion(RoomData completedRoom)
+    {
+        Debug.Log($"CoreManager received completion from {completedRoom.name}.");
+
+        // 1. Unsubscribe เพื่อล้าง Event
+        UnsubscribeFromRoomEvents(completedRoom);
+
+        // 2. ล้าง Task สถานะของห้องนี้ 
+        completedRoom.ClearAssignedTasks();
+       
+    }
+
+    private void HandleRoomTimeout(RoomData timedOutRoom)
+    {
+        //Debug.Log($"CoreManager received timeout from {timedOutRoom.name}. Destroying room.");
+
+        // 1. Unsubscribe เพื่อล้าง Event ก่อนทำลายห้อง
+        UnsubscribeFromRoomEvents(timedOutRoom);
+
+        // 2. สั่งทำลายห้อง (และเอาออกจาก DungeonGenerator)
+        DestroyRoom(timedOutRoom);
+       
+    }
+
+    // -------------------------------------------------------------------
+    // ⭐ 4. ตรรกะการจัดการห้อง (ทำงานอัตโนมัติ)
+    // -------------------------------------------------------------------
+
+    /// <summary>
+    /// ⭐ NEW: พยายามสร้าง Hallway-Room chain ใหม่ ตามจำนวนที่กำหนด
+    /// </summary>
+    public void TryCreateMultipleRooms(int count)
+    {
+        int successfulCreations = 0;
+
+        // ตั้งค่าความพยายามสูงสุดเพื่อป้องกัน Infinite Loop หาก Connector มีปัญหาการชนซ้ำๆ
+        const int MAX_ATTEMPTS_PER_ROOM = 3;
+
+        // วนลูปตามจำนวนห้องที่ต้องการสร้าง
+        for (int i = 0; i < count; i++)
         {
-            // ⭐ เรียก DungeonGenerator สร้าง Hallway-Room Chain
-            if (dungeonGenerator.TryPlaceNewRoom(currentRoomData, startConnector, isHallwayChain: true))
+            for (int attempt = 0; attempt < MAX_ATTEMPTS_PER_ROOM; attempt++)
             {
-                // สมมติว่า Hallway-Room Chain ถูกเพิ่มเข้าไปใน generatedRooms ล่าสุด
-                // Hallway จะอยู่ก่อน Room
-                nextRoom = dungeonGenerator.GetGeneratedRooms()[dungeonGenerator.GetGeneratedRooms().Count - 1];
+                if (TryCreateSingleRoomChain())
+                {
+                    successfulCreations++;
+                    break; // สร้างสำเร็จ, ข้ามไปสร้างห้องถัดไป (i++)
+                }
             }
         }
 
-        if (nextRoom != null)
+        if (successfulCreations > 0)
         {
-            // Transition สำเร็จ: เข้าห้องใหม่
-            EnterRoom(nextRoom);
+            Debug.Log($"Successfully created {successfulCreations} new room chains.");
         }
         else
         {
-            // Transition ล้มเหลว: ห้องเต็ม/ชน ให้ลองหาห้องที่ว่างอื่นๆ
-            Debug.LogWarning("Failed to generate a new room. Checking for existing rooms with empty connectors.");
-
-            // (คุณอาจเพิ่มโค้ดที่นี่เพื่อสุ่มหาห้องที่วางอยู่แล้วที่มี Connector ว่างแล้วเข้าห้องนั้น)
-
-            // หากหาห้องใหม่หรือห้องที่มีอยู่ไม่ได้ ให้ผู้เล่นทำ Task เดิมต่อไป
+            Debug.LogWarning($"Failed to create any new rooms after {count * MAX_ATTEMPTS_PER_ROOM} attempts. Spawn connectors might be full or facing persistent intersections.");
         }
     }
 
-    // เมธอดสำหรับเข้าสู่ห้อง
-    private void EnterRoom(RoomData newRoom)
+    /// <summary>
+    /// ⭐ RENAME: พยายามสร้าง Hallway-Room chain ใหม่ 1 ชุด
+    /// </summary>
+    private bool TryCreateSingleRoomChain() // เปลี่ยนชื่อและเปลี่ยน return type เป็น bool
     {
-        // ย้ายผู้เล่นไปที่จุดเกิดใหม่ (จุดเข้าห้อง)
-        // Note: คุณอาจต้องระบุตำแหน่งเกิดที่ประตูของห้องใหม่
-        playerInstance.transform.position = newRoom.transform.position;
-        currentRoomData = newRoom;
-        currentRoomTimer = roomTimeLimit;
+        if (spawnRoom == null) return false;
 
-        // ⭐ กำหนด Task ใหม่
-        if (taskManager != null)
+        // ตรวจสอบว่า Spawn Room มี Connector ว่างหรือไม่
+        if (spawnRoom.HasAvailableConnector(out Transform startConnector))
         {
-            taskManager.AssignNewRoomTask(newRoom);
-        }
+            GameObject hallwayPrefab = dungeonGenerator.SelectRandomHallwayPrefab();
+            GameObject roomPrefab = dungeonGenerator.SelectNextRoomPrefab();
 
-        // ⭐ เริ่มจับเวลาห้อง
-        StartCoroutine(RoomTimerCoroutine(newRoom));
-    }
-
-    // ⭐ 3.1 & 3.2 ตัวจับเวลาห้อง (Room Timer)
-    private IEnumerator RoomTimerCoroutine(RoomData room)
-    {
-        currentRoomTimer = roomTimeLimit;
-
-        while (currentRoomTimer > 0 && currentRoomData == room && isGameActive)
-        {
-            // UIManager.UpdateRoomTimer(currentRoomTimer);
-
-            // ตรวจสอบว่า Task เสร็จก่อนหมดเวลาหรือไม่
-            if (taskManager != null && taskManager.IsRoomTaskCompleted(room))
+            if (hallwayPrefab == null || roomPrefab == null)
             {
-                // ถ้า Task เสร็จ ลูปนี้จะหยุด และ GameLoopCoroutine จะเรียก TransitionToNewRoom()
-                yield break;
+                // Fail 1: Prefab หายไป
+                spawnRoom.UnuseConnector(startConnector);
+                return false;
             }
 
-            currentRoomTimer -= Time.deltaTime;
-            yield return null;
-        }
+            // 1. วาง Hallway
+            if (dungeonGenerator.TryPlaceRoom(spawnRoom, startConnector, hallwayPrefab))
+            {
+                RoomData hallwayData = dungeonGenerator.GeneratedRooms.Last();
+                hallwayData.parentConnector = startConnector;
 
-        // 3.2 เมื่อหมดเวลาห้อง (และ Task ยังไม่เสร็จ)
-        if (currentRoomData == room)
-        {
-            Debug.Log($"Time's up in {room.name}! Returning to spawn.");
-            ReturnToSpawn();
+                // 2. วาง Room ต่อจาก Hallway
+                if (hallwayData.HasAvailableConnector(out Transform hallwayConnector))
+                {
+                    if (dungeonGenerator.TryPlaceRoom(hallwayData, hallwayConnector, roomPrefab))
+                    {
+                        RoomData newRoom = dungeonGenerator.GeneratedRooms.Last();
+                        newRoom.parentConnector = hallwayConnector;
+                        //Debug.Log($"New Hallway-Room chain generated: {newRoom.name}");
+
+                        // 3. กำหนด Task (AssignRandomTask จะเรียก StartRoomTimer() เอง)
+                        newRoom.AssignRandomTask();
+
+                        // 4. Subscribe Event
+                        SubscribeToRoomEvents(newRoom);
+
+                        return true; // ⭐ SUCCESS
+                    }
+                    // ROLLBACK 1: วาง Room ต่อ Hallway ล้มเหลว (เช่น ชน)
+                    else
+                    {
+                        dungeonGenerator.RemoveRoom(hallwayData);
+                        spawnRoom.UnuseConnector(startConnector);
+                        return false; // ล้มเหลวในรอบนี้
+                    }
+                }
+                // ROLLBACK 2: Hallway ไม่มี Connector ว่างเหลืออยู่
+                else
+                {
+                    dungeonGenerator.RemoveRoom(hallwayData);
+                    spawnRoom.UnuseConnector(startConnector);
+                    return false; // ล้มเหลวในรอบนี้
+                }
+            }
+            // ROLLBACK 3: วาง Hallway ล้มเหลว (เช่น ชนตั้งแต่แรก)
+            else
+            {
+                spawnRoom.UnuseConnector(startConnector);
+                return false; // ล้มเหลวในรอบนี้
+            }
         }
+        // Connector หมดแล้ว (ไม่ถือว่าเป็นความล้มเหลว)
+        // การสร้างห้องทั้งหมดจะหยุดลงโดยธรรมชาติเมื่อ Spawn Room ไม่มี Connector
+        // และ Log Warning จะถูกแสดงใน TryCreateMultipleRooms
+        return false;
     }
 
-    // ⭐ 3.2 ดีดผู้เล่นกลับ Spawn
-    public void ReturnToSpawn()
+    /// <summary>
+    /// สั่งทำลายห้องที่หมดเวลา/ออกจาก List พร้อมจัดการ Hallway และ Connector
+    /// </summary>
+    public void DestroyRoom(RoomData roomToDestroy)
     {
-        // 1. ทำลายห้องปัจจุบัน (ยกเว้น Spawn Room)
-        if (currentRoomData.roomType != RoomData.RoomType.Spawn)
+        if (roomToDestroy != null && roomToDestroy.roomType != RoomData.RoomType.Spawn)
         {
-            dungeonGenerator.RemoveRoom(currentRoomData);
-        }
+            // 1. จัดการผู้เล่นวาร์ป (โค้ดเดิม)
+            if (IsPlayerInRoom(roomToDestroy))
+            {
+                Debug.LogWarning($"Player detected in room {roomToDestroy.name}. Teleporting player to Spawn Room.");
+                TeleportPlayerToSpawn();
+            }
 
-        // 2. ย้ายผู้เล่นกลับ Spawn
-        RoomData spawnRoom = dungeonGenerator.GetGeneratedRooms().Find(r => r.roomType == RoomData.RoomType.Spawn);
-        if (spawnRoom != null)
-        {
-            currentRoomData = spawnRoom;
-            playerInstance.transform.position = spawnPoint.transform.position;
-
-            // ⭐ เริ่มจับเวลาใหม่สำหรับห้อง Spawn (หรือเข้าสู่ลูปปกติ)
-            EnterRoom(spawnRoom);
+            // ⭐ SIMPLIFIED: สั่ง DungeonGenerator ให้จัดการทำลาย GameObject, Hallway, และล้าง Connector
+            // (Hallway จะถูกทำลายใน DungeonGenerator.RemoveRoom)
+            dungeonGenerator.RemoveRoom(roomToDestroy);
         }
     }
 
-    // ⭐ 4. จบเกม
+    /// <summary>
+    /// ตรวจสอบว่าผู้เล่นอยู่ใน Collider ของห้องที่กำลังจะถูกทำลายหรือไม่
+    /// </summary>
+    private bool IsPlayerInRoom(RoomData room)
+    {
+        // ⭐ ใช้ roomBoundsCollider แทน room.collider2D
+        if (playerController == null || playerController.transform == null || room.roomBoundsCollider == null) return false;
+
+        //Debug.Log($"Checking Room: {room.name}");
+        //Debug.Log($"Room Bounds Center: {room.roomBoundsCollider.bounds.center}");
+        //Debug.Log($"Room Bounds Size: {room.roomBoundsCollider.bounds.size}");
+        //Debug.Log($"Player Position: {playerController.transform.position}");
+
+        // ⭐ ใช้ roomBoundsCollider.bounds
+        bool isInBounds = room.roomBoundsCollider.bounds.Contains(playerController.transform.position);
+
+        //Debug.Log($"Is Player in Room: {isInBounds}");
+
+        return isInBounds;
+    }
+
+    /// <summary>
+    /// วาร์ปผู้เล่นไปยังตำแหน่งเริ่มต้นของ Spawn Room
+    /// </summary>
+    private void TeleportPlayerToSpawn()
+    {
+        if (spawnRoom == null || playerController == null)
+        {
+            Debug.LogError("Cannot teleport player: Spawn Room or Player Controller is missing!");
+            return;
+        }
+
+        // ⭐ สมมติว่า Spawn Room มีตำแหน่งเริ่มต้นสำหรับผู้เล่น (เช่น taskPoints[0] หรือจุดศูนย์กลาง)
+        Vector3 spawnPosition = spawnRoom.transform.position;
+        spawnPosition = spawnRoom.transform.position;
+
+        // ย้ายผู้เล่นไปยังตำแหน่งวาร์ป (การใช้ Rigidbody.position หรือ Transform.position ขึ้นอยู่กับ PlayerController)
+        playerController.transform.position = spawnPosition;
+        //Debug.Log("Player Teleport");
+    }
+
     private void EndGame(bool timeUp)
     {
         isGameActive = false;
         StopAllCoroutines();
 
-        if (timeUp)
-        {
-            Debug.Log("GAME OVER! Time has run out.");
-        }
-        else
-        {
-            Debug.Log("GAME OVER! Something went wrong.");
-        }
-
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name); // รีสตาร์ทเกม
-    }
-
-    // เมธอดสาธารณะสำหรับ TaskManager เรียกเมื่อ Task เสร็จสมบูรณ์
-    public void NotifyTaskCompleted()
-    {
-        // TransitionToNewRoom จะถูกเรียกโดย GameLoopCoroutine โดยการเช็คสถานะ
-        // เราสามารถหยุด RoomTimerCoroutine ได้ที่นี่
+        // ... (โค้ดจบเกม) ...
     }
 }

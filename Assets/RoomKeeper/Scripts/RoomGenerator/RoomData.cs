@@ -1,134 +1,350 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
+using System.Collections;
+using TMPro;
+using UnityEngine.UI;
 
+/// <summary>
+/// เก็บข้อมูลพื้นฐาน, สถานะ Task, และตรรกะการเชื่อมต่อสำหรับห้อง
+/// จัดการเวลาและ Task ของตัวเอง และแจ้ง CoreManager เมื่อเสร็จสิ้น/หมดเวลา
+/// </summary>
 public class RoomData : MonoBehaviour
 {
+    #region ENUMS
+
     public enum RoomType
     {
+        /// <summary>ห้องที่ผู้เล่นเริ่มต้น</summary>
         Spawn,
+        /// <summary>ห้องทั่วไป</summary>
         Room,
+        /// <summary>ทางเดินเชื่อมระหว่างห้อง</summary>
         Hallway
     }
 
-    [Header("Room Settings")]
-    [SerializeField] LayerMask roomLayerMask;
-    [SerializeField] public RoomType roomType;
-    [SerializeField] GameObject wall;
+    #endregion
+
+    // -------------------------------------------------------------------
+
+    #region FIELDS & PROPERTIES
+
+    // Events เพื่อแจ้ง GameCoreManager
+    public event Action<RoomData> OnRoomCompletion;
+    public event Action<RoomData> OnRoomTimeout;
+
+    [Header("Room Setup")]
+    public RoomType roomType;
+    public Collider2D collider2DForComposit;
+
+    [Tooltip("Collider ที่ใช้สำหรับวัดขอบเขตของห้อง (ควรเป็น BoxCollider2D ที่ Is Trigger)")]
+    public Collider2D roomBoundsCollider;
+
+    [SerializeField] private LayerMask roomLayerMask;
 
     [Header("Connection Points")]
     public List<Transform> connectors;
 
-    // ⭐ แนะนำให้ใช้ชื่อที่ชัดเจนขึ้นและทำให้เป็น public/private ตามความจำเป็น
-    [Tooltip("Collider2D หลักของห้อง ใช้สำหรับตรวจสอบการซ้อนทับ")]
-    public Collider2D collider2D; // เปลี่ยนชื่อเป็น collider2D เพื่อความชัดเจน
+    [Header("Connection Info")]
+    [Tooltip("Connector ใน Parent Room ที่ Room นี้ใช้เชื่อมต่อ")]
+    public Transform parentConnector;
 
-    private const int MAX_RETRIES = 100;
+    [Header("Task Spawn Points")]
+    public List<Transform> taskPoints;
 
-    /// <summary>
-    /// สุ่มหา Connector ที่ยังไม่ถูกใช้งาน และตั้งค่าให้ถูกใช้งานทันที
-    /// </summary>
-    /// <param name="connector">Connector Transform ที่ว่าง</param>
-    /// <returns>True หากพบ Connector ที่ว่าง</returns>
-    public bool HasAvailableConnector(out Transform connector)
+    [Header("UI Reference")]
+    [Tooltip("ลาก TextMeshProUGUI Component ที่จะแสดงเวลาที่เหลือมาใส่ใน Field นี้")]
+    [SerializeField] private TextMeshProUGUI timeDisplay;
+
+    public TextMeshProUGUI TimeDisplay => timeDisplay;
+
+    [Header("Game Logic & Tasks")]
+    public float roomTimeLimit = 60f;
+
+    [Tooltip("Prefabs ของ TaskBase ที่สามารถสุ่มเกิดในห้องนี้")]
+    [SerializeField] private List<GameObject> possibleTaskPrefabs;
+
+    [Tooltip("จำนวน Task สูงสุดที่จะสุ่มสร้างในห้องนี้ (จำกัดโดย Task Points)")]
+    [SerializeField] private int maxTasksToAssign = 1;
+
+    private List<TaskBase> assignedTasks;
+    private Coroutine roomTimerCoroutine;
+
+    public List<TaskBase> AssignedTasks => assignedTasks;
+
+    private const int MAX_CONNECTOR_RETRIES = 5;
+
+    #endregion
+
+    // -------------------------------------------------------------------
+
+    #region LIFECYCLE & TIMER LOGIC
+
+    private void Awake()
     {
-        connector = null;
+        assignedTasks = new List<TaskBase>();
+    }
 
-        // ⭐ ตรรกะสำหรับห้องที่มี Connector เดียว
-        if (connectors.Count == 1)
-        {
-            Transform connect = connectors[0];
-            if (connect.TryGetComponent<Connector>(out Connector connComponent))
-            {
-                if (!connComponent.IsOccupied())
-                {
-                    connector = connect;
-                    connComponent.SetOccupied(true);
-                    return true;
-                }
-            }
-            return false;
-        }
+    private void OnValidate()
+    {
+        maxTasksToAssign = Mathf.Max(1, maxTasksToAssign);
+    }
 
-        // ⭐ ตรรกะสำหรับห้องที่มี Connector หลายอัน (ใช้การสุ่มพร้อม Retry)
-        for (int i = 0; i < MAX_RETRIES; i++)
-        {
-            int randomConnectIndex = Random.Range(0, connectors.Count);
-            Transform connect = connectors[randomConnectIndex];
-
-            if (connect.TryGetComponent<Connector>(out Connector connComponent))
-            {
-                if (!connComponent.IsOccupied())
-                {
-                    connector = connect;
-                    connComponent.SetOccupied(true); // ตั้งค่าให้ถูกใช้งานทันที
-                    return true;
-                }
-            }
-            // ถ้าไม่เจอ Connector หรือ Connector นั้นถูกใช้งานแล้ว ให้ลองใหม่
-        }
-
-        // หากพยายามครบ 100 ครั้งแล้วยังหาไม่เจอ
-        return false;
+    private void OnDestroy()
+    {
+        StopRoomTimer();
+        // หาก Timer ยังทำงานอยู่และถูกทำลาย ให้ตั้งค่า UI เป็นค่าว่าง
+        UpdateTimeDisplay(0f);
     }
 
     /// <summary>
-    /// ตั้งค่า Connector ให้กลับไปเป็นสถานะว่าง
+    /// เริ่มจับเวลาห้อง
     /// </summary>
-    /// <param name="connector">Connector Transform ที่ต้องการยกเลิกการใช้งาน</param>
-    public void UnuseConnector(Transform connector)
+    public void StartRoomTimer()
     {
-        if (connector.TryGetComponent<Connector>(out Connector connect))
+        if (roomType != RoomType.Room || assignedTasks.Count == 0) return;
+
+        StopRoomTimer();
+
+        UpdateTimeDisplay(roomTimeLimit);
+
+        roomTimerCoroutine = StartCoroutine(RoomTimerCoroutine());
+        //Debug.Log($"Timer started for {gameObject.name}. Time Limit: {roomTimeLimit}s");
+    }
+
+    /// <summary>
+    /// หยุดจับเวลาห้อง
+    /// </summary>
+    public void StopRoomTimer()
+    {
+        if (roomTimerCoroutine != null)
         {
-            connect.SetOccupied(false);
+            StopCoroutine(roomTimerCoroutine);
+            roomTimerCoroutine = null;
         }
     }
 
     /// <summary>
-    /// วางกำแพง (Wall) ปิด Connector ที่ยังไม่ได้ถูกใช้งานทั้งหมด
+    /// ตัวจับเวลาห้อง (Room Timer)
     /// </summary>
-    public void FillEmptyDoors()
+    private IEnumerator RoomTimerCoroutine()
     {
-        // ⭐ เพิ่มการตรวจสอบ: หากไม่มี Prefab กำแพง (wall) ให้หยุดการทำงาน
-        if (wall == null)
+        float timer = roomTimeLimit;
+
+        while (timer > 0)
         {
-            // สามารถเพิ่ม Debug.LogWarning ได้หากต้องการแจ้งเตือนใน Editor
-            // Debug.LogWarning($"RoomData on {gameObject.name} is missing the Wall prefab to fill empty doors.", gameObject);
+            // อัปเดตทุกเฟรมเพื่อความแม่นยำและการแสดงผลที่ลื่นไหล
+            UpdateTimeDisplay(timer);
+
+            if (AreAllTasksCompleted())
+            {
+                UpdateTimeDisplay(0f);
+                OnRoomCompletion?.Invoke(this);
+                yield break;
+            }
+
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        // เมื่อหมดเวลา
+        UpdateTimeDisplay(0f);
+        OnRoomTimeout?.Invoke(this);
+    }
+
+    /// <summary>
+    /// เมธอดอัปเดตค่าเวลาที่แสดงบน Canvas
+    /// </summary>
+    private void UpdateTimeDisplay(float time)
+    {
+        // ⭐ ใช้ timeDisplay ที่ถูกลากมาใส่ใน Inspector
+        if (timeDisplay == null) return;
+
+        // แปลงเวลาให้เป็นรูปแบบ M:SS
+        // ใช้ Mathf.Max(0, time) เพื่อป้องกันการแสดงค่าติดลบหากมีการประมวลผลล่าช้า
+        TimeSpan t = TimeSpan.FromSeconds(Mathf.Max(0, time));
+        string timeText = string.Format("{0:0}:{1:00}", (int)t.TotalMinutes, t.Seconds);
+
+        timeDisplay.text = timeText;
+    }
+
+    #endregion
+
+    // -------------------------------------------------------------------
+
+    #region PUBLIC TASK LOGIC 
+
+    /// <summary>
+    /// สุ่มและสร้าง Task หลายอย่างจาก List ที่เป็นไปได้ ตามจำนวนที่กำหนด
+    /// </summary>
+    public void AssignRandomTask()
+    {
+        if (roomType != RoomType.Room) return;
+
+        // ล้าง Task เก่า (ถ้ามี)
+        foreach (TaskBase oldTask in assignedTasks)
+        {
+            if (oldTask != null) Destroy(oldTask.gameObject);
+        }
+        assignedTasks.Clear();
+
+        // ตรวจสอบความถูกต้อง
+        if (possibleTaskPrefabs == null || possibleTaskPrefabs.Count == 0 || taskPoints.Count == 0)
+        {
+            if (taskPoints.Count == 0 && possibleTaskPrefabs.Count > 0)
+            {
+                Debug.LogWarning($"Room {gameObject.name} has tasks defined but no Task Points to spawn them.");
+            }
             return;
         }
 
-        foreach (Transform connect in connectors)
+        // ตรรกะการสุ่มหลาย Task
+
+        int numTasksToSpawn = Mathf.Min(maxTasksToAssign, taskPoints.Count);
+
+        List<GameObject> availableTaskPrefabs = new List<GameObject>(possibleTaskPrefabs);
+        List<Transform> availableTaskPoints = new List<Transform>(taskPoints);
+
+        for (int i = 0; i < numTasksToSpawn; i++)
         {
-            if (connect.TryGetComponent(out Connector _connector))
+            if (availableTaskPrefabs.Count == 0 || availableTaskPoints.Count == 0) break;
+
+            // 2. สุ่ม Task
+            int randomTaskIndex = UnityEngine.Random.Range(0, availableTaskPrefabs.Count);
+            GameObject taskPrefab = availableTaskPrefabs[randomTaskIndex];
+
+            // 3. สุ่ม TaskPoint
+            int randomPointIndex = UnityEngine.Random.Range(0, availableTaskPoints.Count);
+            Transform spawnPoint = availableTaskPoints[randomPointIndex];
+
+            if (taskPrefab != null && spawnPoint != null)
             {
-                if (!_connector.IsOccupied())
+                // 4. สร้าง Task
+                GameObject taskObject = Instantiate(taskPrefab, spawnPoint.position, Quaternion.identity, transform);
+
+                // ⭐ NEW: 4a. หา TasksZone Component จาก GameObject ที่สร้างขึ้น
+                TasksZone taskZone = taskObject.GetComponentInChildren<TasksZone>();
+
+                TaskBase newTask = null;
+
+                if (taskZone != null)
                 {
-                    // ทำการ Instantiate เฉพาะเมื่อ 'wall' ไม่ใช่ null
-                    GameObject _wall = Instantiate(wall, connect.position, connect.rotation, gameObject.transform);
+                    // 4b. ดึง TaskBase จาก Field 'task' ภายใน TasksZone
+                    newTask = taskZone.task;
                 }
+
+                // 4c. ตรวจสอบและเพิ่ม TaskBase เข้า AssignedTasks
+                if (newTask != null)
+                {
+                    assignedTasks.Add(newTask);
+                    //Debug.Log($"Assigned task {newTask.name} via TasksZone in {gameObject.name}. Total tasks: {assignedTasks.Count}");
+                }
+                else
+                {
+                    // หากหา TasksZone หรือ TaskBase ภายใน TasksZone ไม่เจอ
+                    Debug.LogError($"Task Prefab '{taskPrefab.name}' instantiated but failed to find TasksZone or TaskBase component assigned within TasksZone. Destroying instance.");
+                    Destroy(taskObject);
+                    continue; // ข้ามไปสร้าง Task ตัวถัดไป
+                }
+
+                // 5. นำ Task และ TaskPoint ที่ใช้แล้วออกจากการสุ่ม
+                availableTaskPrefabs.RemoveAt(randomTaskIndex);
+                availableTaskPoints.RemoveAt(randomPointIndex);
             }
         }
-    }
 
-    // ⭐ ใช้ OnValidate เพื่อช่วยแจ้งเตือนใน Editor หาก Collider2D หายไป
-    private void OnValidate()
-    {
-        // ตรวจสอบว่ามีการอ้างอิงถึง Collider2D หรือไม่
-        if (collider2D == null)
+        // ⭐ ตรวจสอบและเริ่ม Timer
+        if (assignedTasks.Count > 0)
         {
-            // พยายามหา Collider2D บน Game Object นี้อัตโนมัติ
-            collider2D = GetComponent<Collider2D>();
+            //Debug.Log($"Attempting to start timer for {gameObject.name} (Type: {roomType}) with {assignedTasks.Count} tasks.");
+            StartRoomTimer();
+        }
+        else if (roomType == RoomType.Room && (possibleTaskPrefabs.Count > 0 || taskPoints.Count > 0))
+        {
+            Debug.LogWarning($"Failed to assign any task to {gameObject.name}. Check if task prefabs have TaskBase component.");
         }
     }
 
+    /// <summary>
+    /// ตรวจสอบว่า Task ทั้งหมดในห้องนี้เสร็จสิ้นแล้วหรือไม่
+    /// </summary>
+    public bool AreAllTasksCompleted()
+    {
+        if (roomType != RoomType.Room)
+        {
+            return true;
+        }
+        if (possibleTaskPrefabs.Count == 0) return true;
+        if (assignedTasks.Count == 0) return false;
 
-    //private void OnDrawGizmos()
-    //{
-    //    if (collider2D != null)
-    //    {
-    //        Gizmos.color = Color.red;
-    //        // การใช้ DrawWireCube กับ bounds.center และ bounds.size ใช้งานได้ดีสำหรับ 2D
-    //        // แม้ว่าการหมุนอาจดูผิดพลาดถ้าห้องถูกหมุน (ควรใช้ Gizmos.matrix)
-    //        Gizmos.DrawWireCube(collider2D.bounds.center, collider2D.bounds.size);
-    //    }
-    //}
+        return assignedTasks.All(task => task.IsCompleted);
+    }
+
+    /// <summary>
+    /// ล้าง Task ที่ Assign ไว้ออกจาก List 
+    /// </summary>
+    public void ClearAssignedTasks()
+    {
+        assignedTasks.Clear();
+    }
+
+    #endregion
+
+    // -------------------------------------------------------------------
+
+    #region PUBLIC CONNECTION LOGIC
+
+    public bool HasAvailableConnector(out Transform connector)
+    {
+        connector = null;
+        if (connectors.Count == 1)
+        {
+            return TryConnect(connectors[0], out connector);
+        }
+
+        for (int i = 0; i < MAX_CONNECTOR_RETRIES; i++)
+        {
+            int randomConnectIndex = UnityEngine.Random.Range(0, connectors.Count);
+            Transform potentialConnector = connectors[randomConnectIndex];
+
+            if (TryConnect(potentialConnector, out connector))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void UnuseConnector(Transform connector)
+    {
+        if (connector.TryGetComponent<Connector>(out Connector connectComponent))
+        {
+            connectComponent.SetOccupied(false);
+        }
+    }
+
+    #endregion
+
+    // -------------------------------------------------------------------
+
+    #region PRIVATE HELPER METHODS
+
+    private bool TryConnect(Transform potentialConnector, out Transform connector)
+    {
+        connector = null;
+        if (potentialConnector.TryGetComponent<Connector>(out Connector connComponent))
+        {
+            if (!connComponent.IsOccupied())
+            {
+                connector = potentialConnector;
+                connComponent.SetOccupied(true);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    #endregion
 }
