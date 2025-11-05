@@ -17,7 +17,7 @@ public abstract class TaskBase : MonoBehaviour
 
     public virtual void Awake()
     {
-        player = PlayerController.playerInstance;
+        player = PlayerController.PlayerInstance;
         if (player == null)
         {
             Debug.LogError("TaskBase: PlayerController.playerInstance หายไป! การควบคุมการเคลื่อนไหวของผู้เล่นอาจผิดพลาด");

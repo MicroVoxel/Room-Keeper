@@ -1,33 +1,44 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
     #region Animator Parameters
-    private string StrIsWalk = "IsWalk";
-    private string StrXInput = "XInput";
-    private string StrYInput = "YInput";
+    private static readonly int StrIsWalk = Animator.StringToHash("IsWalk");
+    private static readonly int StrXInput = Animator.StringToHash("XInput");
+    private static readonly int StrYInput = Animator.StringToHash("YInput");
     #endregion
 
+    #region Inspector
     [Header("Player Settings")]
     [SerializeField, Min(0.1f)] private float speed = 1f;
     [SerializeField] private InputActionAsset inputActions;
+    #endregion
 
-    public static PlayerController playerInstance;
+    #region Singleton
+    public static PlayerController PlayerInstance;
+    #endregion
 
+    #region Fields
     private Animator _animator;
     private Rigidbody2D _rigidbody;
     private InputAction _moveAction;
 
     private Vector2 _moveInput;
-    private bool canMove = true;
+    private bool _canMove = true;
+    #endregion
 
+    #region Unity Methods
     private void Awake()
     {
-        if (playerInstance == null)
+        if (PlayerInstance != null && PlayerInstance != this)
         {
-            playerInstance = this;
+            Destroy(gameObject);
+            return;
         }
+        PlayerInstance = this;
 
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -48,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (!canMove)
+        if (!_canMove)
         {
             _moveInput = Vector2.zero;
             HandleAnimation(Vector2.zero);
@@ -61,12 +72,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!canMove) return;
+        if (!_canMove) return;
 
         Vector2 velocity = _moveInput.normalized * speed;
         _rigidbody.MovePosition(_rigidbody.position + velocity * Time.fixedDeltaTime);
     }
+    #endregion
 
+    #region Animation Handling
     private void HandleAnimation(Vector2 input)
     {
         if (input.magnitude < 0.1f)
@@ -79,10 +92,12 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat(StrXInput, input.x);
         _animator.SetFloat(StrYInput, input.y);
     }
+    #endregion
 
+    #region Public Methods
     public void SetMovement(bool active)
     {
-        canMove = active;
+        _canMove = active;
 
         if (!active)
         {
@@ -91,4 +106,5 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool(StrIsWalk, false);
         }
     }
+    #endregion
 }
