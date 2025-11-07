@@ -12,7 +12,7 @@ public abstract class TaskBase : MonoBehaviour
 
     private PlayerController player;
 
-    public bool IsOpen => panel && panel.activeSelf;
+    public bool IsOpen => panel != null && panel.activeSelf;
     public bool IsCompleted { get; private set; }
 
     public virtual void Awake()
@@ -26,24 +26,26 @@ public abstract class TaskBase : MonoBehaviour
 
     public virtual void Open()
     {
-        if (IsCompleted) return; // ถ้าจบแล้ว ไม่ต้องเปิดอีก
-        if (panel) panel.SetActive(true);
+        if (IsCompleted || panel == null) return;
+
+        panel.SetActive(true);
 
         if (player != null)
         {
-            player.SetMovement(false); // ปิดการเคลื่อนไหวของผู้เล่น
-            //Debug.Log("OpenTask: ผู้เล่นถูกหยุดชั่วคราว");
+            player.SetMovement(false);
         }
     }
 
     public virtual void Close()
     {
-        if (panel) panel.SetActive(false);
+        if (panel != null)
+        {
+            panel.SetActive(false);
+        }
 
         if (player != null)
         {
-            player.SetMovement(true); // เปิดการเคลื่อนไหวของผู้เล่น
-            //Debug.Log("CloseTask: ผู้เล่นกลับมาควบคุมได้");
+            player.SetMovement(true);
         }
     }
 
@@ -53,9 +55,10 @@ public abstract class TaskBase : MonoBehaviour
 
         IsCompleted = true;
 
-        if (PlayerProgress.Instance != null)
+        var playerProgress = PlayerProgress.Instance;
+        if (playerProgress != null)
         {
-            PlayerProgress.Instance.AddEXP(expReward);
+            playerProgress.AddEXP(expReward);
         }
         else
         {
@@ -64,7 +67,7 @@ public abstract class TaskBase : MonoBehaviour
 
         Close();
 
-        if (taskMarkerRenderer)
+        if (taskMarkerRenderer != null)
         {
             taskMarkerRenderer.enabled = false;
         }
