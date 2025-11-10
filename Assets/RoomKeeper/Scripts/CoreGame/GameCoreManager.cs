@@ -1,14 +1,13 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro; 
+using TMPro;
 using System;
 
 /// <summary>
+/// (Updated Logic)
 /// จัดการ Game Loop หลัก, รับ Event จาก RoomData, และสั่งการทำลาย/สร้างห้อง
-/// ระบบทำงานโดยอิสระ ไม่ขึ้นอยู่กับการเคลื่อนที่ของผู้เล่น (Player)
 /// </summary>
 public class GameCoreManager : MonoBehaviour
 {
@@ -23,8 +22,8 @@ public class GameCoreManager : MonoBehaviour
     public int roomsToCreatePerEvent = 2; // สร้าง 2 ห้องพร้อมกัน/ต่อครั้ง
 
     [Tooltip("ช่วงเวลา (วินาที) ในการสร้างห้องใหม่โดยอัตโนมัติ")]
-    public float roomCreationInterval = 10f; 
-    [SerializeField] private float roomCreationTimer; 
+    public float roomCreationInterval = 10f;
+    [SerializeField] private float roomCreationTimer;
 
     [Header("Global UI Reference")]
     [Tooltip("ลาก TextMeshProUGUI Component ที่จะแสดงเวลารวมของเกมมาใส่")]
@@ -152,16 +151,22 @@ public class GameCoreManager : MonoBehaviour
         room.OnRoomTimeout -= HandleRoomTimeout;
     }
 
+    /// <summary>
+    /// --- (MODIFIED) ---
+    /// </summary>
     private void HandleRoomCompletion(RoomData completedRoom)
     {
-        Debug.Log($"CoreManager received completion from {completedRoom.name}.");
+        // Debug.Log($"CoreManager received completion from {completedRoom.name}.");
+        Debug.Log($"CoreManager received completion from {completedRoom.name}. Destroying room.");
 
         // 1. Unsubscribe เพื่อล้าง Event
         UnsubscribeFromRoomEvents(completedRoom);
 
         // 2. ล้าง Task สถานะของห้องนี้ 
-        completedRoom.ClearAssignedTasks();
-       
+        // completedRoom.ClearAssignedTasks(); // --- (REMOVED) --- ไม่จำเป็นต้องล้าง Task ถ้าจะทำลายห้อง
+
+        // 3. --- (NEW) --- สั่งทำลายห้อง
+        DestroyRoom(completedRoom);
     }
 
     private void HandleRoomTimeout(RoomData timedOutRoom)
@@ -173,7 +178,7 @@ public class GameCoreManager : MonoBehaviour
 
         // 2. สั่งทำลายห้อง (และเอาออกจาก DungeonGenerator)
         DestroyRoom(timedOutRoom);
-       
+
     }
 
     // -------------------------------------------------------------------
@@ -181,10 +186,18 @@ public class GameCoreManager : MonoBehaviour
     // -------------------------------------------------------------------
 
     /// <summary>
-    /// ⭐ NEW: พยายามสร้าง Hallway-Room chain ใหม่ ตามจำนวนที่กำหนด
+    /// (Optimized) พยายามสร้าง Hallway-Room chain ใหม่ ตามจำนวนที่กำหนด
     /// </summary>
     public void TryCreateMultipleRooms(int count)
     {
+        // --- OPTIMIZATION: ตรวจสอบก่อนว่า Spawn Room มีที่ว่างเหลือหรือไม่ ---
+        if (spawnRoom == null || !spawnRoom.HasAnyAvailableConnector())
+        {
+            // ไม่ต้องพยายามสร้างถ้า Spawn Room เต็มแล้ว
+            return;
+        }
+        // --- END OPTIMIZATION ---
+
         int successfulCreations = 0;
 
         // ตั้งค่าความพยายามสูงสุดเพื่อป้องกัน Infinite Loop หาก Connector มีปัญหาการชนซ้ำๆ
@@ -201,20 +214,29 @@ public class GameCoreManager : MonoBehaviour
                     break; // สร้างสำเร็จ, ข้ามไปสร้างห้องถัดไป (i++)
                 }
             }
+
+            // --- OPTIMIZATION 2: ถ้าพยายามสร้างห้องแรกล้มเหลว 3 ครั้ง และ Connector เต็มแล้ว, ให้ออกจากลูปเลย
+            if (successfulCreations == 0 && !spawnRoom.HasAnyAvailableConnector())
+            {
+                //Debug.Log("Spawn room became full during creation attempts. Stopping loop.");
+                break; // ออกจาก Loop (for i)
+            }
+            // --- END OPTIMIZATION 2 ---
         }
 
         if (successfulCreations > 0)
         {
-            Debug.Log($"Successfully created {successfulCreations} new room chains.");
+            //Debug.Log($"Successfully created {successfulCreations} new room chains.");
         }
         else
         {
+            // LogWarning นี้จะแสดงผลก็ต่อเมื่อ "มีที่ว่าง" แต่ "สร้างแล้วชน" ซ้ำๆ
             Debug.LogWarning($"Failed to create any new rooms after {count * MAX_ATTEMPTS_PER_ROOM} attempts. Spawn connectors might be full or facing persistent intersections.");
         }
     }
 
     /// <summary>
-    /// ⭐ RENAME: พยายามสร้าง Hallway-Room chain ใหม่ 1 ชุด
+    /// พยายามสร้าง Hallway-Room chain ใหม่ 1 ชุด
     /// </summary>
     private bool TryCreateSingleRoomChain() // เปลี่ยนชื่อและเปลี่ยน return type เป็น bool
     {
@@ -279,9 +301,6 @@ public class GameCoreManager : MonoBehaviour
                 return false; // ล้มเหลวในรอบนี้
             }
         }
-        // Connector หมดแล้ว (ไม่ถือว่าเป็นความล้มเหลว)
-        // การสร้างห้องทั้งหมดจะหยุดลงโดยธรรมชาติเมื่อ Spawn Room ไม่มี Connector
-        // และ Log Warning จะถูกแสดงใน TryCreateMultipleRooms
         return false;
     }
 
@@ -300,7 +319,6 @@ public class GameCoreManager : MonoBehaviour
             }
 
             // ⭐ SIMPLIFIED: สั่ง DungeonGenerator ให้จัดการทำลาย GameObject, Hallway, และล้าง Connector
-            // (Hallway จะถูกทำลายใน DungeonGenerator.RemoveRoom)
             dungeonGenerator.RemoveRoom(roomToDestroy);
         }
     }
@@ -310,18 +328,10 @@ public class GameCoreManager : MonoBehaviour
     /// </summary>
     private bool IsPlayerInRoom(RoomData room)
     {
-        // ⭐ ใช้ roomBoundsCollider แทน room.collider2D
         if (playerController == null || playerController.transform == null || room.roomBoundsCollider == null) return false;
-
-        //Debug.Log($"Checking Room: {room.name}");
-        //Debug.Log($"Room Bounds Center: {room.roomBoundsCollider.bounds.center}");
-        //Debug.Log($"Room Bounds Size: {room.roomBoundsCollider.bounds.size}");
-        //Debug.Log($"Player Position: {playerController.transform.position}");
 
         // ⭐ ใช้ roomBoundsCollider.bounds
         bool isInBounds = room.roomBoundsCollider.bounds.Contains(playerController.transform.position);
-
-        //Debug.Log($"Is Player in Room: {isInBounds}");
 
         return isInBounds;
     }
@@ -337,11 +347,9 @@ public class GameCoreManager : MonoBehaviour
             return;
         }
 
-        // ⭐ สมมติว่า Spawn Room มีตำแหน่งเริ่มต้นสำหรับผู้เล่น (เช่น taskPoints[0] หรือจุดศูนย์กลาง)
         Vector3 spawnPosition = spawnRoom.transform.position;
         spawnPosition = spawnRoom.transform.position;
 
-        // ย้ายผู้เล่นไปยังตำแหน่งวาร์ป (การใช้ Rigidbody.position หรือ Transform.position ขึ้นอยู่กับ PlayerController)
         playerController.transform.position = spawnPosition;
         //Debug.Log("Player Teleport");
     }

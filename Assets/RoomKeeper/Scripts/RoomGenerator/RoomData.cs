@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine.UI;
 
 /// <summary>
+/// (Optimized Version)
 /// เก็บข้อมูลพื้นฐาน, สถานะ Task, และตรรกะการเชื่อมต่อสำหรับห้อง
 /// จัดการเวลาและ Task ของตัวเอง และแจ้ง CoreManager เมื่อเสร็จสิ้น/หมดเวลา
 /// </summary>
@@ -16,11 +17,8 @@ public class RoomData : MonoBehaviour
 
     public enum RoomType
     {
-        /// <summary>ห้องที่ผู้เล่นเริ่มต้น</summary>
         Spawn,
-        /// <summary>ห้องทั่วไป</summary>
         Room,
-        /// <summary>ทางเดินเชื่อมระหว่างห้อง</summary>
         Hallway
     }
 
@@ -75,6 +73,12 @@ public class RoomData : MonoBehaviour
 
     private const int MAX_CONNECTOR_RETRIES = 5;
 
+    // --- Optimization Fields ---
+    [Tooltip("ความถี่ในการตรวจสอบ Task Completion (ทุกๆ กี่เฟรม)")]
+    private const int CHECK_COMPLETION_FREQUENCY = 15; // ตรวจสอบทุก 15 เฟรม (ประมาณ 4 ครั้งต่อวินาทีที่ 60fps)
+    private int frameCheckCounter = 0;
+    // -----------------------------
+
     #endregion
 
     // -------------------------------------------------------------------
@@ -94,28 +98,19 @@ public class RoomData : MonoBehaviour
     private void OnDestroy()
     {
         StopRoomTimer();
-        // หาก Timer ยังทำงานอยู่และถูกทำลาย ให้ตั้งค่า UI เป็นค่าว่าง
         UpdateTimeDisplay(0f);
     }
 
-    /// <summary>
-    /// เริ่มจับเวลาห้อง
-    /// </summary>
     public void StartRoomTimer()
     {
         if (roomType != RoomType.Room || assignedTasks.Count == 0) return;
 
         StopRoomTimer();
-
         UpdateTimeDisplay(roomTimeLimit);
-
+        frameCheckCounter = 0; // รีเซ็ตตัวนับเฟรม
         roomTimerCoroutine = StartCoroutine(RoomTimerCoroutine());
-        //Debug.Log($"Timer started for {gameObject.name}. Time Limit: {roomTimeLimit}s");
     }
 
-    /// <summary>
-    /// หยุดจับเวลาห้อง
-    /// </summary>
     public void StopRoomTimer()
     {
         if (roomTimerCoroutine != null)
@@ -126,7 +121,7 @@ public class RoomData : MonoBehaviour
     }
 
     /// <summary>
-    /// ตัวจับเวลาห้อง (Room Timer)
+    /// (Optimized) ตัวจับเวลาห้อง (Room Timer)
     /// </summary>
     private IEnumerator RoomTimerCoroutine()
     {
@@ -134,17 +129,27 @@ public class RoomData : MonoBehaviour
 
         while (timer > 0)
         {
-            // อัปเดตทุกเฟรมเพื่อความแม่นยำและการแสดงผลที่ลื่นไหล
+            // 1. อัปเดต UI และเวลาก่อน
             UpdateTimeDisplay(timer);
-
-            if (AreAllTasksCompleted())
-            {
-                UpdateTimeDisplay(0f);
-                OnRoomCompletion?.Invoke(this);
-                yield break;
-            }
-
             timer -= Time.deltaTime;
+
+            // --- Optimization Start ---
+            // 2. ตรวจสอบ Task Completion เป็นระยะๆ ไม่ใช่ทุกเฟรม
+            frameCheckCounter++;
+            if (frameCheckCounter >= CHECK_COMPLETION_FREQUENCY)
+            {
+                frameCheckCounter = 0; // รีเซ็ตตัวนับ
+
+                // 3. (Optimized) เรียกใช้ AreAllTasksCompleted (เวอร์ชันไม่ใช้ LINQ)
+                if (AreAllTasksCompleted())
+                {
+                    UpdateTimeDisplay(0f);
+                    OnRoomCompletion?.Invoke(this);
+                    yield break; // จบ Coroutine
+                }
+            }
+            // --- Optimization End ---
+
             yield return null;
         }
 
@@ -158,14 +163,9 @@ public class RoomData : MonoBehaviour
     /// </summary>
     private void UpdateTimeDisplay(float time)
     {
-        // ⭐ ใช้ timeDisplay ที่ถูกลากมาใส่ใน Inspector
         if (timeDisplay == null) return;
-
-        // แปลงเวลาให้เป็นรูปแบบ M:SS
-        // ใช้ Mathf.Max(0, time) เพื่อป้องกันการแสดงค่าติดลบหากมีการประมวลผลล่าช้า
         TimeSpan t = TimeSpan.FromSeconds(Mathf.Max(0, time));
         string timeText = string.Format("{0:0}:{1:00}", (int)t.TotalMinutes, t.Seconds);
-
         timeDisplay.text = timeText;
     }
 
@@ -175,21 +175,16 @@ public class RoomData : MonoBehaviour
 
     #region PUBLIC TASK LOGIC 
 
-    /// <summary>
-    /// สุ่มและสร้าง Task หลายอย่างจาก List ที่เป็นไปได้ ตามจำนวนที่กำหนด
-    /// </summary>
     public void AssignRandomTask()
     {
         if (roomType != RoomType.Room) return;
 
-        // ล้าง Task เก่า (ถ้ามี)
         foreach (TaskBase oldTask in assignedTasks)
         {
             if (oldTask != null) Destroy(oldTask.gameObject);
         }
         assignedTasks.Clear();
 
-        // ตรวจสอบความถูกต้อง
         if (possibleTaskPrefabs == null || possibleTaskPrefabs.Count == 0 || taskPoints.Count == 0)
         {
             if (taskPoints.Count == 0 && possibleTaskPrefabs.Count > 0)
@@ -199,10 +194,7 @@ public class RoomData : MonoBehaviour
             return;
         }
 
-        // ตรรกะการสุ่มหลาย Task
-
         int numTasksToSpawn = Mathf.Min(maxTasksToAssign, taskPoints.Count);
-
         List<GameObject> availableTaskPrefabs = new List<GameObject>(possibleTaskPrefabs);
         List<Transform> availableTaskPoints = new List<Transform>(taskPoints);
 
@@ -210,54 +202,41 @@ public class RoomData : MonoBehaviour
         {
             if (availableTaskPrefabs.Count == 0 || availableTaskPoints.Count == 0) break;
 
-            // 2. สุ่ม Task
             int randomTaskIndex = UnityEngine.Random.Range(0, availableTaskPrefabs.Count);
             GameObject taskPrefab = availableTaskPrefabs[randomTaskIndex];
 
-            // 3. สุ่ม TaskPoint
             int randomPointIndex = UnityEngine.Random.Range(0, availableTaskPoints.Count);
             Transform spawnPoint = availableTaskPoints[randomPointIndex];
 
             if (taskPrefab != null && spawnPoint != null)
             {
-                // 4. สร้าง Task
                 GameObject taskObject = Instantiate(taskPrefab, spawnPoint.position, Quaternion.identity, transform);
-
-                // ⭐ NEW: 4a. หา TasksZone Component จาก GameObject ที่สร้างขึ้น
                 TasksZone taskZone = taskObject.GetComponentInChildren<TasksZone>();
-
                 TaskBase newTask = null;
 
                 if (taskZone != null)
                 {
-                    // 4b. ดึง TaskBase จาก Field 'task' ภายใน TasksZone
                     newTask = taskZone.task;
                 }
 
-                // 4c. ตรวจสอบและเพิ่ม TaskBase เข้า AssignedTasks
                 if (newTask != null)
                 {
                     assignedTasks.Add(newTask);
-                    //Debug.Log($"Assigned task {newTask.name} via TasksZone in {gameObject.name}. Total tasks: {assignedTasks.Count}");
                 }
                 else
                 {
-                    // หากหา TasksZone หรือ TaskBase ภายใน TasksZone ไม่เจอ
                     Debug.LogError($"Task Prefab '{taskPrefab.name}' instantiated but failed to find TasksZone or TaskBase component assigned within TasksZone. Destroying instance.");
                     Destroy(taskObject);
-                    continue; // ข้ามไปสร้าง Task ตัวถัดไป
+                    continue;
                 }
 
-                // 5. นำ Task และ TaskPoint ที่ใช้แล้วออกจากการสุ่ม
                 availableTaskPrefabs.RemoveAt(randomTaskIndex);
                 availableTaskPoints.RemoveAt(randomPointIndex);
             }
         }
 
-        // ⭐ ตรวจสอบและเริ่ม Timer
         if (assignedTasks.Count > 0)
         {
-            //Debug.Log($"Attempting to start timer for {gameObject.name} (Type: {roomType}) with {assignedTasks.Count} tasks.");
             StartRoomTimer();
         }
         else if (roomType == RoomType.Room && (possibleTaskPrefabs.Count > 0 || taskPoints.Count > 0))
@@ -267,7 +246,7 @@ public class RoomData : MonoBehaviour
     }
 
     /// <summary>
-    /// ตรวจสอบว่า Task ทั้งหมดในห้องนี้เสร็จสิ้นแล้วหรือไม่
+    /// (Optimized) ตรวจสอบว่า Task ทั้งหมดในห้องนี้เสร็จสิ้นแล้วหรือไม่ (โดยไม่ใช้ LINQ)
     /// </summary>
     public bool AreAllTasksCompleted()
     {
@@ -278,12 +257,18 @@ public class RoomData : MonoBehaviour
         if (possibleTaskPrefabs.Count == 0) return true;
         if (assignedTasks.Count == 0) return false;
 
-        return assignedTasks.All(task => task.IsCompleted);
+        // --- Optimization: Replaced LINQ .All() with a fast foreach loop ---
+        foreach (TaskBase task in assignedTasks)
+        {
+            if (!task.IsCompleted)
+            {
+                return false; // เจอ Task ที่ยังไม่เสร็จ, ออกจาก Loop ทันที
+            }
+        }
+        return true; // วนครบทุก Task และทุกอันเสร็จหมด
+        // -----------------------------------------------------------------
     }
 
-    /// <summary>
-    /// ล้าง Task ที่ Assign ไว้ออกจาก List 
-    /// </summary>
     public void ClearAssignedTasks()
     {
         assignedTasks.Clear();
@@ -323,6 +308,24 @@ public class RoomData : MonoBehaviour
         {
             connectComponent.SetOccupied(false);
         }
+    }
+
+    /// <summary>
+    /// (NEW OPTIMIZATION) ตรวจสอบว่ามี Connector ที่ว่างเหลืออยู่หรือไม่ (แบบ Read-only "Peek")
+    /// </summary>
+    public bool HasAnyAvailableConnector()
+    {
+        foreach (Transform connectorT in connectors)
+        {
+            if (connectorT.TryGetComponent<Connector>(out Connector connComponent))
+            {
+                if (!connComponent.IsOccupied())
+                {
+                    return true; // เจออย่างน้อย 1 อันที่ว่าง
+                }
+            }
+        }
+        return false; // ไม่มีที่ว่างเลย
     }
 
     #endregion

@@ -24,9 +24,16 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
     [Header("Brush Settings")]
     public float brushRadius = 50f; // รัศมีของแปรงในหน่วยพิกเซลของ Texture
 
-    // ตัวแปรภายใน
+    // --- Performance Optimization ---
     private Texture2D dirtyTexture;
     private Texture2D originalSourceTexture;
+
+    // We will operate on this C# array, which is much faster than GetPixel/SetPixel
+    private Color[] pixelData;
+    private int textureWidth;
+    private int textureHeight;
+    // --- End Performance Optimization ---
+
     private int totalDirtyPixels;
     private float totalInitialAlpha = 0f;    // ปริมาณ Alpha Channel เริ่มต้นรวมทั้งหมด
     private float currentCleanedAlpha = 0f;  // ปริมาณ Alpha ที่ถูกกำจัดไปแล้ว (ใช้สำหรับ Progress)
@@ -82,6 +89,7 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
         {
             UnityEngine.Object.Destroy(dirtyTexture);
         }
+        // pixelData (Color[]) is managed by GC, no need to manually destroy
     }
 
     #endregion
@@ -98,7 +106,7 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
     public void OnDrag(PointerEventData eventData)
     {
         if (!IsOpen || IsCompleted) return;
-        if (dirtyTexture == null) return;
+        if (dirtyTexture == null || pixelData == null) return; // Check pixelData too
 
         // แปลงตำแหน่งหน้าจอเป็น Local Point ภายใน RectTransform ของ dirtyOverlay
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -139,6 +147,8 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
             UnityEngine.Object.Destroy(dirtyTexture);
             dirtyTexture = null;
         }
+        // Clear the C# array
+        pixelData = null;
     }
 
     private void InitializeDirtyTexture()
@@ -155,9 +165,10 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
             dirtyTexture = null;
         }
 
+        // --- Create a copy (same as before) ---
         RenderTexture rt = RenderTexture.GetTemporary(
-            originalSourceTexture.width, // ใช้ต้นฉบับ
-            originalSourceTexture.height, // ใช้ต้นฉบับ
+            originalSourceTexture.width,
+            originalSourceTexture.height,
             0,
             RenderTextureFormat.Default,
             RenderTextureReadWrite.Linear
@@ -165,24 +176,31 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
         Graphics.Blit(originalSourceTexture, rt);
 
         dirtyTexture = new Texture2D(rt.width, rt.height, TextureFormat.RGBA32, false);
+        textureWidth = rt.width; // Store width
+        textureHeight = rt.height; // Store height
 
         RenderTexture previous = RenderTexture.active;
         RenderTexture.active = rt;
         dirtyTexture.ReadPixels(new Rect(0, 0, rt.width, rt.height), 0, 0);
-        dirtyTexture.Apply();
+        dirtyTexture.Apply(); // Apply the ReadPixels
         RenderTexture.active = previous;
         RenderTexture.ReleaseTemporary(rt);
 
+        // --- PERFORMANCE STEP 1: Get all pixels into C# array ONCE ---
+        pixelData = dirtyTexture.GetPixels();
+        // -----------------------------------------------------------
+
         totalInitialAlpha = 0f;
         currentCleanedAlpha = 0f;
-        Color[] allPixels = dirtyTexture.GetPixels();
 
-        foreach (Color color in allPixels)
+        // Calculate total alpha from the C# array (faster)
+        foreach (Color color in pixelData)
         {
             totalInitialAlpha += color.a;
         }
-        totalDirtyPixels = allPixels.Length;
+        totalDirtyPixels = pixelData.Length;
 
+        // Update the UI Sprite
         dirtyOverlay.sprite = Sprite.Create(
             dirtyTexture,
             new Rect(0, 0, dirtyTexture.width, dirtyTexture.height),
@@ -199,10 +217,9 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
 
     private void SweepAt(int px, int py)
     {
-        int width = dirtyTexture.width;
-        int height = dirtyTexture.height;
         int brushRadiusInt = Mathf.RoundToInt(brushRadius);
         float localCleanedAlpha = 0f; // Alpha ที่ถูกกำจัดในการลากครั้งนี้
+        bool pixelChanged = false; // Flag to check if we need to Apply()
 
         // Loop ตรวจสอบพิกเซลในรัศมีแปรง
         for (int x = px - brushRadiusInt; x <= px + brushRadiusInt; x++)
@@ -210,16 +227,21 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
             for (int y = py - brushRadiusInt; y <= py + brushRadiusInt; y++)
             {
                 // ตรวจสอบให้อยู่ในขอบเขตของ Texture
-                if (x >= 0 && x < width && y >= 0 && y < height)
+                if (x >= 0 && x < textureWidth && y >= 0 && y < textureHeight)
                 {
                     float dist = Vector2.Distance(new Vector2(x, y), new Vector2(px, py));
 
                     if (dist <= brushRadius)
                     {
-                        if (dirtyTexture.GetPixel(x, y).a > 0.001f) // ตรวจสอบว่ายังมี Alpha เหลืออยู่
+                        // --- PERFORMANCE STEP 2: Operate on the C# array ---
+                        // Convert 2D (x,y) coord to 1D array index
+                        int index = y * textureWidth + x;
+
+                        Color currentColor = pixelData[index];
+
+                        if (currentColor.a > 0.001f) // ตรวจสอบว่ายังมี Alpha เหลืออยู่
                         {
-                            Color newColor = dirtyTexture.GetPixel(x, y);
-                            float originalAlpha = newColor.a; // Alpha ก่อนลด
+                            float originalAlpha = currentColor.a; // Alpha ก่อนลด
 
                             // คำนวณตัวคูณการลด (Brush Falloff)
                             float alphaReductionFactor = Mathf.Clamp01(1f - dist / brushRadius);
@@ -228,22 +250,31 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
                             float reductionAmount = alphaReductionFactor * sweepStrength;
 
                             // ลด Alpha และป้องกันไม่ให้ติดลบ
-                            newColor.a = Mathf.Max(0f, originalAlpha - reductionAmount);
+                            currentColor.a = Mathf.Max(0f, originalAlpha - reductionAmount);
 
                             // คำนวณปริมาณ Alpha ที่ถูกลบออกไปจริง
-                            float actualReduction = originalAlpha - newColor.a;
-                            localCleanedAlpha += actualReduction;
+                            float actualReduction = originalAlpha - currentColor.a;
 
-                            dirtyTexture.SetPixel(x, y, newColor);
+                            if (actualReduction > 0)
+                            {
+                                localCleanedAlpha += actualReduction;
+                                pixelData[index] = currentColor; // Write back to C# array
+                                pixelChanged = true;
+                            }
                         }
                     }
                 }
             }
         }
 
-        if (localCleanedAlpha > 0f)
+        if (pixelChanged) // Only Apply if changes were made
         {
-            dirtyTexture.Apply(); // อัปเดต Texture
+            // --- PERFORMANCE STEP 3: Upload the entire array in one go ---
+            dirtyTexture.SetPixels(pixelData);
+
+            // --- PERFORMANCE STEP 4: Apply without mipmaps ---
+            dirtyTexture.Apply(false);
+
             currentCleanedAlpha += localCleanedAlpha; // อัปเดตปริมาณที่ถูกกำจัดแล้วทั้งหมด
             CalculateProgress();
         }

@@ -1721,7 +1721,7 @@ MonoBehaviour:
   - {fileID: 6212693474377893665}
   - {fileID: 7158435317866129685}
   timeDisplay: {fileID: 7626442063335127198}
-  roomTimeLimit: 3
+  roomTimeLimit: 30
   possibleTaskPrefabs:
   - {fileID: 6445851342912108402, guid: ae12d88ea2e85984e827981cdcae8cb3, type: 3}
   - {fileID: 6445851342912108402, guid: ae12d88ea2e85984e827981cdcae8cb3, type: 3}
