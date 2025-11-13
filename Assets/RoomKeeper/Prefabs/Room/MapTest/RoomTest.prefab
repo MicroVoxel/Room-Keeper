@@ -1076,8 +1076,8 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1200527465
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -1723,11 +1723,9 @@ MonoBehaviour:
   timeDisplay: {fileID: 7626442063335127198}
   roomTimeLimit: 30
   possibleTaskPrefabs:
-  - {fileID: 6445851342912108402, guid: ae12d88ea2e85984e827981cdcae8cb3, type: 3}
-  - {fileID: 6445851342912108402, guid: ae12d88ea2e85984e827981cdcae8cb3, type: 3}
-  - {fileID: 6445851342912108402, guid: ae12d88ea2e85984e827981cdcae8cb3, type: 3}
-  - {fileID: 115437984372759099, guid: dfd42a809710ed1459d06e0c40fa2452, type: 3}
-  - {fileID: 115437984372759099, guid: dfd42a809710ed1459d06e0c40fa2452, type: 3}
+  - {fileID: 6260708315984173320, guid: 370ca2a5137239f428d66aa452766489, type: 3}
+  - {fileID: 4492612262010869252, guid: 854da72c0460d614b85b7470141373b9, type: 3}
+  - {fileID: 8664071748714493183, guid: 1ff3c1871a3fb8241a24752b05c4c6f8, type: 3}
   maxTasksToAssign: 3
 --- !u!61 &4534911442275011169
 BoxCollider2D:

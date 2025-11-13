@@ -318,7 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Task_LaundryToBasket
   panel: {fileID: 2047696215892380524}
   expReward: 50
-  taskMarkerRenderer: {fileID: 0}
+  taskMarkerRenderer: {fileID: 8460114242111366986, guid: 1ff3c1871a3fb8241a24752b05c4c6f8, type: 3}
   clothItems:
   - {fileID: 2612705569604708828}
   - {fileID: 9011358289152668113}
