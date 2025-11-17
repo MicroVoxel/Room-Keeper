@@ -1,18 +1,23 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro; 
+using TMPro;
 using System;
+using UnityEngine.UI;
 
 /// <summary>
+/// (Updated Logic)
 /// จัดการ Game Loop หลัก, รับ Event จาก RoomData, และสั่งการทำลาย/สร้างห้อง
-/// ระบบทำงานโดยอิสระ ไม่ขึ้นอยู่กับการเคลื่อนที่ของผู้เล่น (Player)
+/// (เพิ่มระบบ Main Progress Bar และ Star System)
 /// </summary>
 public class GameCoreManager : MonoBehaviour
 {
+    #region Singleton
     public static GameCoreManager Instance { get; private set; }
+    #endregion
+
+    #region Fields & Properties
 
     [Header("Game Time Settings")]
     [Tooltip("เวลารวมทั้งหมดของเกม (วินาที)")]
@@ -23,8 +28,37 @@ public class GameCoreManager : MonoBehaviour
     public int roomsToCreatePerEvent = 2; // สร้าง 2 ห้องพร้อมกัน/ต่อครั้ง
 
     [Tooltip("ช่วงเวลา (วินาที) ในการสร้างห้องใหม่โดยอัตโนมัติ")]
-    public float roomCreationInterval = 10f; 
-    [SerializeField] private float roomCreationTimer; 
+    public float roomCreationInterval = 10f;
+    [SerializeField] private float roomCreationTimer;
+
+
+    [Header("Game Progress")]
+    [Tooltip("จำนวนห้องทั้งหมดที่ต้องทำภารกิจให้เสร็จสิ้นเพื่อชนะเกม (ดาวดวงที่ 3)")]
+    [SerializeField] private int totalRoomsToWin = 10;
+
+    [Tooltip("ลาก Slider Component ที่จะแสดง Progress ของเกมมาใส่")]
+    [SerializeField] private Slider mainProgressBar;
+
+    private int roomsCompleted = 0; // ตัวแปรนับห้องที่เสร็จแล้ว
+
+    // -------------------------------------------------------------------
+    // ⭐ 1. (NEW) เพิ่มตัวแปรสำหรับระบบดาว
+    // -------------------------------------------------------------------
+    [Header("Star System")]
+    [Tooltip("จำนวนห้องที่ต้องเสร็จเพื่อให้ได้ดาวดวงที่ 1")]
+    [SerializeField] private int star1Threshold = 3;
+    [Tooltip("จำนวนห้องที่ต้องเสร็จเพื่อให้ได้ดาวดวงที่ 2")]
+    [SerializeField] private int star2Threshold = 6;
+    // (ดาวดวงที่ 3 คือ totalRoomsToWin)
+
+    [Tooltip("ลาก GameObject ของ 'ดาวดวงที่ 1 (แบบเต็ม/ได้รับแล้ว)' มาใส่")]
+    [SerializeField] private GameObject star1Fill;
+    [Tooltip("ลาก GameObject ของ 'ดาวดวงที่ 2 (แบบเต็ม/ได้รับแล้ว)' มาใส่")]
+    [SerializeField] private GameObject star2Fill;
+    [Tooltip("ลาก GameObject ของ 'ดาวดวงที่ 3 (แบบเต็ม/ได้รับแล้ว)' มาใส่")]
+    [SerializeField] private GameObject star3Fill;
+    // -------------------------------------------------------------------
+
 
     [Header("Global UI Reference")]
     [Tooltip("ลาก TextMeshProUGUI Component ที่จะแสดงเวลารวมของเกมมาใส่")]
@@ -33,13 +67,17 @@ public class GameCoreManager : MonoBehaviour
     [Header("Core Systems")]
     [SerializeField] private DungeonGenerator dungeonGenerator;
 
-    private bool isGameActive = false;
-    private RoomData spawnRoom;
-
-    private List<RoomData> activeRooms = new List<RoomData>();
-
     [Header("Player Reference")]
     [SerializeField] private PlayerController playerController;
+
+    // Private State
+    private bool isGameActive = false;
+    private RoomData spawnRoom;
+    private List<RoomData> activeRooms = new List<RoomData>();
+
+    #endregion
+
+    #region Unity Lifecycle
 
     private void Awake()
     {
@@ -69,10 +107,13 @@ public class GameCoreManager : MonoBehaviour
         }
     }
 
-    // -------------------------------------------------------------------
-    // ⭐ 1. เริ่มเกมและสร้าง Spawn Room
-    // -------------------------------------------------------------------
+    #endregion
 
+    #region Game Loop & State
+
+    /// <summary>
+    /// ⭐ 1. เริ่มเกมและสร้าง Spawn Room
+    /// </summary>
     private void StartGameInitialization()
     {
         spawnRoom = dungeonGenerator.GenerateSpawn();
@@ -80,6 +121,14 @@ public class GameCoreManager : MonoBehaviour
         if (spawnRoom != null)
         {
             roomCreationTimer = roomCreationInterval;
+
+            // รีเซ็ตค่า Progress เมื่อเริ่มเกม
+            roomsCompleted = 0;
+            UpdateMainProgressBar(); // อัปเดต UI Bar ให้เป็น 0
+
+            // ⭐ 2. (NEW) รีเซ็ตดาวทั้งหมดตอนเริ่มเกม
+            UpdateStarDisplay(true); // ส่ง true เพื่อบังคับรีเซ็ต (ซ่อนทั้งหมด)
+            // ------------------------------------
 
             // เริ่มลูปเกมหลัก (ตรวจจับเวลาเกมรวมเท่านั้น)
             StartCoroutine(GameLoopCoroutine());
@@ -90,10 +139,9 @@ public class GameCoreManager : MonoBehaviour
         }
     }
 
-    // -------------------------------------------------------------------
-    // ⭐ 2. ลูปเกมหลัก (Game Loop - ตรวจจับเวลาเกมรวมเท่านั้น)
-    // -------------------------------------------------------------------
-
+    /// <summary>
+    /// ⭐ 2. ลูปเกมหลัก (Game Loop - ตรวจจับเวลาเกมรวมเท่านั้น)
+    /// </summary>
     private IEnumerator GameLoopCoroutine()
     {
         isGameActive = true;
@@ -115,29 +163,47 @@ public class GameCoreManager : MonoBehaviour
             yield return null;
         }
 
-        // 4. จบเกมเมื่อหมดเวลา
-        UpdateGameTimeDisplay(0f); // อัปเดตเป็น 0 ก่อนจบ
-        EndGame(gameTimeRemaining <= 0);
+        // 4. จบเกมเมื่อหมดเวลา (หรือเมื่อ isGameActive เป็น false จากการชนะ)
+        if (isGameActive) // ถ้ายัง Active อยู่ แปลว่าจบเพราะหมดเวลา
+        {
+            UpdateGameTimeDisplay(0f); // อัปเดตเป็น 0 ก่อนจบ
+            EndGame(true); // true = จบเพราะหมดเวลา (แพ้)
+        }
     }
 
     /// <summary>
-    /// ⭐ NEW: เมธอดอัปเดตค่าเวลาเกมรวมที่แสดงบน Canvas
+    /// ⭐ 6. อัปเดต EndGame ให้แยกแยะระหว่าง ชนะ (Progress เต็ม) กับ แพ้ (เวลาหมด)
     /// </summary>
-    private void UpdateGameTimeDisplay(float time)
+    private void EndGame(bool timeUp)
     {
-        if (globalTimeDisplay == null) return;
+        if (!isGameActive) return; // ป้องกันการเรียกซ้ำ
 
-        // แปลงเวลาให้เป็นรูปแบบ M:SS
-        TimeSpan t = TimeSpan.FromSeconds(Mathf.Max(0, time));
-        string timeText = string.Format("{0:0}:{1:00}", (int)t.TotalMinutes, t.Seconds);
+        isGameActive = false;
+        StopAllCoroutines();
 
-        globalTimeDisplay.text = timeText;
+        if (timeUp)
+        {
+            // แพ้ (เวลาหมด)
+            Debug.Log("GAME OVER: Time's Up!");
+            // ... (ใส่โค้ดแสดงหน้าจอ แพ้ ที่นี่) ...
+        }
+        else
+        {
+            // ชนะ (Progress Bar เต็ม)
+            Debug.Log("VICTORY: Main Progress Bar is Full!");
+            // ... (ใส่โค้ดแสดงหน้าจอ ชนะ ที่นี่) ...
+        }
+
+        // ... (โค้ดจบเกมอื่นๆ ที่ต้องทำทั้งตอนแพ้และชนะ) ...
     }
 
-    // -------------------------------------------------------------------
-    // ⭐ 3. Event Handlers (รับการแจ้งเตือนจาก RoomData)
-    // -------------------------------------------------------------------
+    #endregion
 
+    #region Room Event Handling
+
+    /// <summary>
+    /// ⭐ 3. Event Handlers (รับการแจ้งเตือนจาก RoomData)
+    /// </summary>
     private void SubscribeToRoomEvents(RoomData room)
     {
         // เชื่อมต่อ Event เมื่อ Task เสร็จ
@@ -152,39 +218,70 @@ public class GameCoreManager : MonoBehaviour
         room.OnRoomTimeout -= HandleRoomTimeout;
     }
 
+    /// <summary>
+    /// --- (MODIFIED) ---
+    /// ⭐ 5. อัปเดต HandleRoomCompletion เพื่อเพิ่ม Progress
+    /// </summary>
     private void HandleRoomCompletion(RoomData completedRoom)
     {
-        Debug.Log($"CoreManager received completion from {completedRoom.name}.");
+        // Debug.Log($"CoreManager received completion from {completedRoom.name}.");
+        Debug.Log($"CoreManager received completion from {completedRoom.name}. Destroying room.");
 
         // 1. Unsubscribe เพื่อล้าง Event
         UnsubscribeFromRoomEvents(completedRoom);
 
-        // 2. ล้าง Task สถานะของห้องนี้ 
-        completedRoom.ClearAssignedTasks();
-       
+        // 2. --- (NEW) เพิ่ม Progress และตรวจสอบเงื่อนไขชนะ ---
+        if (isGameActive) // ตรวจสอบว่าเกมยังไม่จบ (เผื่อ Event เข้ามาซ้อนกัน)
+        {
+            roomsCompleted++;
+            UpdateMainProgressBar();
+
+            // ⭐ 3. (NEW) อัปเดตการแสดงผลดาว
+            UpdateStarDisplay();
+            // ---------------------------
+
+            if (roomsCompleted >= totalRoomsToWin)
+            {
+                // ชนะเกม! (ดาวดวงที่ 3 จะถูกเปิดใช้งานโดย UpdateStarDisplay() พอดี)
+                EndGame(false); // false = จบเพราะทำภารกิจสำเร็จ (ชนะ)
+            }
+        }
+        // --------------------------------------------------
+
+        // 3. --- (NEW) --- สั่งทำลายห้อง
+        DestroyRoom(completedRoom);
     }
 
     private void HandleRoomTimeout(RoomData timedOutRoom)
     {
         //Debug.Log($"CoreManager received timeout from {timedOutRoom.name}. Destroying room.");
 
+        // (เมื่อห้องหมดเวลา เราจะไม่เพิ่ม Progress)
+
         // 1. Unsubscribe เพื่อล้าง Event ก่อนทำลายห้อง
         UnsubscribeFromRoomEvents(timedOutRoom);
 
         // 2. สั่งทำลายห้อง (และเอาออกจาก DungeonGenerator)
         DestroyRoom(timedOutRoom);
-       
     }
 
-    // -------------------------------------------------------------------
-    // ⭐ 4. ตรรกะการจัดการห้อง (ทำงานอัตโนมัติ)
-    // -------------------------------------------------------------------
+    #endregion
+
+    #region Room Management (Creation & Destruction)
 
     /// <summary>
-    /// ⭐ NEW: พยายามสร้าง Hallway-Room chain ใหม่ ตามจำนวนที่กำหนด
+    /// (Optimized) พยายามสร้าง Hallway-Room chain ใหม่ ตามจำนวนที่กำหนด
     /// </summary>
     public void TryCreateMultipleRooms(int count)
     {
+        // --- OPTIMIZATION: ตรวจสอบก่อนว่า Spawn Room มีที่ว่างเหลือหรือไม่ ---
+        if (spawnRoom == null || !spawnRoom.HasAnyAvailableConnector())
+        {
+            // ไม่ต้องพยายามสร้างถ้า Spawn Room เต็มแล้ว
+            return;
+        }
+        // --- END OPTIMIZATION ---
+
         int successfulCreations = 0;
 
         // ตั้งค่าความพยายามสูงสุดเพื่อป้องกัน Infinite Loop หาก Connector มีปัญหาการชนซ้ำๆ
@@ -201,20 +298,29 @@ public class GameCoreManager : MonoBehaviour
                     break; // สร้างสำเร็จ, ข้ามไปสร้างห้องถัดไป (i++)
                 }
             }
+
+            // --- OPTIMIZATION 2: ถ้าพยายามสร้างห้องแรกล้มเหลว 3 ครั้ง และ Connector เต็มแล้ว, ให้ออกจากลูปเลย
+            if (successfulCreations == 0 && !spawnRoom.HasAnyAvailableConnector())
+            {
+                //Debug.Log("Spawn room became full during creation attempts. Stopping loop.");
+                break; // ออกจาก Loop (for i)
+            }
+            // --- END OPTIMIZATION 2 ---
         }
 
         if (successfulCreations > 0)
         {
-            Debug.Log($"Successfully created {successfulCreations} new room chains.");
+            //Debug.Log($"Successfully created {successfulCreations} new room chains.");
         }
         else
         {
+            // LogWarning นี้จะแสดงผลก็ต่อเมื่อ "มีที่ว่าง" แต่ "สร้างแล้วชน" ซ้ำๆ
             Debug.LogWarning($"Failed to create any new rooms after {count * MAX_ATTEMPTS_PER_ROOM} attempts. Spawn connectors might be full or facing persistent intersections.");
         }
     }
 
     /// <summary>
-    /// ⭐ RENAME: พยายามสร้าง Hallway-Room chain ใหม่ 1 ชุด
+    /// พยายามสร้าง Hallway-Room chain ใหม่ 1 ชุด
     /// </summary>
     private bool TryCreateSingleRoomChain() // เปลี่ยนชื่อและเปลี่ยน return type เป็น bool
     {
@@ -279,9 +385,6 @@ public class GameCoreManager : MonoBehaviour
                 return false; // ล้มเหลวในรอบนี้
             }
         }
-        // Connector หมดแล้ว (ไม่ถือว่าเป็นความล้มเหลว)
-        // การสร้างห้องทั้งหมดจะหยุดลงโดยธรรมชาติเมื่อ Spawn Room ไม่มี Connector
-        // และ Log Warning จะถูกแสดงใน TryCreateMultipleRooms
         return false;
     }
 
@@ -300,28 +403,23 @@ public class GameCoreManager : MonoBehaviour
             }
 
             // ⭐ SIMPLIFIED: สั่ง DungeonGenerator ให้จัดการทำลาย GameObject, Hallway, และล้าง Connector
-            // (Hallway จะถูกทำลายใน DungeonGenerator.RemoveRoom)
             dungeonGenerator.RemoveRoom(roomToDestroy);
         }
     }
+
+    #endregion
+
+    #region Player Helpers
 
     /// <summary>
     /// ตรวจสอบว่าผู้เล่นอยู่ใน Collider ของห้องที่กำลังจะถูกทำลายหรือไม่
     /// </summary>
     private bool IsPlayerInRoom(RoomData room)
     {
-        // ⭐ ใช้ roomBoundsCollider แทน room.collider2D
         if (playerController == null || playerController.transform == null || room.roomBoundsCollider == null) return false;
-
-        //Debug.Log($"Checking Room: {room.name}");
-        //Debug.Log($"Room Bounds Center: {room.roomBoundsCollider.bounds.center}");
-        //Debug.Log($"Room Bounds Size: {room.roomBoundsCollider.bounds.size}");
-        //Debug.Log($"Player Position: {playerController.transform.position}");
 
         // ⭐ ใช้ roomBoundsCollider.bounds
         bool isInBounds = room.roomBoundsCollider.bounds.Contains(playerController.transform.position);
-
-        //Debug.Log($"Is Player in Room: {isInBounds}");
 
         return isInBounds;
     }
@@ -337,20 +435,70 @@ public class GameCoreManager : MonoBehaviour
             return;
         }
 
-        // ⭐ สมมติว่า Spawn Room มีตำแหน่งเริ่มต้นสำหรับผู้เล่น (เช่น taskPoints[0] หรือจุดศูนย์กลาง)
         Vector3 spawnPosition = spawnRoom.transform.position;
         spawnPosition = spawnRoom.transform.position;
 
-        // ย้ายผู้เล่นไปยังตำแหน่งวาร์ป (การใช้ Rigidbody.position หรือ Transform.position ขึ้นอยู่กับ PlayerController)
         playerController.transform.position = spawnPosition;
         //Debug.Log("Player Teleport");
     }
 
-    private void EndGame(bool timeUp)
-    {
-        isGameActive = false;
-        StopAllCoroutines();
+    #endregion
 
-        // ... (โค้ดจบเกม) ...
+    #region UI Callbacks
+
+    /// <summary>
+    /// ⭐ NEW: เมธอดอัปเดตค่าเวลาเกมรวมที่แสดงบน Canvas
+    /// </summary>
+    private void UpdateGameTimeDisplay(float time)
+    {
+        if (globalTimeDisplay == null) return;
+
+        // แปลงเวลาให้เป็นรูปแบบ M:SS
+        TimeSpan t = TimeSpan.FromSeconds(Mathf.Max(0, time));
+        string timeText = string.Format("{0:0}:{1:00}", (int)t.TotalMinutes, t.Seconds);
+
+        globalTimeDisplay.text = timeText;
     }
+
+    /// <summary>
+    /// ⭐ 4. (NEW) เมธอดสำหรับอัปเดต UI Progress Bar
+    /// </summary>
+    private void UpdateMainProgressBar()
+    {
+        if (mainProgressBar == null) return;
+
+        // คำนวณค่า Progress (0.0 ถึง 1.0)
+        // ต้องแปลงเป็น float เพื่อให้หารเลขทศนิยมได้
+        float progressValue = (float)roomsCompleted / totalRoomsToWin;
+
+        mainProgressBar.value = progressValue;
+    }
+
+    // -------------------------------------------------------------------
+    // ⭐ 4. (NEW) เมธอดสำหรับอัปเดตการแสดงผลดาว
+    // -------------------------------------------------------------------
+    /// <summary>
+    /// อัปเดตการแสดงผลดาวตามจำนวนห้องที่เสร็จสิ้น
+    /// </summary>
+    /// <param name="forceReset">ถ้าเป็น true จะซ่อนดาวทั้งหมด (ใช้ตอนเริ่มเกม)</param>
+    private void UpdateStarDisplay(bool forceReset = false)
+    {
+        if (star1Fill != null)
+        {
+            // ถ้าไม่ forceReset ให้เช็คว่าถึง Threshold หรือยัง
+            star1Fill.SetActive(!forceReset && roomsCompleted >= star1Threshold);
+        }
+        if (star2Fill != null)
+        {
+            star2Fill.SetActive(!forceReset && roomsCompleted >= star2Threshold);
+        }
+        if (star3Fill != null)
+        {
+            // ดาวดวงที่ 3 คือเงื่อนไขชนะ
+            star3Fill.SetActive(!forceReset && roomsCompleted >= totalRoomsToWin);
+        }
+    }
+    // -------------------------------------------------------------------
+
+    #endregion
 }

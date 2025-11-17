@@ -1996,7 +1996,9 @@ MonoBehaviour:
   levelsPanel: {fileID: 1684633614}
   levelsContainer: {fileID: 949858573}
   levelButtonPrefab: {fileID: 4104070681393809189, guid: 59ccf64c23386cf4abba81cd3b4586f6, type: 3}
-  totalLevelButtons: 6
+  levelEntries:
+  - displayName: 
+    sceneAsset: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
   startButton: {fileID: 222922924}
   settingButton: {fileID: 175177451}
   settingsController: {fileID: 2137654263}
