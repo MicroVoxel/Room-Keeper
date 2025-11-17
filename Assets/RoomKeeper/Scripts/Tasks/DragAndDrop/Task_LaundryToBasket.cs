@@ -14,9 +14,9 @@ public class Task_LaundryToBasket : TaskBase
     private int collected = 0;
     private Vector2[] initialPositions;
 
-    public override void Awake()
+    override protected void Start()
     {
-        base.Awake();
+        base.Start();
         // เก็บตำแหน่งเริ่มต้นของผ้าทั้งหมด
         if (clothItems.Length > 0)
         {

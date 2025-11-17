@@ -44,5 +44,14 @@ TagManager:
   - name: Front
     uniqueID: 2703642247
     locked: 0
+  - name: Floor
+    uniqueID: 3094439831
+    locked: 0
+  - name: Object
+    uniqueID: 3859379149
+    locked: 0
+  - name: Player
+    uniqueID: 1901635897
+    locked: 0
   m_RenderingLayers:
   - Default

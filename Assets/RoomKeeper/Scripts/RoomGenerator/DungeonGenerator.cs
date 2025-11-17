@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System.Linq; // เพิ่ม using เพื่อใช้ LINQ (ToList(), Where(), FirstOrDefault())
+using System.Linq; // ยังคงต้องใช้ LINQ สำหรับส่วนอื่น แต่เราจะเลี่ยงใน Hot Path
 
 /// <summary>
+/// (Optimized Version)
 /// จัดการการ Instantiate, การจัดตำแหน่ง, การตรวจสอบการชน, และการทำลายของ Room Prefabs
-/// โค้ดที่เรียกใช้เมธอดเหล่านี้ (Generation Logic) ควรอยู่ในสคริปต์อื่น
 /// </summary>
 public class DungeonGenerator : MonoBehaviour
 {
@@ -13,11 +13,9 @@ public class DungeonGenerator : MonoBehaviour
     public static DungeonGenerator Instance { get; private set; }
 
     [Header("Generation Settings")]
-    [Tooltip("จำนวนห้องสูงสุดที่ต้องการให้ Dungeon Planner สร้าง")]
     public int maxRooms = 10;
 
     [Header("Required Prefabs")]
-    // เรายังคงต้องการ Prefabs เหล่านี้เพื่อใช้ในการ Instantiate
     [SerializeField] private GameObject spawnRoomPrefab;
     [SerializeField] private List<GameObject> roomsPrefab;
     [SerializeField] private List<GameObject> specialRoomsPrefab;
@@ -50,9 +48,8 @@ public class DungeonGenerator : MonoBehaviour
 
     #region PUBLIC ROOM UTILITIES (EXECUTION LAYER)
 
-    /// <summary>
-    /// ⭐ สร้าง Spawn Room โดยใช้ spawnRoomPrefab
-    /// </summary>
+    // ... (โค้ดส่วน GenerateSpawn, GenerateRoom, TryPlaceRoom ไม่มีการเปลี่ยนแปลง) ...
+
     public RoomData GenerateSpawn()
     {
         if (spawnRoomPrefab == null)
@@ -61,32 +58,21 @@ public class DungeonGenerator : MonoBehaviour
             return null;
         }
 
-        // ใช้เมธอด GenerateRoomInternal ที่เป็น Generic Instantiation
         RoomData roomData = GenerateRoomInternal(spawnRoomPrefab);
         if (roomData != null)
         {
-            //Debug.Log("Spawn Room generated.");
-            isGenerated = true; // ตั้งค่า isGenerated ที่นี่ เนื่องจากเป็นจุดเริ่มต้น
+            isGenerated = true;
         }
         return roomData;
     }
 
-    /// <summary>
-    /// ⭐ สร้างห้องทั่วไปจาก Prefab ที่กำหนด และเพิ่มเข้า List
-    /// </summary>
-    /// <param name="roomPrefab">Prefab ของห้องที่ต้องการสร้าง (Room, Hallway, Special)</param>
-    /// <returns>RoomData ที่ถูกสร้างขึ้น, หรือ null หากล้มเหลว</returns>
     public RoomData GenerateRoom(GameObject roomPrefab)
     {
         return GenerateRoomInternal(roomPrefab);
     }
 
-    /// <summary>
-    /// ⭐ เมธอดหลักสำหรับพยายามวางห้องใหม่โดยต่อเข้ากับ Connector ของห้องเดิม
-    /// </summary>
     public bool TryPlaceRoom(RoomData startRoom, Transform startConnector, GameObject newRoomPrefab, GameObject doorPrefab = null)
     {
-        // 1. Instantiation และ Check
         RoomData roomData = GenerateRoomInternal(newRoomPrefab);
         if (roomData == null)
         {
@@ -94,95 +80,65 @@ public class DungeonGenerator : MonoBehaviour
             return false;
         }
 
-        // 2. Connector Alignment
         if (!roomData.HasAvailableConnector(out Transform roomConnector))
         {
-            // ถ้าห้องใหม่ไม่มี Connector ว่างให้ต่อ (ไม่ควรเกิดขึ้นกับ Prefab ที่ดี)
             RemoveRoom(roomData);
             startRoom.UnuseConnector(startConnector);
             return false;
         }
 
-        // 3. Placement
-
         AlignRooms(startRoom.transform, roomData.transform, startConnector, roomConnector);
 
-        // 4. Intersection Check
+        // --- (Optimized) เรียกใช้ HandleIntersection2D (เวอร์ชันไม่ใช้ LINQ) ---
         if (HandleIntersection2D(roomData))
         {
             // ล้มเหลว: ห้องชน
             roomData.UnuseConnector(roomConnector);
             startRoom.UnuseConnector(startConnector);
-            RemoveRoom(roomData); // ใช้ RemoveRoom เพื่อความสมบูรณ์
+            RemoveRoom(roomData);
             return false;
         }
 
-        // 5. Success
         return true;
     }
 
-    /// <summary>
-    /// ⭐ เมธอดสาธารณะสำหรับลบ Room (รวมถึง Hallway) และทำลาย Door/Task
-    /// </summary>
+    // ... (โค้ดส่วน RemoveRoom, FillEmpty ไม่มีการเปลี่ยนแปลง) ...
     public void RemoveRoom(RoomData roomToRemove)
     {
         if (roomToRemove == null || !generatedRooms.Contains(roomToRemove)) return;
 
-        // 1. Unuse Connector ที่เชื่อมมายัง Room นี้ (Connector ของ Parent Room)
         if (roomToRemove.parentConnector != null)
         {
-            // 1.1 Unuse Connector ใน Parent Room
             if (roomToRemove.parentConnector.TryGetComponent<Connector>(out Connector parentConnectorComponent))
             {
                 parentConnectorComponent.SetOccupied(false);
-                //Debug.Log($"Connector freed: {roomToRemove.parentConnector.name} on Parent Room.");
             }
         }
 
-        // 2. ทำลาย Hallway ที่เป็น Parent (ถ้าห้องที่ถูกลบคือ Room)
         if (roomToRemove.roomType == RoomData.RoomType.Room)
         {
-            // ⭐ NEW: ดึง Hallway Data มาจาก Parent Connector
             RoomData hallwayData = null;
-
-            // Parent Connector (Connector ของ Hallway) จะเป็นตัวเชื่อม
-            // หา RoomData จาก GameObject ที่เป็นเจ้าของ Connector (Hallway)
             if (roomToRemove.parentConnector != null && roomToRemove.parentConnector.parent != null)
             {
-                // Hallway คือ parent ของ Connector นี้ (ในทาง hierarchy)
                 roomToRemove.parentConnector.parent.TryGetComponent<RoomData>(out hallwayData);
             }
 
             if (hallwayData != null && hallwayData.roomType == RoomData.RoomType.Hallway)
             {
-                //Debug.Log($"Destroying linked Hallway: {hallwayData.name}");
-
-                // ⚠️ WARNING: Hallway นี้จะต้อง Unuse Connector ของ Spawn Room ด้วย!
-                // ถ้า HallwayData มี parentConnector (ซึ่งคือ Connector ของ Spawn Room)
-                // เราต้องสั่ง Unuse ตัวนั้นด้วย
                 if (hallwayData.parentConnector != null)
                 {
                     if (hallwayData.parentConnector.TryGetComponent<Connector>(out Connector spawnConnectorComponent))
                     {
                         spawnConnectorComponent.SetOccupied(false);
-                        //Debug.Log($"Hallway freed Spawn Connector: {hallwayData.parentConnector.name}");
                     }
                 }
-
-                // ลบ Hallway ออกจาก List และทำลาย GameObject
                 generatedRooms.Remove(hallwayData);
                 Destroy(hallwayData.gameObject);
             }
         }
-
-        // 3. ลบ Room ปัจจุบันออกจากรายการและทำลาย GameObject
         generatedRooms.Remove(roomToRemove);
         Destroy(roomToRemove.gameObject);
     }
-
-    /// <summary>
-    /// วางกำแพง (Wall) ปิด Connector ที่ยังไม่ได้ถูกใช้งานทั้งหมดในทุกห้อง
-    /// </summary>
     public void FillEmpty()
     {
 
@@ -194,9 +150,7 @@ public class DungeonGenerator : MonoBehaviour
 
     #region PRIVATE INSTANTIATION & UTILITIES
 
-    /// <summary>
-    /// Internal Instantiation Logic สำหรับทุกประเภทห้อง
-    /// </summary>
+    // ... (โค้ดส่วน GenerateRoomInternal ไม่มีการเปลี่ยนแปลง) ...
     private RoomData GenerateRoomInternal(GameObject roomPrefab)
     {
         if (roomPrefab == null) return null;
@@ -209,11 +163,13 @@ public class DungeonGenerator : MonoBehaviour
             return roomData;
         }
 
-        // ถ้าไม่มี RoomData component ให้ทำลายทิ้ง
         Destroy(generatedRoom);
         return null;
     }
 
+    /// <summary>
+    /// (Optimized) ตรวจสอบการชนโดยไม่ใช้ LINQ
+    /// </summary>
     private bool HandleIntersection2D(RoomData roomData)
     {
         if (roomData.collider2DForComposit == null) return false;
@@ -224,10 +180,20 @@ public class DungeonGenerator : MonoBehaviour
             roomData.collider2DForComposit.transform.eulerAngles.z,
             roomsLayermask);
 
-        // ใช้ LINQ เพื่อให้สั้นลง
-        return hits.Any(hit => hit.transform.root != roomData.transform.root);
+        // --- Optimization: Replaced LINQ .Any() with a fast foreach loop ---
+        // LINQ: return hits.Any(hit => hit.transform.root != roomData.transform.root);
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.transform.root != roomData.transform.root)
+            {
+                return true; // ชนกับห้องอื่นที่ไม่ใช่ตัวเอง
+            }
+        }
+        return false; // ไม่ชน
+        // -----------------------------------------------------------------
     }
 
+    // ... (โค้ดส่วน AlignRooms ไม่มีการเปลี่ยนแปลง) ...
     private void AlignRooms(Transform room1, Transform room2, Transform room1Connector, Transform room2Connector)
     {
         Vector3 desiredDirection = -room1Connector.right;
@@ -247,25 +213,17 @@ public class DungeonGenerator : MonoBehaviour
 
     #region PREFAB SELECTION UTILITIES
 
-    /// <summary>
-    /// สุ่มเลือก Prefab ห้องถัดไป (Room หรือ Special Room)
-    /// </summary>
+    // ... (โค้ดส่วน Prefab Selection ไม่มีการเปลี่ยนแปลง) ...
     public GameObject SelectNextRoomPrefab()
     {
         if (roomsPrefab.Count == 0) return null;
-
-        // สุ่มโอกาส 10% ที่จะได้ Special Room
         if (specialRoomsPrefab.Count > 0 && UnityEngine.Random.Range(0f, 1f) > 0.9f)
         {
             return specialRoomsPrefab[UnityEngine.Random.Range(0, specialRoomsPrefab.Count)];
         }
-
         return roomsPrefab[UnityEngine.Random.Range(0, roomsPrefab.Count)];
     }
 
-    /// <summary>
-    /// ส่งคืน Prefab Hallway แบบสุ่ม
-    /// </summary>
     public GameObject SelectRandomHallwayPrefab()
     {
         if (hallwaysPrefabs.Count == 0)
@@ -276,9 +234,6 @@ public class DungeonGenerator : MonoBehaviour
         return hallwaysPrefabs[UnityEngine.Random.Range(0, hallwaysPrefabs.Count)];
     }
 
-    /// <summary>
-    /// ส่งคืน Prefab Alternate Spawn แบบสุ่ม
-    /// </summary>
     public GameObject SelectRandomAlterSpawnPrefab()
     {
         if (alterSpawns.Count == 0) return null;

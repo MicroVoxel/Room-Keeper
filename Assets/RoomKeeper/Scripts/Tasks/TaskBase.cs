@@ -6,30 +6,26 @@ public abstract class TaskBase : MonoBehaviour
     public GameObject panel;
     public int expReward = 10;
 
-    [Header("Task Completion")]
-    [Tooltip("สัญลักษณ์ภารกิจที่ควรซ่อนเมื่อภารกิจเสร็จสมบูรณ์ (กำหนดใน Inspector)")]
-    public SpriteRenderer taskMarkerRenderer;
-
     private PlayerController player;
 
     public bool IsOpen => panel != null && panel.activeSelf;
     public bool IsCompleted { get; private set; }
 
-    public virtual void Awake()
+    public RoomData OwningRoom { get; private set; }
+
+    protected virtual void Start()
     {
         player = PlayerController.PlayerInstance;
         if (player == null)
         {
-            Debug.LogError("TaskBase: PlayerController.playerInstance หายไป! การควบคุมการเคลื่อนไหวของผู้เล่นอาจผิดพลาด");
+            Debug.LogError("TaskBase: PlayerController.playerInstance หายไป!");
         }
     }
 
     public virtual void Open()
     {
         if (IsCompleted || panel == null) return;
-
         panel.SetActive(true);
-
         if (player != null)
         {
             player.SetMovement(false);
@@ -42,11 +38,15 @@ public abstract class TaskBase : MonoBehaviour
         {
             panel.SetActive(false);
         }
-
         if (player != null)
         {
             player.SetMovement(true);
         }
+    }
+
+    public void SetOwner(RoomData owner)
+    {
+        OwningRoom = owner;
     }
 
     protected void CompleteTask()
@@ -67,9 +67,9 @@ public abstract class TaskBase : MonoBehaviour
 
         Close();
 
-        if (taskMarkerRenderer != null)
+        if (OwningRoom != null)
         {
-            taskMarkerRenderer.enabled = false;
+            OwningRoom.CheckForCompletion();
         }
     }
 }
