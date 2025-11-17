@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5654713347953480186}
   - component: {fileID: 5599276157708468543}
   m_Layer: 0
-  m_Name: TaskPoint_Task_SortLaundry
+  m_Name: TaskPoint_SortLaundry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

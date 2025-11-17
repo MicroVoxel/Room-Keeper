@@ -1724,6 +1724,7 @@ MonoBehaviour:
   roomTimeLimit: 30
   possibleTaskPrefabs:
   - {fileID: 8664071748714493183, guid: 70de314fdd08fa04b84db1765586607d, type: 3}
+  - {fileID: 6260708315984173320, guid: 8f11ad3f225f4a34eaf96b189e423080, type: 3}
   maxTasksToAssign: 4
 --- !u!61 &4534911442275011169
 BoxCollider2D:
