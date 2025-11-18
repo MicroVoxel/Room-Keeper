@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomData
   roomType: 0
+  allowRotation: 1
   collider2DForComposit: {fileID: 0}
   roomBoundsCollider: {fileID: 0}
   roomLayerMask:
@@ -118,11 +119,8 @@ MonoBehaviour:
   - {fileID: 8744726244143562294}
   - {fileID: 4141544921853032335}
   parentConnector: {fileID: 0}
-  taskPoints: []
-  timeDisplay: {fileID: 0}
-  roomTimeLimit: 60
-  possibleTaskPrefabs: []
   maxTasksToAssign: 1
+  manuallyAssignedZones: []
 --- !u!1839735485 &529237839477398970
 Tilemap:
   m_ObjectHideFlags: 0

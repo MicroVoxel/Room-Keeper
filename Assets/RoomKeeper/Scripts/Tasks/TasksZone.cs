@@ -1,32 +1,26 @@
 ﻿using Crystal;
 using UnityEngine;
 
-/// <summary>
-/// (เวอร์ชัน Spawn ของตัวเอง - Autonomous)
-/// --- ⭐ UPDATED ---
-/// 'Awake()' จะทำงานอัตโนมัติเมื่อถูก Spawn
-/// 1. ค้นหา 'RoomData' (Parent) ของตัวเอง
-/// 2. Spawn Panel UI
-/// 3. "รายงานตัว" (Register) TaskBase กลับไปให้ RoomData (Parent)
-/// </summary>
+[RequireComponent(typeof(Collider2D))]
 public class TasksZone : MonoBehaviour
 {
+    #region 1. Fields
     [Header("Task Prefab")]
     [Tooltip("ลาก *Prefab* ของ UI Task Panel (ที่มี TaskBase) มาใส่ที่นี่")]
     public GameObject taskPanelPrefab;
 
     private TaskBase spawnedTaskInstance;
+    private RoomData owningRoom;
+    #endregion
 
+    #region 2. Initialization / Setup
     /// <summary>
-      	/// --- ⭐ NEW LOGIC ---
-      	/// 'Awake' จะถูกเรียกอัตโนมัติโดย Unity เมื่อ 'RoomData' สั่ง Instantiate
-      	/// </summary>
-    private void Awake()
+    /// 'RoomData.Awake()' จะเรียกฟังก์ชันนี้
+    /// เพื่อสั่งให้ Zone นี้ Spawn UI (TaskBase) ที่มันรับผิดชอบ
+    /// </summary>
+    public void InitializeAndSpawnTask(RoomData owner)
     {
-        // 1. ค้นหา "ผู้สร้าง" (RoomData) โดยอัตโนมัติ
-        //    (วิธีนี้จะทำงานได้ ถ้า RoomData.AssignRandomTask() สั่ง Instantiate
-        //     โดยใช้ 'transform' (ของ RoomData) เป็น Parent)
-        RoomData creator = GetComponentInParent<RoomData>();
+        this.owningRoom = owner;
 
         if (taskPanelPrefab == null)
         {
@@ -35,7 +29,6 @@ public class TasksZone : MonoBehaviour
             return;
         }
 
-        // 2. ค้นหา Canvas (SafeArea)
         SafeArea mainCanvas = FindFirstObjectByType<SafeArea>();
         if (mainCanvas == null)
         {
@@ -44,10 +37,7 @@ public class TasksZone : MonoBehaviour
             return;
         }
 
-        // 3. Spawn Panel
         GameObject spawnedPanelObject = Instantiate(taskPanelPrefab, mainCanvas.transform);
-
-        // 4. ดึง TaskBase จาก Panel ที่ Spawn
         spawnedTaskInstance = spawnedPanelObject.GetComponent<TaskBase>();
 
         if (spawnedTaskInstance == null)
@@ -58,32 +48,30 @@ public class TasksZone : MonoBehaviour
             return;
         }
 
-        // 5. "รายงานตัว" (Register) กลับไป
-        if (creator != null)
-        {
-            // 5.1 "ฉีด" (Inject) RoomData (ผู้สร้าง) เข้าไปใน TaskBase
-            spawnedTaskInstance.SetOwner(creator);
-
-            // 5.2 "รายงานตัว" (Register) TaskBase กลับไปให้ RoomData
-            creator.RegisterSpawnedTask(spawnedTaskInstance);
-        }
-        else
-        {
-            Debug.LogError($"[TasksZone] ({gameObject.name}) ไม่พบ RoomData ที่เป็น Parent! Task จะไม่ถูกตรวจสอบ", this);
-        }
-
-        // 6. ซ่อน Panel ที่ Spawn ไว้
+        spawnedTaskInstance.SetOwner(owner);
         spawnedPanelObject.SetActive(false);
     }
 
-    // --- (REMOVED) ---
-    // ลบ 'InitializeAndRegister(RoomData creator)' ทิ้ง
+    /// <summary>
+    /// ให้ RoomData เรียกใช้ เพื่อดึง TaskBase (UI) ที่ Zone นี้ Spawn
+    /// </summary>
+    public TaskBase GetTaskInstance()
+    {
+        if (spawnedTaskInstance == null && this.enabled)
+        {
+            Debug.LogWarning($"TasksZone {gameObject.name} ถูกถามหา TaskBase instance แต่ยังไม่ได้ Spawn", this);
+        }
+        return spawnedTaskInstance;
+    }
+    #endregion
 
-    // --- ตรรกะการชน (Collision) - ไม่เปลี่ยนแปลง ---
+    #region 3. Collision Logic
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.gameObject.GetComponent<PlayerController>()) return;
+
         if (spawnedTaskInstance == null || !this.enabled) return;
+
         if (spawnedTaskInstance.IsCompleted) return;
         spawnedTaskInstance.Open();
     }
@@ -96,4 +84,20 @@ public class TasksZone : MonoBehaviour
             spawnedTaskInstance.Close();
         }
     }
+    #endregion
+
+    #region 4. Cleanup
+    /// <summary>
+    /// ลบ UI Task Panel ที่ถูก Spawn ออกจาก Canvas เมื่อ Zone นี้ถูกลบ
+    /// </summary>
+    private void OnDestroy()
+    {
+        // ตรวจสอบว่า Task UI instance ยังอยู่หรือไม่ ก่อนที่จะสั่ง Destroy
+        if (spawnedTaskInstance != null)
+        {
+            // Destroy GameObject ที่ TaskBase เกาะอยู่ (ซึ่งก็คือ Task Panel UI)
+            Destroy(spawnedTaskInstance.gameObject);
+        }
+    }
+    #endregion
 }

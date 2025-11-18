@@ -1,11 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System.Linq; // ยังคงต้องใช้ LINQ สำหรับส่วนอื่น แต่เราจะเลี่ยงใน Hot Path
 
-/// <summary>
-/// (Optimized Version)
-/// จัดการการ Instantiate, การจัดตำแหน่ง, การตรวจสอบการชน, และการทำลายของ Room Prefabs
-/// </summary>
 public class DungeonGenerator : MonoBehaviour
 {
     #region INSTANCE & CORE SETUP
@@ -26,7 +21,9 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private List<RoomData> generatedRooms = new List<RoomData>();
     private bool isGenerated = false;
 
-    // Properties สาธารณะ
+    private Collider2D[] collisionCheckResults = new Collider2D[20];
+    private ContactFilter2D roomCollisionFilter;
+
     public List<RoomData> GeneratedRooms => generatedRooms;
     public bool IsGenerated => isGenerated;
 
@@ -40,15 +37,15 @@ public class DungeonGenerator : MonoBehaviour
         {
             Instance = this;
         }
+
+        roomCollisionFilter = new ContactFilter2D();
+        roomCollisionFilter.SetLayerMask(roomsLayermask);
+        roomCollisionFilter.useTriggers = true;
     }
 
     #endregion
 
-    // -------------------------------------------------------------------
-
     #region PUBLIC ROOM UTILITIES (EXECUTION LAYER)
-
-    // ... (โค้ดส่วน GenerateSpawn, GenerateRoom, TryPlaceRoom ไม่มีการเปลี่ยนแปลง) ...
 
     public RoomData GenerateSpawn()
     {
@@ -87,12 +84,15 @@ public class DungeonGenerator : MonoBehaviour
             return false;
         }
 
-        AlignRooms(startRoom.transform, roomData.transform, startConnector, roomConnector);
+        if (!AlignRooms(startRoom.transform, roomData.transform, startConnector, roomConnector, roomData.allowRotation))
+        {
+            startRoom.UnuseConnector(startConnector);
+            RemoveRoom(roomData);
+            return false;
+        }
 
-        // --- (Optimized) เรียกใช้ HandleIntersection2D (เวอร์ชันไม่ใช้ LINQ) ---
         if (HandleIntersection2D(roomData))
         {
-            // ล้มเหลว: ห้องชน
             roomData.UnuseConnector(roomConnector);
             startRoom.UnuseConnector(startConnector);
             RemoveRoom(roomData);
@@ -102,7 +102,6 @@ public class DungeonGenerator : MonoBehaviour
         return true;
     }
 
-    // ... (โค้ดส่วน RemoveRoom, FillEmpty ไม่มีการเปลี่ยนแปลง) ...
     public void RemoveRoom(RoomData roomToRemove)
     {
         if (roomToRemove == null || !generatedRooms.Contains(roomToRemove)) return;
@@ -139,18 +138,15 @@ public class DungeonGenerator : MonoBehaviour
         generatedRooms.Remove(roomToRemove);
         Destroy(roomToRemove.gameObject);
     }
+
     public void FillEmpty()
     {
-
     }
 
     #endregion
 
-    // -------------------------------------------------------------------
-
     #region PRIVATE INSTANTIATION & UTILITIES
 
-    // ... (โค้ดส่วน GenerateRoomInternal ไม่มีการเปลี่ยนแปลง) ...
     private RoomData GenerateRoomInternal(GameObject roomPrefab)
     {
         if (roomPrefab == null) return null;
@@ -167,53 +163,76 @@ public class DungeonGenerator : MonoBehaviour
         return null;
     }
 
-    /// <summary>
-    /// (Optimized) ตรวจสอบการชนโดยไม่ใช้ LINQ
-    /// </summary>
     private bool HandleIntersection2D(RoomData roomData)
     {
-        if (roomData.collider2DForComposit == null) return false;
+        if (roomData.roomBoundsCollider == null) return false;
 
-        Collider2D[] hits = Physics2D.OverlapBoxAll(
-            roomData.collider2DForComposit.bounds.center,
-            roomData.collider2DForComposit.bounds.size * 0.9f,
-            roomData.collider2DForComposit.transform.eulerAngles.z,
-            roomsLayermask);
+        Physics2D.SyncTransforms();
 
-        // --- Optimization: Replaced LINQ .Any() with a fast foreach loop ---
-        // LINQ: return hits.Any(hit => hit.transform.root != roomData.transform.root);
-        foreach (Collider2D hit in hits)
+        int hitCount = 0;
+
+        if (roomData.roomBoundsCollider is BoxCollider2D boxCol)
         {
-            if (hit.transform.root != roomData.transform.root)
-            {
-                return true; // ชนกับห้องอื่นที่ไม่ใช่ตัวเอง
-            }
+            Vector2 localScaledSize = new Vector2(
+                boxCol.size.x * roomData.transform.lossyScale.x,
+                boxCol.size.y * roomData.transform.lossyScale.y
+            );
+
+            hitCount = Physics2D.OverlapBox(
+                boxCol.bounds.center,
+                localScaledSize * 0.99f,
+                roomData.transform.eulerAngles.z,
+                roomCollisionFilter,
+                collisionCheckResults
+            );
         }
-        return false; // ไม่ชน
-        // -----------------------------------------------------------------
+        else
+        {
+            hitCount = roomData.roomBoundsCollider.Overlap(roomCollisionFilter, collisionCheckResults);
+        }
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            Collider2D hit = collisionCheckResults[i];
+
+            if (hit.gameObject == roomData.gameObject) continue;
+            if (hit.transform.IsChildOf(roomData.transform)) continue;
+
+            return true;
+        }
+
+        return false;
     }
 
-    // ... (โค้ดส่วน AlignRooms ไม่มีการเปลี่ยนแปลง) ...
-    private void AlignRooms(Transform room1, Transform room2, Transform room1Connector, Transform room2Connector)
+    private bool AlignRooms(Transform room1, Transform room2, Transform room1Connector, Transform room2Connector, bool allowRotation)
     {
-        Vector3 desiredDirection = -room1Connector.right;
-        float angleDifference = Vector2.SignedAngle(room2Connector.right, desiredDirection);
+        if (allowRotation)
+        {
+            Vector3 desiredDirection = -room1Connector.right;
+            float angleDifference = Vector2.SignedAngle(room2Connector.right, desiredDirection);
 
-        room2.Rotate(0, 0, angleDifference, Space.World);
+            room2.Rotate(0, 0, angleDifference, Space.World);
+        }
+        else
+        {
+            float dot = Vector2.Dot(room1Connector.right, room2Connector.right);
+            if (!Mathf.Approximately(dot, -1f))
+            {
+                return false;
+            }
+        }
 
         Vector3 offset = room1Connector.position - room2Connector.position;
         room2.position += offset;
 
         Physics2D.SyncTransforms();
+        return true;
     }
 
     #endregion
 
-    // -------------------------------------------------------------------
-
     #region PREFAB SELECTION UTILITIES
 
-    // ... (โค้ดส่วน Prefab Selection ไม่มีการเปลี่ยนแปลง) ...
     public GameObject SelectNextRoomPrefab()
     {
         if (roomsPrefab.Count == 0) return null;
