@@ -623,7 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SweepingTask
   panel: {fileID: 6928217139107290743}
   expReward: 50
-  taskMarkerRenderer: {fileID: 0}
+  taskMarkerRenderer: {fileID: 4344258313624559248, guid: 854da72c0460d614b85b7470141373b9, type: 3}
   requiredSweepAmount: 0.99
   sweepStrength: 0.1
   currentSweepProgress: 0
@@ -715,7 +715,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

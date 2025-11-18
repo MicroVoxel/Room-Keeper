@@ -35,8 +35,8 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
     // --- End Performance Optimization ---
 
     private int totalDirtyPixels;
-    private float totalInitialAlpha = 0f;    // ปริมาณ Alpha Channel เริ่มต้นรวมทั้งหมด
-    private float currentCleanedAlpha = 0f;  // ปริมาณ Alpha ที่ถูกกำจัดไปแล้ว (ใช้สำหรับ Progress)
+    private float totalInitialAlpha = 0f;   // ปริมาณ Alpha Channel เริ่มต้นรวมทั้งหมด
+    private float currentCleanedAlpha = 0f; // ปริมาณ Alpha ที่ถูกกำจัดไปแล้ว (ใช้สำหรับ Progress)
 
     #endregion
 
@@ -44,17 +44,30 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
 
     #region Unity Life Cycle & TaskBase Overrides
 
-    public override void Awake()
+    /// <summary>
+    /// --- ⭐ FIXED ---
+    /// Awake() จะถูกเรียกทันทีเมื่อ Instantiate (โดย TasksZone)
+    /// แม้ว่า GameObject จะถูก SetActive(false) ทันทีก็ตาม
+    /// เราจึงย้าย Logic การดึง Texture ต้นฉบับมาไว้ที่นี่แทน Start()
+    /// </summary>
+    private void Awake()
     {
-        base.Awake();
         if (dirtyOverlay != null && dirtyOverlay.mainTexture is Texture2D texture)
         {
             originalSourceTexture = texture;
         }
         else
         {
-            Debug.LogError("Please ensure 'Dirty Overlay' has a Texture2D assigned in the Source Image slot and Read/Write is enabled.");
+            // เราเพิ่ม this เข้าไปใน LogError เพื่อให้คลิกแล้วไปหา GameObject ที่มีปัญหาได้เลย
+            Debug.LogError("Please ensure 'Dirty Overlay' has a Texture2D assigned in the Source Image slot and Read/Write is enabled.", this);
         }
+    }
+
+    override protected void Start()
+    {
+        base.Start();
+        // Logic เดิมใน Start() ถูกย้ายไป Awake() แล้ว
+        // เพราะ Start() จะไม่ถูกเรียกถ้า TasksZone สั่ง SetActive(false) ก่อน
     }
 
     public override void Open()
@@ -65,7 +78,7 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
         if (!IsCompleted)
         {
             // เริ่มต้นหรือรีเซ็ต Texture และ Progress
-            InitializeDirtyTexture();
+            InitializeDirtyTexture(); // <-- ตอนนี้ originalSourceTexture จะไม่ null แล้ว
             currentSweepProgress = 0f;
             if (progressBar) progressBar.value = 0f;
         }
@@ -155,7 +168,8 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
     {
         if (originalSourceTexture == null)
         {
-            Debug.LogError("Original Source Texture is missing or invalid. Check Awake() error message.");
+            // LogError นี้จะยังคงอยู่เผื่อกรณีที่ลืมลาก 'dirtyOverlay' ใส่ใน Prefab
+            Debug.LogError("Original Source Texture is missing or invalid. Check Awake() error message.", this);
             return;
         }
 
