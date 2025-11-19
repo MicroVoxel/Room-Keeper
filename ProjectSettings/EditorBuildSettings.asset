@@ -9,8 +9,23 @@ EditorBuildSettings:
     path: Assets/RoomKeeper/Scenes/Main Menu.unity
     guid: a4e72519d5ef3c0498ad44420d670b2e
   - enabled: 1
-    path: Assets/RoomKeeper/Scenes/GameplayTest.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/RoomKeeper/Scenes/map 1.unity
+    guid: 2c25c4c80c3051c41875e0e0afc7cff2
+  - enabled: 1
+    path: Assets/RoomKeeper/Scenes/map 2.unity
+    guid: e75d408f554a0e34baad66235b27b07f
+  - enabled: 1
+    path: Assets/RoomKeeper/Scenes/map 3.unity
+    guid: 6a37eb690649cf14c9d4667a56025220
+  - enabled: 1
+    path: Assets/RoomKeeper/Scenes/map 4.unity
+    guid: 5369a4281946e7d4b9445595ed41340d
+  - enabled: 1
+    path: Assets/RoomKeeper/Scenes/map 5.unity
+    guid: 10c4b8f3a3d905a4aa94951cff2f2886
+  - enabled: 1
+    path: Assets/RoomKeeper/Scenes/map 6.unity
+    guid: 20cfac3683d945746ae841bb4941846e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
   m_UseUCBPForAssetBundles: 0
