@@ -1,32 +1,36 @@
 ﻿using Crystal;
 using UnityEngine;
 
-/// <summary>
-/// (เวอร์ชัน Spawn ของตัวเอง - Autonomous)
-/// --- ⭐ UPDATED ---
-/// 'Awake()' จะทำงานอัตโนมัติเมื่อถูก Spawn
-/// 1. ค้นหา 'RoomData' (Parent) ของตัวเอง
-/// 2. Spawn Panel UI
-/// 3. "รายงานตัว" (Register) TaskBase กลับไปให้ RoomData (Parent)
-/// </summary>
+[RequireComponent(typeof(Collider2D))]
 public class TasksZone : MonoBehaviour
 {
+    #region 1. Fields
     [Header("Task Prefab")]
     [Tooltip("ลาก *Prefab* ของ UI Task Panel (ที่มี TaskBase) มาใส่ที่นี่")]
     public GameObject taskPanelPrefab;
 
+    [Header("Visuals")]
+    [Tooltip("GameObject ที่จะแสดงเพื่อบอกว่ามี Task (เช่น เครื่องหมาย ! หรือลูกศร)")]
+    public GameObject taskIndicator;
+
+    [Header("Debug Info")]
+    [SerializeField, ReadOnlyInspector]
     private TaskBase spawnedTaskInstance;
 
-    /// <summary>
-      	/// --- ⭐ NEW LOGIC ---
-      	/// 'Awake' จะถูกเรียกอัตโนมัติโดย Unity เมื่อ 'RoomData' สั่ง Instantiate
-      	/// </summary>
-    private void Awake()
+    // เพิ่มตัวแปรนี้เพื่อคุมว่า Zone นี้ทำงานได้หรือยัง
+    [SerializeField, ReadOnlyInspector]
+    private bool isTaskActive = false;
+
+    private RoomData owningRoom;
+    #endregion
+
+    #region 2. Initialization / Setup
+    public void InitializeAndSpawnTask(RoomData owner)
     {
-        // 1. ค้นหา "ผู้สร้าง" (RoomData) โดยอัตโนมัติ
-        //    (วิธีนี้จะทำงานได้ ถ้า RoomData.AssignRandomTask() สั่ง Instantiate
-        //     โดยใช้ 'transform' (ของ RoomData) เป็น Parent)
-        RoomData creator = GetComponentInParent<RoomData>();
+        this.owningRoom = owner;
+
+        // เริ่มต้น: สั่งปิดการทำงานของ Task นี้ไปก่อน (ทั้ง Logic และ Visual)
+        SetTaskActive(false);
 
         if (taskPanelPrefab == null)
         {
@@ -35,65 +39,98 @@ public class TasksZone : MonoBehaviour
             return;
         }
 
-        // 2. ค้นหา Canvas (SafeArea)
-        SafeArea mainCanvas = FindFirstObjectByType<SafeArea>();
+        SafeArea mainCanvas = Object.FindFirstObjectByType<SafeArea>();
         if (mainCanvas == null)
         {
-            Debug.LogError($"[TasksZone] ที่ {gameObject.name}: หา <SafeArea> (จาก Crystal) ไม่เจอในซีน!", this);
+            Debug.LogError($"[TasksZone] ที่ {gameObject.name}: หา <SafeArea> ไม่เจอ!", this);
             this.enabled = false;
             return;
         }
 
-        // 3. Spawn Panel
         GameObject spawnedPanelObject = Instantiate(taskPanelPrefab, mainCanvas.transform);
 
-        // 4. ดึง TaskBase จาก Panel ที่ Spawn
-        spawnedTaskInstance = spawnedPanelObject.GetComponent<TaskBase>();
-
-        if (spawnedTaskInstance == null)
+        if (!spawnedPanelObject.TryGetComponent<TaskBase>(out spawnedTaskInstance))
         {
-            Debug.LogError($"[TasksZone] ที่ {gameObject.name}: Prefab '{taskPanelPrefab.name}' ไม่มี Component 'TaskBase'!", this);
+            Debug.LogError($"[TasksZone] Prefab ไม่มี Component 'TaskBase'!", this);
             Destroy(spawnedPanelObject);
-            this.enabled = false;
             return;
         }
 
-        // 5. "รายงานตัว" (Register) กลับไป
-        if (creator != null)
-        {
-            // 5.1 "ฉีด" (Inject) RoomData (ผู้สร้าง) เข้าไปใน TaskBase
-            spawnedTaskInstance.SetOwner(creator);
-
-            // 5.2 "รายงานตัว" (Register) TaskBase กลับไปให้ RoomData
-            creator.RegisterSpawnedTask(spawnedTaskInstance);
-        }
-        else
-        {
-            Debug.LogError($"[TasksZone] ({gameObject.name}) ไม่พบ RoomData ที่เป็น Parent! Task จะไม่ถูกตรวจสอบ", this);
-        }
-
-        // 6. ซ่อน Panel ที่ Spawn ไว้
+        spawnedTaskInstance.SetOwner(owner);
         spawnedPanelObject.SetActive(false);
+
+        spawnedTaskInstance.OnTaskCompleted += HandleTaskCompleted;
     }
 
-    // --- (REMOVED) ---
-    // ลบ 'InitializeAndRegister(RoomData creator)' ทิ้ง
+    private void HandleTaskCompleted()
+    {
+        // เมื่อทำเสร็จ ให้ปิด Indicator และปิดสถานะ Active เพื่อไม่ให้ทำซ้ำหรือโชว์อีก
+        SetTaskActive(false);
+    }
 
-    // --- ตรรกะการชน (Collision) - ไม่เปลี่ยนแปลง ---
+    /// <summary>
+    /// ฟังก์ชันใหม่: คุมทั้ง Logic (ให้เดินชนได้ไหม) และ Visual (โชว์ Indicator ไหม) พร้อมกัน
+    /// </summary>
+    public void SetTaskActive(bool active)
+    {
+        isTaskActive = active;
+
+        if (taskIndicator != null)
+        {
+            taskIndicator.SetActive(active);
+        }
+    }
+
+    public TaskBase GetTaskInstance()
+    {
+        return spawnedTaskInstance;
+    }
+    #endregion
+
+    #region 3. Collision Logic
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.GetComponent<PlayerController>()) return;
+        // 1. เช็ค Tag และ Component ผู้เล่น
+        if (!collision.gameObject.CompareTag("Player")) return;
+        if (!collision.gameObject.TryGetComponent<PlayerController>(out var _)) return;
+
+        // 2. --- จุดสำคัญที่แก้บั๊ก ---
+        // ถ้า Task นี้ไม่ได้ถูกสั่ง Active (จาก RoomData) ให้ Return ออกไปเลย ไม่ต้องเปิด UI
+        if (!isTaskActive) return;
+
         if (spawnedTaskInstance == null || !this.enabled) return;
+
         if (spawnedTaskInstance.IsCompleted) return;
+
         spawnedTaskInstance.Open();
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (!collision.gameObject.GetComponent<PlayerController>()) return;
+        if (!collision.gameObject.CompareTag("Player")) return;
+
+        // การปิด Task Panel อนุญาตให้ทำได้เสมอ เพื่อความปลอดภัย UI ไม่ค้าง
         if (spawnedTaskInstance != null && this.enabled)
         {
             spawnedTaskInstance.Close();
         }
     }
+    #endregion
+
+    #region 4. Cleanup
+    private void OnDestroy()
+    {
+        if (spawnedTaskInstance != null)
+        {
+            spawnedTaskInstance.OnTaskCompleted -= HandleTaskCompleted;
+            if (spawnedTaskInstance.gameObject != null)
+            {
+                Destroy(spawnedTaskInstance.gameObject);
+            }
+        }
+    }
+    #endregion
 }
+
+// Optional Helper
+public class ReadOnlyInspectorAttribute : PropertyAttribute { }

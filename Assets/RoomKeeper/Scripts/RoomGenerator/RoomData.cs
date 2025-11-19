@@ -1,167 +1,152 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-using System;
-using System.Collections;
-using System.Linq;
 
 public class RoomData : MonoBehaviour
 {
-    // ... (Enums, Fields, Properties, Lifecycle, Timer... ทั้งหมดเหมือนเดิม) ...
     #region ENUMS
+
     public enum RoomType { Spawn, Room, Hallway }
+
     #endregion
 
-    #region FIELDS & PROPERTIES
+    #region FIELDS & EVENTS
+
     public event Action<RoomData> OnRoomCompletion;
-    public event Action<RoomData> OnRoomTimeout;
+
     [Header("Room Setup")]
     public RoomType roomType;
+    public bool allowRotation = true;
     public Collider2D collider2DForComposit;
     public Collider2D roomBoundsCollider;
     [SerializeField] private LayerMask roomLayerMask;
+
     [Header("Connection Points")]
     public List<Transform> connectors;
+
     [Header("Connection Info")]
     public Transform parentConnector;
-    [Header("Task Spawn Points")]
-    public List<Transform> taskPoints;
-    [Header("UI Reference")]
-    [SerializeField] private TextMeshProUGUI timeDisplay;
-    public TextMeshProUGUI TimeDisplay => timeDisplay;
+
     [Header("Game Logic & Tasks")]
-    public float roomTimeLimit = 60f;
-    [SerializeField] private List<GameObject> possibleTaskPrefabs;
     [SerializeField] private int maxTasksToAssign = 1;
+
+    [Header("Task Setup")]
+    [SerializeField] private List<TasksZone> manuallyAssignedZones;
+
     private List<TaskBase> assignedTasks;
-    private Coroutine roomTimerCoroutine;
-    public List<TaskBase> AssignedTasks => assignedTasks;
+    private List<TaskBase> allTasksInRoom;
+    private List<TaskBase> _taskSelectionList;
     private const int MAX_CONNECTOR_RETRIES = 5;
+
+    public List<TaskBase> AssignedTasks => assignedTasks;
+
     #endregion
 
-    #region LIFECYCLE & TIMER LOGIC
+    #region LIFECYCLE
+
     private void Awake()
     {
         assignedTasks = new List<TaskBase>();
+        allTasksInRoom = new List<TaskBase>();
+        _taskSelectionList = new List<TaskBase>();
     }
+
     private void OnValidate()
     {
         maxTasksToAssign = Mathf.Max(1, maxTasksToAssign);
     }
+
     private void OnDestroy()
     {
-        StopRoomTimer();
-        UpdateTimeDisplay(0f);
+        assignedTasks?.Clear();
+        allTasksInRoom?.Clear();
+        _taskSelectionList?.Clear();
     }
-    public void StartRoomTimer()
-    {
-        if (roomType != RoomType.Room || assignedTasks.Count == 0) return;
-        StopRoomTimer();
-        UpdateTimeDisplay(roomTimeLimit);
-        roomTimerCoroutine = StartCoroutine(RoomTimerCoroutine());
-    }
-    public void StopRoomTimer()
-    {
-        if (roomTimerCoroutine != null)
-        {
-            StopCoroutine(roomTimerCoroutine);
-            roomTimerCoroutine = null;
-        }
-    }
-    private IEnumerator RoomTimerCoroutine()
-    {
-        float timer = roomTimeLimit;
-        while (timer > 0)
-        {
-            UpdateTimeDisplay(timer);
-            timer -= Time.deltaTime;
-            yield return null;
-        }
-        UpdateTimeDisplay(0f);
-        OnRoomTimeout?.Invoke(this);
-    }
-    private void UpdateTimeDisplay(float time)
-    {
-        if (timeDisplay == null) return;
-        TimeSpan t = TimeSpan.FromSeconds(Mathf.Max(0, time));
-        string timeText = string.Format("{0:0}:{1:00}", (int)t.TotalMinutes, t.Seconds);
-        timeDisplay.text = timeText;
-    }
+
     #endregion
 
-    #region PUBLIC TASK LOGIC 
-    public void AssignRandomTask()
+    #region TASK LOGIC
+
+    public void SpawnAndInitAllTasks()
+    {
+        assignedTasks.Clear();
+        allTasksInRoom.Clear();
+        _taskSelectionList.Clear();
+
+        if (manuallyAssignedZones == null)
+        {
+            manuallyAssignedZones = new List<TasksZone>();
+        }
+
+        foreach (TasksZone zone in manuallyAssignedZones)
+        {
+            if (zone == null)
+            {
+                Debug.LogWarning($"RoomData ({gameObject.name}) มีช่องว่าง (Null) ใน List 'manuallyAssignedZones'", this);
+                continue;
+            }
+
+            zone.InitializeAndSpawnTask(this);
+
+            // เริ่มต้น: สั่งให้ Zone นี้ Inactive ไปก่อน (ห้ามเดินชน, ห้ามโชว์ Indicator)
+            zone.SetTaskActive(false);
+
+            TaskBase spawnedTask = zone.GetTaskInstance();
+            if (spawnedTask != null)
+            {
+                allTasksInRoom.Add(spawnedTask);
+            }
+        }
+    }
+
+
+    public void ActivateRandomTasks()
     {
         if (roomType != RoomType.Room) return;
-        foreach (TaskBase oldTask in assignedTasks)
-        {
-            if (oldTask != null) Destroy(oldTask.gameObject);
-        }
+
         assignedTasks.Clear();
-        if (possibleTaskPrefabs == null || possibleTaskPrefabs.Count == 0 || taskPoints.Count == 0)
+
+        if (allTasksInRoom == null || allTasksInRoom.Count == 0)
         {
-            if (taskPoints.Count == 0 && possibleTaskPrefabs.Count > 0)
-            {
-                Debug.LogWarning($"Room {gameObject.name} has tasks defined but no Task Points to spawn them.");
-            }
             return;
         }
-        int numTasksToSpawn = Mathf.Min(maxTasksToAssign, taskPoints.Count);
-        List<GameObject> availableTaskPrefabs = new List<GameObject>(possibleTaskPrefabs);
-        List<Transform> availableTaskPoints = new List<Transform>(taskPoints);
-        for (int i = 0; i < numTasksToSpawn; i++)
+
+        _taskSelectionList.Clear();
+        _taskSelectionList.AddRange(allTasksInRoom);
+
+        int numTasksToActivate = Mathf.Min(maxTasksToAssign, _taskSelectionList.Count);
+
+        for (int i = 0; i < numTasksToActivate; i++)
         {
-            if (availableTaskPrefabs.Count == 0 || availableTaskPoints.Count == 0) break;
-            int randomTaskIndex = UnityEngine.Random.Range(0, availableTaskPrefabs.Count);
-            GameObject taskPrefab = availableTaskPrefabs[randomTaskIndex];
-            int randomPointIndex = UnityEngine.Random.Range(0, availableTaskPoints.Count);
-            Transform spawnPoint = availableTaskPoints[randomPointIndex];
-            if (taskPrefab != null && spawnPoint != null)
+            if (_taskSelectionList.Count == 0) break;
+
+            int randomIndex = UnityEngine.Random.Range(0, _taskSelectionList.Count);
+            TaskBase taskToActivate = _taskSelectionList[randomIndex];
+
+            if (taskToActivate != null)
             {
-                // 1. Spawn 'TasksZone' (ตัวชน) และตั้ง 'transform' (RoomData) เป็น Parent
-                GameObject taskObject = Instantiate(taskPrefab, spawnPoint.position, Quaternion.identity, transform);
+                TasksZone correspondingZone = FindZoneForTask(taskToActivate);
 
-                // --- ⭐ CHANGED ---
-                // 2. ค้นหา Component 'TasksZone' (เพื่อเช็คว่า Prefab ถูกต้อง)
-                TasksZone taskZone = taskObject.GetComponentInChildren<TasksZone>();
-
-                if (taskZone == null)
+                if (correspondingZone != null)
                 {
-                    Debug.LogError($"Task Prefab '{taskPrefab.name}' instantiated but failed to find TasksZone component. Destroying instance.");
-                    Destroy(taskObject);
-                    continue;
-                }
-                // 3. (REMOVED) ลบการเรียก 'taskZone.InitializeAndRegister(this);'
-                //    'TasksZone.Awake()' จะทำงานและ 'RegisterSpawnedTask' กลับมาเอง
-                // --- END CHANGED ---
+                    // UPDATED: เปลี่ยนมาใช้ SetTaskActive(true) ซึ่งจะเปิดทั้ง Indicator และอนุญาตให้เดินชนได้
+                    correspondingZone.SetTaskActive(true);
 
-                availableTaskPrefabs.RemoveAt(randomTaskIndex);
-                availableTaskPoints.RemoveAt(randomPointIndex);
+                    assignedTasks.Add(taskToActivate);
+                }
+                else
+                {
+                    Debug.LogWarning($"RoomData ({gameObject.name}) สุ่ม Task '{taskToActivate.name}' แต่หา Zone (Trigger) ที่คู่กันไม่เจอ!");
+                }
+
+                _taskSelectionList.RemoveAt(randomIndex);
             }
         }
 
-        // (โค้ดส่วนนี้ยังคงเดิม และสำคัญมาก)
-        // เรายังต้องรอ 1 เฟรม ให้ Awake() ของ TasksZone ทำงานเสร็จ
-        StartCoroutine(StartTimerAfterInitialization());
-    }
-    private IEnumerator StartTimerAfterInitialization()
-    {
-        yield return null;
-        if (assignedTasks.Count > 0)
+        if (assignedTasks.Count == 0 && allTasksInRoom.Count > 0)
         {
-            StartRoomTimer();
-        }
-        else if (roomType == RoomType.Room && (possibleTaskPrefabs.Count > 0 || taskPoints.Count > 0))
-        {
-            Debug.LogWarning($"Failed to assign or register any task to {gameObject.name}.");
-        }
-    }
-    public void RegisterSpawnedTask(TaskBase task)
-    {
-        if (task != null)
-        {
-            assignedTasks.Add(task);
+            Debug.LogWarning($"Room {gameObject.name} has tasks, but failed to activate any (maxTasksToAssign might be 0?)");
         }
     }
 
@@ -169,28 +154,21 @@ public class RoomData : MonoBehaviour
     {
         if (AreAllTasksCompleted())
         {
-            StopRoomTimer();
-            UpdateTimeDisplay(0f);
             OnRoomCompletion?.Invoke(this);
         }
     }
 
     public bool AreAllTasksCompleted()
     {
-        if (roomType != RoomType.Room)
-        {
-            return true;
-        }
-        if (possibleTaskPrefabs.Count == 0) return true;
-        if (assignedTasks.Count == 0 && possibleTaskPrefabs.Count > 0) return false;
+        if (roomType != RoomType.Room) return true;
+        if (allTasksInRoom.Count == 0) return true;
         if (assignedTasks.Count == 0) return false;
+
         foreach (TaskBase task in assignedTasks)
         {
-            if (!task.IsCompleted)
-            {
-                return false;
-            }
+            if (!task.IsCompleted) return false;
         }
+
         return true;
     }
 
@@ -198,10 +176,11 @@ public class RoomData : MonoBehaviour
     {
         assignedTasks.Clear();
     }
+
     #endregion
 
-    // ... (ส่วน Connection Logic... ไม่มีการเปลี่ยนแปลง) ...
-    #region PUBLIC CONNECTION LOGIC
+    #region CONNECTION LOGIC (UNCHANGED)
+
     public bool HasAvailableConnector(out Transform connector)
     {
         connector = null;
@@ -220,6 +199,7 @@ public class RoomData : MonoBehaviour
         }
         return false;
     }
+
     public void UnuseConnector(Transform connector)
     {
         if (connector.TryGetComponent<Connector>(out Connector connectComponent))
@@ -227,22 +207,23 @@ public class RoomData : MonoBehaviour
             connectComponent.SetOccupied(false);
         }
     }
+
     public bool HasAnyAvailableConnector()
     {
         foreach (Transform connectorT in connectors)
         {
             if (connectorT.TryGetComponent<Connector>(out Connector connComponent))
             {
-                if (!connComponent.IsOccupied())
-                {
-                    return true;
-                }
+                if (!connComponent.IsOccupied()) return true;
             }
         }
         return false;
     }
+
     #endregion
+
     #region PRIVATE HELPER METHODS
+
     private bool TryConnect(Transform potentialConnector, out Transform connector)
     {
         connector = null;
@@ -257,5 +238,18 @@ public class RoomData : MonoBehaviour
         }
         return false;
     }
+
+    private TasksZone FindZoneForTask(TaskBase task)
+    {
+        foreach (TasksZone zone in manuallyAssignedZones)
+        {
+            if (zone.GetTaskInstance() == task)
+            {
+                return zone;
+            }
+        }
+        return null;
+    }
+
     #endregion
 }

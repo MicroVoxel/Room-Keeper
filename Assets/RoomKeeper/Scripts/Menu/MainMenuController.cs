@@ -1,173 +1,180 @@
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement; // เพิ่มเข้ามาเพื่อใช้ SceneManager
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-/// <summary>
-/// (NEW) คลาสสำหรับเก็บข้อมูลของด่านแต่ละด่าน
-/// การใส่ [System.Serializable] ทำให้มันแสดงผลใน Inspector ได้
-/// </summary>
 [System.Serializable]
 public class LevelEntry
 {
-    [Tooltip("ชื่อที่จะแสดงบนปุ่ม (เช่น 'Level 1', 'ด่านป่าไม้')")]
     public string displayName;
 
-    [Tooltip("ลาก Scene Asset (.unity file) จากหน้าต่าง Project มาใส่ที่นี่")]
-    [SerializeField]
-    private Object sceneAsset; // เราใช้ Object เพราะ SceneAsset อยู่ใน UnityEditor และใช้ใน Build ไม่ได้
+    [SerializeField, HideInInspector] private string sceneName;
 
-    // Property นี้จะดึงชื่อของ Scene Asset ออกมาโดยอัตโนมัติ
-    public string SceneName
+#if UNITY_EDITOR
+    [Tooltip("ลาก Scene Asset มาใส่ที่นี่")]
+    [SerializeField] private Object sceneAsset;
+
+    public void OnValidate()
     {
-        get
-        {
-            if (sceneAsset == null)
-            {
-                Debug.LogError("Scene Asset is null for display name: " + displayName);
-                return null;
-            }
-            return sceneAsset.name; // .name ของ Asset คือชื่อไฟล์ซีน ซึ่งตรงกับชื่อที่ SceneManager ใช้
-        }
+        sceneName = sceneAsset != null ? sceneAsset.name : "";
     }
-}
+#endif
 
+    public string SceneName => sceneName;
+}
 
 public class MainMenuController : MonoBehaviour
 {
-    #region Inspector
-    [Header("Panels & Prefabs")]
-    [SerializeField] private GameObject levelsPanel;          // Panel แสดงรายชื่อด่าน
-    [SerializeField] private Transform levelsContainer;        // Container ที่วางปุ่มด่าน (Grid Layout Group)
-    [SerializeField] private GameObject levelButtonPrefab;      // Prefab ของปุ่มแต่ละด่าน
+    public static MainMenuController Instance { get; private set; }
 
-    [Header("Config")]
-    // [SerializeField] private List<string> levelSceneNames; // --- (REMOVED) ---
+    [Header("General Settings")]
+    [SerializeField, HideInInspector] private string mainMenuSceneName = "MainMenu";
+    public string MainMenuSceneName => mainMenuSceneName;
 
-    [Tooltip("กำหนดด่านต่างๆ โดยการลาก Scene Asset มาใส่")]
-    [SerializeField] private List<LevelEntry> levelEntries; // --- (NEW) ---
+#if UNITY_EDITOR
+    [Tooltip("ลาก Scene Asset สำหรับหน้า Main Menu มาใส่ที่นี่")]
+    [SerializeField] private Object mainMenuSceneAsset;
+#endif
 
-    [Header("Buttons")]
-    [SerializeField] private Button startButton;
-    [SerializeField] private Button settingButton;
-    [SerializeField] private SettingsController settingsController;
-    #endregion
+    [Header("Panels")]
+    [SerializeField] private GameObject levelsPanel;
+    [SerializeField] private Transform levelsContainer;
 
-    #region Unity Events
+    [Header("Buttons (Optional)")]
+    [Tooltip("ลากปุ่ม Close ใน LevelPanel มาใส่ที่นี่")]
+    [SerializeField] private Button closeLevelsPanelButton;
+
+    [Header("Prefabs")]
+    [SerializeField] private GameObject levelButtonPrefab;
+
+    [Header("Level List")]
+    [SerializeField] private List<LevelEntry> levelEntries;
+    public List<LevelEntry> LevelEntries => levelEntries;
+
+    private void OnValidate()
+    {
+#if UNITY_EDITOR
+        if (mainMenuSceneAsset != null)
+        {
+            mainMenuSceneName = mainMenuSceneAsset.name;
+        }
+        if (levelEntries != null)
+        {
+            foreach (var entry in levelEntries) entry.OnValidate();
+        }
+#endif
+    }
+
+    private void Awake()
+    {
+        // แก้ไข Singleton Logic:
+        // ถ้ามี Instance เดิมอยู่แล้ว ให้ทำลายตัวเดิมทิ้ง! 
+        // และให้ตัวใหม่ (this) เป็น Instance แทน
+        // เหตุผล: เพราะปุ่ม UI ใน Scene นี้ถูก Link ไว้กับตัวใหม่ (this) 
+        // ถ้าเราทำลายตัวใหม่ ปุ่มจะกดไม่ติด
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance.gameObject);
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void Start()
     {
-        // ... (โค้ดส่วนนี้เหมือนเดิม) ...
-        HideAllPanels();
-        CreateLevelButtons();
+        // Setup ปุ่ม Close
+        if (closeLevelsPanelButton != null)
+        {
+            closeLevelsPanelButton.onClick.RemoveAllListeners();
+            closeLevelsPanelButton.onClick.AddListener(OnCloseLevelsPanelClicked);
+        }
 
-        if (startButton != null)
-            startButton.onClick.AddListener(OnStartButtonPressed);
-
-        if (settingButton != null && settingsController != null)
-            settingButton.onClick.AddListener(settingsController.ShowSettingsPanel);
-    }
-    #endregion
-
-    #region UI Controls
-    private void HideAllPanels()
-    {
-        // ... (โค้ดส่วนนี้เหมือนเดิม) ...
-        if (levelsPanel != null)
-            levelsPanel.SetActive(false);
-
-        if (settingsController != null)
-            settingsController.HideSettingsPanel();
+        // Logic การแสดงผลเริ่มต้น
+        if (SceneManager.GetActiveScene().name == mainMenuSceneName)
+        {
+            // ถ้าอยู่ในหน้า Menu ให้สร้างปุ่มเลือกด่านรอไว้เลย
+            CreateLevelButtons();
+            if (levelsPanel != null) levelsPanel.SetActive(false);
+        }
+        else
+        {
+            // ถ้าข้าม Scene ไปหน้าเกม ให้ซ่อน Panel ไว้
+            if (levelsPanel != null) levelsPanel.SetActive(false);
+        }
     }
 
-    private void OnStartButtonPressed()
-    {
-        // ... (โค้ดส่วนนี้เหมือนเดิม) ...
-        HideAllPanels();
+    // -------------------- UI Control --------------------
 
+    public void ShowLevelsPanel()
+    {
         if (levelsPanel != null)
+        {
             levelsPanel.SetActive(true);
+            // รีเฟรชปุ่มทุกครั้งที่เปิด (เผื่อดาวมีการเปลี่ยนแปลง)
+            CreateLevelButtons();
+        }
     }
 
-    /// <summary>
-    /// --- (MODIFIED) ---
-    /// ถูกเรียกเมื่อปุ่มด่านถูกกด (ตอนนี้รับ Index ของ List)
-    /// </summary>
-    private void OnLevelButtonClicked(int levelListIndex)
+    public void HideLevelsPanel()
     {
-        // ตรวจสอบว่า Index อยู่ในขอบเขตของ List หรือไม่
-        if (levelListIndex < 0 || levelListIndex >= levelEntries.Count)
-        {
-            Debug.LogError($"Invalid level index: {levelListIndex}. List count is {levelEntries.Count}");
-            return;
-        }
-
-        // --- (MODIFIED) ---
-        // ดึงชื่อ Scene จาก List โดยใช้ Index และ Property 'SceneName'
-        string sceneToLoad = levelEntries[levelListIndex].SceneName;
-
-        if (string.IsNullOrEmpty(sceneToLoad))
-        {
-            Debug.LogError($"Scene name is null or empty for level index {levelListIndex}. Did you forget to drag the Scene Asset in the Inspector?");
-            return;
-        }
-
-        Debug.Log("Level button clicked. Loading scene: " + sceneToLoad);
-
-        // โหลดซีนตามชื่อที่ระบุ
-        SceneManager.LoadScene(sceneToLoad);
+        if (levelsPanel != null) levelsPanel.SetActive(false);
     }
-    #endregion
 
-    #region Helpers
-    /// <summary>
-    /// --- (MODIFIED) ---
-    /// สร้างปุ่มตามรายการ levelEntries
-    /// </summary>
+    public void OnCloseLevelsPanelClicked()
+    {
+        HideLevelsPanel();
+    }
+
+    public void OnQuitPressed()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
+
+    // -------------------- Level Button Logic --------------------
+
     private void CreateLevelButtons()
     {
         if (levelButtonPrefab == null || levelsContainer == null) return;
-        if (levelEntries == null) return; // (NEW) เพิ่มการตรวจสอบ List
 
-        // ลบของเก่าก่อนสร้างใหม่
-        for (int i = levelsContainer.childCount - 1; i >= 0; i--)
-            Destroy(levelsContainer.GetChild(i).gameObject);
+        // ล้างปุ่มเก่า
+        foreach (Transform c in levelsContainer)
+            Destroy(c.gameObject);
 
-        // --- (MODIFIED) ---
-        // วนลูปตามจำนวน Scene ใน List
+        // สร้างปุ่มใหม่
         for (int i = 0; i < levelEntries.Count; i++)
         {
-            GameObject btnObj = Instantiate(levelButtonPrefab, levelsContainer);
+            LevelEntry entry = levelEntries[i];
+            GameObject obj = Instantiate(levelButtonPrefab, levelsContainer);
 
-            LevelEntry entry = levelEntries[i]; // (NEW) ดึงข้อมูลด่านปัจจุบัน
-            int displayLevelNumber = i + 1;
-            btnObj.name = "LevelButton_" + displayLevelNumber;
-
-            // --- (MODIFIED) ---
-            // ตั้งชื่อปุ่ม (ใช้ displayName ถ้ามี, ถ้าไม่มีก็ใช้ "Level [เลข]")
-            string buttonText = entry.displayName;
-            if (string.IsNullOrEmpty(buttonText))
+            LevelButtonUI ui = obj.GetComponent<LevelButtonUI>();
+            if (ui != null)
             {
-                buttonText = $"Level {displayLevelNumber}";
-            }
+                int levelIndex = i + 1;
+                bool unlocked = (LevelProgressManager.Instance != null) &&
+                                LevelProgressManager.Instance.IsLevelUnlocked(levelIndex);
+                int stars = (LevelProgressManager.Instance != null) ?
+                            LevelProgressManager.Instance.GetLevelStars(levelIndex) : 0;
 
-            TMP_Text label = btnObj.GetComponentInChildren<TMP_Text>();
-            if (label != null)
-                label.text = buttonText; // (MODIFIED)
-
-            // ผูก event
-            Button button = btnObj.GetComponent<Button>();
-
-            // --- (MODIFIED) ---
-            // ดักจับ Index (i) ของ List
-            int index = i;
-            if (button != null)
-            {
-                button.onClick.RemoveAllListeners();
-                // ส่ง 'index' (0, 1, 2...) ไปยังเมธอด
-                button.onClick.AddListener(() => OnLevelButtonClicked(index));
+                ui.Setup(levelIndex,
+                    string.IsNullOrEmpty(entry.displayName) ? $"Level {levelIndex}" : entry.displayName,
+                    unlocked,
+                    stars);
             }
         }
     }
-    #endregion
+
+    public void OnLevelButtonPressed(int levelIndex)
+    {
+        if (levelIndex < 1 || levelIndex > levelEntries.Count) return;
+
+        string sceneName = levelEntries[levelIndex - 1].SceneName;
+        if (!string.IsNullOrEmpty(sceneName))
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+    }
 }
