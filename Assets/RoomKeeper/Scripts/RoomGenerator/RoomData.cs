@@ -47,12 +47,9 @@ public class RoomData : MonoBehaviour
 
     private void Awake()
     {
-        // ย้ายตรรกะการ Spawn Task ออกไป เพื่อรอการยืนยันการวางห้อง
         assignedTasks = new List<TaskBase>();
         allTasksInRoom = new List<TaskBase>();
         _taskSelectionList = new List<TaskBase>();
-
-        // ส่วนของการ Spawn Task จะถูกเรียกใช้ในเมธอด SpawnAndInitAllTasks() แทน
     }
 
     private void OnValidate()
@@ -60,13 +57,8 @@ public class RoomData : MonoBehaviour
         maxTasksToAssign = Mathf.Max(1, maxTasksToAssign);
     }
 
-    /// <summary>
-    /// ทำความสะอาดรายการ List ต่างๆ เมื่อ Room ถูกทำลาย เพื่อจัดการหน่วยความจำ
-    /// (Task UI จะถูกลบโดย TasksZone.OnDestroy() ที่ถูกเรียกตามมาโดยอัตโนมัติ)
-    /// </summary>
     private void OnDestroy()
     {
-        // เคลียร์ List เพื่อคืนหน่วยความจำและตัดการอ้างอิง
         assignedTasks?.Clear();
         allTasksInRoom?.Clear();
         _taskSelectionList?.Clear();
@@ -76,13 +68,8 @@ public class RoomData : MonoBehaviour
 
     #region TASK LOGIC
 
-    /// <summary>
-    /// ต้องถูกเรียกหลังจากวางห้องสำเร็จแล้วเท่านั้น เพื่อทำการ Spawn UI Tasks 
-    /// ที่รับผิดชอบลง Canvas และรวบรวม TaskBase Instances
-    /// </summary>
     public void SpawnAndInitAllTasks()
     {
-        // ตั้งค่า List ขึ้นมาใหม่ (เผื่อ Room ถูก reuse หรือเรียกซ้ำ)
         assignedTasks.Clear();
         allTasksInRoom.Clear();
         _taskSelectionList.Clear();
@@ -100,18 +87,16 @@ public class RoomData : MonoBehaviour
                 continue;
             }
 
-            // 1. Initialize and Spawn Task UI (จุดที่เคยอยู่ใน Awake)
             zone.InitializeAndSpawnTask(this);
 
-            // 2. Collect TaskBase instance
-            TaskBase spawnedTask = zone.GetTaskInstance();
+            // เริ่มต้น: สั่งให้ Zone นี้ Inactive ไปก่อน (ห้ามเดินชน, ห้ามโชว์ Indicator)
+            zone.SetTaskActive(false);
 
+            TaskBase spawnedTask = zone.GetTaskInstance();
             if (spawnedTask != null)
             {
                 allTasksInRoom.Add(spawnedTask);
             }
-
-            zone.gameObject.SetActive(false);
         }
     }
 
@@ -145,7 +130,9 @@ public class RoomData : MonoBehaviour
 
                 if (correspondingZone != null)
                 {
-                    correspondingZone.gameObject.SetActive(true);
+                    // UPDATED: เปลี่ยนมาใช้ SetTaskActive(true) ซึ่งจะเปิดทั้ง Indicator และอนุญาตให้เดินชนได้
+                    correspondingZone.SetTaskActive(true);
+
                     assignedTasks.Add(taskToActivate);
                 }
                 else
@@ -173,27 +160,13 @@ public class RoomData : MonoBehaviour
 
     public bool AreAllTasksCompleted()
     {
-        if (roomType != RoomType.Room)
-        {
-            return true;
-        }
-
-        if (allTasksInRoom.Count == 0)
-        {
-            return true;
-        }
-
-        if (assignedTasks.Count == 0)
-        {
-            return false;
-        }
+        if (roomType != RoomType.Room) return true;
+        if (allTasksInRoom.Count == 0) return true;
+        if (assignedTasks.Count == 0) return false;
 
         foreach (TaskBase task in assignedTasks)
         {
-            if (!task.IsCompleted)
-            {
-                return false;
-            }
+            if (!task.IsCompleted) return false;
         }
 
         return true;
@@ -206,7 +179,7 @@ public class RoomData : MonoBehaviour
 
     #endregion
 
-    #region CONNECTION LOGIC
+    #region CONNECTION LOGIC (UNCHANGED)
 
     public bool HasAvailableConnector(out Transform connector)
     {
@@ -241,10 +214,7 @@ public class RoomData : MonoBehaviour
         {
             if (connectorT.TryGetComponent<Connector>(out Connector connComponent))
             {
-                if (!connComponent.IsOccupied())
-                {
-                    return true;
-                }
+                if (!connComponent.IsOccupied()) return true;
             }
         }
         return false;

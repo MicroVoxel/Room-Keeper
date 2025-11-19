@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8795097337143487059}
   - component: {fileID: 3425968699939257569}
   m_Layer: 0
-  m_Name: TaskPoint_FindObjects
+  m_Name: TaskPoint_FindObjects 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,14 +161,14 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 90650fd6076bde1498479a58db5623ad, type: 2}
+    m_Data: {fileID: 11400000, guid: 7cad013e7c1f12c41acffaa558395490, type: 2}
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 9e4660b7865bf46429fe834f3cc4459a, type: 2}
+    m_Data: {fileID: 11400000, guid: e95802a5a235ae6488b950ea7eb366a3, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
-    m_Data: {fileID: -1608674611, guid: 21e3c758fa9bdcb4aa723aa1d453af74, type: 3}
+    m_Data: {fileID: -278924275, guid: 21e3c758fa9bdcb4aa723aa1d453af74, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 2060480369, guid: 21e3c758fa9bdcb4aa723aa1d453af74, type: 3}
+    m_Data: {fileID: -2121343610, guid: 21e3c758fa9bdcb4aa723aa1d453af74, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 2
     m_Data:

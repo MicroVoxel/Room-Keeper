@@ -9,18 +9,28 @@ public class TasksZone : MonoBehaviour
     [Tooltip("ลาก *Prefab* ของ UI Task Panel (ที่มี TaskBase) มาใส่ที่นี่")]
     public GameObject taskPanelPrefab;
 
+    [Header("Visuals")]
+    [Tooltip("GameObject ที่จะแสดงเพื่อบอกว่ามี Task (เช่น เครื่องหมาย ! หรือลูกศร)")]
+    public GameObject taskIndicator;
+
+    [Header("Debug Info")]
+    [SerializeField, ReadOnlyInspector]
     private TaskBase spawnedTaskInstance;
+
+    // เพิ่มตัวแปรนี้เพื่อคุมว่า Zone นี้ทำงานได้หรือยัง
+    [SerializeField, ReadOnlyInspector]
+    private bool isTaskActive = false;
+
     private RoomData owningRoom;
     #endregion
 
     #region 2. Initialization / Setup
-    /// <summary>
-    /// 'RoomData.Awake()' จะเรียกฟังก์ชันนี้
-    /// เพื่อสั่งให้ Zone นี้ Spawn UI (TaskBase) ที่มันรับผิดชอบ
-    /// </summary>
     public void InitializeAndSpawnTask(RoomData owner)
     {
         this.owningRoom = owner;
+
+        // เริ่มต้น: สั่งปิดการทำงานของ Task นี้ไปก่อน (ทั้ง Logic และ Visual)
+        SetTaskActive(false);
 
         if (taskPanelPrefab == null)
         {
@@ -29,38 +39,50 @@ public class TasksZone : MonoBehaviour
             return;
         }
 
-        SafeArea mainCanvas = FindFirstObjectByType<SafeArea>();
+        SafeArea mainCanvas = Object.FindFirstObjectByType<SafeArea>();
         if (mainCanvas == null)
         {
-            Debug.LogError($"[TasksZone] ที่ {gameObject.name}: หา <SafeArea> (จาก Crystal) ไม่เจอในซีน!", this);
+            Debug.LogError($"[TasksZone] ที่ {gameObject.name}: หา <SafeArea> ไม่เจอ!", this);
             this.enabled = false;
             return;
         }
 
         GameObject spawnedPanelObject = Instantiate(taskPanelPrefab, mainCanvas.transform);
-        spawnedTaskInstance = spawnedPanelObject.GetComponent<TaskBase>();
 
-        if (spawnedTaskInstance == null)
+        if (!spawnedPanelObject.TryGetComponent<TaskBase>(out spawnedTaskInstance))
         {
-            Debug.LogError($"[TasksZone] ที่ {gameObject.name}: Prefab '{taskPanelPrefab.name}' ไม่มี Component 'TaskBase'!", this);
+            Debug.LogError($"[TasksZone] Prefab ไม่มี Component 'TaskBase'!", this);
             Destroy(spawnedPanelObject);
-            this.enabled = false;
             return;
         }
 
         spawnedTaskInstance.SetOwner(owner);
         spawnedPanelObject.SetActive(false);
+
+        spawnedTaskInstance.OnTaskCompleted += HandleTaskCompleted;
+    }
+
+    private void HandleTaskCompleted()
+    {
+        // เมื่อทำเสร็จ ให้ปิด Indicator และปิดสถานะ Active เพื่อไม่ให้ทำซ้ำหรือโชว์อีก
+        SetTaskActive(false);
     }
 
     /// <summary>
-    /// ให้ RoomData เรียกใช้ เพื่อดึง TaskBase (UI) ที่ Zone นี้ Spawn
+    /// ฟังก์ชันใหม่: คุมทั้ง Logic (ให้เดินชนได้ไหม) และ Visual (โชว์ Indicator ไหม) พร้อมกัน
     /// </summary>
+    public void SetTaskActive(bool active)
+    {
+        isTaskActive = active;
+
+        if (taskIndicator != null)
+        {
+            taskIndicator.SetActive(active);
+        }
+    }
+
     public TaskBase GetTaskInstance()
     {
-        if (spawnedTaskInstance == null && this.enabled)
-        {
-            Debug.LogWarning($"TasksZone {gameObject.name} ถูกถามหา TaskBase instance แต่ยังไม่ได้ Spawn", this);
-        }
         return spawnedTaskInstance;
     }
     #endregion
@@ -68,17 +90,26 @@ public class TasksZone : MonoBehaviour
     #region 3. Collision Logic
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.GetComponent<PlayerController>()) return;
+        // 1. เช็ค Tag และ Component ผู้เล่น
+        if (!collision.gameObject.CompareTag("Player")) return;
+        if (!collision.gameObject.TryGetComponent<PlayerController>(out var _)) return;
+
+        // 2. --- จุดสำคัญที่แก้บั๊ก ---
+        // ถ้า Task นี้ไม่ได้ถูกสั่ง Active (จาก RoomData) ให้ Return ออกไปเลย ไม่ต้องเปิด UI
+        if (!isTaskActive) return;
 
         if (spawnedTaskInstance == null || !this.enabled) return;
 
         if (spawnedTaskInstance.IsCompleted) return;
+
         spawnedTaskInstance.Open();
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (!collision.gameObject.GetComponent<PlayerController>()) return;
+        if (!collision.gameObject.CompareTag("Player")) return;
+
+        // การปิด Task Panel อนุญาตให้ทำได้เสมอ เพื่อความปลอดภัย UI ไม่ค้าง
         if (spawnedTaskInstance != null && this.enabled)
         {
             spawnedTaskInstance.Close();
@@ -87,17 +118,19 @@ public class TasksZone : MonoBehaviour
     #endregion
 
     #region 4. Cleanup
-    /// <summary>
-    /// ลบ UI Task Panel ที่ถูก Spawn ออกจาก Canvas เมื่อ Zone นี้ถูกลบ
-    /// </summary>
     private void OnDestroy()
     {
-        // ตรวจสอบว่า Task UI instance ยังอยู่หรือไม่ ก่อนที่จะสั่ง Destroy
         if (spawnedTaskInstance != null)
         {
-            // Destroy GameObject ที่ TaskBase เกาะอยู่ (ซึ่งก็คือ Task Panel UI)
-            Destroy(spawnedTaskInstance.gameObject);
+            spawnedTaskInstance.OnTaskCompleted -= HandleTaskCompleted;
+            if (spawnedTaskInstance.gameObject != null)
+            {
+                Destroy(spawnedTaskInstance.gameObject);
+            }
         }
     }
     #endregion
 }
+
+// Optional Helper
+public class ReadOnlyInspectorAttribute : PropertyAttribute { }
