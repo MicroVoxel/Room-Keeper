@@ -92,7 +92,6 @@ public class GameCoreManager : MonoBehaviour
 
         if (playerController == null)
         {
-            // Unity 6 / 2023+ recommended replacement for FindObjectOfType
             playerController = FindAnyObjectByType<PlayerController>();
         }
 
@@ -101,7 +100,6 @@ public class GameCoreManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        // ทำลาย Room ทั้งหมดเมื่อ GameCoreManager ถูกลบออกจากซีน
         DestroyAllGeneratedRooms();
     }
 
@@ -115,7 +113,6 @@ public class GameCoreManager : MonoBehaviour
 
         if (spawnRoom != null)
         {
-            // NEW: ต้องเรียก SpawnAndInitAllTasks() สำหรับ Spawn Room ที่วางสำเร็จ
             spawnRoom.SpawnAndInitAllTasks();
 
             roomCreationTimer = roomCreationInterval;
@@ -124,7 +121,7 @@ public class GameCoreManager : MonoBehaviour
             roomsCompleted = 0;
             UpdateMainProgressBar();
 
-            UpdateStarDisplay(0); // เริ่มต้นยังไม่มีดาว
+            UpdateStarDisplay(0);
 
             if (victoryPanel != null) victoryPanel.SetActive(false);
             if (gameOverPanel != null) gameOverPanel.SetActive(false);
@@ -145,7 +142,6 @@ public class GameCoreManager : MonoBehaviour
         {
             UpdateGameTimeDisplay(currentGameTime);
 
-            // ตรวจสอบเงื่อนไข Win ทุกเฟรม
             if (roomsCompleted >= totalRoomsToWin)
             {
                 EndGame(true);
@@ -164,20 +160,18 @@ public class GameCoreManager : MonoBehaviour
             yield return null;
         }
 
-        // จบเกมเมื่อเวลาหมด (ถ้ายัง Active อยู่)
         if (isGameActive)
         {
             currentGameTime = 0f;
             UpdateGameTimeDisplay(0f);
 
-            // ใช้ roomsCompleted ตรวจสอบการชนะตามเกณฑ์ดาวขั้นต่ำ
             if (roomsCompleted >= star1Threshold)
             {
-                EndGame(true); // ชนะ (ตามเกณฑ์ดาวขั้นต่ำ)
+                EndGame(true);
             }
             else
             {
-                EndGame(false); // แพ้
+                EndGame(false);
             }
         }
     }
@@ -188,7 +182,6 @@ public class GameCoreManager : MonoBehaviour
         isGameActive = false;
         StopAllCoroutines();
 
-        // ปิด Task UI และล็อกผู้เล่น
         CloseAllTasks();
         if (playerController != null) playerController.SetMovement(false);
 
@@ -196,11 +189,9 @@ public class GameCoreManager : MonoBehaviour
         {
             int starsEarned = CalculateStars();
 
-            // บันทึก Progress
             if (LevelProgressManager.Instance != null)
                 LevelProgressManager.Instance.SaveLevelResult(currentLevelID, starsEarned);
 
-            // แสดง Victory Panel
             if (victoryPanel != null)
             {
                 victoryPanel.SetActive(true);
@@ -212,14 +203,11 @@ public class GameCoreManager : MonoBehaviour
             if (gameOverPanel != null) gameOverPanel.SetActive(true);
         }
 
-        // ทำลาย Rooms
         DestroyAllGeneratedRooms();
     }
 
-    // เพิ่มฟังก์ชันนี้เพื่อให้ Compile ผ่าน (เนื่องจากมีการเรียกใช้ใน EndGame)
     private void CloseAllTasks()
     {
-        // TODO: ใส่ Logic สำหรับปิด UI ของ Task ทั้งหมดที่เปิดอยู่
         Debug.Log("Closing all open tasks UI...");
     }
 
@@ -227,10 +215,8 @@ public class GameCoreManager : MonoBehaviour
     {
         if (dungeonGenerator == null || dungeonGenerator.GeneratedRooms == null) return;
 
-        // ใช้ ToList() เพื่อป้องกันการแก้ไข list ขณะวนลูป
         List<RoomData> roomsToDestroy = dungeonGenerator.GeneratedRooms.ToList();
 
-        // ทำลาย Room ทั้งหมด ยกเว้น Spawn Room (ถ้าต้องการเก็บไว้)
         foreach (RoomData room in roomsToDestroy)
         {
             if (room != null && room.roomType != RoomData.RoomType.Spawn)
@@ -252,16 +238,19 @@ public class GameCoreManager : MonoBehaviour
     {
         if (victoryTimeText != null)
         {
-            float timeElapsed = totalGameDuration - Mathf.Max(0, currentGameTime);
-            TimeSpan t = TimeSpan.FromSeconds(timeElapsed);
-            victoryTimeText.text = string.Format("{0:0}:{1:00}", (int)t.TotalMinutes, t.Seconds);
+            // FIX: เปลี่ยนจากแสดงเวลาที่ใช้ไป เป็น "เวลาที่เหลือ" (Time Remaining)
+            // โดยใช้ currentGameTime โดยตรง
+            float timeRemaining = Mathf.Max(0, currentGameTime);
+
+            TimeSpan t = TimeSpan.FromSeconds(timeRemaining);
+            // ใช้ t.Minutes และ t.Seconds เพื่อการแสดงผลที่ถูกต้อง
+            victoryTimeText.text = string.Format("{0:0}:{1:00}", t.Minutes, t.Seconds);
         }
 
         if (victoryStar1 != null) victoryStar1.SetActive(starsEarned >= 1);
         if (victoryStar2 != null) victoryStar2.SetActive(starsEarned >= 2);
         if (victoryStar3 != null) victoryStar3.SetActive(starsEarned >= 3);
     }
-
 
     #endregion
 
@@ -289,11 +278,9 @@ public class GameCoreManager : MonoBehaviour
             UpdateMainProgressBar();
             UpdateStarDisplay(CalculateStars());
 
-            // ตรวจสอบเงื่อนไข Win ทันทีหลังทำ Task เสร็จ
             if (roomsCompleted >= totalRoomsToWin)
             {
                 EndGame(true);
-                // ไม่ต้องทำลายห้องที่นี่ เพราะ EndGame จะเรียก DestroyAllGeneratedRooms()
                 return;
             }
         }
@@ -313,15 +300,12 @@ public class GameCoreManager : MonoBehaviour
         const int MAX_ATTEMPTS_PER_CONNECTOR = 3;
         int roomsToAttempt = count;
 
-        // สร้าง List ชั่วคราวของ connectors ที่พร้อมใช้งานใน spawnRoom
         List<Transform> availableConnectors = spawnRoom.connectors
             .Where(c => c.TryGetComponent<Connector>(out Connector conn) && !conn.IsOccupied())
             .ToList();
 
-        // สุ่มลำดับการเลือก Connector เพื่อลดการเลือก Connector เดิมซ้ำ
         System.Random rng = new System.Random();
         availableConnectors = availableConnectors.OrderBy(c => rng.Next()).ToList();
-
 
         for (int i = 0; i < roomsToAttempt; i++)
         {
@@ -334,9 +318,9 @@ public class GameCoreManager : MonoBehaviour
             availableConnectors.RemoveAt(0);
 
             Connector connectorComponent = startConnector.GetComponent<Connector>();
-            if (connectorComponent == null) continue; // Should not happen
+            if (connectorComponent == null) continue;
 
-            connectorComponent.SetOccupied(true); // ตั้งค่าให้ถูกจองไว้ก่อน
+            connectorComponent.SetOccupied(true);
 
             for (int attempt = 0; attempt < MAX_ATTEMPTS_PER_CONNECTOR; attempt++)
             {
@@ -350,11 +334,10 @@ public class GameCoreManager : MonoBehaviour
 
             if (!roomCreatedInThisSlot)
             {
-                // ถ้าสร้างไม่สำเร็จ ให้คืนค่า Connector
                 connectorComponent.SetOccupied(false);
             }
 
-            yield return null; // FIX: Force yield after processing one room slot to distribute the load across frames.
+            yield return null;
         }
 
         if (successfulCreations == 0 && count > 0)
@@ -365,15 +348,10 @@ public class GameCoreManager : MonoBehaviour
 
     private bool TryPlaceRoomChain(RoomData startRoom, Transform startConnector)
     {
-
         GameObject hallwayPrefab = dungeonGenerator.SelectRandomHallwayPrefab();
         GameObject roomPrefab = dungeonGenerator.SelectNextRoomPrefab();
 
-        if (hallwayPrefab == null || roomPrefab == null)
-        {
-            // UnuseConnector ถูกเรียกภายนอก (ใน CreateRoomsCoroutine) ถ้าสร้างไม่สำเร็จ
-            return false;
-        }
+        if (hallwayPrefab == null || roomPrefab == null) return false;
 
         if (dungeonGenerator.TryPlaceRoom(startRoom, startConnector, hallwayPrefab))
         {
@@ -387,7 +365,6 @@ public class GameCoreManager : MonoBehaviour
                     RoomData newRoom = dungeonGenerator.GeneratedRooms.Last();
                     newRoom.parentConnector = hallwayConnector;
 
-                    // NEW: เรียก Spawn Task UI หลังจากยืนยันว่าวาง Hallway และ Room สำเร็จ
                     hallwayData.SpawnAndInitAllTasks();
                     newRoom.SpawnAndInitAllTasks();
 
@@ -398,24 +375,18 @@ public class GameCoreManager : MonoBehaviour
                 }
                 else
                 {
-                    // ล้มเหลวในการวาง Room: ลบ Hallway และคืน Connector ทั้งสอง
                     dungeonGenerator.RemoveRoom(hallwayData);
-                    // startRoom.UnuseConnector(startConnector); // ถูกจัดการโดย TryPlaceRoom
                     return false;
                 }
             }
             else
             {
-                // Hallway ไม่มี Connector ว่าง: ลบ Hallway และคืน Connector
                 dungeonGenerator.RemoveRoom(hallwayData);
-                // startRoom.UnuseConnector(startConnector); // ถูกจัดการโดย TryPlaceRoom
                 return false;
             }
         }
         else
         {
-            // ล้มเหลวในการวาง Hallway: คืน Connector
-            // startRoom.UnuseConnector(startConnector); // ถูกจัดการโดย TryPlaceRoom
             return false;
         }
     }
@@ -429,7 +400,6 @@ public class GameCoreManager : MonoBehaviour
                 Debug.LogWarning($"Player detected in room {roomToDestroy.name}. Teleporting player to Spawn Room.");
                 TeleportPlayerToSpawn();
             }
-            // DungeonGenerator.RemoveRoom จะจัดการการทำลาย Hallway ที่เกี่ยวข้องด้วย
             dungeonGenerator.RemoveRoom(roomToDestroy);
         }
     }
@@ -441,7 +411,6 @@ public class GameCoreManager : MonoBehaviour
     private bool IsPlayerInRoom(RoomData room)
     {
         if (playerController == null || playerController.transform == null || room.roomBoundsCollider == null) return false;
-        // ใช้ 0.5f เพื่อให้แน่ใจว่าการตรวจสอบจะเกิดขึ้นเมื่อ Player เข้ามาในขอบเขตอย่างชัดเจน
         Vector3 playerPos = playerController.transform.position;
         playerPos.z = room.roomBoundsCollider.bounds.center.z;
         return room.roomBoundsCollider.bounds.Contains(playerPos);
@@ -454,9 +423,8 @@ public class GameCoreManager : MonoBehaviour
             Debug.LogError("Cannot teleport player: Spawn Room or Player Controller is missing!");
             return;
         }
-        // กำหนดตำแหน่งใหม่ให้เป็นตรงกลางของ Spawn Room Collider Bounds
         Vector3 spawnPos = spawnRoom.roomBoundsCollider != null ? spawnRoom.roomBoundsCollider.bounds.center : spawnRoom.transform.position;
-        spawnPos.z = playerController.transform.position.z; // รักษาระดับ Z ของผู้เล่น
+        spawnPos.z = playerController.transform.position.z;
         playerController.transform.position = spawnPos;
     }
 
@@ -486,7 +454,6 @@ public class GameCoreManager : MonoBehaviour
         if (star3Fill != null) star3Fill.SetActive(starsEarned >= 3);
     }
 
-    // เมธอดสำหรับปุ่ม Restart (ถ้ามี)
     public void RestartGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
