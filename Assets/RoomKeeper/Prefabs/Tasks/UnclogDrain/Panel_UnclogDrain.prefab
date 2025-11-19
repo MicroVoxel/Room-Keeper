@@ -304,7 +304,7 @@ MonoBehaviour:
   plungerButton: {fileID: 4016583187095638171}
   plungerImage: {fileID: 5532525873404684448}
   progressBar: {fileID: 625188686028986067}
-  progressPerPlunge: 5
+  progressPerPlunge: 15
   progressDecayPerSecond: 10
   requiredProgress: 100
   shakeIntensity: 5

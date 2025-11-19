@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 8889912754783273580}
   - component: {fileID: 735994574029165223}
   m_Layer: 5
-  m_Name: Panel_LaundryTask
+  m_Name: Panel_Trash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -231,9 +231,9 @@ MonoBehaviour:
   expReward: 20
   bugPrefab: {fileID: 7389303738266028633, guid: 15b589368ece6a74c98e6082c45e0ea6, type: 3}
   spawnArea: {fileID: 8249555845802597100}
-  bugsToSquash: 6
+  bugsToSquash: 4
   bugLifeTime: 1.5
-  spawnDelayRange: {x: 0.5, y: 1.5}
+  spawnDelayRange: {x: 0.5, y: 1}
   counterText: {fileID: 3711948951091643989}
 --- !u!1 &5654432315436941750
 GameObject:

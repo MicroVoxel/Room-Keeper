@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 9023642047816877216}
   - component: {fileID: 3445317784658278338}
   m_Layer: 0
-  m_Name: TaskPointLaundry
+  m_Name: TaskPointTrash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

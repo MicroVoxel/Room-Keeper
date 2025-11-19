@@ -44,10 +44,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c711a8cb41a75bb48b4b2497ca53d012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameCoreManager
-  totalGameDuration: 90
-  roomsToCreatePerEvent: 3
+  currentLevelID: 1
+  totalGameDuration: 3
+  roomsToCreatePerEvent: 1
   roomCreationInterval: 5
-  roomCreationTimer: 0
+  roomCreationTimer: 30
+  totalRoomsToWin: 3
+  mainProgressBar: {fileID: 0}
+  star1Threshold: 1
+  star2Threshold: 2
+  star1Fill: {fileID: 0}
+  star2Fill: {fileID: 0}
+  star3Fill: {fileID: 0}
+  victoryPanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  victoryStar1: {fileID: 0}
+  victoryStar2: {fileID: 0}
+  victoryStar3: {fileID: 0}
+  victoryTimeText: {fileID: 0}
   globalTimeDisplay: {fileID: 0}
   dungeonGenerator: {fileID: 0}
   playerController: {fileID: 0}

@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db320be662b8ffd4684e17e49d9a01e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DungeonGenerator
-  maxRooms: 10
-  spawnRoomPrefab: {fileID: 2369552071699477954, guid: 103a76587a0ce484596ecb67ffb24330, type: 3}
+  maxRooms: 3
+  spawnRoomPrefab: {fileID: 2369552071699477954, guid: 04d24041f07879d4699aef21e73daad5, type: 3}
   roomsPrefab:
-  - {fileID: 7283687714290834665, guid: 3e79a589b68acf840880aadaa7603aee, type: 3}
-  - {fileID: 7283687714290834665, guid: 3e79a589b68acf840880aadaa7603aee, type: 3}
+  - {fileID: 7283687714290834665, guid: e67136f3d2fef5741934f3ccf435e2f4, type: 3}
+  - {fileID: 7283687714290834665, guid: 75517b919a9209c4587938ae76bcef43, type: 3}
   specialRoomsPrefab: []
   alterSpawns: []
   hallwaysPrefabs:
