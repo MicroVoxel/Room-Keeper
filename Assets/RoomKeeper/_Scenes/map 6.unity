@@ -1577,6 +1577,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8411640580498206583}
     - target: {fileID: 7153854320154590060, guid: fe573acd52120fc4c932255758f15941, type: 3}
+      propertyPath: baseGameDuration
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153854320154590060, guid: fe573acd52120fc4c932255758f15941, type: 3}
       propertyPath: dungeonGenerator
       value: 
       objectReference: {fileID: 1205579996}
