@@ -7,8 +7,8 @@ public class DungeonGenerator : MonoBehaviour
 
     public static DungeonGenerator Instance { get; private set; }
 
-    [Header("Generation Settings")]
-    public int maxRooms = 10;
+    //[Header("Generation Settings")]
+    //public int maxRooms = 10;
 
     [Header("Required Prefabs")]
     [SerializeField] private GameObject spawnRoomPrefab;
@@ -23,6 +23,9 @@ public class DungeonGenerator : MonoBehaviour
 
     private Collider2D[] collisionCheckResults = new Collider2D[20];
     private ContactFilter2D roomCollisionFilter;
+
+    // --- DECK SYSTEM VARIABLES ---
+    private List<GameObject> _availableRoomDeck = new List<GameObject>();
 
     public List<RoomData> GeneratedRooms => generatedRooms;
     public bool IsGenerated => isGenerated;
@@ -41,6 +44,9 @@ public class DungeonGenerator : MonoBehaviour
         roomCollisionFilter = new ContactFilter2D();
         roomCollisionFilter.SetLayerMask(roomsLayermask);
         roomCollisionFilter.useTriggers = true;
+
+        // เริ่มต้น: เตรียม Deck ให้พร้อมใช้งาน
+        RefillRoomDeck();
     }
 
     #endregion
@@ -231,16 +237,44 @@ public class DungeonGenerator : MonoBehaviour
 
     #endregion
 
-    #region PREFAB SELECTION UTILITIES
+    #region PREFAB SELECTION UTILITIES (DECK SYSTEM IMPLEMENTED)
+
+    /// <summary>
+    /// รีเซ็ต Deck ให้เต็ม โดยก๊อปปี้จาก Master List (roomsPrefab)
+    /// </summary>
+    private void RefillRoomDeck()
+    {
+        _availableRoomDeck.Clear();
+        if (roomsPrefab != null)
+        {
+            _availableRoomDeck.AddRange(roomsPrefab);
+        }
+    }
 
     public GameObject SelectNextRoomPrefab()
     {
-        if (roomsPrefab.Count == 0) return null;
+        if (roomsPrefab == null || roomsPrefab.Count == 0) return null;
+
+        // 1. โอกาสเกิดห้องพิเศษ (แยกต่างหาก ไม่เกี่ยวกับ Deck)
         if (specialRoomsPrefab.Count > 0 && UnityEngine.Random.Range(0f, 1f) > 0.9f)
         {
             return specialRoomsPrefab[UnityEngine.Random.Range(0, specialRoomsPrefab.Count)];
         }
-        return roomsPrefab[UnityEngine.Random.Range(0, roomsPrefab.Count)];
+
+        // 2. ตรวจสอบว่า Deck หมดหรือยัง ถ้าหมดให้เติมใหม่
+        if (_availableRoomDeck.Count == 0)
+        {
+            RefillRoomDeck();
+        }
+
+        // 3. สุ่มเลือกจาก Deck ที่มีอยู่
+        int randomIndex = UnityEngine.Random.Range(0, _availableRoomDeck.Count);
+        GameObject selectedPrefab = _availableRoomDeck[randomIndex];
+
+        // 4. ลบออกจาก Deck เพื่อไม่ให้ซ้ำในรอบนี้
+        _availableRoomDeck.RemoveAt(randomIndex);
+
+        return selectedPrefab;
     }
 
     public GameObject SelectRandomHallwayPrefab()
