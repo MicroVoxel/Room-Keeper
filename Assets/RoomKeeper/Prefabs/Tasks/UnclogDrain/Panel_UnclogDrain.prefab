@@ -236,19 +236,19 @@ RectTransform:
   m_GameObject: {fileID: 720830099559692657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6146901011800529324}
   - {fileID: 8598550464251551121}
   - {fileID: 4656261148468605954}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1200, y: 800}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 50}
+  m_SizeDelta: {x: 0, y: -50}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5933690758449299141
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ MonoBehaviour:
   plungerButton: {fileID: 4016583187095638171}
   plungerImage: {fileID: 5532525873404684448}
   progressBar: {fileID: 625188686028986067}
-  progressPerPlunge: 15
+  progressPerPlunge: 10
   progressDecayPerSecond: 10
   requiredProgress: 100
   shakeIntensity: 5

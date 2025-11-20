@@ -22,6 +22,10 @@ public class RoomData : MonoBehaviour
     public Collider2D roomBoundsCollider;
     [SerializeField] private LayerMask roomLayerMask;
 
+    [Header("Spawn Point Settings")]
+    [Tooltip("ลาก Empty GameObject ที่เป็นจุดเกิดของผู้เล่นมาใส่ตรงนี้ (เฉพาะห้อง Spawn)")]
+    public Transform playerSpawnPoint;
+
     [Header("Connection Points")]
     public List<Transform> connectors;
 
@@ -62,6 +66,17 @@ public class RoomData : MonoBehaviour
         assignedTasks?.Clear();
         allTasksInRoom?.Clear();
         _taskSelectionList?.Clear();
+    }
+
+    private void OnDrawGizmos()
+    {
+        // วาด Gizmos เพื่อให้เห็นจุด Spawn ใน Scene View
+        if (playerSpawnPoint != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(playerSpawnPoint.position, 0.5f);
+            Gizmos.DrawLine(playerSpawnPoint.position, playerSpawnPoint.position + Vector3.up * 2);
+        }
     }
 
     #endregion
@@ -222,7 +237,21 @@ public class RoomData : MonoBehaviour
 
     #endregion
 
-    #region PRIVATE HELPER METHODS
+    #region HELPER METHODS
+
+    /// <summary>
+    /// ดึงตำแหน่ง Spawn Point ถ้ามี (ถ้าไม่มีจะคืนค่าตำแหน่งของตัวห้องเอง)
+    /// </summary>
+    public Vector3 GetPlayerSpawnPosition()
+    {
+        if (playerSpawnPoint != null)
+        {
+            return playerSpawnPoint.position;
+        }
+
+        // Fallback กรณีลืมใส่ SpawnPoint
+        return transform.position;
+    }
 
     private bool TryConnect(Transform potentialConnector, out Transform connector)
     {

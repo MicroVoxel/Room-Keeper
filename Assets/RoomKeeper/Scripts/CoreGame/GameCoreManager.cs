@@ -238,12 +238,8 @@ public class GameCoreManager : MonoBehaviour
     {
         if (victoryTimeText != null)
         {
-            // FIX: เปลี่ยนจากแสดงเวลาที่ใช้ไป เป็น "เวลาที่เหลือ" (Time Remaining)
-            // โดยใช้ currentGameTime โดยตรง
             float timeRemaining = Mathf.Max(0, currentGameTime);
-
             TimeSpan t = TimeSpan.FromSeconds(timeRemaining);
-            // ใช้ t.Minutes และ t.Seconds เพื่อการแสดงผลที่ถูกต้อง
             victoryTimeText.text = string.Format("{0:0}:{1:00}", t.Minutes, t.Seconds);
         }
 
@@ -285,6 +281,7 @@ public class GameCoreManager : MonoBehaviour
             }
         }
 
+        // DestroyRoom จะจัดการเรื่อง Teleport Player เองถ้า Player อยู่ข้างใน
         DestroyRoom(completedRoom);
     }
 
@@ -297,44 +294,52 @@ public class GameCoreManager : MonoBehaviour
         if (spawnRoom == null || dungeonGenerator == null) yield break;
 
         int successfulCreations = 0;
-        const int MAX_ATTEMPTS_PER_CONNECTOR = 3;
-        int roomsToAttempt = count;
+        int roomsToCreate = count;
 
-        List<Transform> availableConnectors = spawnRoom.connectors
-            .Where(c => c.TryGetComponent<Connector>(out Connector conn) && !conn.IsOccupied())
+        List<Connector> allConnectors = spawnRoom.connectors
+            .Select(t => t.GetComponent<Connector>())
+            .Where(c => c != null)
             .ToList();
 
-        System.Random rng = new System.Random();
-        availableConnectors = availableConnectors.OrderBy(c => rng.Next()).ToList();
-
-        for (int i = 0; i < roomsToAttempt; i++)
+        for (int i = 0; i < roomsToCreate; i++)
         {
             if (roomsCompleted >= totalRoomsToWin) break;
-            if (availableConnectors.Count == 0) break;
 
             bool roomCreatedInThisSlot = false;
 
-            Transform startConnector = availableConnectors[0];
-            availableConnectors.RemoveAt(0);
-
-            Connector connectorComponent = startConnector.GetComponent<Connector>();
-            if (connectorComponent == null) continue;
-
-            connectorComponent.SetOccupied(true);
-
-            for (int attempt = 0; attempt < MAX_ATTEMPTS_PER_CONNECTOR; attempt++)
+            foreach (Connector connector in allConnectors)
             {
-                if (TryPlaceRoomChain(spawnRoom, startConnector))
+                if (connector.IsOccupied()) continue;
+
+                connector.SetOccupied(true);
+
+                const int MAX_ATTEMPTS_PER_CONNECTOR = 3;
+                bool placedSuccess = false;
+
+                for (int attempt = 0; attempt < MAX_ATTEMPTS_PER_CONNECTOR; attempt++)
+                {
+                    if (TryPlaceRoomChain(spawnRoom, connector.transform))
+                    {
+                        placedSuccess = true;
+                        break;
+                    }
+                }
+
+                if (placedSuccess)
                 {
                     successfulCreations++;
                     roomCreatedInThisSlot = true;
                     break;
                 }
+                else
+                {
+                    connector.SetOccupied(false);
+                }
             }
 
             if (!roomCreatedInThisSlot)
             {
-                connectorComponent.SetOccupied(false);
+                break;
             }
 
             yield return null;
@@ -342,7 +347,7 @@ public class GameCoreManager : MonoBehaviour
 
         if (successfulCreations == 0 && count > 0)
         {
-            Debug.LogWarning($"Failed to create any new rooms after attempting {count} creations.");
+            Debug.LogWarning($"ไม่สามารถสร้างห้องเพิ่มได้ (ลองทั้งหมด {count} ครั้ง): พื้นที่อาจเต็มหรือไม่มี Connector ว่างตามลำดับ");
         }
     }
 
@@ -395,11 +400,22 @@ public class GameCoreManager : MonoBehaviour
     {
         if (roomToDestroy != null && roomToDestroy.roomType != RoomData.RoomType.Spawn)
         {
+            // เช็คว่าผู้เล่นอยู่ในห้องที่จะทำลายหรือไม่
             if (IsPlayerInRoom(roomToDestroy))
             {
                 Debug.LogWarning($"Player detected in room {roomToDestroy.name}. Teleporting player to Spawn Room.");
-                TeleportPlayerToSpawn();
+
+                // พยายาม Teleport ผู้เล่นกลับ Spawn
+                bool teleportSuccess = TeleportPlayerToSpawn();
+
+                // ถ้า Teleport ไม่สำเร็จ (เช่น SpawnRoom หายไป) ห้ามทำลายห้อง ไม่งั้นผู้เล่นจะร่วง
+                if (!teleportSuccess)
+                {
+                    Debug.LogError("Teleport Failed! Aborting Room Destruction to prevent player falling.");
+                    return;
+                }
             }
+
             dungeonGenerator.RemoveRoom(roomToDestroy);
         }
     }
@@ -412,20 +428,47 @@ public class GameCoreManager : MonoBehaviour
     {
         if (playerController == null || playerController.transform == null || room.roomBoundsCollider == null) return false;
         Vector3 playerPos = playerController.transform.position;
-        playerPos.z = room.roomBoundsCollider.bounds.center.z;
+
+        // การเช็ค Contains ของ Bounds จะเป็น World Space axis-aligned
         return room.roomBoundsCollider.bounds.Contains(playerPos);
     }
 
-    private void TeleportPlayerToSpawn()
+    private bool TeleportPlayerToSpawn()
     {
         if (spawnRoom == null || playerController == null)
         {
             Debug.LogError("Cannot teleport player: Spawn Room or Player Controller is missing!");
-            return;
+            return false;
         }
-        Vector3 spawnPos = spawnRoom.roomBoundsCollider != null ? spawnRoom.roomBoundsCollider.bounds.center : spawnRoom.transform.position;
-        spawnPos.z = playerController.transform.position.z;
+
+        // --- แก้ไขตรงนี้ ---
+        // ใช้ฟังก์ชันใหม่ที่เราเพิ่งเพิ่มใน RoomData
+        Vector3 spawnPos = spawnRoom.GetPlayerSpawnPosition();
+        // -----------------
+
+        // ปรับความสูง (ถ้าจำเป็น ขึ้นอยู่กับว่าวาง SpawnPoint ไว้สูงแค่ไหน)
+        // ถ้าวาง SpawnPoint ลอยเหนือพื้นพอดีแล้ว ก็อาจจะไม่ต้องบวกเพิ่ม
+        // spawnPos.y = spawnPos.y + 0.1f; 
+
+        CharacterController cc = playerController.GetComponent<CharacterController>();
+        bool ccWasEnabled = false;
+
+        if (cc != null)
+        {
+            ccWasEnabled = cc.enabled;
+            cc.enabled = false;
+        }
+
         playerController.transform.position = spawnPos;
+        Physics.SyncTransforms();
+
+        if (cc != null && ccWasEnabled)
+        {
+            cc.enabled = true;
+        }
+
+        Debug.Log("Player Teleported to Spawn Point successfully.");
+        return true;
     }
 
     #endregion
