@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 9162891914635644574}
   - component: {fileID: 416733255935673856}
   - component: {fileID: 49950211813590789}
-  - component: {fileID: 3915418418713010114}
   m_Layer: 5
   m_Name: p1
   m_TagString: Untagged
@@ -77,22 +76,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3915418418713010114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 434204397965733407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff688817350a6674e9118266bcdab4c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CableSocketDropZone
-  acceptedType: 2
-  taskManager: {fileID: 7333994223020115188}
-  snapPoint: {fileID: 9162891914635644574}
-  highlightFrame: {fileID: 49950211813590789}
 --- !u!1 &573287169162952479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1091,6 @@ GameObject:
   - component: {fileID: 8504872303669764289}
   - component: {fileID: 6908404337137129579}
   - component: {fileID: 2457717301892718903}
-  - component: {fileID: 8246205894016345719}
   m_Layer: 5
   m_Name: p3
   m_TagString: Untagged
@@ -1174,22 +1156,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8246205894016345719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3510832365614680718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff688817350a6674e9118266bcdab4c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CableSocketDropZone
-  acceptedType: 2
-  taskManager: {fileID: 7333994223020115188}
-  snapPoint: {fileID: 8504872303669764289}
-  highlightFrame: {fileID: 2457717301892718903}
 --- !u!1 &3786751018015433717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,7 +1443,6 @@ GameObject:
   - component: {fileID: 7917323940438247114}
   - component: {fileID: 5316053309991268031}
   - component: {fileID: 5745783490880369231}
-  - component: {fileID: 23656799326447960}
   m_Layer: 5
   m_Name: p2
   m_TagString: Untagged
@@ -1543,22 +1508,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &23656799326447960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4394542229003525832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff688817350a6674e9118266bcdab4c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CableSocketDropZone
-  acceptedType: 2
-  taskManager: {fileID: 7333994223020115188}
-  snapPoint: {fileID: 7917323940438247114}
-  highlightFrame: {fileID: 5745783490880369231}
 --- !u!1 &5128053734954313467
 GameObject:
   m_ObjectHideFlags: 0
