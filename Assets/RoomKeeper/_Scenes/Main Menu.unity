@@ -514,6 +514,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66077020}
   m_CullTransparentMesh: 1
+--- !u!1 &114665008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114665009}
+  - component: {fileID: 114665010}
+  m_Layer: 0
+  m_Name: IAP_Vip_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &114665009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114665008}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114665010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114665008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d56bdea6d06ae4eb8304565d077382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IAPButtonView
+  productId: vip4
+  buyButton: {fileID: 973403275}
+  purchasedObject: {fileID: 928634376}
+  notPurchasedObject: {fileID: 0}
+  priceText: {fileID: 1423157804}
 --- !u!1 &160890620
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +728,55 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3030180895953100639, guid: 63d97ecd0cc41d048b2e249aaf78be6b, type: 3}
   m_PrefabInstance: {fileID: 7210428482545404311}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &179374599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 179374600}
+  - component: {fileID: 179374601}
+  m_Layer: 0
+  m_Name: IAP_Vip_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &179374600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179374599}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &179374601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179374599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d56bdea6d06ae4eb8304565d077382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IAPButtonView
+  productId: vip2
+  buyButton: {fileID: 330093612}
+  purchasedObject: {fileID: 877959833}
+  notPurchasedObject: {fileID: 0}
+  priceText: {fileID: 1496268777}
 --- !u!1 &183066015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3653,7 +3751,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850506576}
   m_CullTransparentMesh: 1
---- !u!1 &856195979
+--- !u!1 &853977148
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3661,47 +3759,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 856195980}
-  - component: {fileID: 856195981}
+  - component: {fileID: 853977149}
+  - component: {fileID: 853977150}
   m_Layer: 0
-  m_Name: IAPStore
+  m_Name: IAP_Vip_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &856195980
+  m_IsActive: 1
+--- !u!4 &853977149
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856195979}
+  m_GameObject: {fileID: 853977148}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1073.9794, y: 555.1856, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &856195981
+--- !u!114 &853977150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 856195979}
+  m_GameObject: {fileID: 853977148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4900a75c05ced14418d81af2c80380b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 35d56bdea6d06ae4eb8304565d077382, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IAPStore
-  coinText: {fileID: 0}
-  adsPurchasedWindow: {fileID: 0}
-  adsBanner: {fileID: 0}
-  subActivatedWindow: {fileID: 0}
-  premiumLogo: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::IAPButtonView
+  productId: vip3
+  buyButton: {fileID: 1348616568}
+  purchasedObject: {fileID: 528313355}
+  notPurchasedObject: {fileID: 0}
+  priceText: {fileID: 1941972510}
 --- !u!1 &864099837
 GameObject:
   m_ObjectHideFlags: 0
@@ -5004,63 +5102,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257390920}
   m_CullTransparentMesh: 1
---- !u!1 &1259421998
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1259421999}
-  - component: {fileID: 1259422000}
-  m_Layer: 0
-  m_Name: ShopPanel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1259421999
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259421998}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1259422000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259421998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a86e83df4bac084e88a419e4030fab0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopPanel
-  vip1Button: {fileID: 349318481}
-  vip1_price: {fileID: 1632441925}
-  vip1_ownedIndicator: {fileID: 219858879}
-  vip2Button: {fileID: 330093612}
-  vip2_price: {fileID: 1496268777}
-  vip2_ownedIndicator: {fileID: 877959833}
-  vip3Button: {fileID: 1348616568}
-  vip3_price: {fileID: 1941972510}
-  vip3_ownedIndicator: {fileID: 528313355}
-  removeAdsButton: {fileID: 973403275}
-  removeAds_price: {fileID: 1423157804}
-  removeAds_ownedIndicator: {fileID: 928634376}
-  restoreButton: {fileID: 0}
 --- !u!1 &1304755391
 GameObject:
   m_ObjectHideFlags: 0
@@ -7078,6 +7119,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954341569}
   m_CullTransparentMesh: 1
+--- !u!1 &1984096368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1984096369}
+  - component: {fileID: 1984096370}
+  m_Layer: 0
+  m_Name: IAP_Vip_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1984096369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984096368}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1984096370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984096368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d56bdea6d06ae4eb8304565d077382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IAPButtonView
+  productId: vip1
+  buyButton: {fileID: 349318481}
+  purchasedObject: {fileID: 219858879}
+  notPurchasedObject: {fileID: 0}
+  priceText: {fileID: 1632441925}
 --- !u!114 &1995690539 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 737723591686608373, guid: d0bf9d3e1548d6b4d9faecf3f1729287, type: 3}
@@ -7654,5 +7744,7 @@ SceneRoots:
   - {fileID: 2050666591}
   - {fileID: 4843702255754781536}
   - {fileID: 323917950}
-  - {fileID: 1259421999}
-  - {fileID: 856195980}
+  - {fileID: 1984096369}
+  - {fileID: 179374600}
+  - {fileID: 853977149}
+  - {fileID: 114665009}

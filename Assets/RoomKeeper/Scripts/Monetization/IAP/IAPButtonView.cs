@@ -1,32 +1,66 @@
-using UnityEngine;
-using UnityEngine.Purchasing;
+﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Purchasing; // ใช้เพื่อเข้าถึง CodelessIAPStoreListener
 using TMPro;
 
 public class IAPButtonView : MonoBehaviour
 {
-    [SerializeField] private TMP_Text title;
-    [SerializeField] private TMP_Text price;
-    [SerializeField] private TMP_Text detail;
+    [Header("Settings")]
+    [Tooltip("ใส่ ID ให้ตรงกับใน IAPManager (เช่น vip1, vip4)")]
+    public string productId;
 
-    public void OnProductFetched(Product product)
+    [Header("UI Elements")]
+    public Button buyButton;
+    public GameObject purchasedObject;
+    public GameObject notPurchasedObject;
+    public TMP_Text priceText;
+
+    private void Start()
     {
-        if (product == null || product.metadata == null)
+        if (buyButton != null)
         {
-            Debug.LogError("Product or product metadata is null. Cannot update UI.");
-            return;
+            buyButton.onClick.AddListener(OnBuyClick);
         }
+    }
 
-        if (title != null)
+    private void Update()
+    {
+        if (IAPManager.Instance == null) return;
+
+        // เช็คสถานะความเป็นเจ้าของ (IAPManager จะไปถาม StoreController ให้)
+        bool isOwned = IAPManager.Instance.IsOwned(productId);
+        UpdateUI(isOwned);
+    }
+
+    private void UpdateUI(bool isOwned)
+    {
+        // 1. จัดการปุ่มและ Object ตามสถานะ
+        if (buyButton != null) buyButton.interactable = !isOwned;
+        if (purchasedObject != null) purchasedObject.SetActive(isOwned);
+        if (notPurchasedObject != null) notPurchasedObject.SetActive(!isOwned);
+
+        // 2. ดึงราคาจาก StoreController มาแสดง (ถ้ายังไม่มีราคา)
+        if (priceText != null && (string.IsNullOrEmpty(priceText.text) || priceText.text == "-"))
         {
-            title.text = product.metadata.localizedTitle;
+            // เข้าถึง StoreController ผ่าน Codeless Instance
+            var controller = CodelessIAPStoreListener.Instance.StoreController;
+            if (controller != null)
+            {
+                var product = controller.products.WithID(productId);
+                if (product != null)
+                {
+                    priceText.text = product.metadata.localizedPriceString;
+                }
+            }
         }
-        if (price != null)
+    }
+
+    private void OnBuyClick()
+    {
+        // สั่งซื้อผ่าน IAPManager
+        if (IAPManager.Instance != null)
         {
-            price.text = $"{product.metadata.localizedPrice} $";
-        }
-        if (detail != null)
-        {
-            detail.text = product.metadata.localizedDescription;
+            IAPManager.Instance.BuyProduct(productId);
         }
     }
 }
