@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using UnityEngine.UI; // <-- เพิ่มเข้ามาสำหรับ Button
+using UnityEngine.UI; // สำหรับ Button
 using TMPro;
 using System.Collections.Generic;
 
 /// <summary>
 /// 1. "สมอง" ของมินิเกมล้างจาน (สืบทอดจาก TaskBase)
-/// (เวอร์ชันอัปเดต: เป็นตัวจัดการ Station ซ้าย-กลาง-ขวา)
+/// เวอร์ชัน: เพิ่มระบบเสียงขัดจานแบบต่อเนื่อง (Continuous Scrubbing Sound) แก้ปัญหาเสียงค้าง
 /// </summary>
 public class Task_WashDishes : TaskBase
 {
@@ -23,21 +23,36 @@ public class Task_WashDishes : TaskBase
     [Tooltip("จุดวางจานสะอาด (ขวา)")]
     public RectTransform cleanPileContainer;
 
-
     [Header("UI")]
     public TMP_Text counterText; // (Optional) ตัวนับ "0/3"
+
+    [Header("Audio - Events")]
+    [Tooltip("เสียงเมื่อหยิบจานมาล้าง (เช่น เสียงน้ำกระเพื่อม)")]
+    public AudioClip selectDishSound;
+    [Tooltip("เสียงเมื่อจานสะอาด (เช่น เสียงวิ้ง!)")]
+    public AudioClip dishCleanedSound;
+
+    [Header("Audio - Scrubbing (Loop)")]
+    [Tooltip("เสียงขณะขัดจาน (จะเล่นวนลูปเมื่อขยับเมาส์)")]
+    public AudioClip scrubSound;
+    [Range(0f, 1f)] public float sfxVolume = 1f;
 
     [Header("Progress")]
     private int dishesCleaned = 0;
     private int totalDishes = 0;
     private ScrubbableItem activeDish = null; // จานที่กำลังล้างอยู่
 
+    // --- Audio Control Variables ---
+    private AudioSource continuousAudioSource; // สำหรับเสียงขัด (Loop)
+    private Vector3 lastMousePosition;
+    private float lastScrubTime = 0f;
+
     /// <summary>
     /// ใช้ Awake() เพื่อค้นหาและลงทะเบียนจานทั้งหมด
     /// </summary>
     private void Awake()
     {
-        // 1. ค้นหาจานทั้งหมด (เหมือนเดิม)
+        // 1. ค้นหาจานทั้งหมด
         if (dishesToWash == null || dishesToWash.Count == 0)
         {
             dishesToWash = new List<ScrubbableItem>();
@@ -46,25 +61,42 @@ public class Task_WashDishes : TaskBase
 
         totalDishes = dishesToWash.Count;
 
-        // 2. ลงทะเบียน Event "เมื่อจานสะอาด" (เหมือนเดิม)
-        // และ "เพิ่มปุ่ม" ให้จานแต่ละใบ เพื่อให้คลิกย้ายมาตรงกลางได้
+        // 2. ลงทะเบียน Event และเพิ่มปุ่ม
         foreach (var dish in dishesToWash)
         {
             if (dish != null)
             {
+                // Subscribe Event
                 dish.OnCleaned += HandleDishCleaned;
 
-                // เพิ่มปุ่มให้จานโดยอัตโนมัติ
-                var button = dish.gameObject.AddComponent<Button>();
+                // [SAFETY] เช็คก่อนว่ามี Button หรือยัง กันการ Add ซ้ำ
+                Button button = dish.GetComponent<Button>();
+                if (button == null)
+                {
+                    button = dish.gameObject.AddComponent<Button>();
+                }
+
+                // Remove Listener เดิมก่อนเสมอเพื่อความชัวร์ แล้วค่อย Add ใหม่
+                button.onClick.RemoveAllListeners();
                 button.onClick.AddListener(() => SelectDishToWash(dish));
             }
         }
+
+        // [NEW] สร้าง AudioSource ส่วนตัวไว้สำหรับเสียงขัด (Loop)
+        continuousAudioSource = gameObject.AddComponent<AudioSource>();
+        continuousAudioSource.loop = true;
+        continuousAudioSource.playOnAwake = false;
     }
 
     override protected void Start()
     {
         base.Start();
-        // Logic ถูกย้ายไป Awake() และ Open()
+
+        // [NEW] เชื่อมต่อ Mixer Group เพื่อให้ Slider ควบคุมเสียงได้
+        if (AudioManager.Instance != null)
+        {
+            continuousAudioSource.outputAudioMixerGroup = AudioManager.Instance.SFXGroup;
+        }
     }
 
     public override void Open()
@@ -78,8 +110,9 @@ public class Task_WashDishes : TaskBase
     public override void Close()
     {
         base.Close();
+        // หยุดเสียงทันทีเมื่อปิดหน้าต่าง
+        StopScrubSound();
 
-        // (Optional) ถ้าปิดก่อนเสร็จ ก็รีเซ็ตจานทั้งหมด
         if (!IsCompleted)
         {
             ResetTask();
@@ -88,11 +121,61 @@ public class Task_WashDishes : TaskBase
 
     // --- Game Logic ---
 
+    private void Update()
+    {
+        // [NEW] Logic ตรวจจับการขัดจาน (Scrubbing Audio Logic)
+        // เราจะเช็คว่า:
+        // 1. มีจานกำลังล้างอยู่ (activeDish != null)
+        // 2. ผู้เล่นกดเมาส์ค้าง (Input.GetMouseButton(0))
+        // 3. เมาส์มีการขยับ (Movement Check)
+
+        bool isScrubbing = false;
+
+        if (activeDish != null && Input.GetMouseButton(0))
+        {
+            Vector3 currentMousePos = Input.mousePosition;
+            // เช็คระยะห่างจากเฟรมที่แล้ว (ถ้าขยับเกิน 2 pixel ถือว่าขยับ)
+            float dist = (currentMousePos - lastMousePosition).magnitude;
+
+            if (dist > 2f)
+            {
+                isScrubbing = true;
+            }
+            lastMousePosition = currentMousePos;
+        }
+        else
+        {
+            // อัปเดตตำแหน่งเมาส์ตลอดเวลา กันค่ากระโดดตอนคลิกครั้งแรก
+            lastMousePosition = Input.mousePosition;
+        }
+
+        // การควบคุมเสียง
+        if (isScrubbing)
+        {
+            lastScrubTime = Time.time; // บันทึกเวลาล่าสุดที่ขัด
+
+            if (!continuousAudioSource.isPlaying && scrubSound != null)
+            {
+                continuousAudioSource.clip = scrubSound;
+                continuousAudioSource.volume = sfxVolume;
+                continuousAudioSource.Play();
+            }
+        }
+
+        // Timeout Logic: ถ้าไม่ได้ขัดเกิน 0.15 วินาที ให้หยุดเสียง
+        // (วิธีนี้จะแก้ปัญหาเสียงค้างเวลาลากเมาส์แล้วหยุดมือแต่ไม่ปล่อยปุ่ม)
+        if (Time.time - lastScrubTime > 0.15f && continuousAudioSource.isPlaying)
+        {
+            continuousAudioSource.Stop();
+        }
+    }
+
     void ResetTask()
     {
         dishesCleaned = 0;
         UpdateCounter();
-        activeDish = null; // ไม่มีจานที่กำลังล้าง
+        activeDish = null;
+        StopScrubSound();
 
         // สั่งให้จานทุกใบ "สกปรก" และ "ย้ายไปกองซ้าย"
         foreach (var dish in dishesToWash)
@@ -112,36 +195,26 @@ public class Task_WashDishes : TaskBase
         }
     }
 
-    /// <summary>
-    /// ถูกเรียกเมื่อผู้เล่น "คลิก" จานจากกองซ้าย
-    /// </summary>
     public void SelectDishToWash(ScrubbableItem dish)
     {
-        // ถ้ามีจานอยู่ตรงกลางแล้ว (ยังล้างไม่เสร็จ) ให้คลิกไม่ได้
         if (activeDish != null) return;
-
-        // ถ้าจานใบนี้สะอาดแล้ว ก็ไม่ต้องทำอะไร
         if (dish.IsClean) return;
+
+        // เล่นเสียงหยิบจาน (One Shot)
+        PlayOneShotSound(selectDishSound, 1.0f);
 
         activeDish = dish;
 
-        // ย้ายจานมา "ตรงกลาง" (Active Station)
         dish.transform.SetParent(activeStation, false);
-        dish.transform.localPosition = Vector3.zero; // จัดให้อยู่กลาง Station
-        dish.transform.localScale = new Vector3(1.5f,1.5f,1.5f);
+        dish.transform.localPosition = Vector3.zero;
+        dish.transform.localScale = new Vector3(2f, 2f, 2f);
 
-        // "เปิด" การขัดถู
         dish.enabled = true;
 
-        // "ปิด" ปุ่ม (เพราะย้ายมาแล้ว)
         var button = dish.GetComponent<Button>();
         if (button) button.interactable = false;
     }
 
-
-    /// <summary>
-    /// Event Handler: ถูกเรียกโดย 'ScrubbableItem' เมื่อมันสะอาดแล้ว
-    /// </summary>
     private void HandleDishCleaned(ScrubbableItem cleanedDish)
     {
         if (IsCompleted) return;
@@ -149,19 +222,38 @@ public class Task_WashDishes : TaskBase
         dishesCleaned++;
         UpdateCounter();
 
-        // (Optional) เล่นเสียง "สะอาด!"
+        // เล่นเสียงจานสะอาด (One Shot)
+        PlayOneShotSound(dishCleanedSound, 1.1f);
 
-        // ย้ายจานที่สะอาดแล้วไป "กองขวา"
+        // หยุดเสียงขัดทันที
+        StopScrubSound();
+
         cleanedDish.transform.SetParent(cleanPileContainer, false);
-        cleanedDish.transform.localScale = Vector3.one; // รีเซ็ตสเกล
+        cleanedDish.transform.localScale = Vector3.one;
 
-        // เคลียร์ช่องตรงกลางให้ว่าง
         activeDish = null;
 
-        // ตรวจสอบว่าครบจำนวนหรือยัง
         if (dishesCleaned >= totalDishes)
         {
             CompleteTask();
+        }
+    }
+
+    // --- Helper Methods ---
+
+    private void PlayOneShotSound(AudioClip clip, float pitch = 1f)
+    {
+        if (AudioManager.Instance != null && clip != null)
+        {
+            AudioManager.Instance.PlaySFX(clip, sfxVolume, 0.1f);
+        }
+    }
+
+    private void StopScrubSound()
+    {
+        if (continuousAudioSource != null)
+        {
+            continuousAudioSource.Stop();
         }
     }
 

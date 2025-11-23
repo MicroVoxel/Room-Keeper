@@ -4,28 +4,30 @@ using System.Collections.Generic;
 
 /// <summary>
 /// 1. "สมอง" ของมินิเกมต่อสายไฟ (สืบทอดจาก TaskBase)
-/// แปะสคริปต์นี้ไว้ที่ GameObject หลักของ Panel ภารกิจ
+/// เวอร์ชั่น: เพิ่มเสียง SFX เมื่อเสียบสายไฟสำเร็จ โดยใช้ AudioManager
 /// </summary>
 public class Task_ConnectCables : TaskBase
 {
     [Header("Cable Setup")]
     [Tooltip("หัวปลั๊กทั้งหมดที่จะใช้ในมินิเกมนี้ (ต้องมี 'TrashDrag' และ 'CablePlugItem')")]
-    public List<TrashDrag> plugItems; // ใช้ TrashDrag ที่เรามีอยู่แล้ว
+    public List<TrashDrag> plugItems;
 
     [Tooltip("จำนวนสายไฟที่ต้องเสียบให้ถูกต้องเพื่อจบภารกิจ")]
     public int itemsToConnect = 4;
 
+    [Header("Audio")]
+    [Tooltip("เสียงเมื่อเสียบสายไฟสำเร็จ")]
+    public AudioClip connectClip;
+    [Tooltip("ความดังของเสียง (0-1)")]
+    [Range(0f, 1f)] public float sfxVolume = 1f;
+
     [Header("UI")]
-    public TMP_Text counterText; // (Optional) ตัวนับ "0/4"
+    public TMP_Text counterText;
 
     [Header("Progress")]
     private int connectedCount = 0;
     private Dictionary<TrashDrag, Vector2> initialPositions;
 
-    /// <summary>
-    /// --- ⭐ FIXED ---
-    /// ย้าย Logic มาไว้ที่ Awake() เพื่อให้ทำงานทันทีที่ TasksZone สั่ง Instantiate
-    /// </summary>
     private void Awake()
     {
         initialPositions = new Dictionary<TrashDrag, Vector2>();
@@ -52,7 +54,6 @@ public class Task_ConnectCables : TaskBase
     override protected void Start()
     {
         base.Start();
-        // Logic ทั้งหมดถูกย้ายไป Awake() แล้ว
     }
 
     public override void Open()
@@ -86,7 +87,7 @@ public class Task_ConnectCables : TaskBase
             item.EnableReturnToStart(true);
             item.ResetRaycastBlock();
 
-            // 4. (สำคัญ) เปิดการลากเผื่อไว้ (ถ้าเราปิดไปตอนเสียบถูก)
+            // 4. (สำคัญ) เปิดการลากเผื่อไว้
             var dragComp = item.GetComponent<TrashDrag>();
             if (dragComp) dragComp.enabled = true;
         }
@@ -100,20 +101,34 @@ public class Task_ConnectCables : TaskBase
     {
         if (IsCompleted) return;
 
+        // --- [NEW] เล่นเสียง SFX ---
+        PlayConnectSound();
+
         connectedCount++;
         UpdateCounter();
 
-        // (Optional) เราอาจจะ "ปิด" การลากไปเลย เมื่อเสียบถูกแล้ว
+        // ปิดการลากเมื่อเสียบถูกแล้ว
         var dragComp = plugGO.GetComponent<TrashDrag>();
         if (dragComp)
         {
-            dragComp.enabled = false; // ปิดการลาก
+            dragComp.enabled = false;
         }
 
         if (connectedCount >= itemsToConnect)
         {
             // ทำภารกิจสำเร็จ!
             CompleteTask();
+        }
+    }
+
+    private void PlayConnectSound()
+    {
+        // เรียกใช้ AudioManager เพื่อประสิทธิภาพและการจัดการ Memory ที่ดีที่สุด (Pooling)
+        if (AudioManager.Instance != null && connectClip != null)
+        {
+            // PlaySFX(clip, volume, pitchVariance)
+            // ใส่ pitchVariance เล็กน้อย (0.05f) เพื่อให้เสียงดูเป็นธรรมชาติเวลารัวๆ แต่ไม่เพี้ยนจนเกินไป
+            AudioManager.Instance.PlaySFX(connectClip, sfxVolume, 0.05f);
         }
     }
 

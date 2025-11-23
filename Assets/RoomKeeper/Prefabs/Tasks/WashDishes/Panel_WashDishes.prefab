@@ -781,6 +781,10 @@ MonoBehaviour:
   activeStation: {fileID: 5951183433640412985}
   cleanPileContainer: {fileID: 513180051721816860}
   counterText: {fileID: 4205505756260380663}
+  selectDishSound: {fileID: 0}
+  dishCleanedSound: {fileID: 0}
+  scrubSound: {fileID: 8300000, guid: c366b5d07cf8f90409b808b96fe37b37, type: 3}
+  sfxVolume: 1
 --- !u!1 &5250611630372949959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,8 +1024,8 @@ RectTransform:
   m_GameObject: {fileID: 6119703477639520077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3202407484182586282}
   - {fileID: 7251559242441613993}
@@ -1084,7 +1088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScrubbableItem
   dirtyOverlay: {fileID: 6354104872363334321}
   requiredSweepAmount: 0.9
-  sweepStrength: 0.1
+  sweepStrength: 0.15
   brushRadius: 30
 --- !u!1 &6145765692630657391
 GameObject:
@@ -1114,8 +1118,8 @@ RectTransform:
   m_GameObject: {fileID: 6145765692630657391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6446667946717755653}
   - {fileID: 5901344517181529268}
@@ -1178,7 +1182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScrubbableItem
   dirtyOverlay: {fileID: 2866894239513710894}
   requiredSweepAmount: 0.9
-  sweepStrength: 0.1
+  sweepStrength: 0.15
   brushRadius: 30
 --- !u!1 &6438495784933203607
 GameObject:
@@ -1284,8 +1288,8 @@ RectTransform:
   m_GameObject: {fileID: 7483046243020963048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5823001884102697644}
   - {fileID: 8625487061052050313}
@@ -1348,7 +1352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScrubbableItem
   dirtyOverlay: {fileID: 4827381345682236948}
   requiredSweepAmount: 0.9
-  sweepStrength: 0.1
+  sweepStrength: 0.15
   brushRadius: 30
 --- !u!1 &7806482779607673280
 GameObject:
@@ -1570,7 +1574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1613801944848426475

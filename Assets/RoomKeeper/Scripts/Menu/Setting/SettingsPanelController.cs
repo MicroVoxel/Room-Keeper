@@ -3,9 +3,6 @@ using UnityEngine.UI;
 
 public class SettingsPanelController : MonoBehaviour
 {
-    [Header("Main Panel")]
-    [SerializeField] private GameObject settingsPanel;
-
     [Header("Tabs Content")]
     [SerializeField] private GameObject audioContent;
     [SerializeField] private GameObject videoContent;
@@ -18,72 +15,54 @@ public class SettingsPanelController : MonoBehaviour
     [SerializeField] private Color activeTabColor = Color.white;
     [SerializeField] private Color inactiveTabColor = Color.gray;
 
-    [Header("Close Button")]
+    [Header("Navigation")]
     [SerializeField] private Button closeButton;
 
     private void Start()
     {
         SetupButtons();
+    }
 
-        // Default State
-        if (settingsPanel != null) settingsPanel.SetActive(false);
-
-        // เริ่มต้นที่ Audio Tab เสมอ
+    // เรียกทุกครั้งที่เปิดหน้า Setting เพื่อ Reset กลับมาหน้า Audio เสมอ
+    private void OnEnable()
+    {
         ShowAudioTab();
     }
 
     private void SetupButtons()
     {
-        // Safe Check: เช็คว่าปุ่มมีของไหมก่อน AddListener
         if (audioTabButton != null) audioTabButton.onClick.AddListener(ShowAudioTab);
         if (videoTabButton != null) videoTabButton.onClick.AddListener(ShowVideoTab);
-        if (closeButton != null) closeButton.onClick.AddListener(HideSettingsPanel);
-    }
 
-    public void ShowSettingsPanel()
-    {
-        if (settingsPanel != null) settingsPanel.SetActive(true);
-
-        // Optional: Pause Game
-        // Time.timeScale = 0f; 
-    }
-
-    public void HideSettingsPanel()
-    {
-        if (settingsPanel != null) settingsPanel.SetActive(false);
-
-        // Optional: Resume Game
-        // Time.timeScale = 1f;
-    }
-
-    public void ToggleSettingsPanel()
-    {
-        if (settingsPanel != null)
+        // [FIX] เช็คก่อนว่ามี GameUIManager หรือไม่ (คืออยู่ในฉากเล่นเกม)
+        // ถ้ามี -> ให้ SettingsPanel คุมปุ่ม Close เอง
+        // ถ้าไม่มี (อยู่หน้า MainMenu) -> ไม่ต้องทำอะไร ปล่อยให้ MainMenuController เป็นคนคุมปุ่ม Close
+        if (closeButton != null && GameUIManager.Instance != null)
         {
-            if (settingsPanel.activeSelf) HideSettingsPanel();
-            else ShowSettingsPanel();
+            closeButton.onClick.RemoveAllListeners();
+            closeButton.onClick.AddListener(() =>
+            {
+                GameUIManager.Instance.OnToggleSettings();
+            });
         }
     }
 
     private void ShowAudioTab()
     {
-        if (audioContent != null) audioContent.SetActive(true);
-        if (videoContent != null) videoContent.SetActive(false);
-
+        if (audioContent) audioContent.SetActive(true);
+        if (videoContent) videoContent.SetActive(false);
         UpdateButtonColors(audioTabButton, videoTabButton);
     }
 
     private void ShowVideoTab()
     {
-        if (audioContent != null) audioContent.SetActive(false);
-        if (videoContent != null) videoContent.SetActive(true);
-
+        if (audioContent) audioContent.SetActive(false);
+        if (videoContent) videoContent.SetActive(true);
         UpdateButtonColors(videoTabButton, audioTabButton);
     }
 
     private void UpdateButtonColors(Button activeBtn, Button inactiveBtn)
     {
-        // Safe Check: เช็คทั้งตัวปุ่ม และ Image component ของปุ่ม
         if (activeBtn != null && activeBtn.image != null)
             activeBtn.image.color = activeTabColor;
 

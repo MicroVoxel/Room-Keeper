@@ -192,7 +192,7 @@ RectTransform:
   m_GameObject: {fileID: 914123516198962659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7721447867060387751}
@@ -724,6 +724,8 @@ MonoBehaviour:
   - {fileID: 2007510355272729753}
   counterText: {fileID: 4413749654380411658}
   collectTarget: {fileID: 7765246250427942513}
+  foundSound: {fileID: 8300000, guid: 0a4efdd741260d44e815a8ded6725786, type: 3}
+  sfxVolume: 1
 --- !u!1 &3203400251872649561
 GameObject:
   m_ObjectHideFlags: 0
