@@ -2,146 +2,115 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
-using System;
-using UnityEngine.UI;
 
 public class GameCoreManager : MonoBehaviour
 {
-    #region Singleton
     public static GameCoreManager Instance { get; private set; }
-    #endregion
-
-    #region 1. Fields & Properties
 
     [Header("Level Settings")]
     public int currentLevelID = 1;
+    public float totalGameDuration = 90f;
 
-    [Header("Game Time Settings")]
-    [Tooltip("เวลาพื้นฐานของเกม")]
-    public float baseGameDuration = 300f;
+    [Header("VIP Bonuses")]
+    [Tooltip("เวลาที่จะบวกเพิ่มให้ถ้ามี VIP 1")]
+    public float vip1TimeBonus = 10f;
+    [Tooltip("เวลาที่จะบวกเพิ่มให้ถ้ามี VIP 2")]
+    public float vip2TimeBonus = 20f;
+    [Tooltip("เวลาที่จะบวกเพิ่มให้ถ้ามี VIP 3")]
+    public float vip3TimeBonus = 30f;
 
-    public float totalGameDuration { get; private set; }
-
-    [Header("Room Generation Settings")]
-    public int roomsToCreatePerEvent = 2;
-    public float roomCreationInterval = 10f;
-    [SerializeField] private float roomCreationTimer;
-
-    [Header("Game Progress")]
-    [SerializeField] private int totalRoomsToWin = 10;
-    [SerializeField] private Slider mainProgressBar;
-
+    [Header("Progress")]
+    [SerializeField] private int totalRoomsToWin = 3;
     private int roomsCompleted = 0;
     private float currentGameTime;
-    private bool hasRevived = false;
 
-    [Header("Star System (HUD)")]
-    [SerializeField] private int star1Threshold = 3;
-    [SerializeField] private int star2Threshold = 6;
+    [Header("Star Thresholds")]
+    [Tooltip("จำนวนห้องที่ต้องผ่านเพื่อให้ได้ 1 ดาว")]
+    [SerializeField] private int star1Threshold = 1;
+    [Tooltip("จำนวนห้องที่ต้องผ่านเพื่อให้ได้ 2 ดาว")]
+    [SerializeField] private int star2Threshold = 2;
 
-    [SerializeField] private GameObject star1Fill;
-    [SerializeField] private GameObject star2Fill;
-    [SerializeField] private GameObject star3Fill;
+    [Header("Revive Settings")]
+    [Tooltip("เวลาที่จะได้รับเพิ่มเมื่อกด Revive")]
+    public float reviveTimeBonus = 30f;
 
-    [Header("End Game UI")]
-    [SerializeField] private GameObject victoryPanel;
-    [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private Button reviveButton;
-
-    [Header("Victory Panel Elements")]
-    [SerializeField] private GameObject victoryStar1;
-    [SerializeField] private GameObject victoryStar2;
-    [SerializeField] private GameObject victoryStar3;
-    [SerializeField] private TextMeshProUGUI victoryTimeText;
-
-    [Header("Global UI Reference")]
-    [SerializeField] private TextMeshProUGUI globalTimeDisplay;
-
-    [Header("Core Systems")]
+    [Header("Systems")]
     [SerializeField] private DungeonGenerator dungeonGenerator;
-
-    [Header("Player Reference")]
     [SerializeField] private PlayerController playerController;
 
-    private bool isGameActive = false;
+    [Header("Task Deck System")]
+    public List<TaskBase> allTaskPrefabsMasterList;
+
+    [Header("Room Generation Settings")]
+    public int roomsToCreatePerEvent = 1;
+    public float roomCreationInterval = 3f;
+    private float roomCreationTimer;
+
     private RoomData spawnRoom;
-
-    #endregion
-
-    #region 2. Unity Lifecycle & Core Initialization
+    private bool isGameActive = false;
+    private List<string> _taskPriorityDeck = new List<string>();
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
+        if (Instance != null && Instance != this) Destroy(gameObject);
+        else Instance = this;
+    }
+
+    private void OnValidate()
+    {
+        // ป้องกันการตั้งค่าผิดพลาดใน Inspector
+        if (star2Threshold >= totalRoomsToWin) star2Threshold = totalRoomsToWin - 1;
+        if (star1Threshold >= star2Threshold) star1Threshold = star2Threshold - 1;
+        if (star1Threshold < 1) star1Threshold = 1;
     }
 
     private void Start()
     {
-        if (dungeonGenerator == null)
-        {
-            Debug.LogError("DungeonGenerator not found!");
-            return;
-        }
-
-        if (playerController == null)
-        {
-            playerController = FindAnyObjectByType<PlayerController>();
-        }
-
-        if (reviveButton != null)
-        {
-            reviveButton.onClick.AddListener(OnWatchAdToReviveClicked);
-        }
-
-        StartGameInitialization();
+        // ใช้ FindAnyObjectByType แทน FindObjectOfType ใน Unity 6 เพื่อ Performance ที่ดีกว่า
+        if (playerController == null) playerController = FindAnyObjectByType<PlayerController>();
+        if (dungeonGenerator != null) StartGameInitialization();
     }
-
-    private void OnDestroy()
-    {
-        DestroyAllGeneratedRooms();
-    }
-
-    #endregion
-
-    #region 3. Game Loop & State Management
 
     private void StartGameInitialization()
     {
-        // คำนวณเวลา Bonus จาก VIP ที่ซื้อ
-        float bonusTime = 0f;
-
-        // ใช้ Key จาก IAPManager เพื่อความถูกต้อง
-        if (PlayerPrefs.GetInt(IAPManager.KEY_VIP1, 0) == 1) bonusTime += 10f;
-        if (PlayerPrefs.GetInt(IAPManager.KEY_VIP2, 0) == 1) bonusTime += 20f;
-        if (PlayerPrefs.GetInt(IAPManager.KEY_VIP3, 0) == 1) bonusTime += 30f;
-
-        totalGameDuration = baseGameDuration + bonusTime;
-        hasRevived = false;
-
-        // ... Logic เดิม ...
+        RefillTaskDeck();
         spawnRoom = dungeonGenerator.GenerateSpawn();
 
         if (spawnRoom != null)
         {
             spawnRoom.SpawnAndInitAllTasks();
 
+            // --- VIP Logic Calculation ---
+            float finalGameTime = totalGameDuration;
+
+            if (IAPManager.Instance != null)
+            {
+                if (IAPManager.Instance.IsOwned(IAPManager.ID_VIP1))
+                {
+                    finalGameTime += vip1TimeBonus;
+                    Debug.Log($"[VIP] VIP1 Bonus Applied: +{vip1TimeBonus}s");
+                }
+
+                if (IAPManager.Instance.IsOwned(IAPManager.ID_VIP2))
+                {
+                    finalGameTime += vip2TimeBonus;
+                    Debug.Log($"[VIP] VIP2 Bonus Applied: +{vip2TimeBonus}s");
+                }
+
+                if (IAPManager.Instance.IsOwned(IAPManager.ID_VIP3))
+                {
+                    finalGameTime += vip3TimeBonus;
+                    Debug.Log($"[VIP] VIP3 Bonus Applied: +{vip3TimeBonus}s");
+                }
+            }
+            // -----------------------------
+
             roomCreationTimer = roomCreationInterval;
-            currentGameTime = totalGameDuration;
-
+            currentGameTime = finalGameTime;
             roomsCompleted = 0;
-            UpdateMainProgressBar();
-            UpdateStarDisplay(0);
+            isGameActive = true;
 
-            if (victoryPanel != null) victoryPanel.SetActive(false);
-            if (gameOverPanel != null) gameOverPanel.SetActive(false);
+            RefreshUI();
 
             StartCoroutine(GameLoopCoroutine());
         }
@@ -149,19 +118,19 @@ public class GameCoreManager : MonoBehaviour
 
     private IEnumerator GameLoopCoroutine()
     {
-        isGameActive = true;
-
         while (currentGameTime > 0 && isGameActive)
         {
-            UpdateGameTimeDisplay(currentGameTime);
+            currentGameTime -= Time.deltaTime;
+            roomCreationTimer += Time.deltaTime;
 
+            RefreshUI();
+
+            // เช็คเงื่อนไขชนะ (3 ดาวอัตโนมัติถ้าครบจำนวนห้องสูงสุด)
             if (roomsCompleted >= totalRoomsToWin)
             {
                 EndGame(true);
                 yield break;
             }
-
-            roomCreationTimer += Time.deltaTime;
 
             if (roomCreationTimer >= roomCreationInterval)
             {
@@ -169,24 +138,23 @@ public class GameCoreManager : MonoBehaviour
                 roomCreationTimer = 0f;
             }
 
-            currentGameTime -= Time.deltaTime;
             yield return null;
         }
 
+        // เวลาหมด
         if (isGameActive)
         {
-            currentGameTime = 0f;
-            UpdateGameTimeDisplay(0f);
-
-            if (roomsCompleted >= star1Threshold)
-            {
-                EndGame(true);
-            }
-            else
-            {
-                EndGame(false);
-            }
+            // ตรวจสอบว่าดาวถึงขั้นต่ำไหม (1 ดาวขึ้นไปถือว่าผ่าน)
+            EndGame(roomsCompleted >= star1Threshold);
         }
+    }
+
+    private void RefreshUI()
+    {
+        if (GameUIManager.Instance == null) return;
+
+        float progress = (float)roomsCompleted / totalRoomsToWin;
+        GameUIManager.Instance.UpdateHUD(progress, currentGameTime, CalculateStars());
     }
 
     private void EndGame(bool isVictory)
@@ -195,138 +163,199 @@ public class GameCoreManager : MonoBehaviour
         isGameActive = false;
         StopAllCoroutines();
 
+        if (playerController != null) playerController.SetMovement(false);
+
+        if (GameUIManager.Instance != null)
+        {
+            if (isVictory)
+            {
+                int stars = CalculateStars();
+                if (LevelProgressManager.Instance != null)
+                    LevelProgressManager.Instance.SaveLevelResult(currentLevelID, stars);
+
+                GameUIManager.Instance.SetupVictoryScreen(stars, currentGameTime);
+            }
+            else
+            {
+                GameUIManager.Instance.ShowGameOver();
+            }
+        }
+
         if (isVictory)
         {
-            CloseAllTasks();
-            if (playerController != null) playerController.SetMovement(false);
-
-            int starsEarned = CalculateStars();
-            if (LevelProgressManager.Instance != null)
-                LevelProgressManager.Instance.SaveLevelResult(currentLevelID, starsEarned);
-
-            if (victoryPanel != null)
-            {
-                victoryPanel.SetActive(true);
-                SetupVictoryPanel(starsEarned);
-            }
             DestroyAllGeneratedRooms();
-        }
-        else
-        {
-            if (gameOverPanel != null)
-            {
-                gameOverPanel.SetActive(true);
-                if (reviveButton != null)
-                    reviveButton.gameObject.SetActive(!hasRevived);
-            }
-            if (playerController != null) playerController.SetMovement(false);
         }
     }
 
-    // --- REVIVE LOGIC ---
-    public void OnWatchAdToReviveClicked()
+    // --- Revive System ---
+
+    public void OnClickReviveWithAd()
     {
         if (AdsManager.Instance != null)
         {
-            AdsManager.Instance.ShowRewardedVideoAds(() => {
-                ReviveGameSuccess();
-            });
+            AdsManager.Instance.ShowRewardedVideoAds(ReviveGame);
         }
         else
         {
-            Debug.LogError("AdsManager Instance is null!");
+            Debug.LogWarning("AdsManager not found! Reviving immediately (Dev Mode).");
+            ReviveGame();
         }
     }
 
-    private void ReviveGameSuccess()
+    public void ReviveGame()
     {
-        Debug.Log("Revive Success! Adding 30 seconds.");
-        hasRevived = true;
-        currentGameTime = 30f;
+        Debug.Log("Resurrecting Player...");
+
         isGameActive = true;
+        currentGameTime += reviveTimeBonus;
 
-        if (gameOverPanel != null) gameOverPanel.SetActive(false);
-        if (playerController != null) playerController.SetMovement(true);
+        if (playerController != null)
+        {
+            playerController.SetMovement(true);
+        }
 
+        TeleportPlayerToSpawn();
+
+        if (GameUIManager.Instance != null)
+        {
+            GameUIManager.Instance.SwitchUIState(UIState.Gameplay);
+        }
+
+        RefreshUI();
         StartCoroutine(GameLoopCoroutine());
     }
 
-    private void CloseAllTasks() { Debug.Log("Closing tasks..."); }
+    // --- Task Management System ---
 
-    private void DestroyAllGeneratedRooms()
+    public void CloseAllOpenTasks()
     {
-        if (dungeonGenerator == null || dungeonGenerator.GeneratedRooms == null) return;
-        List<RoomData> roomsToDestroy = dungeonGenerator.GeneratedRooms.ToList();
-        foreach (RoomData room in roomsToDestroy)
+        // Unity 6.2 Best Practice: FindObjectsByType
+        TaskBase[] activeTasks = FindObjectsByType<TaskBase>(FindObjectsSortMode.None);
+
+        foreach (var task in activeTasks)
         {
-            if (room != null && room.roomType != RoomData.RoomType.Spawn)
-                DestroyRoom(room);
+            if (task.gameObject.activeInHierarchy)
+            {
+                Destroy(task.gameObject);
+            }
         }
+
+        Debug.Log($"Closed {activeTasks.Length} active tasks.");
     }
+
+    // -----------------------------
 
     private int CalculateStars()
     {
+        // Logic นี้ถูกต้องแล้ว:
+        // ถ้าครบ 3 ห้อง (totalRoomsToWin) -> 3 ดาว
+        // ถ้าไม่ครบ แต่มากกว่า star2Threshold -> 2 ดาว
+        // ถ้ามากกว่า star1Threshold -> 1 ดาว
+        // น้อยกว่านั้น -> 0 ดาว
         if (roomsCompleted >= totalRoomsToWin) return 3;
         if (roomsCompleted >= star2Threshold) return 2;
         if (roomsCompleted >= star1Threshold) return 1;
         return 0;
     }
 
-    private void SetupVictoryPanel(int starsEarned)
+    private void DestroyAllGeneratedRooms()
     {
-        if (victoryTimeText != null)
+        if (dungeonGenerator?.GeneratedRooms == null) return;
+        foreach (var room in dungeonGenerator.GeneratedRooms.ToList())
         {
-            float timeRemaining = Mathf.Max(0, currentGameTime);
-            TimeSpan t = TimeSpan.FromSeconds(timeRemaining);
-            victoryTimeText.text = string.Format("{0:0}:{1:00}", t.Minutes, t.Seconds);
+            if (room != null && room.roomType != RoomData.RoomType.Spawn)
+                dungeonGenerator.RemoveRoom(room);
         }
-
-        if (victoryStar1 != null) victoryStar1.SetActive(starsEarned >= 1);
-        if (victoryStar2 != null) victoryStar2.SetActive(starsEarned >= 2);
-        if (victoryStar3 != null) victoryStar3.SetActive(starsEarned >= 3);
     }
 
-    // --- ROOM LOGIC (Condensed for brevity as it was unchanged) ---
-    private void SubscribeToRoomEvents(RoomData room) { room.OnRoomCompletion += HandleRoomCompletion; }
-    private void UnsubscribeFromRoomEvents(RoomData room) { room.OnRoomCompletion -= HandleRoomCompletion; }
+    private void SubscribeToRoomEvents(RoomData room)
+    {
+        room.OnRoomCompletion += HandleRoomCompletion;
+    }
+
+    private void UnsubscribeFromRoomEvents(RoomData room)
+    {
+        room.OnRoomCompletion -= HandleRoomCompletion;
+    }
 
     private void HandleRoomCompletion(RoomData completedRoom)
     {
         UnsubscribeFromRoomEvents(completedRoom);
+
         if (isGameActive)
         {
             roomsCompleted++;
-            UpdateMainProgressBar();
-            UpdateStarDisplay(CalculateStars());
-            if (roomsCompleted >= totalRoomsToWin) { EndGame(true); return; }
+            RefreshUI();
+
+            if (roomsCompleted >= totalRoomsToWin)
+            {
+                EndGame(true);
+                return;
+            }
         }
+
         DestroyRoom(completedRoom);
     }
 
     public IEnumerator CreateRoomsCoroutine(int count)
     {
         if (spawnRoom == null || dungeonGenerator == null) yield break;
-        List<Connector> allConnectors = spawnRoom.connectors
-            .Select(t => t.GetComponent<Connector>()).Where(c => c != null).ToList();
 
-        for (int i = 0; i < count; i++)
+        int successfulCreations = 0;
+        int roomsToCreate = count;
+
+        List<Connector> allConnectors = spawnRoom.connectors
+            .Select(t => t.GetComponent<Connector>())
+            .Where(c => c != null)
+            .ToList();
+
+        for (int i = 0; i < roomsToCreate; i++)
         {
             if (roomsCompleted >= totalRoomsToWin) break;
-            bool roomCreated = false;
+
+            int activeRoomsCount = dungeonGenerator.GeneratedRooms.Count(r => r != null && r.roomType == RoomData.RoomType.Room);
+            if (roomsCompleted + activeRoomsCount >= totalRoomsToWin)
+            {
+                break;
+            }
+
+            bool roomCreatedInThisSlot = false;
+
             foreach (Connector connector in allConnectors)
             {
                 if (connector.IsOccupied()) continue;
+
                 connector.SetOccupied(true);
-                for (int attempt = 0; attempt < 3; attempt++)
+
+                const int MAX_ATTEMPTS_PER_CONNECTOR = 3;
+                bool placedSuccess = false;
+
+                for (int attempt = 0; attempt < MAX_ATTEMPTS_PER_CONNECTOR; attempt++)
                 {
                     if (TryPlaceRoomChain(spawnRoom, connector.transform))
                     {
-                        roomCreated = true; break;
+                        placedSuccess = true;
+                        break;
                     }
                 }
-                if (roomCreated) break; else connector.SetOccupied(false);
+
+                if (placedSuccess)
+                {
+                    successfulCreations++;
+                    roomCreatedInThisSlot = true;
+                    break;
+                }
+                else
+                {
+                    connector.SetOccupied(false);
+                }
             }
-            if (!roomCreated) break;
+
+            if (!roomCreatedInThisSlot)
+            {
+                break;
+            }
+
             yield return null;
         }
     }
@@ -335,6 +364,7 @@ public class GameCoreManager : MonoBehaviour
     {
         GameObject hallwayPrefab = dungeonGenerator.SelectRandomHallwayPrefab();
         GameObject roomPrefab = dungeonGenerator.SelectNextRoomPrefab();
+
         if (hallwayPrefab == null || roomPrefab == null) return false;
 
         if (dungeonGenerator.TryPlaceRoom(startRoom, startConnector, hallwayPrefab))
@@ -348,71 +378,148 @@ public class GameCoreManager : MonoBehaviour
                 {
                     RoomData newRoom = dungeonGenerator.GeneratedRooms.Last();
                     newRoom.parentConnector = hallwayConnector;
+
                     hallwayData.SpawnAndInitAllTasks();
                     newRoom.SpawnAndInitAllTasks();
+
                     newRoom.ActivateRandomTasks();
                     SubscribeToRoomEvents(newRoom);
+
                     return true;
                 }
-                else { dungeonGenerator.RemoveRoom(hallwayData); return false; }
+                else
+                {
+                    dungeonGenerator.RemoveRoom(hallwayData);
+                    return false;
+                }
             }
-            else { dungeonGenerator.RemoveRoom(hallwayData); return false; }
+            else
+            {
+                dungeonGenerator.RemoveRoom(hallwayData);
+                return false;
+            }
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     public void DestroyRoom(RoomData roomToDestroy)
     {
         if (roomToDestroy != null && roomToDestroy.roomType != RoomData.RoomType.Spawn)
         {
-            if (IsPlayerInRoom(roomToDestroy)) TeleportPlayerToSpawn();
+            if (IsPlayerInRoom(roomToDestroy))
+            {
+                TeleportPlayerToSpawn();
+            }
             dungeonGenerator.RemoveRoom(roomToDestroy);
         }
     }
 
     private bool IsPlayerInRoom(RoomData room)
     {
-        if (playerController == null || room.roomBoundsCollider == null) return false;
-        return room.roomBoundsCollider.bounds.Contains(playerController.transform.position);
+        if (playerController == null || playerController.transform == null || room.roomBoundsCollider == null) return false;
+        Vector3 playerPos = playerController.transform.position;
+        return room.roomBoundsCollider.bounds.Contains(playerPos);
     }
 
-    private bool TeleportPlayerToSpawn()
+    private void TeleportPlayerToSpawn()
     {
-        if (spawnRoom == null || playerController == null) return false;
-        Vector3 spawnPos = spawnRoom.GetPlayerSpawnPosition();
-        CharacterController cc = playerController.GetComponent<CharacterController>();
-        bool ccWasEnabled = (cc != null && cc.enabled);
-        if (cc != null) cc.enabled = false;
-        playerController.transform.position = spawnPos;
-        Physics.SyncTransforms();
-        if (cc != null && ccWasEnabled) cc.enabled = true;
-        return true;
-    }
+        if (spawnRoom == null || playerController == null) return;
 
-    private void UpdateGameTimeDisplay(float time)
-    {
-        if (globalTimeDisplay != null)
+        Vector3 targetPosition;
+
+        if (spawnRoom.playerSpawnPoint != null)
         {
-            TimeSpan t = TimeSpan.FromSeconds(Mathf.Max(0, time));
-            globalTimeDisplay.text = string.Format("{0:0}:{1:00}", (int)t.TotalMinutes, t.Seconds);
+            targetPosition = spawnRoom.playerSpawnPoint.position;
+        }
+        else
+        {
+            Debug.LogWarning("Spawn Room does not have a 'Player Spawn Point' assigned. Using bounds center as fallback.");
+            targetPosition = spawnRoom.roomBoundsCollider != null ? spawnRoom.roomBoundsCollider.bounds.center : spawnRoom.transform.position;
+            targetPosition.y = playerController.transform.position.y;
+        }
+
+        playerController.transform.position = targetPosition;
+    }
+
+    public List<TaskBase> GetPrioritizedTasks(List<TaskBase> candidates, int count)
+    {
+        List<TaskBase> selectedTasks = new List<TaskBase>();
+        List<TaskBase> tempCandidates = new List<TaskBase>(candidates);
+
+        for (int i = 0; i < count; i++)
+        {
+            if (tempCandidates.Count == 0) break;
+
+            TaskBase picked = PickOneTask(tempCandidates);
+
+            if (picked != null)
+            {
+                selectedTasks.Add(picked);
+                tempCandidates.Remove(picked);
+            }
+        }
+
+        return selectedTasks;
+    }
+
+    private TaskBase PickOneTask(List<TaskBase> candidates)
+    {
+        if (_taskPriorityDeck.Count == 0)
+        {
+            RefillTaskDeck();
+        }
+
+        for (int i = 0; i < _taskPriorityDeck.Count; i++)
+        {
+            string taskNameInDeck = _taskPriorityDeck[i];
+            TaskBase match = candidates.FirstOrDefault(t => CleanTaskName(t.name) == taskNameInDeck);
+
+            if (match != null)
+            {
+                _taskPriorityDeck.RemoveAt(i);
+                return match;
+            }
+        }
+
+        if (candidates.Count > 0)
+        {
+            int rnd = Random.Range(0, candidates.Count);
+            return candidates[rnd];
+        }
+
+        return null;
+    }
+
+    private void RefillTaskDeck()
+    {
+        _taskPriorityDeck.Clear();
+
+        if (allTaskPrefabsMasterList == null || allTaskPrefabsMasterList.Count == 0) return;
+
+        foreach (TaskBase taskPrefab in allTaskPrefabsMasterList)
+        {
+            if (taskPrefab != null)
+            {
+                _taskPriorityDeck.Add(taskPrefab.name);
+            }
+        }
+
+        int n = _taskPriorityDeck.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            string value = _taskPriorityDeck[k];
+            _taskPriorityDeck[k] = _taskPriorityDeck[n];
+            _taskPriorityDeck[n] = value;
         }
     }
 
-    private void UpdateMainProgressBar()
+    private string CleanTaskName(string original)
     {
-        if (mainProgressBar != null) mainProgressBar.value = (float)roomsCompleted / totalRoomsToWin;
+        return original.Replace("(Clone)", "").Trim();
     }
-
-    private void UpdateStarDisplay(int starsEarned)
-    {
-        if (star1Fill != null) star1Fill.SetActive(starsEarned >= 1);
-        if (star2Fill != null) star2Fill.SetActive(starsEarned >= 2);
-        if (star3Fill != null) star3Fill.SetActive(starsEarned >= 3);
-    }
-
-    public void RestartGame()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-    }
-    #endregion
 }

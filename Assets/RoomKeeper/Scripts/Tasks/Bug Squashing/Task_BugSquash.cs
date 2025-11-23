@@ -5,181 +5,156 @@ using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
-/// 1. "สมอง" ของมินิเกมตบแมลง (สืบทอดจาก TaskBase)
-/// แปะสคริปต์นี้ไว้ที่ GameObject หลักของ Panel มินิเกม
+/// 1. "สมอง" (Task_BugSquash)
+/// เวอร์ชั่น: ปรับปรุงให้ใช้ AudioManager เพื่อรองรับ SFX Slider และ Pooling
 /// </summary>
 public class Task_BugSquash : TaskBase
 {
     [Header("Bug Squash Setup")]
-    [Tooltip("Prefab ของแมลง (ต้องมีสคริปต์ BugItem)")]
-    public GameObject bugPrefab;
-
-    [Tooltip("พื้นที่ (RectTransform) ที่จะให้แมลงสุ่มเกิด (เช่น Panel พื้นหลัง)")]
+    public GameObject bugPrefab; // Prefab ยุง (ต้องมี Script BugItem)
     public RectTransform spawnArea;
-
-    [Tooltip("จำนวนแมลงที่ต้องตบให้ครบ")]
     public int bugsToSquash = 10;
-
-    [Tooltip("แมลงจะโผล่มานานแค่ไหน (วินาที) ก่อนจะหายไปเอง")]
     public float bugLifeTime = 2.0f;
-
-    [Tooltip("หน่วงเวลาก่อนแมลงตัวต่อไปเกิด (สุ่มระหว่าง X และ Y)")]
     public Vector2 spawnDelayRange = new Vector2(0.5f, 1.5f);
 
-    [Header("UI")]
-    public TMP_Text counterText; // (Optional) ตัวนับ "0/10"
+    [Header("Finish Settings")]
+    public float finishDelay = 1.5f;
 
-    [Header("Progress")]
+    [Header("Audio & Visuals")]
+    public AudioClip[] squashClips;
+
+    [Tooltip("รูปภาพรอยเลือด/ซากยุง (ใส่ได้หลายรูปแบบ จะสุ่มหยิบไปใช้)")]
+    public Sprite[] splatSprites;
+
+    // [OPTIMIZATION] ลบ AudioSource ของตัวเองออก เพื่อไปใช้ระบบกลาง
+    // private AudioSource _audioSource; 
+
+    [Header("UI")]
+    public TMP_Text counterText;
+
+    // State
     private int squashedCount = 0;
     private List<BugItem> activeBugs = new List<BugItem>();
     private Coroutine spawnCoroutine;
 
-    // --- TaskBase Overrides ---
+    // ลบ Awake ทิ้งได้เลย เพราะไม่ได้ GetComponent แล้ว
+    // private void Awake() { ... }
 
     public override void Open()
     {
         base.Open();
         if (IsCompleted) return;
-
         ResetTask();
-        // เริ่ม Coroutine สำหรับการ Spawn
         spawnCoroutine = StartCoroutine(SpawnBugRoutine());
     }
 
     public override void Close()
     {
         base.Close();
-
-        // หยุดการ Spawn
-        if (spawnCoroutine != null)
-        {
-            StopCoroutine(spawnCoroutine);
-            spawnCoroutine = null;
-        }
-
-        // ถ้าปิดโดยที่ยังไม่เสร็จ ให้เคลียร์แมลงที่ค้างอยู่
-        if (!IsCompleted)
-        {
-            ClearAllBugs();
-        }
+        if (spawnCoroutine != null) StopCoroutine(spawnCoroutine);
+        StopAllCoroutines();
+        if (!IsCompleted) ClearAllBugs();
     }
-
-    // --- Game Logic ---
 
     void ResetTask()
     {
         squashedCount = 0;
         UpdateCounter();
-        ClearAllBugs(); // เคลียร์แมลงที่อาจจะค้างอยู่ (ถ้ามี)
+        ClearAllBugs();
     }
 
     void ClearAllBugs()
     {
-        // ทำลาย BugItem ทุกตัวที่ยัง Active
         foreach (var bug in activeBugs)
         {
-            if (bug != null)
-            {
-                Destroy(bug.gameObject);
-            }
+            if (bug != null) Destroy(bug.gameObject);
         }
         activeBugs.Clear();
     }
 
-    /// <summary>
-    /// Coroutine หลักในการสุ่มเกิดแมลง
-    /// </summary>
     IEnumerator SpawnBugRoutine()
     {
-        // วนลูปไปเรื่อยๆ ตราบใดที่ภารกิจยังเปิดอยู่และยังไม่สำเร็จ
         while (IsOpen && !IsCompleted)
         {
-            // รอเวลาสุ่ม
             float delay = Random.Range(spawnDelayRange.x, spawnDelayRange.y);
             yield return new WaitForSeconds(delay);
 
-            // ถ้าเกมถูกปิดระหว่างรอ ให้หยุด
-            if (!IsOpen) yield break;
+            if (!IsOpen || squashedCount >= bugsToSquash) yield break;
 
-            // สุ่มตำแหน่งภายในขอบเขตของ spawnArea
-            Vector2 randomPos = GetRandomPositionInSpawnArea();
-
-            // สร้าง Prefab แมลง
+            // สร้างแมลง
             GameObject bugGO = Instantiate(bugPrefab, spawnArea);
-            bugGO.transform.localPosition = randomPos; // ใช้ localPosition
+            bugGO.transform.localScale = Vector3.one;
 
+            // สุ่มตำแหน่งเกิด
             BugItem bugItem = bugGO.GetComponent<BugItem>();
             if (bugItem)
             {
-                // "ฉีด" ค่าเริ่มต้นให้แมลงรู้ว่า "สมอง" คือใคร และมีชีวิตนานแค่ไหน
-                bugItem.Initialize(this, bugLifeTime);
+                Rect rect = spawnArea.rect;
+                Vector2 startPos = new Vector2(Random.Range(rect.xMin, rect.xMax), Random.Range(rect.yMin, rect.yMax));
+                bugGO.GetComponent<RectTransform>().anchoredPosition = startPos;
+
+                // Initialize
+                bugItem.Initialize(this, bugLifeTime, spawnArea);
                 activeBugs.Add(bugItem);
-            }
-            else
-            {
-                Debug.LogError($"[Task_BugSquash] Prefab '{bugPrefab.name}' ไม่มีสคริปต์ 'BugItem'!", this);
-                Destroy(bugGO);
             }
         }
     }
 
-    /// <summary>
-    /// ถูกเรียกโดย BugItem เมื่อมันถูกตบ
-    /// </summary>
     public void OnBugSquashed(BugItem bug)
     {
-        if (IsCompleted) return;
-
-        // ตรวจสอบว่าแมลงตัวนี้ยังอยู่ในลิสต์ (ยังไม่หมดเวลา หรือถูกตบไปแล้ว)
-        if (!activeBugs.Contains(bug)) return;
+        if (IsCompleted || !activeBugs.Contains(bug)) return;
 
         squashedCount++;
         UpdateCounter();
+        activeBugs.Remove(bug);
 
-        activeBugs.Remove(bug); // เอาออกจากลิสต์ (BugItem จะทำลายตัวเอง)
+        PlayRandomSquashSound();
 
-        // ตรวจสอบว่าครบจำนวนหรือยัง
+        // สุ่มรูปเลือด แล้วสั่งให้ยุงเปลี่ยนร่าง
+        Sprite selectedSplat = null;
+        if (splatSprites != null && splatSprites.Length > 0)
+        {
+            selectedSplat = splatSprites[Random.Range(0, splatSprites.Length)];
+        }
+
+        // สั่งยุงให้ตายและเปลี่ยนรูป
+        bug.Squash(selectedSplat);
+
+        // เช็คเงื่อนไขชนะ
         if (squashedCount >= bugsToSquash)
         {
-            // หยุดการ Spawn
-            if (spawnCoroutine != null)
-            {
-                StopCoroutine(spawnCoroutine);
-                spawnCoroutine = null;
-            }
-
-            // สำเร็จภารกิจ
-            CompleteTask();
+            if (spawnCoroutine != null) StopCoroutine(spawnCoroutine);
+            StartCoroutine(WaitAndCompleteRoutine());
         }
     }
 
-    /// <summary>
-    /// ถูกเรียกโดย BugItem เมื่อมันหมดเวลา (ไม่ถูกตบ)
-    /// </summary>
+    IEnumerator WaitAndCompleteRoutine()
+    {
+        yield return new WaitForSeconds(finishDelay);
+        CompleteTask();
+    }
+
+    private void PlayRandomSquashSound()
+    {
+        // [KEY CHANGE] ใช้ AudioManager แทน AudioSource ในตัว
+        // เพื่อให้มั่นใจว่าเสียงจะออกผ่าน SFX Mixer Group และถูกคุมด้วย Slider ได้
+        if (AudioManager.Instance != null && squashClips != null && squashClips.Length > 0)
+        {
+            AudioClip clip = squashClips[Random.Range(0, squashClips.Length)];
+
+            // เรียกใช้ PlaySFX (Clip, Volume, PitchVariance)
+            // 0.1f คือค่า Variance ที่จะสุ่ม Pitch ระหว่าง 0.9 - 1.1 โดยอัตโนมัติใน AudioManager
+            AudioManager.Instance.PlaySFX(clip, 1f, 0.1f);
+        }
+    }
+
     public void OnBugTimedOut(BugItem bug)
     {
-        if (activeBugs.Contains(bug))
-        {
-            activeBugs.Remove(bug); // แค่เอาออกจากลิสต์ (BugItem จะทำลายตัวเอง)
-        }
+        if (activeBugs.Contains(bug)) activeBugs.Remove(bug);
     }
-
-    // --- UI & Helpers ---
 
     void UpdateCounter()
     {
-        if (counterText)
-            counterText.text = $"{squashedCount}/{bugsToSquash}";
-    }
-
-    Vector2 GetRandomPositionInSpawnArea()
-    {
-        if (spawnArea == null) return Vector2.zero;
-
-        Rect rect = spawnArea.rect;
-        float x = Random.Range(rect.xMin, rect.xMax);
-        float y = Random.Range(rect.yMin, rect.yMax);
-
-        return new Vector2(x, y);
+        if (counterText) counterText.text = $"{squashedCount}/{bugsToSquash}";
     }
 }

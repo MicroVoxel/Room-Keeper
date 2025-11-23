@@ -2,38 +2,41 @@
 using TMPro;
 using System.Collections.Generic;
 
-// 1. นี่คือ "สมอง" ของมินิเกม สคริปต์นี้ต้องอยู่บน GameObject หลักของ Panel ภารกิจ
-//    และต้องถูกอ้างอิงโดย TasksZone (เหมือนกับ Task_LaundryToBasket)
+// 1. "สมอง" ของมินิเกมแยกผ้า (สืบทอดจาก TaskBase)
+// เวอร์ชั่น: เพิ่มเสียง SFX และใช้ AudioManager เพื่อ Performance สูงสุด
 public class Task_SortLaundry : TaskBase
 {
     [Header("Laundry Setup")]
     [Tooltip("ชิ้นผ้าทั้งหมดที่จะใช้ในมินิเกมนี้ (ต้องมี component 'TrashDrag' และ 'LaundryItemType')")]
-    public List<TrashDrag> clothItems; // เราจะใช้ TrashDrag ที่คุณมีอยู่แล้ว
+    public List<TrashDrag> clothItems; // ใช้ TrashDrag ที่มีอยู่แล้ว
 
     [Tooltip("จำนวนผ้าที่ต้องคัดแยกให้ถูกต้องเพื่อจบภารกิจ")]
     public int itemsToCollect = 6;
 
+    [Header("Audio")]
+    [Tooltip("เสียงเมื่อแยกผ้าลงตะกร้าถูกต้อง")]
+    public AudioClip sortSound;
+    [Tooltip("ความดังของเสียง (0-1)")]
+    [Range(0f, 1f)] public float sfxVolume = 1f;
+
     [Header("UI")]
-    public TMP_Text counterText; // (Optional) ตัวนับ "0/6"
+    public TMP_Text counterText;
 
     [Header("Progress")]
     private int collected = 0;
     private Dictionary<TrashDrag, Vector2> initialPositions; // ใช้ Dictionary เพื่อความแม่นยำ
 
-    // --- ⭐ FIXED ---
-    // ย้าย Logic จาก Start() มาไว้ที่ Awake()
     // Awake() จะทำงาน *ทันที* ที่ TasksZone สั่ง Instantiate
-    // แม้ว่า GameObject จะถูก SetActive(false) ในบรรทัดต่อมาก็ตาม
     private void Awake()
     {
         // 1. สร้าง Dictionary ทันที (ป้องกัน NullReference)
         initialPositions = new Dictionary<TrashDrag, Vector2>();
 
-        // 2. (Added Check) ตรวจสอบว่าลาก clothItems มาใส่ใน Inspector แล้วหรือยัง
+        // 2. ตรวจสอบว่าลาก clothItems มาใส่ใน Inspector แล้วหรือยัง
         if (clothItems == null)
         {
             Debug.LogError($"[Task_SortLaundry] 'Cloth Items' List is not assigned in the Inspector!", this);
-            clothItems = new List<TrashDrag>(); // สร้าง List เปล่าไว้ กัน NRE บรรทัดล่าง
+            clothItems = new List<TrashDrag>(); // สร้าง List เปล่าไว้ กัน NRE
         }
 
         // 3. เก็บตำแหน่งเริ่มต้นของผ้าทั้งหมด
@@ -45,16 +48,14 @@ public class Task_SortLaundry : TaskBase
             }
         }
 
-        // 4. เราตั้งค่าจำนวนที่ต้องเก็บให้เท่ากับจำนวนผ้าที่มีเลย
+        // 4. ตั้งค่าจำนวนที่ต้องเก็บให้เท่ากับจำนวนผ้าที่มีเลย
         itemsToCollect = clothItems.Count;
     }
 
     override protected void Start()
     {
         base.Start();
-        // Logic ทั้งหมดถูกย้ายไป Awake() แล้ว
-        // เพื่อป้องกัน NullReferenceException เมื่อ TasksZone
-        // สั่ง SetActive(false) ก่อนที่ Start() จะทำงาน
+        // Logic ทั้งหมดถูกย้ายไป Awake() แล้วเพื่อความชัวร์เรื่อง Execution Order
     }
 
     public override void Open()
@@ -62,7 +63,7 @@ public class Task_SortLaundry : TaskBase
         base.Open();
         if (!IsCompleted)
         {
-            ResetTask(); // <-- ตอนนี้ initialPositions จะไม่ null แล้ว
+            ResetTask();
         }
     }
 
@@ -70,7 +71,6 @@ public class Task_SortLaundry : TaskBase
     {
         collected = 0;
 
-        // (Added Check) ตรวจสอบเผื่อ clothItems เป็น null (ถ้าลืมลากใส่ Inspector)
         if (clothItems == null) return;
 
         foreach (var item in clothItems)
@@ -81,7 +81,6 @@ public class Task_SortLaundry : TaskBase
             item.gameObject.SetActive(true);
 
             // 2. คืนตำแหน่งเดิม
-            // (ตอนนี้ initialPositions จะไม่ null แล้ว)
             if (initialPositions.TryGetValue(item, out Vector2 startPos) && item.TryGetComponent<RectTransform>(out var rt))
             {
                 rt.anchoredPosition = startPos;
@@ -89,7 +88,7 @@ public class Task_SortLaundry : TaskBase
 
             // 3. บอกให้ TrashDrag เด้งกลับ (ถ้ายังไม่ลงตะกร้า)
             item.EnableReturnToStart(true);
-            item.ResetRaycastBlock(); // (จากโค้ด TrashDrag ของคุณ)
+            item.ResetRaycastBlock();
         }
         UpdateCounter();
     }
@@ -101,6 +100,9 @@ public class Task_SortLaundry : TaskBase
     {
         if (IsCompleted) return;
 
+        // --- [NEW] เล่นเสียง SFX ---
+        PlaySortSound();
+
         collected++;
         UpdateCounter();
 
@@ -111,6 +113,16 @@ public class Task_SortLaundry : TaskBase
         {
             // ทำภารกิจสำเร็จ!
             CompleteTask();
+        }
+    }
+
+    private void PlaySortSound()
+    {
+        // ใช้ AudioManager เพื่อ Performance และควบคุมผ่าน SFX Slider ได้
+        if (AudioManager.Instance != null && sortSound != null)
+        {
+            // Pitch Variance 0.1f ช่วยให้เสียงดู Dynamic เวลาแยกผ้ารัวๆ
+            AudioManager.Instance.PlaySFX(sortSound, sfxVolume, 0.1f);
         }
     }
 

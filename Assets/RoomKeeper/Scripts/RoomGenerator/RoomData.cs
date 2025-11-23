@@ -22,8 +22,8 @@ public class RoomData : MonoBehaviour
     public Collider2D roomBoundsCollider;
     [SerializeField] private LayerMask roomLayerMask;
 
-    [Header("Spawn Point Settings")]
-    [Tooltip("ลาก Empty GameObject ที่เป็นจุดเกิดของผู้เล่นมาใส่ตรงนี้ (เฉพาะห้อง Spawn)")]
+    [Header("Spawn Settings")]
+    [Tooltip("จุดที่ผู้เล่นจะเกิดหรือถูกส่งกลับมาเมื่อเริ่มเกมหรือ Revive (ลาก Transform มาใส่ที่นี่)")]
     public Transform playerSpawnPoint;
 
     [Header("Connection Points")]
@@ -40,7 +40,7 @@ public class RoomData : MonoBehaviour
 
     private List<TaskBase> assignedTasks;
     private List<TaskBase> allTasksInRoom;
-    private List<TaskBase> _taskSelectionList;
+
     private const int MAX_CONNECTOR_RETRIES = 5;
 
     public List<TaskBase> AssignedTasks => assignedTasks;
@@ -53,7 +53,6 @@ public class RoomData : MonoBehaviour
     {
         assignedTasks = new List<TaskBase>();
         allTasksInRoom = new List<TaskBase>();
-        _taskSelectionList = new List<TaskBase>();
     }
 
     private void OnValidate()
@@ -65,18 +64,6 @@ public class RoomData : MonoBehaviour
     {
         assignedTasks?.Clear();
         allTasksInRoom?.Clear();
-        _taskSelectionList?.Clear();
-    }
-
-    private void OnDrawGizmos()
-    {
-        // วาด Gizmos เพื่อให้เห็นจุด Spawn ใน Scene View
-        if (playerSpawnPoint != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(playerSpawnPoint.position, 0.5f);
-            Gizmos.DrawLine(playerSpawnPoint.position, playerSpawnPoint.position + Vector3.up * 2);
-        }
     }
 
     #endregion
@@ -87,7 +74,6 @@ public class RoomData : MonoBehaviour
     {
         assignedTasks.Clear();
         allTasksInRoom.Clear();
-        _taskSelectionList.Clear();
 
         if (manuallyAssignedZones == null)
         {
@@ -103,8 +89,6 @@ public class RoomData : MonoBehaviour
             }
 
             zone.InitializeAndSpawnTask(this);
-
-            // เริ่มต้น: สั่งให้ Zone นี้ Inactive ไปก่อน (ห้ามเดินชน, ห้ามโชว์ Indicator)
             zone.SetTaskActive(false);
 
             TaskBase spawnedTask = zone.GetTaskInstance();
@@ -114,7 +98,6 @@ public class RoomData : MonoBehaviour
             }
         }
     }
-
 
     public void ActivateRandomTasks()
     {
@@ -127,41 +110,53 @@ public class RoomData : MonoBehaviour
             return;
         }
 
-        _taskSelectionList.Clear();
-        _taskSelectionList.AddRange(allTasksInRoom);
+        // --- DECK SYSTEM INTEGRATION ---
 
-        int numTasksToActivate = Mathf.Min(maxTasksToAssign, _taskSelectionList.Count);
+        List<TaskBase> tasksToActivate = new List<TaskBase>();
 
-        for (int i = 0; i < numTasksToActivate; i++)
+        if (GameCoreManager.Instance != null)
         {
-            if (_taskSelectionList.Count == 0) break;
+            // เรียกใช้ Logic จาก GameCoreManager โดยตรง
+            tasksToActivate = GameCoreManager.Instance.GetPrioritizedTasks(allTasksInRoom, maxTasksToAssign);
+        }
+        else
+        {
+            // Fallback กรณี Test Scene ไม่มี GameCoreManager
+            Debug.LogWarning("GameCoreManager not found! Using local random fallback.");
+            List<TaskBase> tempPool = new List<TaskBase>(allTasksInRoom);
+            int count = Mathf.Min(maxTasksToAssign, tempPool.Count);
 
-            int randomIndex = UnityEngine.Random.Range(0, _taskSelectionList.Count);
-            TaskBase taskToActivate = _taskSelectionList[randomIndex];
+            for (int i = 0; i < count; i++)
+            {
+                int rnd = UnityEngine.Random.Range(0, tempPool.Count);
+                tasksToActivate.Add(tempPool[rnd]);
+                tempPool.RemoveAt(rnd);
+            }
+        }
 
+        // --- END SELECTION ---
+
+        foreach (TaskBase taskToActivate in tasksToActivate)
+        {
             if (taskToActivate != null)
             {
                 TasksZone correspondingZone = FindZoneForTask(taskToActivate);
 
                 if (correspondingZone != null)
                 {
-                    // UPDATED: เปลี่ยนมาใช้ SetTaskActive(true) ซึ่งจะเปิดทั้ง Indicator และอนุญาตให้เดินชนได้
                     correspondingZone.SetTaskActive(true);
-
                     assignedTasks.Add(taskToActivate);
                 }
                 else
                 {
-                    Debug.LogWarning($"RoomData ({gameObject.name}) สุ่ม Task '{taskToActivate.name}' แต่หา Zone (Trigger) ที่คู่กันไม่เจอ!");
+                    Debug.LogWarning($"RoomData ({gameObject.name}) เลือก Task '{taskToActivate.name}' แต่หา Zone ไม่เจอ!");
                 }
-
-                _taskSelectionList.RemoveAt(randomIndex);
             }
         }
 
         if (assignedTasks.Count == 0 && allTasksInRoom.Count > 0)
         {
-            Debug.LogWarning($"Room {gameObject.name} has tasks, but failed to activate any (maxTasksToAssign might be 0?)");
+            Debug.LogWarning($"Room {gameObject.name} has tasks, but failed to activate any.");
         }
     }
 
@@ -194,7 +189,7 @@ public class RoomData : MonoBehaviour
 
     #endregion
 
-    #region CONNECTION LOGIC (UNCHANGED)
+    #region CONNECTION LOGIC
 
     public bool HasAvailableConnector(out Transform connector)
     {
@@ -237,21 +232,7 @@ public class RoomData : MonoBehaviour
 
     #endregion
 
-    #region HELPER METHODS
-
-    /// <summary>
-    /// ดึงตำแหน่ง Spawn Point ถ้ามี (ถ้าไม่มีจะคืนค่าตำแหน่งของตัวห้องเอง)
-    /// </summary>
-    public Vector3 GetPlayerSpawnPosition()
-    {
-        if (playerSpawnPoint != null)
-        {
-            return playerSpawnPoint.position;
-        }
-
-        // Fallback กรณีลืมใส่ SpawnPoint
-        return transform.position;
-    }
+    #region PRIVATE HELPER METHODS
 
     private bool TryConnect(Transform potentialConnector, out Transform connector)
     {

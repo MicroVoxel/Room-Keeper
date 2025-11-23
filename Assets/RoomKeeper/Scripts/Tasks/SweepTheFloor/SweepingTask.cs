@@ -8,48 +8,45 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
     #region UI & Settings
 
     [Header("Sweeping Minigame Settings")]
-    [Tooltip("จำนวนสิ่งสกปรกที่ต้องถูกกวาดออกไป (เป็นเปอร์เซ็นต์: 0.0 ถึง 1.0)")]
     public float requiredSweepAmount = 0.9f;
-
     [Range(0.01f, 1.0f)]
-    [Tooltip("ค่าความแรงในการลด Alpha ต่อการลาก/เฟรม (Fixed Reduction)")]
     public float sweepStrength = 0.1f;
 
     [SerializeField] private float currentSweepProgress = 0f;
 
     [Header("UI References")]
-    public Image dirtyOverlay; // รูปภาพ UI Overlay ที่เป็นสิ่งสกปรก (ต้องเปิด Raycast Target)
-    public Slider progressBar; // แถบความคืบหน้า (Progress Bar) สำหรับ UI
+    public Image dirtyOverlay;
+    public Slider progressBar;
 
     [Header("Brush Settings")]
-    public float brushRadius = 50f; // รัศมีของแปรงในหน่วยพิกเซลของ Texture
+    public float brushRadius = 50f;
+
+    [Header("Audio")]
+    [Tooltip("เสียงเมื่อถูพื้น (จะเล่นแบบ Loop ขณะถู)")]
+    public AudioClip sweepSound;
+    [Tooltip("เสียงเมื่อทำความสะอาดเสร็จ")]
+    public AudioClip completeSound;
+    [Range(0f, 1f)] public float sfxVolume = 1f;
 
     // --- Performance Optimization ---
     private Texture2D dirtyTexture;
     private Texture2D originalSourceTexture;
-
-    // We will operate on this C# array, which is much faster than GetPixel/SetPixel
     private Color[] pixelData;
     private int textureWidth;
     private int textureHeight;
-    // --- End Performance Optimization ---
 
     private int totalDirtyPixels;
-    private float totalInitialAlpha = 0f;   // ปริมาณ Alpha Channel เริ่มต้นรวมทั้งหมด
-    private float currentCleanedAlpha = 0f; // ปริมาณ Alpha ที่ถูกกำจัดไปแล้ว (ใช้สำหรับ Progress)
+    private float totalInitialAlpha = 0f;
+    private float currentCleanedAlpha = 0f;
+
+    // --- [NEW] Audio Control ---
+    private AudioSource continuousAudioSource; // ตัวแหล่งกำเนิดเสียงส่วนตัว
+    private float lastDirtTime = 0f; // เวลาล่าสุดที่ถูโดนสิ่งสกปรก
 
     #endregion
 
     // ==================================================================================
 
-    #region Unity Life Cycle & TaskBase Overrides
-
-    /// <summary>
-    /// --- ⭐ FIXED ---
-    /// Awake() จะถูกเรียกทันทีเมื่อ Instantiate (โดย TasksZone)
-    /// แม้ว่า GameObject จะถูก SetActive(false) ทันทีก็ตาม
-    /// เราจึงย้าย Logic การดึง Texture ต้นฉบับมาไว้ที่นี่แทน Start()
-    /// </summary>
     private void Awake()
     {
         if (dirtyOverlay != null && dirtyOverlay.mainTexture is Texture2D texture)
@@ -58,16 +55,24 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
         }
         else
         {
-            // เราเพิ่ม this เข้าไปใน LogError เพื่อให้คลิกแล้วไปหา GameObject ที่มีปัญหาได้เลย
-            Debug.LogError("Please ensure 'Dirty Overlay' has a Texture2D assigned in the Source Image slot and Read/Write is enabled.", this);
+            Debug.LogError("Please ensure 'Dirty Overlay' has a Texture2D assigned.", this);
         }
+
+        // [NEW] สร้าง AudioSource ส่วนตัวไว้สำหรับเสียงถู (Loop)
+        continuousAudioSource = gameObject.AddComponent<AudioSource>();
+        continuousAudioSource.loop = true; // ตั้งให้เล่นวนซ้ำ
+        continuousAudioSource.playOnAwake = false;
     }
 
     override protected void Start()
     {
         base.Start();
-        // Logic เดิมใน Start() ถูกย้ายไป Awake() แล้ว
-        // เพราะ Start() จะไม่ถูกเรียกถ้า TasksZone สั่ง SetActive(false) ก่อน
+
+        // [NEW] ตั้งค่า AudioSource ให้ตรงกับ AudioManager (เพื่อให้ Slider ปรับเสียงได้)
+        if (AudioManager.Instance != null)
+        {
+            continuousAudioSource.outputAudioMixerGroup = AudioManager.Instance.SFXGroup;
+        }
     }
 
     public override void Open()
@@ -77,8 +82,7 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
 
         if (!IsCompleted)
         {
-            // เริ่มต้นหรือรีเซ็ต Texture และ Progress
-            InitializeDirtyTexture(); // <-- ตอนนี้ originalSourceTexture จะไม่ null แล้ว
+            InitializeDirtyTexture();
             currentSweepProgress = 0f;
             if (progressBar) progressBar.value = 0f;
         }
@@ -87,29 +91,34 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
     public override void Close()
     {
         base.Close();
+        if (!IsCompleted) ResetTask();
 
-        // ถ้าภารกิจถูกปิดก่อนที่จะทำเสร็จสมบูรณ์ ให้รีเซ็ตสถานะทั้งหมด
-        if (!IsCompleted)
-        {
-            ResetTask();
-        }
+        // [NEW] หยุดเสียงทันทีเมื่อปิด Task
+        if (continuousAudioSource != null) continuousAudioSource.Stop();
     }
 
     private void OnDestroy()
     {
-        // ทำลาย Texture2D ที่สร้างขึ้นเมื่อ GameObject ถูกทำลาย
-        if (dirtyTexture != null)
-        {
-            UnityEngine.Object.Destroy(dirtyTexture);
-        }
-        // pixelData (Color[]) is managed by GC, no need to manually destroy
+        if (dirtyTexture != null) Destroy(dirtyTexture);
     }
-
-    #endregion
 
     // ==================================================================================
 
-    #region UI Drag Handlers (Input)
+    private void Update()
+    {
+        // [NEW] Logic สำหรับหยุดเสียงเมื่อ "ไม่ได้ถูโดนสิ่งสกปรก" สักพักหนึ่ง
+        // (เช่น ลากเม้าส์ค้างไว้แต่ลากไปตรงที่สะอาดแล้ว หรือลากเม้าส์นิ่งๆ)
+        if (continuousAudioSource.isPlaying)
+        {
+            // ถ้าเวลาผ่านไปเกิน 0.15 วิ โดยไม่ได้ถูโดนอะไรเลย ให้หยุดเสียง
+            if (Time.time - lastDirtTime > 0.15f)
+            {
+                continuousAudioSource.Stop();
+            }
+        }
+    }
+
+    // ==================================================================================
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -119,9 +128,8 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
     public void OnDrag(PointerEventData eventData)
     {
         if (!IsOpen || IsCompleted) return;
-        if (dirtyTexture == null || pixelData == null) return; // Check pixelData too
+        if (dirtyTexture == null || pixelData == null) return;
 
-        // แปลงตำแหน่งหน้าจอเป็น Local Point ภายใน RectTransform ของ dirtyOverlay
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             dirtyOverlay.rectTransform,
             eventData.position,
@@ -129,7 +137,6 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
             out Vector2 localPoint
         );
 
-        // แปลง Local Point เป็นพิกเซล (0 ถึง width/height)
         Vector2 textureCoord = new Vector2(
             (localPoint.x - dirtyOverlay.rectTransform.rect.x) * (dirtyTexture.width / dirtyOverlay.rectTransform.rect.width),
             (localPoint.y - dirtyOverlay.rectTransform.rect.y) * (dirtyTexture.height / dirtyOverlay.rectTransform.rect.height)
@@ -140,14 +147,14 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // สิ้นสุดการลาก
+        // [NEW] หยุดเสียงทันทีเมื่อปล่อยมือ
+        if (continuousAudioSource != null && continuousAudioSource.isPlaying)
+        {
+            continuousAudioSource.Stop();
+        }
     }
 
-    #endregion
-
     // ==================================================================================
-
-    #region Reset & Initialization Logic
 
     private void ResetTask()
     {
@@ -157,29 +164,22 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
 
         if (dirtyTexture != null)
         {
-            UnityEngine.Object.Destroy(dirtyTexture);
+            Destroy(dirtyTexture);
             dirtyTexture = null;
         }
-        // Clear the C# array
         pixelData = null;
     }
 
     private void InitializeDirtyTexture()
     {
-        if (originalSourceTexture == null)
-        {
-            // LogError นี้จะยังคงอยู่เผื่อกรณีที่ลืมลาก 'dirtyOverlay' ใส่ใน Prefab
-            Debug.LogError("Original Source Texture is missing or invalid. Check Awake() error message.", this);
-            return;
-        }
+        if (originalSourceTexture == null) return;
 
         if (dirtyTexture != null)
         {
-            UnityEngine.Object.Destroy(dirtyTexture);
+            Destroy(dirtyTexture);
             dirtyTexture = null;
         }
 
-        // --- Create a copy (same as before) ---
         RenderTexture rt = RenderTexture.GetTemporary(
             originalSourceTexture.width,
             originalSourceTexture.height,
@@ -190,31 +190,27 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
         Graphics.Blit(originalSourceTexture, rt);
 
         dirtyTexture = new Texture2D(rt.width, rt.height, TextureFormat.RGBA32, false);
-        textureWidth = rt.width; // Store width
-        textureHeight = rt.height; // Store height
+        textureWidth = rt.width;
+        textureHeight = rt.height;
 
         RenderTexture previous = RenderTexture.active;
         RenderTexture.active = rt;
         dirtyTexture.ReadPixels(new Rect(0, 0, rt.width, rt.height), 0, 0);
-        dirtyTexture.Apply(); // Apply the ReadPixels
+        dirtyTexture.Apply();
         RenderTexture.active = previous;
         RenderTexture.ReleaseTemporary(rt);
 
-        // --- PERFORMANCE STEP 1: Get all pixels into C# array ONCE ---
         pixelData = dirtyTexture.GetPixels();
-        // -----------------------------------------------------------
 
         totalInitialAlpha = 0f;
         currentCleanedAlpha = 0f;
 
-        // Calculate total alpha from the C# array (faster)
         foreach (Color color in pixelData)
         {
             totalInitialAlpha += color.a;
         }
         totalDirtyPixels = pixelData.Length;
 
-        // Update the UI Sprite
         dirtyOverlay.sprite = Sprite.Create(
             dirtyTexture,
             new Rect(0, 0, dirtyTexture.width, dirtyTexture.height),
@@ -223,56 +219,41 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
         );
     }
 
-    #endregion
-
     // ==================================================================================
-
-    #region Sweeping and Progress Logic
 
     private void SweepAt(int px, int py)
     {
         int brushRadiusInt = Mathf.RoundToInt(brushRadius);
-        float localCleanedAlpha = 0f; // Alpha ที่ถูกกำจัดในการลากครั้งนี้
-        bool pixelChanged = false; // Flag to check if we need to Apply()
+        float localCleanedAlpha = 0f;
+        bool pixelChanged = false;
 
-        // Loop ตรวจสอบพิกเซลในรัศมีแปรง
         for (int x = px - brushRadiusInt; x <= px + brushRadiusInt; x++)
         {
             for (int y = py - brushRadiusInt; y <= py + brushRadiusInt; y++)
             {
-                // ตรวจสอบให้อยู่ในขอบเขตของ Texture
                 if (x >= 0 && x < textureWidth && y >= 0 && y < textureHeight)
                 {
                     float dist = Vector2.Distance(new Vector2(x, y), new Vector2(px, py));
 
                     if (dist <= brushRadius)
                     {
-                        // --- PERFORMANCE STEP 2: Operate on the C# array ---
-                        // Convert 2D (x,y) coord to 1D array index
                         int index = y * textureWidth + x;
-
                         Color currentColor = pixelData[index];
 
-                        if (currentColor.a > 0.001f) // ตรวจสอบว่ายังมี Alpha เหลืออยู่
+                        if (currentColor.a > 0.001f)
                         {
-                            float originalAlpha = currentColor.a; // Alpha ก่อนลด
-
-                            // คำนวณตัวคูณการลด (Brush Falloff)
+                            float originalAlpha = currentColor.a;
                             float alphaReductionFactor = Mathf.Clamp01(1f - dist / brushRadius);
-
-                            // คำนวณปริมาณที่ควรลด (ใช้ Fixed Reduction)
                             float reductionAmount = alphaReductionFactor * sweepStrength;
 
-                            // ลด Alpha และป้องกันไม่ให้ติดลบ
                             currentColor.a = Mathf.Max(0f, originalAlpha - reductionAmount);
 
-                            // คำนวณปริมาณ Alpha ที่ถูกลบออกไปจริง
                             float actualReduction = originalAlpha - currentColor.a;
 
                             if (actualReduction > 0)
                             {
                                 localCleanedAlpha += actualReduction;
-                                pixelData[index] = currentColor; // Write back to C# array
+                                pixelData[index] = currentColor;
                                 pixelChanged = true;
                             }
                         }
@@ -281,15 +262,26 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
             }
         }
 
-        if (pixelChanged) // Only Apply if changes were made
+        if (pixelChanged)
         {
-            // --- PERFORMANCE STEP 3: Upload the entire array in one go ---
-            dirtyTexture.SetPixels(pixelData);
+            // --- [NEW] Logic การเล่นเสียงแบบต่อเนื่อง ---
+            lastDirtTime = Time.time; // บันทึกเวลาว่า "พึ่งจะถูโดนสิ่งสกปรกนะ"
 
-            // --- PERFORMANCE STEP 4: Apply without mipmaps ---
+            if (continuousAudioSource != null)
+            {
+                // ถ้าเสียงยังไม่เล่น ให้เล่นเลย
+                if (!continuousAudioSource.isPlaying && sweepSound != null)
+                {
+                    continuousAudioSource.clip = sweepSound;
+                    continuousAudioSource.volume = sfxVolume;
+                    continuousAudioSource.Play();
+                }
+            }
+
+            dirtyTexture.SetPixels(pixelData);
             dirtyTexture.Apply(false);
 
-            currentCleanedAlpha += localCleanedAlpha; // อัปเดตปริมาณที่ถูกกำจัดแล้วทั้งหมด
+            currentCleanedAlpha += localCleanedAlpha;
             CalculateProgress();
         }
     }
@@ -298,23 +290,30 @@ public class SweepingTask : TaskBase, IBeginDragHandler, IDragHandler, IEndDragH
     {
         if (totalInitialAlpha <= 0f)
         {
-            currentSweepProgress = 1f; // ป้องกันการหารด้วยศูนย์
+            currentSweepProgress = 1f;
             return;
         }
 
-        // คำนวณความคืบหน้าจากปริมาณ Alpha ที่ถูกกำจัด / Alpha เริ่มต้นทั้งหมด
         currentSweepProgress = currentCleanedAlpha / totalInitialAlpha;
-
-        // จำกัดค่าสูงสุดไม่ให้เกิน 1.0
         currentSweepProgress = Mathf.Clamp01(currentSweepProgress);
 
         if (progressBar) progressBar.value = currentSweepProgress;
 
         if (currentSweepProgress >= requiredSweepAmount)
         {
+            PlayCompleteSound();
             CompleteTask();
+
+            // [NEW] จบเกมแล้วหยุดเสียงถูทันที
+            if (continuousAudioSource != null) continuousAudioSource.Stop();
         }
     }
 
-    #endregion
+    private void PlayCompleteSound()
+    {
+        if (AudioManager.Instance != null && completeSound != null)
+        {
+            AudioManager.Instance.PlaySFX(completeSound, sfxVolume, 0f);
+        }
+    }
 }

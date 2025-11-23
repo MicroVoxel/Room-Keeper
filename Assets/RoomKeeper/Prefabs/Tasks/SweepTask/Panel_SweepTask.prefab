@@ -699,12 +699,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SweepingTask
   panel: {fileID: 6928217139107290743}
   expReward: 20
-  requiredSweepAmount: 0.99
-  sweepStrength: 0.1
+  requiredSweepAmount: 0.95
+  sweepStrength: 0.2
   currentSweepProgress: 0
   dirtyOverlay: {fileID: 3365176194706910094}
   progressBar: {fileID: 7837391080712315162}
   brushRadius: 100
+  sweepSound: {fileID: 8300000, guid: 9707125f192e47646b3370a568e7a2ff, type: 3}
+  completeSound: {fileID: 0}
+  sfxVolume: 1
+  sweepAudioInterval: 0.15
 --- !u!1 &8688366343418856161
 GameObject:
   m_ObjectHideFlags: 0

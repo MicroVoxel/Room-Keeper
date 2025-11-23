@@ -5,7 +5,7 @@ using TMPro;
 
 /// <summary>
 /// "สมอง" ของมินิเกมปั๊มส้วม/อ่าง (สืบทอดจาก TaskBase)
-/// แปะสคริปต์นี้ไว้ที่ GameObject หลักของ Panel ภารกิจ
+/// เวอร์ชั่น: เพิ่มเสียง SFX ปั๊มน้ำ (Integrated with AudioManager)
 /// </summary>
 public class Task_UnclogDrain : TaskBase
 {
@@ -34,12 +34,19 @@ public class Task_UnclogDrain : TaskBase
     [Tooltip("ระยะเวลาการสั่น (seconds)")]
     public float shakeDuration = 0.15f;
 
+    [Header("Audio")]
+    [Tooltip("เสียงเมื่อกดปั๊ม (ควรเป็นเสียงสั้นๆ หนึบๆ)")]
+    public AudioClip plungeSound;
+    [Tooltip("เสียงเมื่อทำภารกิจสำเร็จ (น้ำไหลลง)")]
+    public AudioClip completeSound;
+    [Range(0f, 1f)] public float sfxVolume = 1f;
+
     [Header("Progress")]
     private float currentProgress = 0f;
     private Coroutine plungerAnimationCoroutine;
-    private Coroutine progressShakeCoroutine; // <- เพิ่มตัวแปรสำหรับ Coroutine สั่น
+    private Coroutine progressShakeCoroutine;
     private Vector2 plungerOriginalPos;
-    private Vector2 progressBarOriginalPos; // <- เพิ่มตัวแปรเก็บตำแหน่งดั้งเดิม
+    private Vector2 progressBarOriginalPos;
 
     // --- TaskBase Overrides & Setup ---
 
@@ -62,7 +69,6 @@ public class Task_UnclogDrain : TaskBase
             plungerOriginalPos = plungerImage.anchoredPosition;
         }
 
-        // ++ เพิ่มเข้ามา ++
         // เก็บตำแหน่งดั้งเดิมของ Progress Bar
         if (progressBar != null)
         {
@@ -73,7 +79,6 @@ public class Task_UnclogDrain : TaskBase
     override protected void Start()
     {
         base.Start();
-        // ไม่ต้องทำอะไรเป็นพิเศษใน Start()
     }
 
     public override void Open()
@@ -87,7 +92,6 @@ public class Task_UnclogDrain : TaskBase
     public override void Close()
     {
         base.Close();
-        // ไม่ต้องทำอะไรเป็นพิเศษเมื่อปิด
     }
 
     // --- Game Logic ---
@@ -110,6 +114,9 @@ public class Task_UnclogDrain : TaskBase
     {
         if (IsCompleted || !IsOpen) return;
 
+        // --- [NEW] เล่นเสียง SFX ---
+        PlayPlungeSound();
+
         // 1. เพิ่มความคืบหน้า
         currentProgress += progressPerPlunge;
         currentProgress = Mathf.Clamp(currentProgress, 0, requiredProgress);
@@ -121,7 +128,6 @@ public class Task_UnclogDrain : TaskBase
             plungerAnimationCoroutine = StartCoroutine(PlungerAnimation());
         }
 
-        // ++ เพิ่มเข้ามา ++
         // สั่งให้ Progress Bar สั่น
         if (progressBar != null)
         {
@@ -132,6 +138,16 @@ public class Task_UnclogDrain : TaskBase
         // 3. อัปเดต UI และตรวจสอบว่าชนะหรือยัง
         UpdateUI();
         CheckForCompletion();
+    }
+
+    private void PlayPlungeSound()
+    {
+        // ใช้ AudioManager เพื่อ Performance และควบคุมผ่าน SFX Slider
+        if (AudioManager.Instance != null && plungeSound != null)
+        {
+            // Pitch Variance 0.1f ช่วยให้เสียงปั๊มดูสมจริง ไม่ซ้ำซาก
+            AudioManager.Instance.PlaySFX(plungeSound, sfxVolume, 0.1f);
+        }
     }
 
     /// <summary>
@@ -167,6 +183,12 @@ public class Task_UnclogDrain : TaskBase
             if (plungerButton != null)
             {
                 plungerButton.interactable = false; // ปิดปุ่ม (กันคลิกต่อ)
+            }
+
+            // เล่นเสียงสำเร็จ (ถ้ามี)
+            if (AudioManager.Instance != null && completeSound != null)
+            {
+                AudioManager.Instance.PlaySFX(completeSound, sfxVolume, 0f);
             }
 
             // เรียกฟังก์ชันหลักของ TaskBase
@@ -210,7 +232,7 @@ public class Task_UnclogDrain : TaskBase
     }
 
     /// <summary>
-    /// (NEW) Coroutine สำหรับสั่น ProgressBar
+    /// Coroutine สำหรับสั่น ProgressBar
     /// </summary>
     IEnumerator ShakeProgressBar()
     {

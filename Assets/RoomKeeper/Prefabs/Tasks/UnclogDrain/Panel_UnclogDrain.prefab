@@ -309,6 +309,9 @@ MonoBehaviour:
   requiredProgress: 100
   shakeIntensity: 5
   shakeDuration: 0.15
+  plungeSound: {fileID: 8300000, guid: 88ec3f65b7edaaa48bc113c16921ec5f, type: 3}
+  completeSound: {fileID: 0}
+  sfxVolume: 1
 --- !u!1 &1936156737547073451
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +339,7 @@ RectTransform:
   m_GameObject: {fileID: 1936156737547073451}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5532525873404684448}
@@ -871,7 +874,7 @@ RectTransform:
   m_GameObject: {fileID: 7068299517187103248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3439272630685234262}
@@ -998,8 +1001,8 @@ RectTransform:
   m_GameObject: {fileID: 8657089967066584547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3743926213891762019}
   m_Father: {fileID: 4656261148468605954}

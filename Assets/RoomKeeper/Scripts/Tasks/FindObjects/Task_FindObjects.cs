@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 /// <summary>
 /// 1. "สมอง" ของมินิเกมหาของ (สืบทอดจาก TaskBase)
-/// แปะสคริปต์นี้ไว้ที่ GameObject หลักของ Panel ภารกิจ
+/// เวอร์ชั่น: เพิ่มเสียง SFX เมื่อหาของเจอ (Integrated with AudioManager)
 /// </summary>
 public class Task_FindObjects : TaskBase
 {
@@ -17,7 +17,13 @@ public class Task_FindObjects : TaskBase
     public TMP_Text counterText;
 
     [Tooltip("(Optional) เป้าหมายที่ไอเทมจะลอยไปหา (เช่น RectTransform ของ Counter)")]
-    public RectTransform collectTarget; // <-- ++ เพิ่มเข้ามา ++
+    public RectTransform collectTarget;
+
+    [Header("Audio")]
+    [Tooltip("เสียงเมื่อหาของเจอ (เช่น เสียงปิ๊ง!)")]
+    public AudioClip foundSound;
+    [Tooltip("ความดังของเสียง (0-1)")]
+    [Range(0f, 1f)] public float sfxVolume = 1f;
 
     [Header("Progress")]
     private int foundCount = 0;
@@ -44,7 +50,6 @@ public class Task_FindObjects : TaskBase
         {
             if (item != null)
             {
-                // ++ อัปเดตเมธอด Initialize ++
                 item.Initialize(this, collectTarget);
             }
         }
@@ -88,15 +93,26 @@ public class Task_FindObjects : TaskBase
     {
         if (IsCompleted) return;
 
+        // --- [NEW] เล่นเสียง SFX ---
+        PlayFindSound();
+
         foundCount++;
         UpdateCounter();
-
-        // (Optional) เล่นเสียง "ติ๊ง!"
 
         // ตรวจสอบว่าครบจำนวนหรือยัง
         if (foundCount >= totalItems)
         {
             CompleteTask();
+        }
+    }
+
+    private void PlayFindSound()
+    {
+        // ใช้ AudioManager เพื่อ Performance และการจัดการ Mixer ที่ดีที่สุด
+        if (AudioManager.Instance != null && foundSound != null)
+        {
+            // Pitch Variance 0.1f ช่วยให้เสียงดู Dynamic เวลาเก็บของต่อเนื่อง
+            AudioManager.Instance.PlaySFX(foundSound, sfxVolume, 0.1f);
         }
     }
 

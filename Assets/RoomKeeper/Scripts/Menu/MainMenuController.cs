@@ -38,11 +38,18 @@ public class MainMenuController : MonoBehaviour
 
     [Header("Panels")]
     [SerializeField] private GameObject levelsPanel;
+    [SerializeField] private GameObject settingsPanel; // [NEW] เพิ่มช่องใส่ Settings Panel
     [SerializeField] private Transform levelsContainer;
 
     [Header("Buttons (Optional)")]
     [Tooltip("ลากปุ่ม Close ใน LevelPanel มาใส่ที่นี่")]
     [SerializeField] private Button closeLevelsPanelButton;
+
+    [Tooltip("ลากปุ่ม Setting (รูปฟันเฟือง) ในหน้าเมนูมาใส่ที่นี่")]
+    [SerializeField] private Button openSettingsButton; // [NEW]
+
+    [Tooltip("ลากปุ่ม Close ใน SettingsPanel มาใส่ที่นี่")]
+    [SerializeField] private Button closeSettingsButton; // [NEW]
 
     [Header("Prefabs")]
     [SerializeField] private GameObject levelButtonPrefab;
@@ -67,11 +74,6 @@ public class MainMenuController : MonoBehaviour
 
     private void Awake()
     {
-        // แก้ไข Singleton Logic:
-        // ถ้ามี Instance เดิมอยู่แล้ว ให้ทำลายตัวเดิมทิ้ง! 
-        // และให้ตัวใหม่ (this) เป็น Instance แทน
-        // เหตุผล: เพราะปุ่ม UI ใน Scene นี้ถูก Link ไว้กับตัวใหม่ (this) 
-        // ถ้าเราทำลายตัวใหม่ ปุ่มจะกดไม่ติด
         if (Instance != null && Instance != this)
         {
             Destroy(Instance.gameObject);
@@ -83,35 +85,59 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
-        // Setup ปุ่ม Close
-        if (closeLevelsPanelButton != null)
-        {
-            closeLevelsPanelButton.onClick.RemoveAllListeners();
-            closeLevelsPanelButton.onClick.AddListener(OnCloseLevelsPanelClicked);
-        }
+        SetupButtons();
 
         // Logic การแสดงผลเริ่มต้น
         if (SceneManager.GetActiveScene().name == mainMenuSceneName)
         {
-            // ถ้าอยู่ในหน้า Menu ให้สร้างปุ่มเลือกด่านรอไว้เลย
             CreateLevelButtons();
-            if (levelsPanel != null) levelsPanel.SetActive(false);
+            HideAllPanels(); // ซ่อนทุก Panel ตอนเริ่ม
         }
         else
         {
-            // ถ้าข้าม Scene ไปหน้าเกม ให้ซ่อน Panel ไว้
-            if (levelsPanel != null) levelsPanel.SetActive(false);
+            HideAllPanels();
         }
     }
 
-    // -------------------- UI Control --------------------
+    private void SetupButtons()
+    {
+        // 1. Setup Level Panel Buttons
+        if (closeLevelsPanelButton != null)
+        {
+            closeLevelsPanelButton.onClick.RemoveAllListeners();
+            closeLevelsPanelButton.onClick.AddListener(HideLevelsPanel);
+        }
+
+        // 2. Setup Settings Panel Buttons [NEW]
+        if (openSettingsButton != null)
+        {
+            openSettingsButton.onClick.RemoveAllListeners();
+            openSettingsButton.onClick.AddListener(ShowSettingsPanel);
+        }
+
+        if (closeSettingsButton != null)
+        {
+            // เทคนิคสำคัญ: RemoveAllListeners จะช่วยลบคำสั่งเก่าที่ติดมาจาก Script อื่น (เช่น GameUIManager)
+            // ทำให้เราใช้ Prefab ตัวเดิมได้โดยไม่ Error
+            closeSettingsButton.onClick.RemoveAllListeners();
+            closeSettingsButton.onClick.AddListener(HideSettingsPanel);
+        }
+    }
+
+    private void HideAllPanels()
+    {
+        if (levelsPanel != null) levelsPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
+    }
+
+    // -------------------- UI Control : Levels --------------------
 
     public void ShowLevelsPanel()
     {
         if (levelsPanel != null)
         {
+            HideSettingsPanel(); // ปิด Setting ก่อนเปิด Level (กันซ้อน)
             levelsPanel.SetActive(true);
-            // รีเฟรชปุ่มทุกครั้งที่เปิด (เผื่อดาวมีการเปลี่ยนแปลง)
             CreateLevelButtons();
         }
     }
@@ -121,10 +147,25 @@ public class MainMenuController : MonoBehaviour
         if (levelsPanel != null) levelsPanel.SetActive(false);
     }
 
-    public void OnCloseLevelsPanelClicked()
+    // -------------------- UI Control : Settings [NEW] --------------------
+
+    public void ShowSettingsPanel()
     {
-        HideLevelsPanel();
+        if (settingsPanel != null)
+        {
+            HideLevelsPanel(); // ปิด Level ก่อนเปิด Setting (กันซ้อน)
+            settingsPanel.SetActive(true);
+        }
     }
+
+    public void HideSettingsPanel()
+    {
+        if (settingsPanel != null) settingsPanel.SetActive(false);
+    }
+
+    // -------------------- General --------------------
+
+    public void OnCloseLevelsPanelClicked() => HideLevelsPanel();
 
     public void OnQuitPressed()
     {
@@ -140,11 +181,9 @@ public class MainMenuController : MonoBehaviour
     {
         if (levelButtonPrefab == null || levelsContainer == null) return;
 
-        // ล้างปุ่มเก่า
         foreach (Transform c in levelsContainer)
             Destroy(c.gameObject);
 
-        // สร้างปุ่มใหม่
         for (int i = 0; i < levelEntries.Count; i++)
         {
             LevelEntry entry = levelEntries[i];
@@ -160,7 +199,7 @@ public class MainMenuController : MonoBehaviour
                             LevelProgressManager.Instance.GetLevelStars(levelIndex) : 0;
 
                 ui.Setup(levelIndex,
-                    string.IsNullOrEmpty(entry.displayName) ? $"Level {levelIndex}" : entry.displayName,
+                    string.IsNullOrEmpty(entry.displayName) ? $"{levelIndex}" : entry.displayName,
                     unlocked,
                     stars);
             }
