@@ -229,7 +229,7 @@ public class AdsManager : MonoBehaviour
         if (bannerAd != null)
         {
             bannerAd.HideAd();
-            DisposeBanner();
+            // DisposeBanner();
         }
     }
 

@@ -1,0 +1,6380 @@
+﻿#include "pch-cpp.hpp"
+
+
+
+
+
+template <typename R>
+struct VirtualFuncInvoker0
+{
+	typedef R (*Func)(void*, const RuntimeMethod*);
+
+	static inline R Invoke (Il2CppMethodSlot slot, RuntimeObject* obj)
+	{
+		const VirtualInvokeData& invokeData = il2cpp_codegen_get_virtual_invoke_data(slot, obj);
+		return ((Func)invokeData.methodPtr)(obj, invokeData.method);
+	}
+};
+struct InterfaceActionInvoker0
+{
+	typedef void (*Action)(void*, const RuntimeMethod*);
+
+	static inline void Invoke (Il2CppMethodSlot slot, RuntimeClass* declaringInterface, RuntimeObject* obj)
+	{
+		const VirtualInvokeData& invokeData = il2cpp_codegen_get_interface_invoke_data(slot, obj, declaringInterface);
+		((Action)invokeData.methodPtr)(obj, invokeData.method);
+	}
+};
+template <typename R>
+struct InterfaceFuncInvoker0
+{
+	typedef R (*Func)(void*, const RuntimeMethod*);
+
+	static inline R Invoke (Il2CppMethodSlot slot, RuntimeClass* declaringInterface, RuntimeObject* obj)
+	{
+		const VirtualInvokeData& invokeData = il2cpp_codegen_get_interface_invoke_data(slot, obj, declaringInterface);
+		return ((Func)invokeData.methodPtr)(obj, invokeData.method);
+	}
+};
+
+struct Action_1_tBBC611382C7211FB870AB6B82164F24B27C1B421;
+struct Action_2_tBABFA1FBFBCD8E8B40EB5BDD131E2B7CBF7F2F1C;
+struct Action_2_t48A4D16145E3E6532845F8D1F1631C7922F46B5A;
+struct Dictionary_2_t2A9A7F3ECFC3483F89253F3C4BB5BE98A37F6EF3;
+struct Dictionary_2_t14FE4A752A83D53771C584E4C8D14E01F2AFD7BA;
+struct Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710;
+struct Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5;
+struct Func_2_tD09524AE0D223491FAE25D1029A6E28481814997;
+struct Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512;
+struct Func_2_tE1F0D41563EE092E5E5540B061449FDE88F1DC00;
+struct Func_2_tACBF5A1656250800CE861707354491F0611F6624;
+struct Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E;
+struct Func_2_t6F18BD99DBFD8DEA66D59FD826E9068B8B427900;
+struct HashSet_1_t2F33BEB06EEA4A872E2FAF464382422AA39AE885;
+struct HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178;
+struct IEnumerable_1_tD3389067CF1DBB30D7B82BC3171E67FCD3A1C513;
+struct IEnumerable_1_tF95C9E01A913DD50575531C8305932628663D9E9;
+struct IEnumerable_1_t50DFDAD31240CA6A66F6B8473AF4F4B8B19324AD;
+struct IEnumerable_1_t349E66EC5F09B881A8E52EE40A1AB9EC60E08E44;
+struct IEnumerator_1_tBDEF718EE6EB3FBF3046DBFAAE922D84838F9814;
+struct IEnumerator_1_tAFB5E5CCED9DEEA334AB963181D0E98947DB6E68;
+struct IEqualityComparer_1_tAE94C8F24AD5B94D4EE85CA9FC59E3409D41CAF7;
+struct IReadOnlyCollection_1_tDB409F252840B6BFA5B80B397D650061EA3DF362;
+struct KeyCollection_tE66790F09E854C19C7F612BEAD203AE626E90A36;
+struct KeyCollection_tE24A48F171FBF2B50E33675F12C31965287BD45E;
+struct List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF;
+struct List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D;
+struct List_1_tA265F918639F90CCD79CA8254869495172C9BF18;
+struct List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D;
+struct List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD;
+struct ValueCollection_tC9D91E8A3198E40EA339059703AB10DFC9F5CC2E;
+struct ValueCollection_t5BD6AD2FD43C40227D2B02CC1D4D695C3DBD3C85;
+struct EntryU5BU5D_t233BB24ED01E2D8D65B0651D54B8E3AD125CAF96;
+struct EntryU5BU5D_t148C114FE073CBFBDC2560B8AC93EA7228923719;
+struct SlotU5BU5D_t8B8EE191EEC1575F1F0CAC91A208DBFDF2821D01;
+struct AndroidJavaObjectU5BU5D_tBCEB142050F282B940177011644246618E002001;
+struct ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031;
+struct CharU5BU5D_t799905CF001DD5F13F7DBB310181FC4D8B7D0AAB;
+struct DelegateU5BU5D_tC5AB7E8F745616680F337909D3A8E6C722CDF771;
+struct Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C;
+struct IntPtrU5BU5D_tFD177F8C806A6921AD7150264CCC62FA00CAD832;
+struct ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918;
+struct ProductDescriptionU5BU5D_t2735E7AA76B0061766D22EF9081E71FD054E0282;
+struct StackTraceU5BU5D_t32FBCB20930EAF5BAE3F450FF75228E5450DA0DF;
+struct StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248;
+struct AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03;
+struct AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0;
+struct ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263;
+struct DelegateData_t9B286B493293CD2D23A5B2B5EF0E5B1324C2B77E;
+struct Exception_t;
+struct GlobalJavaObjectRef_t20D8E5AAFC2EB2518FCABBF40465855E797FF0D8;
+struct GoogleAcknowledgePurchaseListener_tAEDDA2EA0541273BEB1B3EB3FD570C52607D5709;
+struct GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54;
+struct GoogleBillingResult_tC73DBFC9ADA1CAB5A40242B2B802FE310FF5BBD7;
+struct GoogleConsumeResponseListener_t0ED2834EA7D01A19742CD5903E3AD759E9762616;
+struct GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23;
+struct GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0;
+struct GooglePurchaseStateEnumProvider_t011E4AA2923CC14A6C617ABAAD1C5AEE9FDE8029;
+struct GooglePurchasesResponseListener_tFFD56062E067D4343972FA8B07E9EAEEDD233D42;
+struct IBillingClientStateListener_tEBEE0A4608BD1751EBF1DF535370A1144B320373;
+struct IDictionary_t6D03155AF1FA9083817AA5B6AD7DEEACC26AB220;
+struct IGoogleBillingResult_tFEE198A7285AD1E45EB91CBB160F990FEFBED128;
+struct IGooglePurchasesUpdatedListener_tA200661BB213871A4F104A5B889BF191E50D1315;
+struct ILogger_tD1F573C6DC829FBA987FA1EBA0A5FA64E0C2BC42;
+struct ITelemetryDiagnostics_tBC2EC06AD5C71BAFADBACFAC53A33797C33E127D;
+struct IUtil_t7909908832446A01C893925BD0795F01D065F23E;
+struct MethodInfo_t;
+struct ProductDefinition_tB486F56477C49E81BA6704C2DD31F373CDCCC1BD;
+struct ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A;
+struct ProductDetailsConverter_t3B5F595B574B4ACC2B7BFEFDC00362F57828B498;
+struct ProductDetailsResponseListener_tC344C020B1D1F4A4B70300985477D02E90973D2A;
+struct ProductMetadata_t2D6C6454A305A6790D8903169E3B136EB13417E1;
+struct SafeSerializationManager_tCBB85B95DFD1634237140CD892E82D06ECB3F5E6;
+struct SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37;
+struct String_t;
+struct Void_t4861ACF8F4594C3437BB48B6E56783494B843915;
+struct U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6;
+struct U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379;
+struct U3CU3Ec__DisplayClass6_0_t3FE9CF80417B1FA15E586B3373601F53E94EA26D;
+struct U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5;
+
+IL2CPP_EXTERN_C RuntimeClass* AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Convert_t7097FF336D592F7C06D88A98349A44646F91EFFC_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Exception_t_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Func_2_t6F18BD99DBFD8DEA66D59FD826E9068B8B427900_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Func_2_tD09524AE0D223491FAE25D1029A6E28481814997_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* GoogleAcknowledgePurchaseListener_tAEDDA2EA0541273BEB1B3EB3FD570C52607D5709_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* GoogleConsumeResponseListener_t0ED2834EA7D01A19742CD5903E3AD759E9762616_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* GooglePurchasesResponseListener_tFFD56062E067D4343972FA8B07E9EAEEDD233D42_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* IEnumerable_1_t2BD41C083C8A0ED1A3EEE3F369A8F72250106A54_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* IEnumerable_1_tD3389067CF1DBB30D7B82BC3171E67FCD3A1C513_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* IEnumerator_1_tAFB5E5CCED9DEEA334AB963181D0E98947DB6E68_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* IEnumerator_1_tBDEF718EE6EB3FBF3046DBFAAE922D84838F9814_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* IEnumerator_t7B609C2FFA6EB5167D9C62A0C32A21DE2F666DAA_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* ProductDetailsResponseListener_tC344C020B1D1F4A4B70300985477D02E90973D2A_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C String_t* _stringLiteral001453AEE96196C60F5094DBB37BD7779972F12D;
+IL2CPP_EXTERN_C String_t* _stringLiteral028514C8E27F27484E9E866C553393D43DC84EDA;
+IL2CPP_EXTERN_C String_t* _stringLiteral0473EFA899319A8DA704762486EF8E16B6B52F4A;
+IL2CPP_EXTERN_C String_t* _stringLiteral04AD085524DDE5FCAC5C8B9E97BFC562CEBACED4;
+IL2CPP_EXTERN_C String_t* _stringLiteral06DA7A6725335BF9DA20C0B251038B1F00B015B2;
+IL2CPP_EXTERN_C String_t* _stringLiteral089C1E0B9EE6ADF5F979F43928FBC4C73BC1DC92;
+IL2CPP_EXTERN_C String_t* _stringLiteral13202C6C25283141F10049D7942E8C0DAC19851E;
+IL2CPP_EXTERN_C String_t* _stringLiteral137D1EB0BCE08F87E3D7F7F38ECE20286493C98E;
+IL2CPP_EXTERN_C String_t* _stringLiteral15B1C50AC67290F0E9030156D927C2ED672B7886;
+IL2CPP_EXTERN_C String_t* _stringLiteral185EA08EFC15CA94E2EEC2396C949698CC067FDB;
+IL2CPP_EXTERN_C String_t* _stringLiteral240A4EF75B062CE86A8F921B98896CED0E932E92;
+IL2CPP_EXTERN_C String_t* _stringLiteral24D3DE153958E752CFE514CB0421AEAA5D3AC266;
+IL2CPP_EXTERN_C String_t* _stringLiteral269B276065AA2FD25E2FC1E4ED6E8FBDFB83D44D;
+IL2CPP_EXTERN_C String_t* _stringLiteral27353943B75B826B09C910934BD0E73236675429;
+IL2CPP_EXTERN_C String_t* _stringLiteral2778FD4BAB0076B85A6DC02C1B233BF0A7848FC0;
+IL2CPP_EXTERN_C String_t* _stringLiteral27B234DC11D2305D0666E3721A55FF75AF72BDD3;
+IL2CPP_EXTERN_C String_t* _stringLiteral2CC71DBDCE6B0FAE2580070B39FD7E51B3684ECD;
+IL2CPP_EXTERN_C String_t* _stringLiteral2EEF37D6A386B319CBF0D882768298D398E12027;
+IL2CPP_EXTERN_C String_t* _stringLiteral2FF8A519504C6CCE22675AFBE30EAD3B2AA5F1F6;
+IL2CPP_EXTERN_C String_t* _stringLiteral3017ACDB93239AED1C27BEDC754A553B57D50C27;
+IL2CPP_EXTERN_C String_t* _stringLiteral3261C3E11E9AB172DA0BD2010EF79C41DE23C91C;
+IL2CPP_EXTERN_C String_t* _stringLiteral340DB43651243B0EB46CD1418A871184AEEFC6DA;
+IL2CPP_EXTERN_C String_t* _stringLiteral36E77E9491650B09E62878D9730C867FEA84FCD8;
+IL2CPP_EXTERN_C String_t* _stringLiteral37DE638335775168CC634695107CD741DC14F2BC;
+IL2CPP_EXTERN_C String_t* _stringLiteral3A6FCCACB316144D2A8F7B39C2E8C4355CD37A79;
+IL2CPP_EXTERN_C String_t* _stringLiteral3DDB68CEBE2A296CAFE7ED1B52D8A053FB9C9F3E;
+IL2CPP_EXTERN_C String_t* _stringLiteral3F0F1E07DE00187242419D20E086A08C254DDED5;
+IL2CPP_EXTERN_C String_t* _stringLiteral402C5532DF27B27F8A09150739866753D6F5F7DC;
+IL2CPP_EXTERN_C String_t* _stringLiteral4194D75E2C3FBBD4C69049055CAC47A6027C0917;
+IL2CPP_EXTERN_C String_t* _stringLiteral43187C90BBB5DFB063A95733C9BD65ECD25A2E84;
+IL2CPP_EXTERN_C String_t* _stringLiteral450C8EF3D0450ABCD23C53730AAA221835C6A350;
+IL2CPP_EXTERN_C String_t* _stringLiteral4AB2B70CADC85FDC6915309B826BAACC5034EDD4;
+IL2CPP_EXTERN_C String_t* _stringLiteral4AF84F16421B44F3C9DB949CA6917212BBB501AB;
+IL2CPP_EXTERN_C String_t* _stringLiteral4DA292056609E91DF87CFB0BE26ACC4860B8C273;
+IL2CPP_EXTERN_C String_t* _stringLiteral4E5B2566BC5D188977FB56C7B6DA93D2CAE621D6;
+IL2CPP_EXTERN_C String_t* _stringLiteral58BB47D89B96E4992A8CEB702213DCC616635297;
+IL2CPP_EXTERN_C String_t* _stringLiteral5A0370C4053F9CFA36D6BC04AF621FE2F3C3BEF3;
+IL2CPP_EXTERN_C String_t* _stringLiteral5A76D7A13D6D89B55DBECE0F9BCD1BAB6886FE68;
+IL2CPP_EXTERN_C String_t* _stringLiteral5BEFD8CC60A79699B5BB00E37BAC5B62D371E174;
+IL2CPP_EXTERN_C String_t* _stringLiteral5E9A8B9490715BE488FC276751AC092CED72E331;
+IL2CPP_EXTERN_C String_t* _stringLiteral63C24B473E127CB6B089ACEF244BCB238A34E135;
+IL2CPP_EXTERN_C String_t* _stringLiteral6A966D8AB32F294E048C82F71CC1D3707B8B30B5;
+IL2CPP_EXTERN_C String_t* _stringLiteral6AF27898A60AD4C1341A7F597C946906F75565C5;
+IL2CPP_EXTERN_C String_t* _stringLiteral6DAB35E4EA4BBD5AF1473155FA1288D974D1DAD9;
+IL2CPP_EXTERN_C String_t* _stringLiteral749B5A6C4E6A22041D2FDE23D4F777D502935009;
+IL2CPP_EXTERN_C String_t* _stringLiteral7DF2D77A4C0E1D0B34B035D65123E0BE0BE49DC6;
+IL2CPP_EXTERN_C String_t* _stringLiteral7EAA36A2FA423A2F4EC17CAF0D570368377D98FE;
+IL2CPP_EXTERN_C String_t* _stringLiteral7FEA58AAF24C61EE697135803E8D03C83500C3F5;
+IL2CPP_EXTERN_C String_t* _stringLiteral808C861A40EFD3D5D20185A5FF95455AD503CED1;
+IL2CPP_EXTERN_C String_t* _stringLiteral81A32E61A5F16E99CF39817CE91BFA3957C33126;
+IL2CPP_EXTERN_C String_t* _stringLiteral82E7FD0A6F1924734BD56BAAC0E26EAAB7666434;
+IL2CPP_EXTERN_C String_t* _stringLiteral87C956E84393E45F047CF04B48F5CDAC75666A87;
+IL2CPP_EXTERN_C String_t* _stringLiteral8A0C00507160E0F1EB2F6C3579529D1B4011A3F7;
+IL2CPP_EXTERN_C String_t* _stringLiteral916DF34ED2E6997F7A6634B168A4B941122F7F75;
+IL2CPP_EXTERN_C String_t* _stringLiteral926E4E2E295D4BAAA44EDDF3ED7513D905F02B5E;
+IL2CPP_EXTERN_C String_t* _stringLiteral92A0367A0299056CA05B86632AFA0D8FA9C6BF91;
+IL2CPP_EXTERN_C String_t* _stringLiteral9303FDBBA3EA9F42A781A1107ABF8F1702BF684C;
+IL2CPP_EXTERN_C String_t* _stringLiteral99BDE0852A37C41143397A710B072839C0E4E659;
+IL2CPP_EXTERN_C String_t* _stringLiteral9C65AE428D66E9596028DEE3D50639FC92DA9E83;
+IL2CPP_EXTERN_C String_t* _stringLiteral9CCC0F42EB96D4600C1A6E282B06C11F67181066;
+IL2CPP_EXTERN_C String_t* _stringLiteralA44250C90C4461C6F602B3B9DC9B873627787D3B;
+IL2CPP_EXTERN_C String_t* _stringLiteralA4829F72F98AFAE68C1BD720A5AC1C7E0D6FBA29;
+IL2CPP_EXTERN_C String_t* _stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728;
+IL2CPP_EXTERN_C String_t* _stringLiteralAAC23CE504B2ED9A0FC4EDCACBAE59137FE737CA;
+IL2CPP_EXTERN_C String_t* _stringLiteralB1E2BCF6BC5C9F5ECBC73591C6F3E5F83C9F1492;
+IL2CPP_EXTERN_C String_t* _stringLiteralB5F2E6B4108DB675C4F88DEA3BDBFA1C96F0FAFD;
+IL2CPP_EXTERN_C String_t* _stringLiteralB68F28755D63FE386531C2F52FF6A58B380E0ECC;
+IL2CPP_EXTERN_C String_t* _stringLiteralB7714C6CF87BDF83FE83E998957A5E3D2AF36C42;
+IL2CPP_EXTERN_C String_t* _stringLiteralB8A9F89F0CCD9251509889DD428B8F0A0E89CCF4;
+IL2CPP_EXTERN_C String_t* _stringLiteralB8BC7930E582AA6BAB1D406C13A33E8384C67308;
+IL2CPP_EXTERN_C String_t* _stringLiteralBAC49E6DFC5B4CC3310673D8D72EA1E595137E56;
+IL2CPP_EXTERN_C String_t* _stringLiteralBB74BE2DE5EB08D80D4BB578E88FC96BDC00CCB4;
+IL2CPP_EXTERN_C String_t* _stringLiteralBD74378570B3ED5469D7445DBA3B74C52A2C30F4;
+IL2CPP_EXTERN_C String_t* _stringLiteralC0996A36415E22F8B9021DA5470FAD41831458D9;
+IL2CPP_EXTERN_C String_t* _stringLiteralC5EE8C59C90DE1E698A3010542A9B964C720ED30;
+IL2CPP_EXTERN_C String_t* _stringLiteralC7B4D926EF9532A71B25AEC040A33D52C926425F;
+IL2CPP_EXTERN_C String_t* _stringLiteralC90E9C620FF08EC425BBC933A1E5074B3084EFB0;
+IL2CPP_EXTERN_C String_t* _stringLiteralCE18B047107AA23D1AA9B2ED32D316148E02655F;
+IL2CPP_EXTERN_C String_t* _stringLiteralCE90F8BE99B1EC194755FA3F36466B13D50CA9C6;
+IL2CPP_EXTERN_C String_t* _stringLiteralD08C08BB30E60F619EEBCC0B2F49D9558244E875;
+IL2CPP_EXTERN_C String_t* _stringLiteralD1BC95382E937429BD5741792056300D87684F48;
+IL2CPP_EXTERN_C String_t* _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709;
+IL2CPP_EXTERN_C String_t* _stringLiteralDA8BCE10DEAE9B8E6EB9317CF4BFCE9A1D046B73;
+IL2CPP_EXTERN_C String_t* _stringLiteralE3ACC52D566F108F766CF5F9E424F0BE358B8EFC;
+IL2CPP_EXTERN_C String_t* _stringLiteralE565812FFC020552DFFD77790BE8337143B047AB;
+IL2CPP_EXTERN_C String_t* _stringLiteralE621E6581BCE23AE171A5EFE8813FCCCF6DC45FF;
+IL2CPP_EXTERN_C String_t* _stringLiteralEB534843932D1025EEE09575458F840C63DC1063;
+IL2CPP_EXTERN_C String_t* _stringLiteralEF3A9DCAC45177B69ED44FBD0E2790DE39431EBE;
+IL2CPP_EXTERN_C String_t* _stringLiteralF169275544223C785E8F3C2E7F2BB05FB2885329;
+IL2CPP_EXTERN_C String_t* _stringLiteralF3C6C902DBF80139640F6554F0C3392016A8ADF7;
+IL2CPP_EXTERN_C String_t* _stringLiteralF3DB8521ADB71488B0A3D538F58F98B35E326552;
+IL2CPP_EXTERN_C String_t* _stringLiteralF4262B73AC7C44E07E2F6D41896288A77A910452;
+IL2CPP_EXTERN_C String_t* _stringLiteralF6E05D2223FEAB96CFC1CB43F18B0AC110ED5872;
+IL2CPP_EXTERN_C String_t* _stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B;
+IL2CPP_EXTERN_C String_t* _stringLiteralFDDA0E2D635BC7B9C335D0CAD680D884795E20A6;
+IL2CPP_EXTERN_C String_t* _stringLiteralFE1CF444AC0595C59BD4C4EB8FA8AC9EF446A337;
+IL2CPP_EXTERN_C String_t* _stringLiteralFF8834D7BEB437FB27AB9B8F22E7A70654E9D30F;
+IL2CPP_EXTERN_C String_t* _stringLiteralFFA59E17C5130FD6E7E1D5621F39533B1120F332;
+IL2CPP_EXTERN_C const RuntimeMethod* AndroidJavaObjectExtensions_Enumerate_TisString_t_mB0A198813D8F760A00C172560F00E08F0C804AD9_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AndroidJavaObject_Call_TisBoolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_m05D3284A3FA772D032190A0FE82363C61000F1DF_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* AndroidJavaObject_GetStatic_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m740F3401DEA4A75BADD753EFF71D2328B4147BFC_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Dictionary_2_Add_m1186E81670462E914A7868301113976FDB83F777_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Dictionary_2_TryGetValue_mBD806A751A3EA2687C4A6997905A763E24442273_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Dictionary_2__ctor_mBC60BBD8E518B2F692F76BFC979213D72229470C_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Dictionary_2__ctor_mC4F3DF292BAD88F4BF193C49CD689FAEBC4570A9_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_FirstOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m00C8BBE56D2D629169750D64CB161CEBF99AEF01_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_FirstOrDefault_TisString_t_m9CA8A9DE7F8DCB619529414D42C259BDF6C05A5B_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_First_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mEDDEBFF578646F505A4E0A5BE06B23E0FDB73D88_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_LastOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m33C58D142D6CF66FB640E22873D90A280C2814FD_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_Select_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_TisProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_m53902C59EEF8BB9BAAFA26EBDC081A0D48653D64_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_Select_TisProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_TisString_t_m90AA13353DD751E3AF62A950C34555F4CAFB3A02_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_Select_TisString_t_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m1397BFA25F4085D1F52D402001A44DC3237EC1E0_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_ToList_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m2C093DAAAEB4344056B8E407A80D09DB41B8C092_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Enumerable_ToList_TisString_t_m86360148F90DE6EA1A8363F38B7C2A88FD139131_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* HashSet_1_Add_mF3D4CF6D0150392127D5561A87DCDEDA9A81BE5D_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* HashSet_1__ctor_m780CFB8A2D23543157D1A0E1FADF781E1AF81E03_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* ListExtension_ToJava_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mB5F6B722712F762F6108F66E1C475F6EAA79DC6D_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* List_1_Add_m46CE58AEE4E46E07AFB03138AA5A356BDD33DABF_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* List_1_Add_mE3F27EF43003A3372F10684005923C154D0E9237_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* List_1__ctor_m21BC8DD8763514B160D7ECC2657F94E5E8031390_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* List_1__ctor_mEC31258BBEAB41C7466DA7D600E9307C1AC99479_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* List_1_get_Count_m0FDA1EA1DF52887ED2369B7FA6FC774E4713C611_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* List_1_get_Item_mA052ED5D69C31699EAF26017337CCCD9344E0C9C_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Nullable_1__ctor_m141FA88563AC0B5179132FB929EABD02C47FF703_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Nullable_1_get_HasValue_m30DA1D5C19144217811E70B7C5C6F5215B507CC4_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Nullable_1_get_Value_m0DF3B826A745419D26A168689AEB4BE6F8698ECA_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Nullable_1_get_Value_m460192D5360724FA3AE999B367D5BE0A6FFFB08D_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* ProductDetailsConverter_ConvertToProductDescription_m2CD6113C10FC729794DEB355A2E85DDEBF5F5217_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec_U3C_ctorU3Eb__35_0_mD347A18E9AC629CF093484358EEE83354B1C5070_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec_U3C_ctorU3Eb__35_1_mF59A13B28D299ABB17BED498DB48D2F404C61819_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass47_0_U3CQueryProductDetailsParamsProductListU3Eb__0_m60D473A127D8299775F46A5F5E47A140D9D1CF5D_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass6_1_U3CTryFindAllProductDetailsU3Eb__1_mBDF0C44B0BBC6F41B34140583A76D80D1B949D2B_RuntimeMethod_var;
+struct Delegate_t_marshaled_com;
+struct Delegate_t_marshaled_pinvoke;
+struct Exception_t_marshaled_com;
+struct Exception_t_marshaled_pinvoke;
+
+struct ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918;
+
+IL2CPP_EXTERN_C_BEGIN
+IL2CPP_EXTERN_C_END
+
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+struct Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710  : public RuntimeObject
+{
+	Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* ____buckets;
+	EntryU5BU5D_t233BB24ED01E2D8D65B0651D54B8E3AD125CAF96* ____entries;
+	int32_t ____count;
+	int32_t ____freeList;
+	int32_t ____freeCount;
+	int32_t ____version;
+	RuntimeObject* ____comparer;
+	KeyCollection_tE66790F09E854C19C7F612BEAD203AE626E90A36* ____keys;
+	ValueCollection_tC9D91E8A3198E40EA339059703AB10DFC9F5CC2E* ____values;
+	RuntimeObject* ____syncRoot;
+};
+struct Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5  : public RuntimeObject
+{
+	Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* ____buckets;
+	EntryU5BU5D_t148C114FE073CBFBDC2560B8AC93EA7228923719* ____entries;
+	int32_t ____count;
+	int32_t ____freeList;
+	int32_t ____freeCount;
+	int32_t ____version;
+	RuntimeObject* ____comparer;
+	KeyCollection_tE24A48F171FBF2B50E33675F12C31965287BD45E* ____keys;
+	ValueCollection_t5BD6AD2FD43C40227D2B02CC1D4D695C3DBD3C85* ____values;
+	RuntimeObject* ____syncRoot;
+};
+struct EmptyArray_1_tDF0DD7256B115243AA6BD5558417387A734240EE  : public RuntimeObject
+{
+};
+struct HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178  : public RuntimeObject
+{
+	Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* ____buckets;
+	SlotU5BU5D_t8B8EE191EEC1575F1F0CAC91A208DBFDF2821D01* ____slots;
+	int32_t ____count;
+	int32_t ____lastIndex;
+	int32_t ____freeList;
+	RuntimeObject* ____comparer;
+	int32_t ____version;
+	SerializationInfo_t3C47F63E24BEB9FCE2DC6309E027F238DC5C5E37* ____siInfo;
+};
+struct List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF  : public RuntimeObject
+{
+	AndroidJavaObjectU5BU5D_tBCEB142050F282B940177011644246618E002001* ____items;
+	int32_t ____size;
+	int32_t ____version;
+	RuntimeObject* ____syncRoot;
+};
+struct List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D  : public RuntimeObject
+{
+	ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ____items;
+	int32_t ____size;
+	int32_t ____version;
+	RuntimeObject* ____syncRoot;
+};
+struct List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D  : public RuntimeObject
+{
+	ProductDescriptionU5BU5D_t2735E7AA76B0061766D22EF9081E71FD054E0282* ____items;
+	int32_t ____size;
+	int32_t ____version;
+	RuntimeObject* ____syncRoot;
+};
+struct List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD  : public RuntimeObject
+{
+	StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* ____items;
+	int32_t ____size;
+	int32_t ____version;
+	RuntimeObject* ____syncRoot;
+};
+struct U3CPrivateImplementationDetailsU3E_t264AC36A8FADF827F328946E23D1F8EE0CCB1DE9  : public RuntimeObject
+{
+};
+struct AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0  : public RuntimeObject
+{
+	GlobalJavaObjectRef_t20D8E5AAFC2EB2518FCABBF40465855E797FF0D8* ___m_jobject;
+	GlobalJavaObjectRef_t20D8E5AAFC2EB2518FCABBF40465855E797FF0D8* ___m_jclass;
+};
+struct Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F  : public RuntimeObject
+{
+};
+struct GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54  : public RuntimeObject
+{
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___m_BillingClient;
+	String_t* ___m_ObfuscatedAccountId;
+	String_t* ___m_ObfuscatedProfileId;
+	RuntimeObject* ___m_Util;
+	RuntimeObject* ___m_TelemetryDiagnostics;
+};
+struct GoogleBillingStrings_t13D482B620ABC5898BCEE91D4B03FB4FE8F7ED67  : public RuntimeObject
+{
+};
+struct GoogleProductTypeEnum_t2F335B7AED79E737620B9ED42D75CC0BCFE998E9  : public RuntimeObject
+{
+};
+struct GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0  : public RuntimeObject
+{
+	bool ___U3CisAcknowledgedU3Ek__BackingField;
+	int32_t ___U3CpurchaseStateU3Ek__BackingField;
+	List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* ___U3CskusU3Ek__BackingField;
+	String_t* ___U3CorderIdU3Ek__BackingField;
+	String_t* ___U3CreceiptU3Ek__BackingField;
+	String_t* ___U3CsignatureU3Ek__BackingField;
+	String_t* ___U3CoriginalJsonU3Ek__BackingField;
+	String_t* ___U3CpurchaseTokenU3Ek__BackingField;
+	String_t* ___U3CobfuscatedAccountIdU3Ek__BackingField;
+	String_t* ___U3CobfuscatedProfileIdU3Ek__BackingField;
+	RuntimeObject* ___U3CproductDescriptionsU3Ek__BackingField;
+};
+struct GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4  : public RuntimeObject
+{
+};
+struct GooglePurchaseStateEnumProvider_t011E4AA2923CC14A6C617ABAAD1C5AEE9FDE8029  : public RuntimeObject
+{
+};
+struct GoogleReceiptEncoder_tA1039A7CC516F2A4CD19B0EA01456976A3BFC4E8  : public RuntimeObject
+{
+};
+struct ProductDetailsConverter_t3B5F595B574B4ACC2B7BFEFDC00362F57828B498  : public RuntimeObject
+{
+};
+struct String_t  : public RuntimeObject
+{
+	int32_t ____stringLength;
+	Il2CppChar ____firstChar;
+};
+struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F  : public RuntimeObject
+{
+};
+struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F_marshaled_pinvoke
+{
+};
+struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F_marshaled_com
+{
+};
+struct U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6  : public RuntimeObject
+{
+	String_t* ___type;
+};
+struct U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379  : public RuntimeObject
+{
+};
+struct U3CU3Ec__DisplayClass6_0_t3FE9CF80417B1FA15E586B3373601F53E94EA26D  : public RuntimeObject
+{
+	RuntimeObject* ___productDetails;
+};
+struct U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5  : public RuntimeObject
+{
+	String_t* ___sku;
+};
+struct Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28 
+{
+	bool ___hasValue;
+	int32_t ___value;
+};
+struct AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03  : public AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0
+{
+};
+struct Boolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22 
+{
+	bool ___m_value;
+};
+struct Char_t521A6F19B456D956AF452D926C32709DC03D6B17 
+{
+	Il2CppChar ___m_value;
+};
+struct Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F 
+{
+	union
+	{
+		#pragma pack(push, tp, 1)
+		struct
+		{
+			int32_t ___flags;
+		};
+		#pragma pack(pop, tp)
+		struct
+		{
+			int32_t ___flags_forAlignmentOnly;
+		};
+		#pragma pack(push, tp, 1)
+		struct
+		{
+			char ___hi_OffsetPadding[4];
+			int32_t ___hi;
+		};
+		#pragma pack(pop, tp)
+		struct
+		{
+			char ___hi_OffsetPadding_forAlignmentOnly[4];
+			int32_t ___hi_forAlignmentOnly;
+		};
+		#pragma pack(push, tp, 1)
+		struct
+		{
+			char ___lo_OffsetPadding[8];
+			int32_t ___lo;
+		};
+		#pragma pack(pop, tp)
+		struct
+		{
+			char ___lo_OffsetPadding_forAlignmentOnly[8];
+			int32_t ___lo_forAlignmentOnly;
+		};
+		#pragma pack(push, tp, 1)
+		struct
+		{
+			char ___mid_OffsetPadding[12];
+			int32_t ___mid;
+		};
+		#pragma pack(pop, tp)
+		struct
+		{
+			char ___mid_OffsetPadding_forAlignmentOnly[12];
+			int32_t ___mid_forAlignmentOnly;
+		};
+		#pragma pack(push, tp, 1)
+		struct
+		{
+			char ___ulomidLE_OffsetPadding[8];
+			uint64_t ___ulomidLE;
+		};
+		#pragma pack(pop, tp)
+		struct
+		{
+			char ___ulomidLE_OffsetPadding_forAlignmentOnly[8];
+			uint64_t ___ulomidLE_forAlignmentOnly;
+		};
+	};
+};
+struct Enum_t2A1A94B24E3B776EEF4E5E485E290BB9D4D072E2  : public ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F
+{
+};
+struct Enum_t2A1A94B24E3B776EEF4E5E485E290BB9D4D072E2_marshaled_pinvoke
+{
+};
+struct Enum_t2A1A94B24E3B776EEF4E5E485E290BB9D4D072E2_marshaled_com
+{
+};
+struct Int32_t680FF22E76F6EFAD4375103CBBFFA0421349384C 
+{
+	int32_t ___m_value;
+};
+struct Int64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3 
+{
+	int64_t ___m_value;
+};
+struct IntPtr_t 
+{
+	void* ___m_value;
+};
+struct UInt32_t1833D51FFA667B18A5AA4B8D34DE284F8495D29B 
+{
+	uint32_t ___m_value;
+};
+struct Void_t4861ACF8F4594C3437BB48B6E56783494B843915 
+{
+	union
+	{
+		struct
+		{
+		};
+		uint8_t Void_t4861ACF8F4594C3437BB48B6E56783494B843915__padding[1];
+	};
+};
+#pragma pack(push, tp, 1)
+struct __StaticArrayInitTypeSizeU3D11886_tE8D17E96D54B601C3FEECA871667ACA0641C7606 
+{
+	union
+	{
+		struct
+		{
+			union
+			{
+			};
+		};
+		uint8_t __StaticArrayInitTypeSizeU3D11886_tE8D17E96D54B601C3FEECA871667ACA0641C7606__padding[11886];
+	};
+};
+#pragma pack(pop, tp)
+#pragma pack(push, tp, 1)
+struct __StaticArrayInitTypeSizeU3D5103_t8B2034DBA6C653DF6056DF7D15D4730FEA109080 
+{
+	union
+	{
+		struct
+		{
+			union
+			{
+			};
+		};
+		uint8_t __StaticArrayInitTypeSizeU3D5103_t8B2034DBA6C653DF6056DF7D15D4730FEA109080__padding[5103];
+	};
+};
+#pragma pack(pop, tp)
+struct AndroidJavaProxy_tE5521F9761F7B95444B9C39FB15FDFC23F80A78D  : public RuntimeObject
+{
+	AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* ___javaInterface;
+	intptr_t ___proxyObject;
+};
+struct Delegate_t  : public RuntimeObject
+{
+	intptr_t ___method_ptr;
+	intptr_t ___invoke_impl;
+	RuntimeObject* ___m_target;
+	intptr_t ___method;
+	intptr_t ___delegate_trampoline;
+	intptr_t ___extra_arg;
+	intptr_t ___method_code;
+	intptr_t ___interp_method;
+	intptr_t ___interp_invoke_impl;
+	MethodInfo_t* ___method_info;
+	MethodInfo_t* ___original_method_info;
+	DelegateData_t9B286B493293CD2D23A5B2B5EF0E5B1324C2B77E* ___data;
+	bool ___method_is_virtual;
+};
+struct Delegate_t_marshaled_pinvoke
+{
+	intptr_t ___method_ptr;
+	intptr_t ___invoke_impl;
+	Il2CppIUnknown* ___m_target;
+	intptr_t ___method;
+	intptr_t ___delegate_trampoline;
+	intptr_t ___extra_arg;
+	intptr_t ___method_code;
+	intptr_t ___interp_method;
+	intptr_t ___interp_invoke_impl;
+	MethodInfo_t* ___method_info;
+	MethodInfo_t* ___original_method_info;
+	DelegateData_t9B286B493293CD2D23A5B2B5EF0E5B1324C2B77E* ___data;
+	int32_t ___method_is_virtual;
+};
+struct Delegate_t_marshaled_com
+{
+	intptr_t ___method_ptr;
+	intptr_t ___invoke_impl;
+	Il2CppIUnknown* ___m_target;
+	intptr_t ___method;
+	intptr_t ___delegate_trampoline;
+	intptr_t ___extra_arg;
+	intptr_t ___method_code;
+	intptr_t ___interp_method;
+	intptr_t ___interp_invoke_impl;
+	MethodInfo_t* ___method_info;
+	MethodInfo_t* ___original_method_info;
+	DelegateData_t9B286B493293CD2D23A5B2B5EF0E5B1324C2B77E* ___data;
+	int32_t ___method_is_virtual;
+};
+struct Exception_t  : public RuntimeObject
+{
+	String_t* ____className;
+	String_t* ____message;
+	RuntimeObject* ____data;
+	Exception_t* ____innerException;
+	String_t* ____helpURL;
+	RuntimeObject* ____stackTrace;
+	String_t* ____stackTraceString;
+	String_t* ____remoteStackTraceString;
+	int32_t ____remoteStackIndex;
+	RuntimeObject* ____dynamicMethods;
+	int32_t ____HResult;
+	String_t* ____source;
+	SafeSerializationManager_tCBB85B95DFD1634237140CD892E82D06ECB3F5E6* ____safeSerializationManager;
+	StackTraceU5BU5D_t32FBCB20930EAF5BAE3F450FF75228E5450DA0DF* ___captured_traces;
+	IntPtrU5BU5D_tFD177F8C806A6921AD7150264CCC62FA00CAD832* ___native_trace_ips;
+	int32_t ___caught_in_unmanaged;
+};
+struct Exception_t_marshaled_pinvoke
+{
+	char* ____className;
+	char* ____message;
+	RuntimeObject* ____data;
+	Exception_t_marshaled_pinvoke* ____innerException;
+	char* ____helpURL;
+	Il2CppIUnknown* ____stackTrace;
+	char* ____stackTraceString;
+	char* ____remoteStackTraceString;
+	int32_t ____remoteStackIndex;
+	Il2CppIUnknown* ____dynamicMethods;
+	int32_t ____HResult;
+	char* ____source;
+	SafeSerializationManager_tCBB85B95DFD1634237140CD892E82D06ECB3F5E6* ____safeSerializationManager;
+	StackTraceU5BU5D_t32FBCB20930EAF5BAE3F450FF75228E5450DA0DF* ___captured_traces;
+	Il2CppSafeArray* ___native_trace_ips;
+	int32_t ___caught_in_unmanaged;
+};
+struct Exception_t_marshaled_com
+{
+	Il2CppChar* ____className;
+	Il2CppChar* ____message;
+	RuntimeObject* ____data;
+	Exception_t_marshaled_com* ____innerException;
+	Il2CppChar* ____helpURL;
+	Il2CppIUnknown* ____stackTrace;
+	Il2CppChar* ____stackTraceString;
+	Il2CppChar* ____remoteStackTraceString;
+	int32_t ____remoteStackIndex;
+	Il2CppIUnknown* ____dynamicMethods;
+	int32_t ____HResult;
+	Il2CppChar* ____source;
+	SafeSerializationManager_tCBB85B95DFD1634237140CD892E82D06ECB3F5E6* ____safeSerializationManager;
+	StackTraceU5BU5D_t32FBCB20930EAF5BAE3F450FF75228E5450DA0DF* ___captured_traces;
+	Il2CppSafeArray* ___native_trace_ips;
+	int32_t ___caught_in_unmanaged;
+};
+struct GoogleBillingConnectionState_t6A57F35BF7F5AED90AAC31A6324627ABE2E43A43 
+{
+	int32_t ___value__;
+};
+struct GoogleBillingResponseCode_t53E21A6DC94465C99D7B6CA0103CE99AA726DB68 
+{
+	int32_t ___value__;
+};
+struct GooglePlayReplacementMode_tD3C2183A292F81715119DD7F8B6D60716502B009 
+{
+	int32_t ___value__;
+};
+struct Int32Enum_tCBAC8BA2BFF3A845FA599F303093BBBA374B6F0C 
+{
+	int32_t ___value__;
+};
+struct ProductMetadata_t2D6C6454A305A6790D8903169E3B136EB13417E1  : public RuntimeObject
+{
+	String_t* ___U3ClocalizedPriceStringU3Ek__BackingField;
+	String_t* ___U3ClocalizedTitleU3Ek__BackingField;
+	String_t* ___U3ClocalizedDescriptionU3Ek__BackingField;
+	String_t* ___U3CisoCurrencyCodeU3Ek__BackingField;
+	Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F ___U3ClocalizedPriceU3Ek__BackingField;
+};
+struct ProductType_t3E3C0899CBE746FF7DBF4CC3071C10CDB9600DB3 
+{
+	int32_t ___value__;
+};
+struct Nullable_1_t970AE010F8F8B45699EB795FCDE562216915208C 
+{
+	bool ___hasValue;
+	int32_t ___value;
+};
+struct Nullable_1_t163D49A1147F217B7BD43BE8ACC8A5CC6B846D14 
+{
+	bool ___hasValue;
+	int32_t ___value;
+};
+struct GoogleAcknowledgePurchaseListener_tAEDDA2EA0541273BEB1B3EB3FD570C52607D5709  : public AndroidJavaProxy_tE5521F9761F7B95444B9C39FB15FDFC23F80A78D
+{
+	Action_1_tBBC611382C7211FB870AB6B82164F24B27C1B421* ___m_OnAcknowledgePurchaseResponse;
+	RuntimeObject* ___m_Util;
+};
+struct GoogleBillingResult_tC73DBFC9ADA1CAB5A40242B2B802FE310FF5BBD7  : public RuntimeObject
+{
+	int32_t ___U3CresponseCodeU3Ek__BackingField;
+	String_t* ___U3CdebugMessageU3Ek__BackingField;
+};
+struct GoogleConsumeResponseListener_t0ED2834EA7D01A19742CD5903E3AD759E9762616  : public AndroidJavaProxy_tE5521F9761F7B95444B9C39FB15FDFC23F80A78D
+{
+	Action_1_tBBC611382C7211FB870AB6B82164F24B27C1B421* ___m_OnConsumeResponse;
+	RuntimeObject* ___m_Util;
+};
+struct GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23  : public ProductMetadata_t2D6C6454A305A6790D8903169E3B136EB13417E1
+{
+	String_t* ___U3CoriginalJsonU3Ek__BackingField;
+	String_t* ___U3CsubscriptionPeriodU3Ek__BackingField;
+	String_t* ___U3CfreeTrialPeriodU3Ek__BackingField;
+	String_t* ___U3CintroductoryPriceU3Ek__BackingField;
+	String_t* ___U3CintroductoryPricePeriodU3Ek__BackingField;
+	int32_t ___U3CintroductoryPriceCyclesU3Ek__BackingField;
+};
+struct GooglePurchasesResponseListener_tFFD56062E067D4343972FA8B07E9EAEEDD233D42  : public AndroidJavaProxy_tE5521F9761F7B95444B9C39FB15FDFC23F80A78D
+{
+	Action_2_tBABFA1FBFBCD8E8B40EB5BDD131E2B7CBF7F2F1C* ___m_OnQueryPurchasesResponse;
+	RuntimeObject* ___m_Util;
+};
+struct MulticastDelegate_t  : public Delegate_t
+{
+	DelegateU5BU5D_tC5AB7E8F745616680F337909D3A8E6C722CDF771* ___delegates;
+};
+struct MulticastDelegate_t_marshaled_pinvoke : public Delegate_t_marshaled_pinvoke
+{
+	Delegate_t_marshaled_pinvoke** ___delegates;
+};
+struct MulticastDelegate_t_marshaled_com : public Delegate_t_marshaled_com
+{
+	Delegate_t_marshaled_com** ___delegates;
+};
+struct ProductDefinition_tB486F56477C49E81BA6704C2DD31F373CDCCC1BD  : public RuntimeObject
+{
+	String_t* ___U3CidU3Ek__BackingField;
+	String_t* ___U3CstoreSpecificIdU3Ek__BackingField;
+	int32_t ___U3CtypeU3Ek__BackingField;
+	bool ___U3CenabledU3Ek__BackingField;
+	List_1_tA265F918639F90CCD79CA8254869495172C9BF18* ___m_Payouts;
+};
+struct ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A  : public RuntimeObject
+{
+	String_t* ___U3CstoreSpecificIdU3Ek__BackingField;
+	int32_t ___type;
+	ProductMetadata_t2D6C6454A305A6790D8903169E3B136EB13417E1* ___U3CmetadataU3Ek__BackingField;
+	String_t* ___U3CreceiptU3Ek__BackingField;
+	String_t* ___U3CtransactionIdU3Ek__BackingField;
+};
+struct ProductDetailsResponseListener_tC344C020B1D1F4A4B70300985477D02E90973D2A  : public AndroidJavaProxy_tE5521F9761F7B95444B9C39FB15FDFC23F80A78D
+{
+	Action_2_t48A4D16145E3E6532845F8D1F1631C7922F46B5A* ___m_OnProductDetailsResponse;
+	RuntimeObject* ___m_Util;
+	RuntimeObject* ___m_TelemetryDiagnostics;
+};
+struct SystemException_tCC48D868298F4C0705279823E34B00F4FBDB7295  : public Exception_t
+{
+};
+struct Action_1_tBBC611382C7211FB870AB6B82164F24B27C1B421  : public MulticastDelegate_t
+{
+};
+struct Action_2_tBABFA1FBFBCD8E8B40EB5BDD131E2B7CBF7F2F1C  : public MulticastDelegate_t
+{
+};
+struct Action_2_t48A4D16145E3E6532845F8D1F1631C7922F46B5A  : public MulticastDelegate_t
+{
+};
+struct Func_2_tD09524AE0D223491FAE25D1029A6E28481814997  : public MulticastDelegate_t
+{
+};
+struct Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512  : public MulticastDelegate_t
+{
+};
+struct Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E  : public MulticastDelegate_t
+{
+};
+struct Func_2_t6F18BD99DBFD8DEA66D59FD826E9068B8B427900  : public MulticastDelegate_t
+{
+};
+struct ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263  : public SystemException_tCC48D868298F4C0705279823E34B00F4FBDB7295
+{
+	String_t* ____paramName;
+};
+struct EmptyArray_1_tDF0DD7256B115243AA6BD5558417387A734240EE_StaticFields
+{
+	ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___Value;
+};
+struct List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF_StaticFields
+{
+	AndroidJavaObjectU5BU5D_tBCEB142050F282B940177011644246618E002001* ___s_emptyArray;
+};
+struct List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D_StaticFields
+{
+	ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___s_emptyArray;
+};
+struct List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D_StaticFields
+{
+	ProductDescriptionU5BU5D_t2735E7AA76B0061766D22EF9081E71FD054E0282* ___s_emptyArray;
+};
+struct List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD_StaticFields
+{
+	StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* ___s_emptyArray;
+};
+struct U3CPrivateImplementationDetailsU3E_t264AC36A8FADF827F328946E23D1F8EE0CCB1DE9_StaticFields
+{
+	__StaticArrayInitTypeSizeU3D11886_tE8D17E96D54B601C3FEECA871667ACA0641C7606 ___97F896BFE31084022E13C72BD9A7EC491758F86EC35DE8FD9DE0E2EF8F9E6CE1;
+	__StaticArrayInitTypeSizeU3D5103_t8B2034DBA6C653DF6056DF7D15D4730FEA109080 ___B0CBDE654487FA8BD81D19D5577BDDB5F619C51D5E1C3437373338E9A80C4AA7;
+};
+struct AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_StaticFields
+{
+	bool ___enableDebugPrints;
+};
+struct Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_StaticFields
+{
+	RuntimeObject* ___s_DefaultLogger;
+	RuntimeObject* ___s_Logger;
+};
+struct GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields
+{
+	AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* ___s_AndroidProductClassName;
+	AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* ___s_AndroidQueryProductDetailsParamsClassName;
+	AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* ___s_BillingFlowParamsClass;
+	AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* ___s_ProductDetailsParamsClass;
+	AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* ___s_SubscriptionUpdateParamsClass;
+	AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* ___s_ConsumeParamsClass;
+	AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* ___s_AcknowledgePurchaseParamsClass;
+	AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* ___s_BillingClientClass;
+	AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* ___s_PendingPurchasesParamsClass;
+	AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* ___s_QueryPurchasesParamsClass;
+};
+struct GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_StaticFields
+{
+	Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28 ___s_Purchased;
+	Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28 ___s_Pending;
+};
+struct String_t_StaticFields
+{
+	String_t* ___Empty;
+};
+struct U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_StaticFields
+{
+	U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379* ___U3CU3E9;
+	Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512* ___U3CU3E9__35_0;
+	Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E* ___U3CU3E9__35_1;
+};
+struct Boolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_StaticFields
+{
+	String_t* ___TrueString;
+	String_t* ___FalseString;
+};
+struct Char_t521A6F19B456D956AF452D926C32709DC03D6B17_StaticFields
+{
+	ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___s_categoryForLatin1;
+};
+struct Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F_StaticFields
+{
+	Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F ___Zero;
+	Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F ___One;
+	Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F ___MinusOne;
+	Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F ___MaxValue;
+	Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F ___MinValue;
+};
+struct IntPtr_t_StaticFields
+{
+	intptr_t ___Zero;
+};
+struct Exception_t_StaticFields
+{
+	RuntimeObject* ___s_EDILock;
+};
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+struct ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918  : public RuntimeArray
+{
+	ALIGN_FIELD (8) RuntimeObject* m_Items[1];
+
+	inline RuntimeObject* GetAt(il2cpp_array_size_t index) const
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items[index];
+	}
+	inline RuntimeObject** GetAddressAt(il2cpp_array_size_t index)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items + index;
+	}
+	inline void SetAt(il2cpp_array_size_t index, RuntimeObject* value)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		m_Items[index] = value;
+		Il2CppCodeGenWriteBarrier((void**)m_Items + index, (void*)value);
+	}
+	inline RuntimeObject* GetAtUnchecked(il2cpp_array_size_t index) const
+	{
+		return m_Items[index];
+	}
+	inline RuntimeObject** GetAddressAtUnchecked(il2cpp_array_size_t index)
+	{
+		return m_Items + index;
+	}
+	inline void SetAtUnchecked(il2cpp_array_size_t index, RuntimeObject* value)
+	{
+		m_Items[index] = value;
+		Il2CppCodeGenWriteBarrier((void**)m_Items + index, (void*)value);
+	}
+};
+
+
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Func_2__ctor_m13C0A7F33154D861E2A041B52E88461832DA1697_gshared (Func_2_tE1F0D41563EE092E5E5540B061449FDE88F1DC00* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Enumerable_First_TisRuntimeObject_mC6FA107934316BE28EA02DDB9EADA7AE8DD1916B_gshared (RuntimeObject* ___0_source, Func_2_tE1F0D41563EE092E5E5540B061449FDE88F1DC00* ___1_predicate, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_gshared_inline (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* AndroidJavaObject_Call_TisRuntimeObject_mA5AF1A9E0463CE91F0ACB6AC2FE0C1922B579EF7_gshared (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_methodName, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___1_args, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Dictionary_2__ctor_m5B32FBC624618211EB461D59CFBB10E987FD1329_gshared (Dictionary_2_t14FE4A752A83D53771C584E4C8D14E01F2AFD7BA* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Dictionary_2_set_Item_m1A840355E8EDAECEA9D0C6F5E51B248FAA449CBD_gshared (Dictionary_2_t14FE4A752A83D53771C584E4C8D14E01F2AFD7BA* __this, RuntimeObject* ___0_key, RuntimeObject* ___1_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void List_1__ctor_m7F078BB342729BDF11327FD89D7872265328F690_gshared (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Dictionary_2__ctor_mE0470880427DED948EF413AD5E9525F41CAF7D1D_gshared (Dictionary_2_t2A9A7F3ECFC3483F89253F3C4BB5BE98A37F6EF3* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HashSet_1__ctor_m9132EE1422BAA45E44B7FFF495F378790D36D90E_gshared (HashSet_1_t2F33BEB06EEA4A872E2FAF464382422AA39AE885* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Dictionary_2_Add_m53A4E919CB3AE7CC74379031E14C1AEA9DB7A933_gshared (Dictionary_2_t2A9A7F3ECFC3483F89253F3C4BB5BE98A37F6EF3* __this, RuntimeObject* ___0_key, int32_t ___1_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool HashSet_1_Add_m2CD7657B3459B61DD4BBA47024AC71F7D319658B_gshared (HashSet_1_t2F33BEB06EEA4A872E2FAF464382422AA39AE885* __this, RuntimeObject* ___0_item, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Dictionary_2_TryGetValue_m0786A6332E06581557A6E9D4DA5000AF5BC8A373_gshared (Dictionary_2_t2A9A7F3ECFC3483F89253F3C4BB5BE98A37F6EF3* __this, RuntimeObject* ___0_key, int32_t* ___1_value, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void List_1_Add_mEBCF994CC3814631017F46A387B1A192ED6C85C7_gshared_inline (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, RuntimeObject* ___0_item, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Enumerable_FirstOrDefault_TisRuntimeObject_m7DE546C4F58329C905F662422736A44C50268ECD_gshared (RuntimeObject* ___0_source, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* Enumerable_ToList_TisRuntimeObject_m6456D63764F29E6B5B2422C3DE25113577CF51EE_gshared (RuntimeObject* ___0_source, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Enumerable_LastOrDefault_TisRuntimeObject_m388339EE5296A9B864971CADA501A518082938DE_gshared (RuntimeObject* ___0_source, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t List_1_get_Count_m4407E4C389F22B8CEC282C15D56516658746C383_gshared_inline (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* List_1_get_Item_m33561245D64798C2AB07584C0EC4F240E4839A38_gshared (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, int32_t ___0_index, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int64_t AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9_gshared (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_methodName, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___1_args, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC_gshared (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_methodName, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___1_args, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* AndroidJavaObject_CallStatic_TisRuntimeObject_mCAFE27630F6092C4910E14592B050DACFCBE146F_gshared (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_methodName, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___1_args, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AndroidJavaObject_Call_TisBoolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_m05D3284A3FA772D032190A0FE82363C61000F1DF_gshared (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_methodName, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___1_args, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Func_2__ctor_m7F8A01C0B02BC1D4063F4EB1E817F7A48562A398_gshared (Func_2_tACBF5A1656250800CE861707354491F0611F6624* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Enumerable_Select_TisRuntimeObject_TisRuntimeObject_m67C538A5EBF57C4844107A8EF25DB2CAAFBAF8FB_gshared (RuntimeObject* ___0_source, Func_2_tACBF5A1656250800CE861707354491F0611F6624* ___1_selector, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ListExtension_ToJava_TisRuntimeObject_m31163F6DA5CD1CEB70668900846F92AC54AC8B6A_gshared (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* ___0_values, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Nullable_1_get_HasValue_mB1F55188CDD50D6D725D41F55D2F2540CD15FB20_gshared_inline (Nullable_1_t163D49A1147F217B7BD43BE8ACC8A5CC6B846D14* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Nullable_1_get_Value_m0E81D9B6F2BA5FA17AA4366C5179CD09524FCB60_gshared (Nullable_1_t163D49A1147F217B7BD43BE8ACC8A5CC6B846D14* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* AndroidJavaObjectExtensions_Enumerate_TisRuntimeObject_m7DF11EB34CFCBE78E5036D62DF1A90DCA782B63D_gshared (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_androidJavaList, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_gshared_inline (Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t AndroidJavaObject_GetStatic_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m740F3401DEA4A75BADD753EFF71D2328B4147BFC_gshared (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_fieldName, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Nullable_1__ctor_m141FA88563AC0B5179132FB929EABD02C47FF703_gshared (Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28* __this, int32_t ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Nullable_1_get_Value_m0DF3B826A745419D26A168689AEB4BE6F8698ECA_gshared (Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_NO_INLINE IL2CPP_METHOD_ATTR void List_1_AddWithResize_m79A9BF770BEF9C06BE40D5401E55E375F2726CC4_gshared (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, RuntimeObject* ___0_item, const RuntimeMethod* method) ;
+
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2 (RuntimeObject* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass6_1__ctor_mE18B06CCCF1DD650683CA777E3044068CA7AF91D (U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5* __this, const RuntimeMethod* method) ;
+inline void Func_2__ctor_mB052ED71445F0DA5BABBF7B563BC2863BD4D5EFB (Func_2_tD09524AE0D223491FAE25D1029A6E28481814997* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method)
+{
+	((  void (*) (Func_2_tD09524AE0D223491FAE25D1029A6E28481814997*, RuntimeObject*, intptr_t, const RuntimeMethod*))Func_2__ctor_m13C0A7F33154D861E2A041B52E88461832DA1697_gshared)(__this, ___0_object, ___1_method, method);
+}
+inline AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* Enumerable_First_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mEDDEBFF578646F505A4E0A5BE06B23E0FDB73D88 (RuntimeObject* ___0_source, Func_2_tD09524AE0D223491FAE25D1029A6E28481814997* ___1_predicate, const RuntimeMethod* method)
+{
+	return ((  AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* (*) (RuntimeObject*, Func_2_tD09524AE0D223491FAE25D1029A6E28481814997*, const RuntimeMethod*))Enumerable_First_TisRuntimeObject_mC6FA107934316BE28EA02DDB9EADA7AE8DD1916B_gshared)(___0_source, ___1_predicate, method);
+}
+inline ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline (const RuntimeMethod* method)
+{
+	return ((  ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* (*) (const RuntimeMethod*))Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_gshared_inline)(method);
+}
+inline String_t* AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40 (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_methodName, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___1_args, const RuntimeMethod* method)
+{
+	return ((  String_t* (*) (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*, String_t*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*, const RuntimeMethod*))AndroidJavaObject_Call_TisRuntimeObject_mA5AF1A9E0463CE91F0ACB6AC2FE0C1922B579EF7_gshared)(__this, ___0_methodName, ___1_args, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1 (String_t* ___0_a, String_t* ___1_b, const RuntimeMethod* method) ;
+inline void Dictionary_2__ctor_mC4F3DF292BAD88F4BF193C49CD689FAEBC4570A9 (Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* __this, const RuntimeMethod* method)
+{
+	((  void (*) (Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710*, const RuntimeMethod*))Dictionary_2__ctor_m5B32FBC624618211EB461D59CFBB10E987FD1329_gshared)(__this, method);
+}
+inline void Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341 (Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* __this, String_t* ___0_key, RuntimeObject* ___1_value, const RuntimeMethod* method)
+{
+	((  void (*) (Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710*, String_t*, RuntimeObject*, const RuntimeMethod*))Dictionary_2_set_Item_m1A840355E8EDAECEA9D0C6F5E51B248FAA449CBD_gshared)(__this, ___0_key, ___1_value, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* MiniJson_JsonEncode_m563D782D214D683C047F67EE9DF9278D89730DC1 (RuntimeObject* ___0_json, const RuntimeMethod* method) ;
+inline void List_1__ctor_mEC31258BBEAB41C7466DA7D600E9307C1AC99479 (List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D* __this, const RuntimeMethod* method)
+{
+	((  void (*) (List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D*, const RuntimeMethod*))List_1__ctor_m7F078BB342729BDF11327FD89D7872265328F690_gshared)(__this, method);
+}
+inline void Dictionary_2__ctor_mBC60BBD8E518B2F692F76BFC979213D72229470C (Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5* __this, const RuntimeMethod* method)
+{
+	((  void (*) (Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5*, const RuntimeMethod*))Dictionary_2__ctor_mE0470880427DED948EF413AD5E9525F41CAF7D1D_gshared)(__this, method);
+}
+inline void HashSet_1__ctor_m780CFB8A2D23543157D1A0E1FADF781E1AF81E03 (HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178* __this, const RuntimeMethod* method)
+{
+	((  void (*) (HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178*, const RuntimeMethod*))HashSet_1__ctor_m9132EE1422BAA45E44B7FFF495F378790D36D90E_gshared)(__this, method);
+}
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* ProductDefinition_get_storeSpecificId_m67EC5C2564476BD154C8164613AB62A4DBEADEAC_inline (ProductDefinition_tB486F56477C49E81BA6704C2DD31F373CDCCC1BD* __this, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t ProductDefinition_get_type_m06713F1930454961F16BB38AD5B74695FB880371_inline (ProductDefinition_tB486F56477C49E81BA6704C2DD31F373CDCCC1BD* __this, const RuntimeMethod* method) ;
+inline void Dictionary_2_Add_m1186E81670462E914A7868301113976FDB83F777 (Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5* __this, String_t* ___0_key, int32_t ___1_value, const RuntimeMethod* method)
+{
+	((  void (*) (Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5*, String_t*, int32_t, const RuntimeMethod*))Dictionary_2_Add_m53A4E919CB3AE7CC74379031E14C1AEA9DB7A933_gshared)(__this, ___0_key, ___1_value, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3 (String_t* __this, String_t* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B (String_t* ___0_str0, String_t* ___1_str1, String_t* ___2_str2, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2 (RuntimeObject* ___0_message, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* ProductDetailsConverter_GetProductId_mD1188989383FAB92EE2EFE5416E1923855A449EF (ProductDetailsConverter_t3B5F595B574B4ACC2B7BFEFDC00362F57828B498* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_productDetails, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_IsNullOrEmpty_mEA9E3FB005AC28FE02E69FCF95A7B8456192B478 (String_t* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Concat_m9E3155FB84015C823606188F53B47CB44C444991 (String_t* ___0_str0, String_t* ___1_str1, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9 (RuntimeObject* ___0_message, const RuntimeMethod* method) ;
+inline bool HashSet_1_Add_mF3D4CF6D0150392127D5561A87DCDEDA9A81BE5D (HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178* __this, String_t* ___0_item, const RuntimeMethod* method)
+{
+	return ((  bool (*) (HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178*, String_t*, const RuntimeMethod*))HashSet_1_Add_m2CD7657B3459B61DD4BBA47024AC71F7D319658B_gshared)(__this, ___0_item, method);
+}
+inline bool Dictionary_2_TryGetValue_mBD806A751A3EA2687C4A6997905A763E24442273 (Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5* __this, String_t* ___0_key, int32_t* ___1_value, const RuntimeMethod* method)
+{
+	return ((  bool (*) (Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5*, String_t*, int32_t*, const RuntimeMethod*))Dictionary_2_TryGetValue_m0786A6332E06581557A6E9D4DA5000AF5BC8A373_gshared)(__this, ___0_key, ___1_value, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* ProductDetailsConverter_ConvertToProductDescription_m2CD6113C10FC729794DEB355A2E85DDEBF5F5217 (ProductDetailsConverter_t3B5F595B574B4ACC2B7BFEFDC00362F57828B498* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_productDetails, int32_t ___1_productType, const RuntimeMethod* method) ;
+inline void List_1_Add_mE3F27EF43003A3372F10684005923C154D0E9237_inline (List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D* __this, ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* ___0_item, const RuntimeMethod* method)
+{
+	((  void (*) (List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D*, ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A*, const RuntimeMethod*))List_1_Add_mEBCF994CC3814631017F46A387B1A192ED6C85C7_gshared_inline)(__this, ___0_item, method);
+}
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* Debug_get_unityLogger_m4FDE4D41C187123244FE13124DA636BB50C9C1E1_inline (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LoggerExtensions_LogIAPException_m14A0B0260AEF2E6122D36988AB2CA9E0B76D55F2 (RuntimeObject* ___0_logger, Exception_t* ___1_exception, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* ProductDetailsConverter_BuildProductDescription_m8C1B83009FE220F61D0A60F144380137291E82D3 (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_productDetails, int32_t ___1_productType, const RuntimeMethod* method) ;
+inline AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_methodName, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___1_args, const RuntimeMethod* method)
+{
+	return ((  AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* (*) (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*, String_t*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*, const RuntimeMethod*))AndroidJavaObject_Call_TisRuntimeObject_mA5AF1A9E0463CE91F0ACB6AC2FE0C1922B579EF7_gshared)(__this, ___0_methodName, ___1_args, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* AndroidJavaObjectExtensions_Enumerate_m8D1A4474E054713477508C758D378DA9BE10E01F (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_androidJavaList, const RuntimeMethod* method) ;
+inline AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* Enumerable_FirstOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m00C8BBE56D2D629169750D64CB161CEBF99AEF01 (RuntimeObject* ___0_source, const RuntimeMethod* method)
+{
+	return ((  AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* (*) (RuntimeObject*, const RuntimeMethod*))Enumerable_FirstOrDefault_TisRuntimeObject_m7DE546C4F58329C905F662422736A44C50268ECD_gshared)(___0_source, method);
+}
+inline List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* Enumerable_ToList_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m2C093DAAAEB4344056B8E407A80D09DB41B8C092 (RuntimeObject* ___0_source, const RuntimeMethod* method)
+{
+	return ((  List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* (*) (RuntimeObject*, const RuntimeMethod*))Enumerable_ToList_TisRuntimeObject_m6456D63764F29E6B5B2422C3DE25113577CF51EE_gshared)(___0_source, method);
+}
+inline AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* Enumerable_LastOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m33C58D142D6CF66FB640E22873D90A280C2814FD (RuntimeObject* ___0_source, const RuntimeMethod* method)
+{
+	return ((  AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* (*) (RuntimeObject*, const RuntimeMethod*))Enumerable_LastOrDefault_TisRuntimeObject_m388339EE5296A9B864971CADA501A518082938DE_gshared)(___0_source, method);
+}
+inline int32_t List_1_get_Count_m0FDA1EA1DF52887ED2369B7FA6FC774E4713C611_inline (List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* __this, const RuntimeMethod* method)
+{
+	return ((  int32_t (*) (List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF*, const RuntimeMethod*))List_1_get_Count_m4407E4C389F22B8CEC282C15D56516658746C383_gshared_inline)(__this, method);
+}
+inline AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* List_1_get_Item_mA052ED5D69C31699EAF26017337CCCD9344E0C9C (List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* __this, int32_t ___0_index, const RuntimeMethod* method)
+{
+	return ((  AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* (*) (List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF*, int32_t, const RuntimeMethod*))List_1_get_Item_m33561245D64798C2AB07584C0EC4F240E4839A38_gshared)(__this, ___0_index, method);
+}
+inline int64_t AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9 (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_methodName, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___1_args, const RuntimeMethod* method)
+{
+	return ((  int64_t (*) (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*, String_t*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*, const RuntimeMethod*))AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9_gshared)(__this, ___0_methodName, ___1_args, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F Convert_ToDecimal_m29670FF2222B3FEE0308943C56D0662937CC063C (int64_t ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Decimal__ctor_m6DDFD6E3A7A8CDEB1BADF8E09A8D8E1BDA9497A9 (Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F* __this, int32_t ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F Decimal_op_Division_mA0BD25988CA8010A3F8EA2F6A534F9F2D812D2AC (Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F ___0_d1, Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F ___1_d2, const RuntimeMethod* method) ;
+inline int32_t AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_methodName, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___1_args, const RuntimeMethod* method)
+{
+	return ((  int32_t (*) (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*, String_t*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*, const RuntimeMethod*))AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC_gshared)(__this, ___0_methodName, ___1_args, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Decimal_ToString_m410E3F1BAA164B7544B3546D011D41B1C9E5C075 (Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* MiniJsonExtensions_toJson_m59EE50DD5C034B8C2DB0D47005D85EFD452D8E4F (Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* ___0_obj, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleProductMetadata__ctor_m696D214BF2FE929A0C469839AFA1DF100AA5C057 (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, String_t* ___0_priceString, String_t* ___1_title, String_t* ___2_description, String_t* ___3_currencyCode, Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F ___4_localizedPrice, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GoogleProductMetadata_set_originalJson_m1CD3B7963F3DDE1DF16C1AB10B2AE2996E409182_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, String_t* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GoogleProductMetadata_set_subscriptionPeriod_mF7AEF5E06802701CEEFE6076C0715D7517AD9131_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, String_t* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GoogleProductMetadata_set_introductoryPrice_m655641DF8A070224F6880BF2829DEFE5EA22331F_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, String_t* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GoogleProductMetadata_set_introductoryPriceCycles_m64051344F0F3ECC241F1CAFD47EEE89014ECC36C_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, int32_t ___0_value, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GoogleProductMetadata_set_introductoryPricePeriod_mB5B8B6895220EE7E2F6591F43446CE8F6548CA3D_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, String_t* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GoogleProductMetadata_set_freeTrialPeriod_mD7E8977A3BCA72875CD414C65B2547C6D15F2598_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, String_t* ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ProductDescription__ctor_mF81449B20EB214B2B24B6528955242949F2C84DA (ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* __this, String_t* ___0_id, ProductMetadata_t2D6C6454A305A6790D8903169E3B136EB13417E1* ___1_metadata, String_t* ___2_receipt, String_t* ___3_transactionId, int32_t ___4_type, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389 (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* __this, String_t* ___0_className, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetPendingPurchasesParamsClass_mE5D8C5B9876B8BFC6F365918259CAA2138104B11 (const RuntimeMethod* method) ;
+inline AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63 (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_methodName, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___1_args, const RuntimeMethod* method)
+{
+	return ((  AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* (*) (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*, String_t*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*, const RuntimeMethod*))AndroidJavaObject_CallStatic_TisRuntimeObject_mCAFE27630F6092C4910E14592B050DACFCBE146F_gshared)(__this, ___0_methodName, ___1_args, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AndroidJavaObject_Dispose_m2B1593C20B3CE1C8FF95982F638F50985F9DD9E6 (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetQueryPurchasesParamsClass_m22A98CCEE15CCBE7B11C467D864CA783476EEB60 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetBillingClientClass_m6228AE09684D605499268C5C19BF31059BDCC4D0 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* UnityActivity_GetCurrentActivity_mC19BD54968E675FC7F34D410C3449D0A862EE7D7 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_PendingPurchasesParams_m344B12AEE5FFA862200CC2E91E8A142E485812A4 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AndroidJavaObject_Call_mDEF7846E2AB1C5379069BB21049ED55A9D837B1C (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_methodName, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___1_args, const RuntimeMethod* method) ;
+inline bool AndroidJavaObject_Call_TisBoolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_m05D3284A3FA772D032190A0FE82363C61000F1DF (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_methodName, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* ___1_args, const RuntimeMethod* method)
+{
+	return ((  bool (*) (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*, String_t*, ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*, const RuntimeMethod*))AndroidJavaObject_Call_TisBoolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_m05D3284A3FA772D032190A0FE82363C61000F1DF_gshared)(__this, ___0_methodName, ___1_args, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_QueryPurchasesParams_mD5E2F4B35A4BE76078143BA8A7FDEB04CC4F0122 (String_t* ___0_productType, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GooglePurchasesResponseListener__ctor_m63DEA83E1FC510B36A32725CC30598C29FF603D5 (GooglePurchasesResponseListener_tFFD56062E067D4343972FA8B07E9EAEEDD233D42* __this, Action_2_tBABFA1FBFBCD8E8B40EB5BDD131E2B7CBF7F2F1C* ___0_onQueryPurchasesResponse, RuntimeObject* ___1_util, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_QueryProductDetailsParams_mA55F60BC8B9FDEC0DA88E9596E66D12CC59ACD05 (List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* ___0_products, String_t* ___1_type, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ProductDetailsResponseListener__ctor_m5B2BC4C527DDDCC4557B6558AAA7938A387503C0 (ProductDetailsResponseListener_tC344C020B1D1F4A4B70300985477D02E90973D2A* __this, Action_2_t48A4D16145E3E6532845F8D1F1631C7922F46B5A* ___0_onProductDetailsResponseAction, RuntimeObject* ___1_util, RuntimeObject* ___2_telemetryDiagnostics, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetQueryProductDetailsParamsParamsClass_mC878CCF44080DEEB7C22AF587E5E26AA27AAE80E (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_QueryProductDetailsParamsProductList_m37F2F1601AE0662C5E28A92774EBF865B238877C (List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* ___0_products, String_t* ___1_type, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass47_0__ctor_m8E2E4387DE5C9106243CEFD62450EDEA6E6B7B88 (U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6* __this, const RuntimeMethod* method) ;
+inline void Func_2__ctor_m7D2682100AFBB959BA191E8181D6DCB9538B8DAD (Func_2_t6F18BD99DBFD8DEA66D59FD826E9068B8B427900* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method)
+{
+	((  void (*) (Func_2_t6F18BD99DBFD8DEA66D59FD826E9068B8B427900*, RuntimeObject*, intptr_t, const RuntimeMethod*))Func_2__ctor_m7F8A01C0B02BC1D4063F4EB1E817F7A48562A398_gshared)(__this, ___0_object, ___1_method, method);
+}
+inline RuntimeObject* Enumerable_Select_TisString_t_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m1397BFA25F4085D1F52D402001A44DC3237EC1E0 (RuntimeObject* ___0_source, Func_2_t6F18BD99DBFD8DEA66D59FD826E9068B8B427900* ___1_selector, const RuntimeMethod* method)
+{
+	return ((  RuntimeObject* (*) (RuntimeObject*, Func_2_t6F18BD99DBFD8DEA66D59FD826E9068B8B427900*, const RuntimeMethod*))Enumerable_Select_TisRuntimeObject_TisRuntimeObject_m67C538A5EBF57C4844107A8EF25DB2CAAFBAF8FB_gshared)(___0_source, ___1_selector, method);
+}
+inline AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ListExtension_ToJava_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mB5F6B722712F762F6108F66E1C475F6EAA79DC6D (List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* ___0_values, const RuntimeMethod* method)
+{
+	return ((  AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* (*) (List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF*, const RuntimeMethod*))ListExtension_ToJava_TisRuntimeObject_m31163F6DA5CD1CEB70668900846F92AC54AC8B6A_gshared)(___0_values, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetProductParamsClass_m9933D8ED390711C6744A31B2DE552A6235C9629E (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetProductDetailsParamsClass_m770E75D7716ED518ACE946142900BB072B80B312 (const RuntimeMethod* method) ;
+inline void List_1__ctor_m21BC8DD8763514B160D7ECC2657F94E5E8031390 (List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* __this, const RuntimeMethod* method)
+{
+	((  void (*) (List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF*, const RuntimeMethod*))List_1__ctor_m7F078BB342729BDF11327FD89D7872265328F690_gshared)(__this, method);
+}
+inline void List_1_Add_m46CE58AEE4E46E07AFB03138AA5A356BDD33DABF_inline (List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_item, const RuntimeMethod* method)
+{
+	((  void (*) (List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF*, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*, const RuntimeMethod*))List_1_Add_mEBCF994CC3814631017F46A387B1A192ED6C85C7_gshared_inline)(__this, ___0_item, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_MakeBillingFlowParams_m31839CFF58E904615A50E55DD5432B162EFC8A95 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_productDetailsParamsList, String_t* ___1_oldPurchaseToken, Nullable_1_t970AE010F8F8B45699EB795FCDE562216915208C ___2_replacementMode, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetBillingFlowParamClass_mBCB69527450763953EBF8202141435877E7986A4 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_SetObfuscatedAccountIdIfNeeded_mD846549B2F8442B012028DDE1C102590E3727654 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_billingFlowParams, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_SetObfuscatedProfileIdIfNeeded_m53DDFFD0B1549169957D1EB7A67EB4F42EE68A06 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_billingFlowParams, const RuntimeMethod* method) ;
+inline bool Nullable_1_get_HasValue_m30DA1D5C19144217811E70B7C5C6F5215B507CC4_inline (Nullable_1_t970AE010F8F8B45699EB795FCDE562216915208C* __this, const RuntimeMethod* method)
+{
+	return ((  bool (*) (Nullable_1_t970AE010F8F8B45699EB795FCDE562216915208C*, const RuntimeMethod*))Nullable_1_get_HasValue_mB1F55188CDD50D6D725D41F55D2F2540CD15FB20_gshared_inline)(__this, method);
+}
+inline int32_t Nullable_1_get_Value_m460192D5360724FA3AE999B367D5BE0A6FFFB08D (Nullable_1_t970AE010F8F8B45699EB795FCDE562216915208C* __this, const RuntimeMethod* method)
+{
+	return ((  int32_t (*) (Nullable_1_t970AE010F8F8B45699EB795FCDE562216915208C*, const RuntimeMethod*))Nullable_1_get_Value_m0E81D9B6F2BA5FA17AA4366C5179CD09524FCB60_gshared)(__this, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_BuildSubscriptionUpdateParams_mBE148B4BCB647C882CA5BF9BE8A7843D368879CF (String_t* ___0_oldPurchaseToken, int32_t ___1_replacementMode, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetSubscriptionUpdateParamClass_m4FF587F8D5936BAA96D9A517B2BA2B75CA6C482C (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetConsumeParamsClass_m90083037251795E7FB2C46D4CB81ED65BE7C896D (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleConsumeResponseListener__ctor_mED0599ABBE1BA935F5167F9ED6DC74FADD35EF9B (GoogleConsumeResponseListener_t0ED2834EA7D01A19742CD5903E3AD759E9762616* __this, Action_1_tBBC611382C7211FB870AB6B82164F24B27C1B421* ___0_onConsumeResponseAction, RuntimeObject* ___1_util, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetAcknowledgePurchaseParamsClass_m70D378309742C7A24601031613A3C914E9BAF974 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleAcknowledgePurchaseListener__ctor_m0F0D4ED62D9D55952F332ADA773937B00EFC805E (GoogleAcknowledgePurchaseListener_tAEDDA2EA0541273BEB1B3EB3FD570C52607D5709* __this, Action_1_tBBC611382C7211FB870AB6B82164F24B27C1B421* ___0_onAcknowledgePurchaseResponseAction, RuntimeObject* ___1_util, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_QueryProductDetailsParamsProduct_m71EF9D220B32679DED6D6054A6B75CAD1F1657C4 (String_t* ___0_type, String_t* ___1_product, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* GooglePurchase_get_skus_m574D192E03986558B7D9DE98FFAAD2D900CB65E2_inline (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) ;
+inline String_t* Enumerable_FirstOrDefault_TisString_t_m9CA8A9DE7F8DCB619529414D42C259BDF6C05A5B (RuntimeObject* ___0_source, const RuntimeMethod* method)
+{
+	return ((  String_t* (*) (RuntimeObject*, const RuntimeMethod*))Enumerable_FirstOrDefault_TisRuntimeObject_m7DE546C4F58329C905F662422736A44C50268ECD_gshared)(___0_source, method);
+}
+inline RuntimeObject* AndroidJavaObjectExtensions_Enumerate_TisString_t_mB0A198813D8F760A00C172560F00E08F0C804AD9 (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_androidJavaList, const RuntimeMethod* method)
+{
+	return ((  RuntimeObject* (*) (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*, const RuntimeMethod*))AndroidJavaObjectExtensions_Enumerate_TisRuntimeObject_m7DF11EB34CFCBE78E5036D62DF1A90DCA782B63D_gshared)(___0_androidJavaList, method);
+}
+inline List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* Enumerable_ToList_TisString_t_m86360148F90DE6EA1A8363F38B7C2A88FD139131 (RuntimeObject* ___0_source, const RuntimeMethod* method)
+{
+	return ((  List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* (*) (RuntimeObject*, const RuntimeMethod*))Enumerable_ToList_TisRuntimeObject_m6456D63764F29E6B5B2422C3DE25113577CF51EE_gshared)(___0_source, method);
+}
+inline void Func_2__ctor_m96DF6BDABFCDDECB24E7669CE08B5616F42BF27A (Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method)
+{
+	((  void (*) (Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512*, RuntimeObject*, intptr_t, const RuntimeMethod*))Func_2__ctor_m7F8A01C0B02BC1D4063F4EB1E817F7A48562A398_gshared)(__this, ___0_object, ___1_method, method);
+}
+inline RuntimeObject* Enumerable_Select_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_TisProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_m53902C59EEF8BB9BAAFA26EBDC081A0D48653D64 (RuntimeObject* ___0_source, Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512* ___1_selector, const RuntimeMethod* method)
+{
+	return ((  RuntimeObject* (*) (RuntimeObject*, Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512*, const RuntimeMethod*))Enumerable_Select_TisRuntimeObject_TisRuntimeObject_m67C538A5EBF57C4844107A8EF25DB2CAAFBAF8FB_gshared)(___0_source, ___1_selector, method);
+}
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* GooglePurchase_get_productDescriptions_m57445048AE1A7BCEDE6C412C8AABCC46D86CFBF5_inline (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) ;
+inline void Func_2__ctor_m3A32A29D6B1AB1877A37DD736EBE30B64D4E9371 (Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E* __this, RuntimeObject* ___0_object, intptr_t ___1_method, const RuntimeMethod* method)
+{
+	((  void (*) (Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E*, RuntimeObject*, intptr_t, const RuntimeMethod*))Func_2__ctor_m7F8A01C0B02BC1D4063F4EB1E817F7A48562A398_gshared)(__this, ___0_object, ___1_method, method);
+}
+inline RuntimeObject* Enumerable_Select_TisProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_TisString_t_m90AA13353DD751E3AF62A950C34555F4CAFB3A02 (RuntimeObject* ___0_source, Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E* ___1_selector, const RuntimeMethod* method)
+{
+	return ((  RuntimeObject* (*) (RuntimeObject*, Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E*, const RuntimeMethod*))Enumerable_Select_TisRuntimeObject_TisRuntimeObject_m67C538A5EBF57C4844107A8EF25DB2CAAFBAF8FB_gshared)(___0_source, ___1_selector, method);
+}
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* GooglePurchase_get_originalJson_m9D4A74B07B177710AF4DEB9F780A41C08517E0F9_inline (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* GooglePurchase_get_signature_m8A776170C8CFD23F5D3270E0B69280E44EBF113C_inline (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GoogleReceiptEncoder_EncodeReceipt_m46507D51C076795F860F0693B1F5EEEEE4B8F5EA (String_t* ___0_purchaseOriginalJson, String_t* ___1_purchaseSignature, List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* ___2_productDetailsJson, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool GooglePurchase_get_isAcknowledged_m90BA9B98EB4FD3FB04FD6B190ECE8FB99930B992_inline (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t GooglePurchase_get_purchaseState_m42D242B28567F9992C0CA65D378C39F7AAC54EEC_inline (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t GooglePurchaseStateEnum_Purchased_mD9A2EBCB6E7B9FD3768753582179B2694F19E517 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t GooglePurchaseStateEnum_Pending_m3973290BEAD55785E750BF5EBC327A0D9D741725 (const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__ctor_m3F1145D558B77812A015206A962A853EC2EF9395 (U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379* __this, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ProductMetadata_t2D6C6454A305A6790D8903169E3B136EB13417E1* ProductDescription_get_metadata_m90B0E9E6F346FA02655F72A548C2BDB80A4C3C37_inline (ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* GetGoogleProductMetadataExtension_GetGoogleProductMetadata_mAB672AE881936A32B2FDF8D567B984DE9C045809 (ProductMetadata_t2D6C6454A305A6790D8903169E3B136EB13417E1* ___0_productMetadata, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* GoogleProductMetadata_get_originalJson_mFDBDA75AED91FA6E2D104BC4EF5EEF0990BC9D06_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, const RuntimeMethod* method) ;
+inline bool Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_inline (Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28* __this, const RuntimeMethod* method)
+{
+	return ((  bool (*) (Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28*, const RuntimeMethod*))Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_gshared_inline)(__this, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GooglePurchaseStateEnum_GetPurchaseStateJavaObject_m94E33E05CB38C082A52F4EBDB0228134D27A9F2B (const RuntimeMethod* method) ;
+inline int32_t AndroidJavaObject_GetStatic_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m740F3401DEA4A75BADD753EFF71D2328B4147BFC (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* __this, String_t* ___0_fieldName, const RuntimeMethod* method)
+{
+	return ((  int32_t (*) (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*, String_t*, const RuntimeMethod*))AndroidJavaObject_GetStatic_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m740F3401DEA4A75BADD753EFF71D2328B4147BFC_gshared)(__this, ___0_fieldName, method);
+}
+inline void Nullable_1__ctor_m141FA88563AC0B5179132FB929EABD02C47FF703 (Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28* __this, int32_t ___0_value, const RuntimeMethod* method)
+{
+	((  void (*) (Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28*, int32_t, const RuntimeMethod*))Nullable_1__ctor_m141FA88563AC0B5179132FB929EABD02C47FF703_gshared)(__this, ___0_value, method);
+}
+inline int32_t Nullable_1_get_Value_m0DF3B826A745419D26A168689AEB4BE6F8698ECA (Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28* __this, const RuntimeMethod* method)
+{
+	return ((  int32_t (*) (Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28*, const RuntimeMethod*))Nullable_1_get_Value_m0DF3B826A745419D26A168689AEB4BE6F8698ECA_gshared)(__this, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Il2CppChar String_get_Chars_mC49DF0CD2D3BE7BE97B3AD9C995BE3094F8E36D3 (String_t* __this, int32_t ___0_index, const RuntimeMethod* method) ;
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t String_get_Length_m42625D67623FA5CC7A44D47425CE86FB946542D2_inline (String_t* __this, const RuntimeMethod* method) ;
+inline void List_1_AddWithResize_m79A9BF770BEF9C06BE40D5401E55E375F2726CC4 (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, RuntimeObject* ___0_item, const RuntimeMethod* method)
+{
+	((  void (*) (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D*, RuntimeObject*, const RuntimeMethod*))List_1_AddWithResize_m79A9BF770BEF9C06BE40D5401E55E375F2726CC4_gshared)(__this, ___0_item, method);
+}
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81645
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass6_0__ctor_mDFD76251DFB39594468128FF4BA9585AC72BD4C3 (U3CU3Ec__DisplayClass6_0_t3FE9CF80417B1FA15E586B3373601F53E94EA26D* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+// Method Definition Index: 81646
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* U3CU3Ec__DisplayClass6_0_U3CTryFindAllProductDetailsU3Eb__0_mA64C413EAFDD87F6D71B278E460A26AA66D75461 (U3CU3Ec__DisplayClass6_0_t3FE9CF80417B1FA15E586B3373601F53E94EA26D* __this, String_t* ___0_sku, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Enumerable_First_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mEDDEBFF578646F505A4E0A5BE06B23E0FDB73D88_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Func_2_tD09524AE0D223491FAE25D1029A6E28481814997_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass6_1_U3CTryFindAllProductDetailsU3Eb__1_mBDF0C44B0BBC6F41B34140583A76D80D1B949D2B_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5* V_0 = NULL;
+	{
+		U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5* L_0 = (U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5*)il2cpp_codegen_object_new(U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5_il2cpp_TypeInfo_var);
+		U3CU3Ec__DisplayClass6_1__ctor_mE18B06CCCF1DD650683CA777E3044068CA7AF91D(L_0, NULL);
+		V_0 = L_0;
+		U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5* L_1 = V_0;
+		String_t* L_2 = ___0_sku;
+		NullCheck(L_1);
+		L_1->___sku = L_2;
+		Il2CppCodeGenWriteBarrier((void**)(&L_1->___sku), (void*)L_2);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/GooglePurchaseBuilder.cs:54>
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/GooglePurchaseBuilder.cs:55>
+		RuntimeObject* L_3 = __this->___productDetails;
+		U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5* L_4 = V_0;
+		Func_2_tD09524AE0D223491FAE25D1029A6E28481814997* L_5 = (Func_2_tD09524AE0D223491FAE25D1029A6E28481814997*)il2cpp_codegen_object_new(Func_2_tD09524AE0D223491FAE25D1029A6E28481814997_il2cpp_TypeInfo_var);
+		Func_2__ctor_mB052ED71445F0DA5BABBF7B563BC2863BD4D5EFB(L_5, L_4, (intptr_t)((void*)U3CU3Ec__DisplayClass6_1_U3CTryFindAllProductDetailsU3Eb__1_mBDF0C44B0BBC6F41B34140583A76D80D1B949D2B_RuntimeMethod_var), NULL);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_6;
+		L_6 = Enumerable_First_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mEDDEBFF578646F505A4E0A5BE06B23E0FDB73D88(L_3, L_5, Enumerable_First_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mEDDEBFF578646F505A4E0A5BE06B23E0FDB73D88_RuntimeMethod_var);
+		return L_6;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81647
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass6_1__ctor_mE18B06CCCF1DD650683CA777E3044068CA7AF91D (U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+// Method Definition Index: 81648
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CU3Ec__DisplayClass6_1_U3CTryFindAllProductDetailsU3Eb__1_mBDF0C44B0BBC6F41B34140583A76D80D1B949D2B (U3CU3Ec__DisplayClass6_1_t7C57D99736FEBFA31C4BDB41FF24E2E52A1993D5* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_productDetail, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral8A0C00507160E0F1EB2F6C3579529D1B4011A3F7);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/GooglePurchaseBuilder.cs:55>
+		String_t* L_0 = __this->___sku;
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_1 = ___0_productDetail;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_2;
+		L_2 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_1);
+		String_t* L_3;
+		L_3 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_1, _stringLiteral8A0C00507160E0F1EB2F6C3579529D1B4011A3F7, L_2, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+		bool L_4;
+		L_4 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_0, L_3, NULL);
+		return L_4;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81649
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GoogleReceiptEncoder_EncodeReceipt_m46507D51C076795F860F0693B1F5EEEEE4B8F5EA (String_t* ___0_purchaseOriginalJson, String_t* ___1_purchaseSignature, List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* ___2_productDetailsJson, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Dictionary_2__ctor_mC4F3DF292BAD88F4BF193C49CD689FAEBC4570A9_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral43187C90BBB5DFB063A95733C9BD65ECD25A2E84);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral7DF2D77A4C0E1D0B34B035D65123E0BE0BE49DC6);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralC90E9C620FF08EC425BBC933A1E5074B3084EFB0);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/GoogleReceiptEncoder.cs:9>
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/GoogleReceiptEncoder.cs:10>
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/GoogleReceiptEncoder.cs:11>
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/GoogleReceiptEncoder.cs:12>
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/GoogleReceiptEncoder.cs:13>
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/GoogleReceiptEncoder.cs:14>
+		Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_0 = (Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710*)il2cpp_codegen_object_new(Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710_il2cpp_TypeInfo_var);
+		Dictionary_2__ctor_mC4F3DF292BAD88F4BF193C49CD689FAEBC4570A9(L_0, Dictionary_2__ctor_mC4F3DF292BAD88F4BF193C49CD689FAEBC4570A9_RuntimeMethod_var);
+		Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_1 = L_0;
+		String_t* L_2 = ___0_purchaseOriginalJson;
+		NullCheck(L_1);
+		Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(L_1, _stringLiteral43187C90BBB5DFB063A95733C9BD65ECD25A2E84, L_2, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+		Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_3 = L_1;
+		String_t* L_4 = ___1_purchaseSignature;
+		NullCheck(L_3);
+		Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(L_3, _stringLiteralC90E9C620FF08EC425BBC933A1E5074B3084EFB0, L_4, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+		Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_5 = L_3;
+		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_6 = ___2_productDetailsJson;
+		NullCheck(L_5);
+		Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(L_5, _stringLiteral7DF2D77A4C0E1D0B34B035D65123E0BE0BE49DC6, L_6, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/GoogleReceiptEncoder.cs:15>
+		String_t* L_7;
+		L_7 = MiniJson_JsonEncode_m563D782D214D683C047F67EE9DF9278D89730DC1(L_5, NULL);
+		return L_7;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81650
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D* ProductDetailsConverter_ConvertOnQueryProductDetailsResponse_m99FC6F869C89693D477291E4AD1AA509FAD2C3BF (ProductDetailsConverter_t3B5F595B574B4ACC2B7BFEFDC00362F57828B498* __this, RuntimeObject* ___0_productDetails, RuntimeObject* ___1_productDefinitions, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Dictionary_2_Add_m1186E81670462E914A7868301113976FDB83F777_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Dictionary_2_TryGetValue_mBD806A751A3EA2687C4A6997905A763E24442273_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Dictionary_2__ctor_mBC60BBD8E518B2F692F76BFC979213D72229470C_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&HashSet_1_Add_mF3D4CF6D0150392127D5561A87DCDEDA9A81BE5D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&HashSet_1__ctor_m780CFB8A2D23543157D1A0E1FADF781E1AF81E03_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IEnumerable_1_t2BD41C083C8A0ED1A3EEE3F369A8F72250106A54_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IEnumerable_1_tD3389067CF1DBB30D7B82BC3171E67FCD3A1C513_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IEnumerator_1_tAFB5E5CCED9DEEA334AB963181D0E98947DB6E68_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IEnumerator_1_tBDEF718EE6EB3FBF3046DBFAAE922D84838F9814_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IEnumerator_t7B609C2FFA6EB5167D9C62A0C32A21DE2F666DAA_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_Add_mE3F27EF43003A3372F10684005923C154D0E9237_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1__ctor_mEC31258BBEAB41C7466DA7D600E9307C1AC99479_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral5BEFD8CC60A79699B5BB00E37BAC5B62D371E174);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral99BDE0852A37C41143397A710B072839C0E4E659);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralB7714C6CF87BDF83FE83E998957A5E3D2AF36C42);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralB8A9F89F0CCD9251509889DD428B8F0A0E89CCF4);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralBD74378570B3ED5469D7445DBA3B74C52A2C30F4);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralCE90F8BE99B1EC194755FA3F36466B13D50CA9C6);
+		s_Il2CppMethodInitialized = true;
+	}
+	List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D* V_0 = NULL;
+	Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5* V_1 = NULL;
+	HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178* V_2 = NULL;
+	RuntimeObject* V_3 = NULL;
+	ProductDefinition_tB486F56477C49E81BA6704C2DD31F373CDCCC1BD* V_4 = NULL;
+	RuntimeObject* V_5 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_6 = NULL;
+	String_t* V_7 = NULL;
+	int32_t V_8 = 0;
+	Exception_t* V_9 = NULL;
+	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
+	ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263* G_B6_0 = NULL;
+	ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263* G_B5_0 = NULL;
+	int32_t G_B7_0 = 0;
+	String_t* G_B20_0 = NULL;
+	String_t* G_B19_0 = NULL;
+	String_t* G_B21_0 = NULL;
+	String_t* G_B21_1 = NULL;
+	String_t* G_B23_0 = NULL;
+	String_t* G_B23_1 = NULL;
+	String_t* G_B22_0 = NULL;
+	String_t* G_B22_1 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:19>
+		List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D* L_0 = (List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D*)il2cpp_codegen_object_new(List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D_il2cpp_TypeInfo_var);
+		List_1__ctor_mEC31258BBEAB41C7466DA7D600E9307C1AC99479(L_0, List_1__ctor_mEC31258BBEAB41C7466DA7D600E9307C1AC99479_RuntimeMethod_var);
+		V_0 = L_0;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:20>
+		Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5* L_1 = (Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5*)il2cpp_codegen_object_new(Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5_il2cpp_TypeInfo_var);
+		Dictionary_2__ctor_mBC60BBD8E518B2F692F76BFC979213D72229470C(L_1, Dictionary_2__ctor_mBC60BBD8E518B2F692F76BFC979213D72229470C_RuntimeMethod_var);
+		V_1 = L_1;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:21>
+		HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178* L_2 = (HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178*)il2cpp_codegen_object_new(HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178_il2cpp_TypeInfo_var);
+		HashSet_1__ctor_m780CFB8A2D23543157D1A0E1FADF781E1AF81E03(L_2, HashSet_1__ctor_m780CFB8A2D23543157D1A0E1FADF781E1AF81E03_RuntimeMethod_var);
+		V_2 = L_2;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:23>
+		RuntimeObject* L_3 = ___1_productDefinitions;
+		NullCheck(L_3);
+		RuntimeObject* L_4;
+		L_4 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(0, IEnumerable_1_t2BD41C083C8A0ED1A3EEE3F369A8F72250106A54_il2cpp_TypeInfo_var, L_3);
+		V_3 = L_4;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_0081:
+			{
+				{
+					RuntimeObject* L_5 = V_3;
+					if (!L_5)
+					{
+						goto IL_008a;
+					}
+				}
+				{
+					RuntimeObject* L_6 = V_3;
+					NullCheck(L_6);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_6);
+				}
+
+IL_008a:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			{
+				goto IL_0077_1;
+			}
+
+IL_001b_1:
+			{
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:23>
+				RuntimeObject* L_7 = V_3;
+				NullCheck(L_7);
+				ProductDefinition_tB486F56477C49E81BA6704C2DD31F373CDCCC1BD* L_8;
+				L_8 = InterfaceFuncInvoker0< ProductDefinition_tB486F56477C49E81BA6704C2DD31F373CDCCC1BD* >::Invoke(0, IEnumerator_1_tAFB5E5CCED9DEEA334AB963181D0E98947DB6E68_il2cpp_TypeInfo_var, L_7);
+				V_4 = L_8;
+			}
+			try
+			{
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:27>
+				Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5* L_9 = V_1;
+				ProductDefinition_tB486F56477C49E81BA6704C2DD31F373CDCCC1BD* L_10 = V_4;
+				NullCheck(L_10);
+				String_t* L_11;
+				L_11 = ProductDefinition_get_storeSpecificId_m67EC5C2564476BD154C8164613AB62A4DBEADEAC_inline(L_10, NULL);
+				ProductDefinition_tB486F56477C49E81BA6704C2DD31F373CDCCC1BD* L_12 = V_4;
+				NullCheck(L_12);
+				int32_t L_13;
+				L_13 = ProductDefinition_get_type_m06713F1930454961F16BB38AD5B74695FB880371_inline(L_12, NULL);
+				NullCheck(L_9);
+				Dictionary_2_Add_m1186E81670462E914A7868301113976FDB83F777(L_9, L_11, L_13, Dictionary_2_Add_m1186E81670462E914A7868301113976FDB83F777_RuntimeMethod_var);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:28>
+				goto IL_0077_1;
+			}
+			catch(Il2CppExceptionWrapper& e)
+			{
+				{
+					{
+						bool __filter_local = false;
+						try
+						{
+							{
+								Exception_t* L_14 = (Exception_t*)e.ex;;
+								ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263* L_15 = ((ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263*)IsInstClass((RuntimeObject*)L_14, ((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentException_tAD90411542A20A9C72D5CDA3A84181D8B947A263_il2cpp_TypeInfo_var))));
+								if (L_15)
+								{
+									G_B6_0 = L_15;
+									goto IL_0045_1;
+								}
+								G_B5_0 = L_15;
+							}
+							{
+								G_B7_0 = 0;
+								goto IL_0057_1;
+							}
+
+IL_0045_1:
+							{
+								//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:29>
+								NullCheck(G_B6_0);
+								String_t* L_16;
+								L_16 = VirtualFuncInvoker0< String_t* >::Invoke(5, G_B6_0);
+								NullCheck(L_16);
+								bool L_17;
+								L_17 = String_Contains_m6D77B121FADA7CA5F397C0FABB65DA62DF03B6C3(L_16, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteralA4829F72F98AFAE68C1BD720A5AC1C7E0D6FBA29)), NULL);
+								G_B7_0 = ((!(((uint32_t)L_17) <= ((uint32_t)0)))? 1 : 0);
+							}
+
+IL_0057_1:
+							{
+								__filter_local = (G_B7_0) ? true : false;
+							}
+						}
+						catch(Il2CppExceptionWrapper&)
+						{
+							__filter_local = false;
+						}
+						if (__filter_local)
+						{
+							IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+							goto FILTER_0059_1;
+						}
+					}
+				}
+				throw e;
+			}
+
+FILTER_0059_1:
+			{
+				Exception_t* L_18 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:31>
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:32>
+				ProductDefinition_tB486F56477C49E81BA6704C2DD31F373CDCCC1BD* L_19 = V_4;
+				NullCheck(L_19);
+				String_t* L_20;
+				L_20 = ProductDefinition_get_storeSpecificId_m67EC5C2564476BD154C8164613AB62A4DBEADEAC_inline(L_19, NULL);
+				String_t* L_21;
+				L_21 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral06DA7A6725335BF9DA20C0B251038B1F00B015B2)), L_20, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral3DDB68CEBE2A296CAFE7ED1B52D8A053FB9C9F3E)), NULL);
+				il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
+				Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_21, NULL);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:33>
+				IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+				goto IL_0077_1;
+			}
+
+IL_0077_1:
+			{
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:23>
+				RuntimeObject* L_22 = V_3;
+				NullCheck(L_22);
+				bool L_23;
+				L_23 = InterfaceFuncInvoker0< bool >::Invoke(0, IEnumerator_t7B609C2FFA6EB5167D9C62A0C32A21DE2F666DAA_il2cpp_TypeInfo_var, L_22);
+				if (L_23)
+				{
+					goto IL_001b_1;
+				}
+			}
+			{
+				goto IL_008b;
+			}
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_008b:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:36>
+		RuntimeObject* L_24 = ___0_productDetails;
+		NullCheck(L_24);
+		RuntimeObject* L_25;
+		L_25 = InterfaceFuncInvoker0< RuntimeObject* >::Invoke(0, IEnumerable_1_tD3389067CF1DBB30D7B82BC3171E67FCD3A1C513_il2cpp_TypeInfo_var, L_24);
+		V_5 = L_25;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_0152:
+			{
+				{
+					RuntimeObject* L_26 = V_5;
+					if (!L_26)
+					{
+						goto IL_015d;
+					}
+				}
+				{
+					RuntimeObject* L_27 = V_5;
+					NullCheck(L_27);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_27);
+				}
+
+IL_015d:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			{
+				goto IL_0144_1;
+			}
+
+IL_0098_1:
+			{
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:36>
+				RuntimeObject* L_28 = V_5;
+				NullCheck(L_28);
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_29;
+				L_29 = InterfaceFuncInvoker0< AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* >::Invoke(0, IEnumerator_1_tBDEF718EE6EB3FBF3046DBFAAE922D84838F9814_il2cpp_TypeInfo_var, L_28);
+				V_6 = L_29;
+			}
+			try
+			{
+				{
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:40>
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_30 = V_6;
+					String_t* L_31;
+					L_31 = ProductDetailsConverter_GetProductId_mD1188989383FAB92EE2EFE5416E1923855A449EF(__this, L_30, NULL);
+					V_7 = L_31;
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:41>
+					String_t* L_32 = V_7;
+					bool L_33;
+					L_33 = String_IsNullOrEmpty_mEA9E3FB005AC28FE02E69FCF95A7B8456192B478(L_32, NULL);
+					if (!L_33)
+					{
+						goto IL_00dc_2;
+					}
+				}
+				{
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:43>
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_34 = V_6;
+					if (L_34)
+					{
+						G_B20_0 = _stringLiteralB8A9F89F0CCD9251509889DD428B8F0A0E89CCF4;
+						goto IL_00c0_2;
+					}
+					G_B19_0 = _stringLiteralB8A9F89F0CCD9251509889DD428B8F0A0E89CCF4;
+				}
+				{
+					G_B21_0 = ((String_t*)(NULL));
+					G_B21_1 = G_B19_0;
+					goto IL_00c7_2;
+				}
+
+IL_00c0_2:
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_35 = V_6;
+					NullCheck(L_35);
+					String_t* L_36;
+					L_36 = VirtualFuncInvoker0< String_t* >::Invoke(3, L_35);
+					G_B21_0 = L_36;
+					G_B21_1 = G_B20_0;
+				}
+
+IL_00c7_2:
+				{
+					String_t* L_37 = G_B21_0;
+					if (L_37)
+					{
+						G_B23_0 = L_37;
+						G_B23_1 = G_B21_1;
+						goto IL_00d0_2;
+					}
+					G_B22_0 = L_37;
+					G_B22_1 = G_B21_1;
+				}
+				{
+					G_B23_0 = _stringLiteral5BEFD8CC60A79699B5BB00E37BAC5B62D371E174;
+					G_B23_1 = G_B22_1;
+				}
+
+IL_00d0_2:
+				{
+					String_t* L_38;
+					L_38 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(G_B23_1, G_B23_0, NULL);
+					il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+					Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(L_38, NULL);
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:44>
+					goto IL_0144_1;
+				}
+
+IL_00dc_2:
+				{
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:48>
+					HashSet_1_tEFC6605F7DE53F71946C33FD371E53C3100F2178* L_39 = V_2;
+					String_t* L_40 = V_7;
+					NullCheck(L_39);
+					bool L_41;
+					L_41 = HashSet_1_Add_mF3D4CF6D0150392127D5561A87DCDEDA9A81BE5D(L_39, L_40, HashSet_1_Add_mF3D4CF6D0150392127D5561A87DCDEDA9A81BE5D_RuntimeMethod_var);
+					if (L_41)
+					{
+						goto IL_00fe_2;
+					}
+				}
+				{
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:50>
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:51>
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:52>
+					String_t* L_42 = V_7;
+					String_t* L_43;
+					L_43 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(_stringLiteral99BDE0852A37C41143397A710B072839C0E4E659, L_42, _stringLiteralBD74378570B3ED5469D7445DBA3B74C52A2C30F4, NULL);
+					il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+					Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_43, NULL);
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:53>
+					goto IL_0144_1;
+				}
+
+IL_00fe_2:
+				{
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:57>
+					Dictionary_2_t9DDE3DB533C1122551593E6072F110F74B286DA5* L_44 = V_1;
+					String_t* L_45 = V_7;
+					NullCheck(L_44);
+					bool L_46;
+					L_46 = Dictionary_2_TryGetValue_mBD806A751A3EA2687C4A6997905A763E24442273(L_44, L_45, (&V_8), Dictionary_2_TryGetValue_mBD806A751A3EA2687C4A6997905A763E24442273_RuntimeMethod_var);
+					if (!L_46)
+					{
+						goto IL_011c_2;
+					}
+				}
+				{
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:59>
+					List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D* L_47 = V_0;
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_48 = V_6;
+					int32_t L_49 = V_8;
+					ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* L_50;
+					L_50 = ProductDetailsConverter_ConvertToProductDescription_m2CD6113C10FC729794DEB355A2E85DDEBF5F5217(__this, L_48, L_49, NULL);
+					NullCheck(L_47);
+					List_1_Add_mE3F27EF43003A3372F10684005923C154D0E9237_inline(L_47, L_50, List_1_Add_mE3F27EF43003A3372F10684005923C154D0E9237_RuntimeMethod_var);
+					goto IL_0132_2;
+				}
+
+IL_011c_2:
+				{
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:63>
+					String_t* L_51 = V_7;
+					String_t* L_52;
+					L_52 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(_stringLiteralB7714C6CF87BDF83FE83E998957A5E3D2AF36C42, L_51, _stringLiteralCE90F8BE99B1EC194755FA3F36466B13D50CA9C6, NULL);
+					il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+					Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(L_52, NULL);
+				}
+
+IL_0132_2:
+				{
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:65>
+					goto IL_0144_1;
+				}
+			}
+			catch(Il2CppExceptionWrapper& e)
+			{
+				if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
+				{
+					IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+					goto CATCH_0134_1;
+				}
+				throw e;
+			}
+
+CATCH_0134_1:
+			{
+				Exception_t* L_53 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:66>
+				V_9 = L_53;
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:68>
+				il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
+				RuntimeObject* L_54;
+				L_54 = Debug_get_unityLogger_m4FDE4D41C187123244FE13124DA636BB50C9C1E1_inline(NULL);
+				Exception_t* L_55 = V_9;
+				LoggerExtensions_LogIAPException_m14A0B0260AEF2E6122D36988AB2CA9E0B76D55F2(L_54, L_55, NULL);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:69>
+				IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+				goto IL_0144_1;
+			}
+
+IL_0144_1:
+			{
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:36>
+				RuntimeObject* L_56 = V_5;
+				NullCheck(L_56);
+				bool L_57;
+				L_57 = InterfaceFuncInvoker0< bool >::Invoke(0, IEnumerator_t7B609C2FFA6EB5167D9C62A0C32A21DE2F666DAA_il2cpp_TypeInfo_var, L_56);
+				if (L_57)
+				{
+					goto IL_0098_1;
+				}
+			}
+			{
+				goto IL_015e;
+			}
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_015e:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:71>
+		List_1_t39710FB9475F02E110B45F35CE6451A789EBF76D* L_58 = V_0;
+		return L_58;
+	}
+}
+// Method Definition Index: 81651
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* ProductDetailsConverter_GetProductId_mD1188989383FAB92EE2EFE5416E1923855A449EF (ProductDetailsConverter_t3B5F595B574B4ACC2B7BFEFDC00362F57828B498* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_productDetails, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral8A0C00507160E0F1EB2F6C3579529D1B4011A3F7);
+		s_Il2CppMethodInitialized = true;
+	}
+	String_t* V_0 = NULL;
+	Exception_t* V_1 = NULL;
+	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
+	try
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:78>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_0 = ___0_productDetails;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		String_t* L_2;
+		L_2 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_0, _stringLiteral8A0C00507160E0F1EB2F6C3579529D1B4011A3F7, L_1, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+		V_0 = L_2;
+		goto IL_002d;
+	}
+	catch(Il2CppExceptionWrapper& e)
+	{
+		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
+		{
+			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+			goto CATCH_0013;
+		}
+		throw e;
+	}
+
+CATCH_0013:
+	{
+		Exception_t* L_3 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:80>
+		V_1 = L_3;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:82>
+		Exception_t* L_4 = V_1;
+		NullCheck(L_4);
+		String_t* L_5;
+		L_5 = VirtualFuncInvoker0< String_t* >::Invoke(5, L_4);
+		String_t* L_6;
+		L_6 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteralFF8834D7BEB437FB27AB9B8F22E7A70654E9D30F)), L_5, NULL);
+		il2cpp_codegen_runtime_class_init_inline(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var)));
+		Debug_LogError_mB00B2B4468EF3CAF041B038D840820FB84C924B2(L_6, NULL);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:83>
+		V_0 = (String_t*)NULL;
+		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+		goto IL_002d;
+	}
+
+IL_002d:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:85>
+		String_t* L_7 = V_0;
+		return L_7;
+	}
+}
+// Method Definition Index: 81652
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* ProductDetailsConverter_ConvertToProductDescription_m2CD6113C10FC729794DEB355A2E85DDEBF5F5217 (ProductDetailsConverter_t3B5F595B574B4ACC2B7BFEFDC00362F57828B498* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_productDetails, int32_t ___1_productType, const RuntimeMethod* method) 
+{
+	ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* V_0 = NULL;
+	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
+	try
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:91>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_0 = ___0_productDetails;
+		int32_t L_1 = ___1_productType;
+		ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* L_2;
+		L_2 = ProductDetailsConverter_BuildProductDescription_m8C1B83009FE220F61D0A60F144380137291E82D3(L_0, L_1, NULL);
+		V_0 = L_2;
+		goto IL_000b;
+	}
+	catch(Il2CppExceptionWrapper& e)
+	{
+		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
+		{
+			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
+			goto CATCH_000a;
+		}
+		throw e;
+	}
+
+CATCH_000a:
+	{
+		Exception_t* L_3 = ((Exception_t*)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t*));;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:95>
+		IL2CPP_POP_ACTIVE_EXCEPTION(Exception_t*);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_3, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ProductDetailsConverter_ConvertToProductDescription_m2CD6113C10FC729794DEB355A2E85DDEBF5F5217_RuntimeMethod_var)));
+	}
+
+IL_000b:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:97>
+		ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* L_4 = V_0;
+		return L_4;
+	}
+}
+// Method Definition Index: 81653
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* ProductDetailsConverter_BuildProductDescription_m8C1B83009FE220F61D0A60F144380137291E82D3 (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_productDetails, int32_t ___1_productType, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Convert_t7097FF336D592F7C06D88A98349A44646F91EFFC_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Dictionary_2__ctor_mC4F3DF292BAD88F4BF193C49CD689FAEBC4570A9_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Enumerable_FirstOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m00C8BBE56D2D629169750D64CB161CEBF99AEF01_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Enumerable_LastOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m33C58D142D6CF66FB640E22873D90A280C2814FD_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Enumerable_ToList_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m2C093DAAAEB4344056B8E407A80D09DB41B8C092_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_get_Count_m0FDA1EA1DF52887ED2369B7FA6FC774E4713C611_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_get_Item_mA052ED5D69C31699EAF26017337CCCD9344E0C9C_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral028514C8E27F27484E9E866C553393D43DC84EDA);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral0473EFA899319A8DA704762486EF8E16B6B52F4A);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral04AD085524DDE5FCAC5C8B9E97BFC562CEBACED4);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral137D1EB0BCE08F87E3D7F7F38ECE20286493C98E);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral240A4EF75B062CE86A8F921B98896CED0E932E92);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral269B276065AA2FD25E2FC1E4ED6E8FBDFB83D44D);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral27B234DC11D2305D0666E3721A55FF75AF72BDD3);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral2CC71DBDCE6B0FAE2580070B39FD7E51B3684ECD);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral36E77E9491650B09E62878D9730C867FEA84FCD8);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral3A6FCCACB316144D2A8F7B39C2E8C4355CD37A79);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral3F0F1E07DE00187242419D20E086A08C254DDED5);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral402C5532DF27B27F8A09150739866753D6F5F7DC);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral4E5B2566BC5D188977FB56C7B6DA93D2CAE621D6);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral58BB47D89B96E4992A8CEB702213DCC616635297);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral6AF27898A60AD4C1341A7F597C946906F75565C5);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral8A0C00507160E0F1EB2F6C3579529D1B4011A3F7);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral92A0367A0299056CA05B86632AFA0D8FA9C6BF91);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral9CCC0F42EB96D4600C1A6E282B06C11F67181066);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralAAC23CE504B2ED9A0FC4EDCACBAE59137FE737CA);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralB5F2E6B4108DB675C4F88DEA3BDBFA1C96F0FAFD);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralC7B4D926EF9532A71B25AEC040A33D52C926425F);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralCE18B047107AA23D1AA9B2ED32D316148E02655F);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralD08C08BB30E60F619EEBCC0B2F49D9558244E875);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralDA8BCE10DEAE9B8E6EB9317CF4BFCE9A1D046B73);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE3ACC52D566F108F766CF5F9E424F0BE358B8EFC);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralEB534843932D1025EEE09575458F840C63DC1063);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF3C6C902DBF80139640F6554F0C3392016A8ADF7);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralFFA59E17C5130FD6E7E1D5621F39533B1120F332);
+		s_Il2CppMethodInitialized = true;
+	}
+	String_t* V_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_1 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_2 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_3 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_4 = NULL;
+	List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* V_5 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_6 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_7 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_8 = NULL;
+	String_t* V_9 = NULL;
+	Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F V_10;
+	memset((&V_10), 0, sizeof(V_10));
+	Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F V_11;
+	memset((&V_11), 0, sizeof(V_11));
+	String_t* V_12 = NULL;
+	String_t* V_13 = NULL;
+	String_t* V_14 = NULL;
+	String_t* V_15 = NULL;
+	String_t* V_16 = NULL;
+	String_t* V_17 = NULL;
+	Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F V_18;
+	memset((&V_18), 0, sizeof(V_18));
+	String_t* V_19 = NULL;
+	int32_t V_20 = 0;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* V_21 = NULL;
+	String_t* V_22 = NULL;
+	GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* V_23 = NULL;
+	int32_t V_24 = 0;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_25 = NULL;
+	ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* V_26 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* G_B5_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* G_B9_0 = NULL;
+	List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* G_B13_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* G_B16_0 = NULL;
+	String_t* G_B26_0 = NULL;
+	String_t* G_B30_0 = NULL;
+	String_t* G_B27_0 = NULL;
+	int64_t G_B35_0 = 0;
+	Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F G_B40_0;
+	memset((&G_B40_0), 0, sizeof(G_B40_0));
+	int64_t G_B39_0 = 0;
+	String_t* G_B43_0 = NULL;
+	String_t* G_B47_0 = NULL;
+	String_t* G_B44_0 = NULL;
+	String_t* G_B50_0 = NULL;
+	String_t* G_B53_0 = NULL;
+	String_t* G_B56_0 = NULL;
+	Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F G_B59_0;
+	memset((&G_B59_0), 0, sizeof(G_B59_0));
+	String_t* G_B62_0 = NULL;
+	int32_t G_B65_0 = 0;
+	String_t* G_B67_0 = NULL;
+	String_t* G_B67_1 = NULL;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* G_B67_2 = NULL;
+	String_t* G_B66_0 = NULL;
+	String_t* G_B66_1 = NULL;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* G_B66_2 = NULL;
+	String_t* G_B69_0 = NULL;
+	String_t* G_B69_1 = NULL;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* G_B69_2 = NULL;
+	String_t* G_B68_0 = NULL;
+	String_t* G_B68_1 = NULL;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* G_B68_2 = NULL;
+	String_t* G_B72_0 = NULL;
+	String_t* G_B72_1 = NULL;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* G_B72_2 = NULL;
+	String_t* G_B71_0 = NULL;
+	String_t* G_B71_1 = NULL;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* G_B71_2 = NULL;
+	String_t* G_B76_0 = NULL;
+	String_t* G_B76_1 = NULL;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* G_B76_2 = NULL;
+	String_t* G_B75_0 = NULL;
+	String_t* G_B75_1 = NULL;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* G_B75_2 = NULL;
+	String_t* G_B80_0 = NULL;
+	String_t* G_B80_1 = NULL;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* G_B80_2 = NULL;
+	String_t* G_B79_0 = NULL;
+	String_t* G_B79_1 = NULL;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* G_B79_2 = NULL;
+	String_t* G_B82_0 = NULL;
+	String_t* G_B82_1 = NULL;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* G_B82_2 = NULL;
+	String_t* G_B81_0 = NULL;
+	String_t* G_B81_1 = NULL;
+	Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* G_B81_2 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:108>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_0 = ___0_productDetails;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		String_t* L_2;
+		L_2 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_0, _stringLiteral8A0C00507160E0F1EB2F6C3579529D1B4011A3F7, L_1, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+		V_0 = L_2;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:109>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = ___0_productDetails;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_4;
+		L_4 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_3);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5;
+		L_5 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_3, _stringLiteralAAC23CE504B2ED9A0FC4EDCACBAE59137FE737CA, L_4, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		V_1 = L_5;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_0442:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_6 = V_1;
+					if (!L_6)
+					{
+						goto IL_044b;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_7 = V_1;
+					NullCheck(L_7);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_7);
+				}
+
+IL_044b:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			{
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:110>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_8 = ___0_productDetails;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_9;
+				L_9 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_8);
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_10;
+				L_10 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_8, _stringLiteral0473EFA899319A8DA704762486EF8E16B6B52F4A, L_9, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+				RuntimeObject* L_11;
+				L_11 = AndroidJavaObjectExtensions_Enumerate_m8D1A4474E054713477508C758D378DA9BE10E01F(L_10, NULL);
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_12;
+				L_12 = Enumerable_FirstOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m00C8BBE56D2D629169750D64CB161CEBF99AEF01(L_11, Enumerable_FirstOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m00C8BBE56D2D629169750D64CB161CEBF99AEF01_RuntimeMethod_var);
+				V_2 = L_12;
+			}
+			{
+				auto __finallyBlock = il2cpp::utils::Finally([&]
+				{
+
+FINALLY_0438_1:
+					{
+						{
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_13 = V_2;
+							if (!L_13)
+							{
+								goto IL_0441_1;
+							}
+						}
+						{
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_14 = V_2;
+							NullCheck(L_14);
+							InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_14);
+						}
+
+IL_0441_1:
+						{
+							return;
+						}
+					}
+				});
+				try
+				{
+					{
+						//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:111>
+						AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_15 = V_2;
+						if (L_15)
+						{
+							goto IL_0043_2;
+						}
+					}
+					{
+						G_B5_0 = ((AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*)(NULL));
+						goto IL_0053_2;
+					}
+
+IL_0043_2:
+					{
+						AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_16 = V_2;
+						ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_17;
+						L_17 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+						NullCheck(L_16);
+						AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_18;
+						L_18 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_16, _stringLiteralE3ACC52D566F108F766CF5F9E424F0BE358B8EFC, L_17, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+						G_B5_0 = L_18;
+					}
+
+IL_0053_2:
+					{
+						V_3 = G_B5_0;
+					}
+					{
+						auto __finallyBlock = il2cpp::utils::Finally([&]
+						{
+
+FINALLY_042e_2:
+							{
+								{
+									AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_19 = V_3;
+									if (!L_19)
+									{
+										goto IL_0437_2;
+									}
+								}
+								{
+									AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_20 = V_3;
+									NullCheck(L_20);
+									InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_20);
+								}
+
+IL_0437_2:
+								{
+									return;
+								}
+							}
+						});
+						try
+						{
+							{
+								//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:112>
+								AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_21 = V_3;
+								if (L_21)
+								{
+									goto IL_005a_3;
+								}
+							}
+							{
+								G_B9_0 = ((AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*)(NULL));
+								goto IL_006a_3;
+							}
+
+IL_005a_3:
+							{
+								AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_22 = V_3;
+								ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_23;
+								L_23 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+								NullCheck(L_22);
+								AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_24;
+								L_24 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_22, _stringLiteralB5F2E6B4108DB675C4F88DEA3BDBFA1C96F0FAFD, L_23, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+								G_B9_0 = L_24;
+							}
+
+IL_006a_3:
+							{
+								V_4 = G_B9_0;
+							}
+							{
+								auto __finallyBlock = il2cpp::utils::Finally([&]
+								{
+
+FINALLY_0422_3:
+									{
+										{
+											AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_25 = V_4;
+											if (!L_25)
+											{
+												goto IL_042d_3;
+											}
+										}
+										{
+											AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_26 = V_4;
+											NullCheck(L_26);
+											InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_26);
+										}
+
+IL_042d_3:
+										{
+											return;
+										}
+									}
+								});
+								try
+								{
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:113>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_27 = V_4;
+										if (L_27)
+										{
+											goto IL_0073_4;
+										}
+									}
+									{
+										G_B13_0 = ((List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF*)(NULL));
+										goto IL_007f_4;
+									}
+
+IL_0073_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_28 = V_4;
+										RuntimeObject* L_29;
+										L_29 = AndroidJavaObjectExtensions_Enumerate_m8D1A4474E054713477508C758D378DA9BE10E01F(L_28, NULL);
+										List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* L_30;
+										L_30 = Enumerable_ToList_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m2C093DAAAEB4344056B8E407A80D09DB41B8C092(L_29, Enumerable_ToList_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m2C093DAAAEB4344056B8E407A80D09DB41B8C092_RuntimeMethod_var);
+										G_B13_0 = L_30;
+									}
+
+IL_007f_4:
+									{
+										V_5 = G_B13_0;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:115>
+										List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* L_31 = V_5;
+										if (L_31)
+										{
+											goto IL_0088_4;
+										}
+									}
+									{
+										G_B16_0 = ((AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*)(NULL));
+										goto IL_008f_4;
+									}
+
+IL_0088_4:
+									{
+										List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* L_32 = V_5;
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_33;
+										L_33 = Enumerable_LastOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m33C58D142D6CF66FB640E22873D90A280C2814FD(L_32, Enumerable_LastOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m33C58D142D6CF66FB640E22873D90A280C2814FD_RuntimeMethod_var);
+										G_B16_0 = L_33;
+									}
+
+IL_008f_4:
+									{
+										V_6 = G_B16_0;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:116>
+										V_7 = (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*)NULL;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:117>
+										V_8 = (AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*)NULL;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:118>
+										List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* L_34 = V_5;
+										if (!L_34)
+										{
+											goto IL_00df_4;
+										}
+									}
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:120>
+										List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* L_35 = V_5;
+										NullCheck(L_35);
+										int32_t L_36;
+										L_36 = List_1_get_Count_m0FDA1EA1DF52887ED2369B7FA6FC774E4713C611_inline(L_35, List_1_get_Count_m0FDA1EA1DF52887ED2369B7FA6FC774E4713C611_RuntimeMethod_var);
+										V_24 = ((int32_t)il2cpp_codegen_subtract(L_36, 2));
+										goto IL_00da_4;
+									}
+
+IL_00a8_4:
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:122>
+										List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* L_37 = V_5;
+										int32_t L_38 = V_24;
+										NullCheck(L_37);
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_39;
+										L_39 = List_1_get_Item_mA052ED5D69C31699EAF26017337CCCD9344E0C9C(L_37, L_38, List_1_get_Item_mA052ED5D69C31699EAF26017337CCCD9344E0C9C_RuntimeMethod_var);
+										V_25 = L_39;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:123>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_40 = V_25;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_41;
+										L_41 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_40);
+										int64_t L_42;
+										L_42 = AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9(L_40, _stringLiteral9CCC0F42EB96D4600C1A6E282B06C11F67181066, L_41, AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9_RuntimeMethod_var);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:124>
+										if (!((((int64_t)L_42) == ((int64_t)((int64_t)0)))? 1 : 0))
+										{
+											goto IL_00d0_4;
+										}
+									}
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:126>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_43 = V_25;
+										V_7 = L_43;
+										goto IL_00d4_4;
+									}
+
+IL_00d0_4:
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:130>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_44 = V_25;
+										V_8 = L_44;
+									}
+
+IL_00d4_4:
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:120>
+										int32_t L_45 = V_24;
+										V_24 = ((int32_t)il2cpp_codegen_subtract(L_45, 1));
+									}
+
+IL_00da_4:
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:120>
+										int32_t L_46 = V_24;
+										if ((((int32_t)L_46) >= ((int32_t)0)))
+										{
+											goto IL_00a8_4;
+										}
+									}
+
+IL_00df_4:
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:135>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_47 = V_1;
+										if (L_47)
+										{
+											goto IL_00e5_4;
+										}
+									}
+									{
+										G_B26_0 = ((String_t*)(NULL));
+										goto IL_00f5_4;
+									}
+
+IL_00e5_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_48 = V_1;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_49;
+										L_49 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_48);
+										String_t* L_50;
+										L_50 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_48, _stringLiteral137D1EB0BCE08F87E3D7F7F38ECE20286493C98E, L_49, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+										G_B26_0 = L_50;
+									}
+
+IL_00f5_4:
+									{
+										String_t* L_51 = G_B26_0;
+										if (L_51)
+										{
+											G_B30_0 = L_51;
+											goto IL_0111_4;
+										}
+										G_B27_0 = L_51;
+									}
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_52 = V_6;
+										if (L_52)
+										{
+											goto IL_0100_4;
+										}
+									}
+									{
+										G_B30_0 = ((String_t*)(NULL));
+										goto IL_0111_4;
+									}
+
+IL_0100_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_53 = V_6;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_54;
+										L_54 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_53);
+										String_t* L_55;
+										L_55 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_53, _stringLiteral137D1EB0BCE08F87E3D7F7F38ECE20286493C98E, L_54, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+										G_B30_0 = L_55;
+									}
+
+IL_0111_4:
+									{
+										V_9 = G_B30_0;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:136>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:137>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:138>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_56 = V_1;
+										if (L_56)
+										{
+											goto IL_014b_4;
+										}
+									}
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_57 = V_6;
+										if (!L_57)
+										{
+											goto IL_012f_4;
+										}
+									}
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_58 = V_6;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_59;
+										L_59 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_58);
+										int64_t L_60;
+										L_60 = AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9(L_58, _stringLiteral9CCC0F42EB96D4600C1A6E282B06C11F67181066, L_59, AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9_RuntimeMethod_var);
+										if ((((int64_t)L_60) > ((int64_t)((int64_t)0))))
+										{
+											goto IL_0133_4;
+										}
+									}
+
+IL_012f_4:
+									{
+										G_B35_0 = ((int64_t)0);
+										goto IL_0144_4;
+									}
+
+IL_0133_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_61 = V_6;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_62;
+										L_62 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_61);
+										int64_t L_63;
+										L_63 = AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9(L_61, _stringLiteral9CCC0F42EB96D4600C1A6E282B06C11F67181066, L_62, AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9_RuntimeMethod_var);
+										G_B35_0 = L_63;
+									}
+
+IL_0144_4:
+									{
+										il2cpp_codegen_runtime_class_init_inline(Convert_t7097FF336D592F7C06D88A98349A44646F91EFFC_il2cpp_TypeInfo_var);
+										Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F L_64;
+										L_64 = Convert_ToDecimal_m29670FF2222B3FEE0308943C56D0662937CC063C(G_B35_0, NULL);
+										G_B40_0 = L_64;
+										goto IL_0178_4;
+									}
+
+IL_014b_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_65 = V_1;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_66;
+										L_66 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_65);
+										int64_t L_67;
+										L_67 = AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9(L_65, _stringLiteral9CCC0F42EB96D4600C1A6E282B06C11F67181066, L_66, AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9_RuntimeMethod_var);
+										if ((((int64_t)L_67) > ((int64_t)((int64_t)0))))
+										{
+											goto IL_0163_4;
+										}
+									}
+									{
+										G_B39_0 = ((int64_t)0);
+										goto IL_0173_4;
+									}
+
+IL_0163_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_68 = V_1;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_69;
+										L_69 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_68);
+										int64_t L_70;
+										L_70 = AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9(L_68, _stringLiteral9CCC0F42EB96D4600C1A6E282B06C11F67181066, L_69, AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9_RuntimeMethod_var);
+										G_B39_0 = L_70;
+									}
+
+IL_0173_4:
+									{
+										il2cpp_codegen_runtime_class_init_inline(Convert_t7097FF336D592F7C06D88A98349A44646F91EFFC_il2cpp_TypeInfo_var);
+										Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F L_71;
+										L_71 = Convert_ToDecimal_m29670FF2222B3FEE0308943C56D0662937CC063C(G_B39_0, NULL);
+										G_B40_0 = L_71;
+									}
+
+IL_0178_4:
+									{
+										V_10 = G_B40_0;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:139>
+										Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F L_72 = V_10;
+										Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F L_73;
+										memset((&L_73), 0, sizeof(L_73));
+										Decimal__ctor_m6DDFD6E3A7A8CDEB1BADF8E09A8D8E1BDA9497A9((&L_73), ((int32_t)1000000), NULL);
+										il2cpp_codegen_runtime_class_init_inline(Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F_il2cpp_TypeInfo_var);
+										Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F L_74;
+										L_74 = Decimal_op_Division_mA0BD25988CA8010A3F8EA2F6A534F9F2D812D2AC(L_72, L_73, NULL);
+										V_11 = L_74;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:140>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_75 = ___0_productDetails;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_76;
+										L_76 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_75);
+										String_t* L_77;
+										L_77 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_75, _stringLiteral92A0367A0299056CA05B86632AFA0D8FA9C6BF91, L_76, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+										V_12 = L_77;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:141>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_78 = ___0_productDetails;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_79;
+										L_79 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_78);
+										String_t* L_80;
+										L_80 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_78, _stringLiteralFFA59E17C5130FD6E7E1D5621F39533B1120F332, L_79, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+										V_13 = L_80;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:142>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_81 = V_1;
+										if (L_81)
+										{
+											goto IL_01b7_4;
+										}
+									}
+									{
+										G_B43_0 = ((String_t*)(NULL));
+										goto IL_01c7_4;
+									}
+
+IL_01b7_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_82 = V_1;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_83;
+										L_83 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_82);
+										String_t* L_84;
+										L_84 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_82, _stringLiteral240A4EF75B062CE86A8F921B98896CED0E932E92, L_83, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+										G_B43_0 = L_84;
+									}
+
+IL_01c7_4:
+									{
+										String_t* L_85 = G_B43_0;
+										if (L_85)
+										{
+											G_B47_0 = L_85;
+											goto IL_01e3_4;
+										}
+										G_B44_0 = L_85;
+									}
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_86 = V_6;
+										if (L_86)
+										{
+											goto IL_01d2_4;
+										}
+									}
+									{
+										G_B47_0 = ((String_t*)(NULL));
+										goto IL_01e3_4;
+									}
+
+IL_01d2_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_87 = V_6;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_88;
+										L_88 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_87);
+										String_t* L_89;
+										L_89 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_87, _stringLiteral240A4EF75B062CE86A8F921B98896CED0E932E92, L_88, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+										G_B47_0 = L_89;
+									}
+
+IL_01e3_4:
+									{
+										V_14 = G_B47_0;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:144>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_90 = V_6;
+										if (L_90)
+										{
+											goto IL_01ec_4;
+										}
+									}
+									{
+										G_B50_0 = ((String_t*)(NULL));
+										goto IL_01fd_4;
+									}
+
+IL_01ec_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_91 = V_6;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_92;
+										L_92 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_91);
+										String_t* L_93;
+										L_93 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_91, _stringLiteral028514C8E27F27484E9E866C553393D43DC84EDA, L_92, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+										G_B50_0 = L_93;
+									}
+
+IL_01fd_4:
+									{
+										V_15 = G_B50_0;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:145>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_94 = V_7;
+										if (L_94)
+										{
+											goto IL_0206_4;
+										}
+									}
+									{
+										G_B53_0 = ((String_t*)(NULL));
+										goto IL_0217_4;
+									}
+
+IL_0206_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_95 = V_7;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_96;
+										L_96 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_95);
+										String_t* L_97;
+										L_97 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_95, _stringLiteral028514C8E27F27484E9E866C553393D43DC84EDA, L_96, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+										G_B53_0 = L_97;
+									}
+
+IL_0217_4:
+									{
+										V_16 = G_B53_0;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:146>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_98 = V_8;
+										if (L_98)
+										{
+											goto IL_0220_4;
+										}
+									}
+									{
+										G_B56_0 = ((String_t*)(NULL));
+										goto IL_0231_4;
+									}
+
+IL_0220_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_99 = V_8;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_100;
+										L_100 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_99);
+										String_t* L_101;
+										L_101 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_99, _stringLiteral137D1EB0BCE08F87E3D7F7F38ECE20286493C98E, L_100, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+										G_B56_0 = L_101;
+									}
+
+IL_0231_4:
+									{
+										V_17 = G_B56_0;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:147>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_102 = V_8;
+										if (!L_102)
+										{
+											goto IL_024f_4;
+										}
+									}
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_103 = V_8;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_104;
+										L_104 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_103);
+										int64_t L_105;
+										L_105 = AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9(L_103, _stringLiteral9CCC0F42EB96D4600C1A6E282B06C11F67181066, L_104, AndroidJavaObject_Call_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_m63E24F733CDC205FED0CF4659E49DB4AE06ADBB9_RuntimeMethod_var);
+										il2cpp_codegen_runtime_class_init_inline(Convert_t7097FF336D592F7C06D88A98349A44646F91EFFC_il2cpp_TypeInfo_var);
+										Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F L_106;
+										L_106 = Convert_ToDecimal_m29670FF2222B3FEE0308943C56D0662937CC063C(L_105, NULL);
+										G_B59_0 = L_106;
+										goto IL_0254_4;
+									}
+
+IL_024f_4:
+									{
+										il2cpp_codegen_runtime_class_init_inline(Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F_il2cpp_TypeInfo_var);
+										Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F L_107 = ((Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F_StaticFields*)il2cpp_codegen_static_fields_for(Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F_il2cpp_TypeInfo_var))->___Zero;
+										G_B59_0 = L_107;
+									}
+
+IL_0254_4:
+									{
+										V_18 = G_B59_0;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:148>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_108 = V_8;
+										if (L_108)
+										{
+											goto IL_025d_4;
+										}
+									}
+									{
+										G_B62_0 = ((String_t*)(NULL));
+										goto IL_026e_4;
+									}
+
+IL_025d_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_109 = V_8;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_110;
+										L_110 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_109);
+										String_t* L_111;
+										L_111 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_109, _stringLiteral028514C8E27F27484E9E866C553393D43DC84EDA, L_110, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+										G_B62_0 = L_111;
+									}
+
+IL_026e_4:
+									{
+										V_19 = G_B62_0;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:149>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_112 = V_8;
+										if (L_112)
+										{
+											goto IL_0277_4;
+										}
+									}
+									{
+										G_B65_0 = 0;
+										goto IL_0288_4;
+									}
+
+IL_0277_4:
+									{
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_113 = V_8;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_114;
+										L_114 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_113);
+										int32_t L_115;
+										L_115 = AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC(L_113, _stringLiteral3A6FCCACB316144D2A8F7B39C2E8C4355CD37A79, L_114, AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC_RuntimeMethod_var);
+										G_B65_0 = L_115;
+									}
+
+IL_0288_4:
+									{
+										V_20 = G_B65_0;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:151>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_116 = (Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710*)il2cpp_codegen_object_new(Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710_il2cpp_TypeInfo_var);
+										Dictionary_2__ctor_mC4F3DF292BAD88F4BF193C49CD689FAEBC4570A9(L_116, Dictionary_2__ctor_mC4F3DF292BAD88F4BF193C49CD689FAEBC4570A9_RuntimeMethod_var);
+										V_21 = L_116;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:152>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_117 = V_21;
+										String_t* L_118 = V_0;
+										NullCheck(L_117);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(L_117, _stringLiteral269B276065AA2FD25E2FC1E4ED6E8FBDFB83D44D, L_118, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:153>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_119 = V_21;
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_120 = ___0_productDetails;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_121;
+										L_121 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_120);
+										String_t* L_122;
+										L_122 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_120, _stringLiteralD08C08BB30E60F619EEBCC0B2F49D9558244E875, L_121, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+										NullCheck(L_119);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(L_119, _stringLiteralF3C6C902DBF80139640F6554F0C3392016A8ADF7, L_122, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:154>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_123 = V_21;
+										String_t* L_124 = V_12;
+										NullCheck(L_123);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(L_123, _stringLiteralC7B4D926EF9532A71B25AEC040A33D52C926425F, L_124, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:155>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_125 = V_21;
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_126 = ___0_productDetails;
+										ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_127;
+										L_127 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+										NullCheck(L_126);
+										String_t* L_128;
+										L_128 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_126, _stringLiteral58BB47D89B96E4992A8CEB702213DCC616635297, L_127, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+										NullCheck(L_125);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(L_125, _stringLiteralCE18B047107AA23D1AA9B2ED32D316148E02655F, L_128, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:156>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_129 = V_21;
+										String_t* L_130 = V_13;
+										NullCheck(L_129);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(L_129, _stringLiteralEB534843932D1025EEE09575458F840C63DC1063, L_130, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:157>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_131 = V_21;
+										String_t* L_132 = V_9;
+										String_t* L_133 = L_132;
+										if (L_133)
+										{
+											G_B67_0 = L_133;
+											G_B67_1 = _stringLiteral2CC71DBDCE6B0FAE2580070B39FD7E51B3684ECD;
+											G_B67_2 = L_131;
+											goto IL_0304_4;
+										}
+										G_B66_0 = L_133;
+										G_B66_1 = _stringLiteral2CC71DBDCE6B0FAE2580070B39FD7E51B3684ECD;
+										G_B66_2 = L_131;
+									}
+									{
+										G_B67_0 = _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709;
+										G_B67_1 = G_B66_1;
+										G_B67_2 = G_B66_2;
+									}
+
+IL_0304_4:
+									{
+										NullCheck(G_B67_2);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(G_B67_2, G_B67_1, G_B67_0, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:158>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_134 = V_21;
+										il2cpp_codegen_runtime_class_init_inline(Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F_il2cpp_TypeInfo_var);
+										String_t* L_135;
+										L_135 = Decimal_ToString_m410E3F1BAA164B7544B3546D011D41B1C9E5C075((&V_10), NULL);
+										NullCheck(L_134);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(L_134, _stringLiteral6AF27898A60AD4C1341A7F597C946906F75565C5, L_135, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:159>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_136 = V_21;
+										String_t* L_137 = V_14;
+										String_t* L_138 = L_137;
+										if (L_138)
+										{
+											G_B69_0 = L_138;
+											G_B69_1 = _stringLiteral3F0F1E07DE00187242419D20E086A08C254DDED5;
+											G_B69_2 = L_136;
+											goto IL_032e_4;
+										}
+										G_B68_0 = L_138;
+										G_B68_1 = _stringLiteral3F0F1E07DE00187242419D20E086A08C254DDED5;
+										G_B68_2 = L_136;
+									}
+									{
+										G_B69_0 = _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709;
+										G_B69_1 = G_B68_1;
+										G_B69_2 = G_B68_2;
+									}
+
+IL_032e_4:
+									{
+										NullCheck(G_B69_2);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(G_B69_2, G_B69_1, G_B69_0, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:161>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_139 = V_6;
+										if (!L_139)
+										{
+											goto IL_034e_4;
+										}
+									}
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:163>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_140 = V_21;
+										String_t* L_141 = V_15;
+										String_t* L_142 = L_141;
+										if (L_142)
+										{
+											G_B72_0 = L_142;
+											G_B72_1 = _stringLiteral402C5532DF27B27F8A09150739866753D6F5F7DC;
+											G_B72_2 = L_140;
+											goto IL_0349_4;
+										}
+										G_B71_0 = L_142;
+										G_B71_1 = _stringLiteral402C5532DF27B27F8A09150739866753D6F5F7DC;
+										G_B71_2 = L_140;
+									}
+									{
+										G_B72_0 = _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709;
+										G_B72_1 = G_B71_1;
+										G_B72_2 = G_B71_2;
+									}
+
+IL_0349_4:
+									{
+										NullCheck(G_B72_2);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(G_B72_2, G_B72_1, G_B72_0, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+									}
+
+IL_034e_4:
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:166>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_143 = V_7;
+										if (!L_143)
+										{
+											goto IL_0369_4;
+										}
+									}
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:168>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_144 = V_21;
+										String_t* L_145 = V_16;
+										String_t* L_146 = L_145;
+										if (L_146)
+										{
+											G_B76_0 = L_146;
+											G_B76_1 = _stringLiteral4E5B2566BC5D188977FB56C7B6DA93D2CAE621D6;
+											G_B76_2 = L_144;
+											goto IL_0364_4;
+										}
+										G_B75_0 = L_146;
+										G_B75_1 = _stringLiteral4E5B2566BC5D188977FB56C7B6DA93D2CAE621D6;
+										G_B75_2 = L_144;
+									}
+									{
+										G_B76_0 = _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709;
+										G_B76_1 = G_B75_1;
+										G_B76_2 = G_B75_2;
+									}
+
+IL_0364_4:
+									{
+										NullCheck(G_B76_2);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(G_B76_2, G_B76_1, G_B76_0, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+									}
+
+IL_0369_4:
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:171>
+										AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_147 = V_8;
+										if (!L_147)
+										{
+											goto IL_03c1_4;
+										}
+									}
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:173>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_148 = V_21;
+										String_t* L_149 = V_17;
+										String_t* L_150 = L_149;
+										if (L_150)
+										{
+											G_B80_0 = L_150;
+											G_B80_1 = _stringLiteralDA8BCE10DEAE9B8E6EB9317CF4BFCE9A1D046B73;
+											G_B80_2 = L_148;
+											goto IL_037f_4;
+										}
+										G_B79_0 = L_150;
+										G_B79_1 = _stringLiteralDA8BCE10DEAE9B8E6EB9317CF4BFCE9A1D046B73;
+										G_B79_2 = L_148;
+									}
+									{
+										G_B80_0 = _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709;
+										G_B80_1 = G_B79_1;
+										G_B80_2 = G_B79_2;
+									}
+
+IL_037f_4:
+									{
+										NullCheck(G_B80_2);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(G_B80_2, G_B80_1, G_B80_0, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:174>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_151 = V_21;
+										String_t* L_152 = V_19;
+										String_t* L_153 = L_152;
+										if (L_153)
+										{
+											G_B82_0 = L_153;
+											G_B82_1 = _stringLiteral36E77E9491650B09E62878D9730C867FEA84FCD8;
+											G_B82_2 = L_151;
+											goto IL_0396_4;
+										}
+										G_B81_0 = L_153;
+										G_B81_1 = _stringLiteral36E77E9491650B09E62878D9730C867FEA84FCD8;
+										G_B81_2 = L_151;
+									}
+									{
+										G_B82_0 = _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709;
+										G_B82_1 = G_B81_1;
+										G_B82_2 = G_B81_2;
+									}
+
+IL_0396_4:
+									{
+										NullCheck(G_B82_2);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(G_B82_2, G_B82_1, G_B82_0, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:175>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_154 = V_21;
+										int32_t L_155 = V_20;
+										int32_t L_156 = L_155;
+										RuntimeObject* L_157 = Box(il2cpp_defaults.int32_class, &L_156);
+										NullCheck(L_154);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(L_154, _stringLiteral04AD085524DDE5FCAC5C8B9E97BFC562CEBACED4, L_157, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:176>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_158 = V_21;
+										Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F L_159 = V_18;
+										Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F L_160 = L_159;
+										RuntimeObject* L_161 = Box(Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F_il2cpp_TypeInfo_var, &L_160);
+										NullCheck(L_158);
+										Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341(L_158, _stringLiteral27B234DC11D2305D0666E3721A55FF75AF72BDD3, L_161, Dictionary_2_set_Item_m7CCA97075B48AFB2B97E5A072B94BC7679374341_RuntimeMethod_var);
+									}
+
+IL_03c1_4:
+									{
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:178>
+										Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_162 = V_21;
+										String_t* L_163;
+										L_163 = MiniJsonExtensions_toJson_m59EE50DD5C034B8C2DB0D47005D85EFD452D8E4F(L_162, NULL);
+										V_22 = L_163;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:180>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:181>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:182>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:183>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:184>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:185>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:186>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:187>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:188>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:189>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:190>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:191>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:192>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:193>
+										String_t* L_164 = V_9;
+										String_t* L_165 = V_12;
+										String_t* L_166 = V_13;
+										String_t* L_167 = V_14;
+										Decimal_tDA6C877282B2D789CF97C0949661CC11D643969F L_168 = V_11;
+										GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* L_169 = (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23*)il2cpp_codegen_object_new(GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23_il2cpp_TypeInfo_var);
+										GoogleProductMetadata__ctor_m696D214BF2FE929A0C469839AFA1DF100AA5C057(L_169, L_164, L_165, L_166, L_167, L_168, NULL);
+										GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* L_170 = L_169;
+										String_t* L_171 = V_22;
+										NullCheck(L_170);
+										GoogleProductMetadata_set_originalJson_m1CD3B7963F3DDE1DF16C1AB10B2AE2996E409182_inline(L_170, L_171, NULL);
+										GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* L_172 = L_170;
+										String_t* L_173 = V_15;
+										NullCheck(L_172);
+										GoogleProductMetadata_set_subscriptionPeriod_mF7AEF5E06802701CEEFE6076C0715D7517AD9131_inline(L_172, L_173, NULL);
+										GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* L_174 = L_172;
+										String_t* L_175 = V_17;
+										NullCheck(L_174);
+										GoogleProductMetadata_set_introductoryPrice_m655641DF8A070224F6880BF2829DEFE5EA22331F_inline(L_174, L_175, NULL);
+										GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* L_176 = L_174;
+										int32_t L_177 = V_20;
+										NullCheck(L_176);
+										GoogleProductMetadata_set_introductoryPriceCycles_m64051344F0F3ECC241F1CAFD47EEE89014ECC36C_inline(L_176, L_177, NULL);
+										GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* L_178 = L_176;
+										String_t* L_179 = V_19;
+										NullCheck(L_178);
+										GoogleProductMetadata_set_introductoryPricePeriod_mB5B8B6895220EE7E2F6591F43446CE8F6548CA3D_inline(L_178, L_179, NULL);
+										GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* L_180 = L_178;
+										String_t* L_181 = V_16;
+										NullCheck(L_180);
+										GoogleProductMetadata_set_freeTrialPeriod_mD7E8977A3BCA72875CD414C65B2547C6D15F2598_inline(L_180, L_181, NULL);
+										V_23 = L_180;
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:195>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:196>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:197>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:198>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:199>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:200>
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:201>
+										String_t* L_182 = V_0;
+										GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* L_183 = V_23;
+										int32_t L_184 = ___1_productType;
+										ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* L_185 = (ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A*)il2cpp_codegen_object_new(ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_il2cpp_TypeInfo_var);
+										ProductDescription__ctor_mF81449B20EB214B2B24B6528955242949F2C84DA(L_185, L_182, L_183, _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709, _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709, L_184, NULL);
+										//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:203>
+										V_26 = L_185;
+										goto IL_044c;
+									}
+								}
+								catch(Il2CppExceptionWrapper& e)
+								{
+									__finallyBlock.StoreException(e.ex);
+								}
+							}
+						}
+						catch(Il2CppExceptionWrapper& e)
+						{
+							__finallyBlock.StoreException(e.ex);
+						}
+					}
+				}
+				catch(Il2CppExceptionWrapper& e)
+				{
+					__finallyBlock.StoreException(e.ex);
+				}
+			}
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_044c:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Utils/ProductDetailsConverter.cs:204>
+		ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* L_186 = V_26;
+		return L_186;
+	}
+}
+// Method Definition Index: 81654
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ProductDetailsConverter__ctor_mA3CD163A7C8456C8F29CBDAFCD2BEFFC912035F5 (ProductDetailsConverter_t3B5F595B574B4ACC2B7BFEFDC00362F57828B498* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81655
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetProductParamsClass_m9933D8ED390711C6744A31B2DE552A6235C9629E (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralB8BC7930E582AA6BAB1D406C13A33E8384C67308);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:21>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_AndroidProductClassName;
+		if (L_0)
+		{
+			goto IL_0016;
+		}
+	}
+	{
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_1 = (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03*)il2cpp_codegen_object_new(AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389(L_1, _stringLiteralB8BC7930E582AA6BAB1D406C13A33E8384C67308, NULL);
+		((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_AndroidProductClassName = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_AndroidProductClassName), (void*)L_1);
+	}
+
+IL_0016:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:22>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_2 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_AndroidProductClassName;
+		return L_2;
+	}
+}
+// Method Definition Index: 81656
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetQueryProductDetailsParamsParamsClass_mC878CCF44080DEEB7C22AF587E5E26AA27AAE80E (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral13202C6C25283141F10049D7942E8C0DAC19851E);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:29>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_AndroidQueryProductDetailsParamsClassName;
+		if (L_0)
+		{
+			goto IL_0016;
+		}
+	}
+	{
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_1 = (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03*)il2cpp_codegen_object_new(AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389(L_1, _stringLiteral13202C6C25283141F10049D7942E8C0DAC19851E, NULL);
+		((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_AndroidQueryProductDetailsParamsClassName = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_AndroidQueryProductDetailsParamsClassName), (void*)L_1);
+	}
+
+IL_0016:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:30>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_2 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_AndroidQueryProductDetailsParamsClassName;
+		return L_2;
+	}
+}
+// Method Definition Index: 81657
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetBillingFlowParamClass_mBCB69527450763953EBF8202141435877E7986A4 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral37DE638335775168CC634695107CD741DC14F2BC);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:37>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_BillingFlowParamsClass;
+		if (L_0)
+		{
+			goto IL_0016;
+		}
+	}
+	{
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_1 = (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03*)il2cpp_codegen_object_new(AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389(L_1, _stringLiteral37DE638335775168CC634695107CD741DC14F2BC, NULL);
+		((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_BillingFlowParamsClass = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_BillingFlowParamsClass), (void*)L_1);
+	}
+
+IL_0016:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:38>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_2 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_BillingFlowParamsClass;
+		return L_2;
+	}
+}
+// Method Definition Index: 81658
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetProductDetailsParamsClass_m770E75D7716ED518ACE946142900BB072B80B312 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral926E4E2E295D4BAAA44EDDF3ED7513D905F02B5E);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:45>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_ProductDetailsParamsClass;
+		if (L_0)
+		{
+			goto IL_0016;
+		}
+	}
+	{
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_1 = (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03*)il2cpp_codegen_object_new(AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389(L_1, _stringLiteral926E4E2E295D4BAAA44EDDF3ED7513D905F02B5E, NULL);
+		((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_ProductDetailsParamsClass = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_ProductDetailsParamsClass), (void*)L_1);
+	}
+
+IL_0016:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:46>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_2 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_ProductDetailsParamsClass;
+		return L_2;
+	}
+}
+// Method Definition Index: 81659
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetSubscriptionUpdateParamClass_m4FF587F8D5936BAA96D9A517B2BA2B75CA6C482C (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralBAC49E6DFC5B4CC3310673D8D72EA1E595137E56);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:53>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_SubscriptionUpdateParamsClass;
+		if (L_0)
+		{
+			goto IL_0016;
+		}
+	}
+	{
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_1 = (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03*)il2cpp_codegen_object_new(AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389(L_1, _stringLiteralBAC49E6DFC5B4CC3310673D8D72EA1E595137E56, NULL);
+		((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_SubscriptionUpdateParamsClass = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_SubscriptionUpdateParamsClass), (void*)L_1);
+	}
+
+IL_0016:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:54>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_2 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_SubscriptionUpdateParamsClass;
+		return L_2;
+	}
+}
+// Method Definition Index: 81660
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetConsumeParamsClass_m90083037251795E7FB2C46D4CB81ED65BE7C896D (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral82E7FD0A6F1924734BD56BAAC0E26EAAB7666434);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:61>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_ConsumeParamsClass;
+		if (L_0)
+		{
+			goto IL_0016;
+		}
+	}
+	{
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_1 = (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03*)il2cpp_codegen_object_new(AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389(L_1, _stringLiteral82E7FD0A6F1924734BD56BAAC0E26EAAB7666434, NULL);
+		((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_ConsumeParamsClass = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_ConsumeParamsClass), (void*)L_1);
+	}
+
+IL_0016:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:62>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_2 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_ConsumeParamsClass;
+		return L_2;
+	}
+}
+// Method Definition Index: 81661
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetAcknowledgePurchaseParamsClass_m70D378309742C7A24601031613A3C914E9BAF974 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral2FF8A519504C6CCE22675AFBE30EAD3B2AA5F1F6);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:69>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_AcknowledgePurchaseParamsClass;
+		if (L_0)
+		{
+			goto IL_0016;
+		}
+	}
+	{
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_1 = (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03*)il2cpp_codegen_object_new(AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389(L_1, _stringLiteral2FF8A519504C6CCE22675AFBE30EAD3B2AA5F1F6, NULL);
+		((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_AcknowledgePurchaseParamsClass = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_AcknowledgePurchaseParamsClass), (void*)L_1);
+	}
+
+IL_0016:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:70>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_2 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_AcknowledgePurchaseParamsClass;
+		return L_2;
+	}
+}
+// Method Definition Index: 81662
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetBillingClientClass_m6228AE09684D605499268C5C19BF31059BDCC4D0 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral4AB2B70CADC85FDC6915309B826BAACC5034EDD4);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:77>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_BillingClientClass;
+		if (L_0)
+		{
+			goto IL_0016;
+		}
+	}
+	{
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_1 = (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03*)il2cpp_codegen_object_new(AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389(L_1, _stringLiteral4AB2B70CADC85FDC6915309B826BAACC5034EDD4, NULL);
+		((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_BillingClientClass = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_BillingClientClass), (void*)L_1);
+	}
+
+IL_0016:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:78>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_2 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_BillingClientClass;
+		return L_2;
+	}
+}
+// Method Definition Index: 81663
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetPendingPurchasesParamsClass_mE5D8C5B9876B8BFC6F365918259CAA2138104B11 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralB1E2BCF6BC5C9F5ECBC73591C6F3E5F83C9F1492);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:85>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_PendingPurchasesParamsClass;
+		if (L_0)
+		{
+			goto IL_0016;
+		}
+	}
+	{
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_1 = (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03*)il2cpp_codegen_object_new(AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389(L_1, _stringLiteralB1E2BCF6BC5C9F5ECBC73591C6F3E5F83C9F1492, NULL);
+		((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_PendingPurchasesParamsClass = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_PendingPurchasesParamsClass), (void*)L_1);
+	}
+
+IL_0016:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:86>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_2 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_PendingPurchasesParamsClass;
+		return L_2;
+	}
+}
+// Method Definition Index: 81664
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_PendingPurchasesParams_m344B12AEE5FFA862200CC2E91E8A142E485812A4 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral916DF34ED2E6997F7A6634B168A4B941122F7F75);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_1 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:90>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0;
+		L_0 = GoogleBillingClient_GetPendingPurchasesParamsClass_mE5D8C5B9876B8BFC6F365918259CAA2138104B11(NULL);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63(L_0, _stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B, L_1, AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		V_0 = L_2;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_003d:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_0;
+					if (!L_3)
+					{
+						goto IL_0046;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4 = V_0;
+					NullCheck(L_4);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_4);
+				}
+
+IL_0046:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:91>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5 = V_0;
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_6;
+			L_6 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+			NullCheck(L_5);
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_7;
+			L_7 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_5, _stringLiteral916DF34ED2E6997F7A6634B168A4B941122F7F75, L_6, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+			NullCheck(L_7);
+			AndroidJavaObject_Dispose_m2B1593C20B3CE1C8FF95982F638F50985F9DD9E6(L_7, NULL);
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:92>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_8 = V_0;
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_9;
+			L_9 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+			NullCheck(L_8);
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_10;
+			L_10 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_8, _stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728, L_9, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+			V_1 = L_10;
+			goto IL_0047;
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_0047:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:93>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_11 = V_1;
+		return L_11;
+	}
+}
+// Method Definition Index: 81665
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* GoogleBillingClient_GetQueryPurchasesParamsClass_m22A98CCEE15CCBE7B11C467D864CA783476EEB60 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralEF3A9DCAC45177B69ED44FBD0E2790DE39431EBE);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:100>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_QueryPurchasesParamsClass;
+		if (L_0)
+		{
+			goto IL_0016;
+		}
+	}
+	{
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_1 = (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03*)il2cpp_codegen_object_new(AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389(L_1, _stringLiteralEF3A9DCAC45177B69ED44FBD0E2790DE39431EBE, NULL);
+		((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_QueryPurchasesParamsClass = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_QueryPurchasesParamsClass), (void*)L_1);
+	}
+
+IL_0016:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:101>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_2 = ((GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_StaticFields*)il2cpp_codegen_static_fields_for(GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54_il2cpp_TypeInfo_var))->___s_QueryPurchasesParamsClass;
+		return L_2;
+	}
+}
+// Method Definition Index: 81666
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_QueryPurchasesParams_mD5E2F4B35A4BE76078143BA8A7FDEB04CC4F0122 (String_t* ___0_productType, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE565812FFC020552DFFD77790BE8337143B047AB);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_1 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:105>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0;
+		L_0 = GoogleBillingClient_GetQueryPurchasesParamsClass_m22A98CCEE15CCBE7B11C467D864CA783476EEB60(NULL);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63(L_0, _stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B, L_1, AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		V_0 = L_2;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_0042:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_0;
+					if (!L_3)
+					{
+						goto IL_004b;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4 = V_0;
+					NullCheck(L_4);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_4);
+				}
+
+IL_004b:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:106>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5 = V_0;
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_6 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_7 = L_6;
+			String_t* L_8 = ___0_productType;
+			NullCheck(L_7);
+			ArrayElementTypeCheck (L_7, L_8);
+			(L_7)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_8);
+			NullCheck(L_5);
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_9;
+			L_9 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_5, _stringLiteralE565812FFC020552DFFD77790BE8337143B047AB, L_7, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+			NullCheck(L_9);
+			AndroidJavaObject_Dispose_m2B1593C20B3CE1C8FF95982F638F50985F9DD9E6(L_9, NULL);
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:107>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_10 = V_0;
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_11;
+			L_11 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+			NullCheck(L_10);
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_12;
+			L_12 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_10, _stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728, L_11, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+			V_1 = L_12;
+			goto IL_004c;
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_004c:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:108>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_13 = V_1;
+		return L_13;
+	}
+}
+// Method Definition Index: 81667
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleBillingClient__ctor_mDCAEB4AE8367AE13E594CAC42C75109DA7EB848E (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, RuntimeObject* ___0_googlePurchasesUpdatedListener, RuntimeObject* ___1_util, RuntimeObject* ___2_telemetryDiagnostics, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral3261C3E11E9AB172DA0BD2010EF79C41DE23C91C);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral5A0370C4053F9CFA36D6BC04AF621FE2F3C3BEF3);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:117>
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:118>
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:120>
+		RuntimeObject* L_0 = ___1_util;
+		__this->___m_Util = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_Util), (void*)L_0);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:121>
+		RuntimeObject* L_1 = ___2_telemetryDiagnostics;
+		__this->___m_TelemetryDiagnostics = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_TelemetryDiagnostics), (void*)L_1);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:122>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_2;
+		L_2 = GoogleBillingClient_GetBillingClientClass_m6228AE09684D605499268C5C19BF31059BDCC4D0(NULL);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_3 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_4 = L_3;
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5;
+		L_5 = UnityActivity_GetCurrentActivity_mC19BD54968E675FC7F34D410C3449D0A862EE7D7(NULL);
+		NullCheck(L_4);
+		ArrayElementTypeCheck (L_4, L_5);
+		(L_4)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_5);
+		NullCheck(L_2);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_6;
+		L_6 = AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63(L_2, _stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B, L_4, AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		V_0 = L_6;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_0082:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_7 = V_0;
+					if (!L_7)
+					{
+						goto IL_008b;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_8 = V_0;
+					NullCheck(L_8);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_8);
+				}
+
+IL_008b:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:123>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_9 = V_0;
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_10 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_11 = L_10;
+			RuntimeObject* L_12 = ___0_googlePurchasesUpdatedListener;
+			NullCheck(L_11);
+			ArrayElementTypeCheck (L_11, L_12);
+			(L_11)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_12);
+			NullCheck(L_9);
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_13;
+			L_13 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_9, _stringLiteral3261C3E11E9AB172DA0BD2010EF79C41DE23C91C, L_11, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+			NullCheck(L_13);
+			AndroidJavaObject_Dispose_m2B1593C20B3CE1C8FF95982F638F50985F9DD9E6(L_13, NULL);
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:124>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_14 = V_0;
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_15 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_16 = L_15;
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_17;
+			L_17 = GoogleBillingClient_PendingPurchasesParams_m344B12AEE5FFA862200CC2E91E8A142E485812A4(NULL);
+			NullCheck(L_16);
+			ArrayElementTypeCheck (L_16, L_17);
+			(L_16)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_17);
+			NullCheck(L_14);
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_18;
+			L_18 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_14, _stringLiteral5A0370C4053F9CFA36D6BC04AF621FE2F3C3BEF3, L_16, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+			NullCheck(L_18);
+			AndroidJavaObject_Dispose_m2B1593C20B3CE1C8FF95982F638F50985F9DD9E6(L_18, NULL);
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:125>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_19 = V_0;
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_20;
+			L_20 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+			NullCheck(L_19);
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_21;
+			L_21 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_19, _stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728, L_20, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+			__this->___m_BillingClient = L_21;
+			Il2CppCodeGenWriteBarrier((void**)(&__this->___m_BillingClient), (void*)L_21);
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:126>
+			goto IL_008c;
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_008c:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:126>
+		return;
+	}
+}
+// Method Definition Index: 81668
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleBillingClient_SetObfuscationAccountId_mBD531ECAE11EE632C93001C6C3A031AB0D08566B (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, String_t* ___0_obfuscationAccountId, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:130>
+		String_t* L_0 = ___0_obfuscationAccountId;
+		__this->___m_ObfuscatedAccountId = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ObfuscatedAccountId), (void*)L_0);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:131>
+		return;
+	}
+}
+// Method Definition Index: 81669
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleBillingClient_SetObfuscationProfileId_mB925D946E6AE8090C74133C894C98F983BA42AD8 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, String_t* ___0_obfuscationProfileId, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:135>
+		String_t* L_0 = ___0_obfuscationProfileId;
+		__this->___m_ObfuscatedProfileId = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_ObfuscatedProfileId), (void*)L_0);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:136>
+		return;
+	}
+}
+// Method Definition Index: 81670
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleBillingClient_StartConnection_mCFA6C8B027BA0023EF988187AF7EF2F006F00B50 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, RuntimeObject* ___0_billingClientStateListener, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralB68F28755D63FE386531C2F52FF6A58B380E0ECC);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:140>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_0 = __this->___m_BillingClient;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_2 = L_1;
+		RuntimeObject* L_3 = ___0_billingClientStateListener;
+		NullCheck(L_2);
+		ArrayElementTypeCheck (L_2, L_3);
+		(L_2)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_3);
+		NullCheck(L_0);
+		AndroidJavaObject_Call_mDEF7846E2AB1C5379069BB21049ED55A9D837B1C(L_0, _stringLiteralB68F28755D63FE386531C2F52FF6A58B380E0ECC, L_2, NULL);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:141>
+		return;
+	}
+}
+// Method Definition Index: 81671
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleBillingClient_EndConnection_m2D1BC78375195CF031A28AE2E36518920E7DCC29 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral81A32E61A5F16E99CF39817CE91BFA3957C33126);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:145>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_0 = __this->___m_BillingClient;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		AndroidJavaObject_Call_mDEF7846E2AB1C5379069BB21049ED55A9D837B1C(L_0, _stringLiteral81A32E61A5F16E99CF39817CE91BFA3957C33126, L_1, NULL);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:146>
+		return;
+	}
+}
+// Method Definition Index: 81672
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GoogleBillingClient_IsReady_m20590F5F92C25E19A1079F203903B93B164047D4 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisBoolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_m05D3284A3FA772D032190A0FE82363C61000F1DF_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF4262B73AC7C44E07E2F6D41896288A77A910452);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:150>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_0 = __this->___m_BillingClient;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		bool L_2;
+		L_2 = AndroidJavaObject_Call_TisBoolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_m05D3284A3FA772D032190A0FE82363C61000F1DF(L_0, _stringLiteralF4262B73AC7C44E07E2F6D41896288A77A910452, L_1, AndroidJavaObject_Call_TisBoolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_m05D3284A3FA772D032190A0FE82363C61000F1DF_RuntimeMethod_var);
+		return L_2;
+	}
+}
+// Method Definition Index: 81673
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t GoogleBillingClient_GetConnectionState_m63716F7A1C91B57E1E8773C66C5461753BCC3D15 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral089C1E0B9EE6ADF5F979F43928FBC4C73BC1DC92);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:155>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_0 = __this->___m_BillingClient;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		int32_t L_2;
+		L_2 = AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC(L_0, _stringLiteral089C1E0B9EE6ADF5F979F43928FBC4C73BC1DC92, L_1, AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC_RuntimeMethod_var);
+		return (int32_t)(L_2);
+	}
+}
+// Method Definition Index: 81674
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleBillingClient_QueryPurchasesAsync_mA2099F373697AA63FAC4F586C36419CA5DB7B484 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, String_t* ___0_productType, Action_2_tBABFA1FBFBCD8E8B40EB5BDD131E2B7CBF7F2F1C* ___1_onQueryPurchasesResponse, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GooglePurchasesResponseListener_tFFD56062E067D4343972FA8B07E9EAEEDD233D42_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF6E05D2223FEAB96CFC1CB43F18B0AC110ED5872);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	GooglePurchasesResponseListener_tFFD56062E067D4343972FA8B07E9EAEEDD233D42* V_1 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:160>
+		String_t* L_0 = ___0_productType;
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_1;
+		L_1 = GoogleBillingClient_QueryPurchasesParams_mD5E2F4B35A4BE76078143BA8A7FDEB04CC4F0122(L_0, NULL);
+		V_0 = L_1;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:161>
+		Action_2_tBABFA1FBFBCD8E8B40EB5BDD131E2B7CBF7F2F1C* L_2 = ___1_onQueryPurchasesResponse;
+		RuntimeObject* L_3 = __this->___m_Util;
+		GooglePurchasesResponseListener_tFFD56062E067D4343972FA8B07E9EAEEDD233D42* L_4 = (GooglePurchasesResponseListener_tFFD56062E067D4343972FA8B07E9EAEEDD233D42*)il2cpp_codegen_object_new(GooglePurchasesResponseListener_tFFD56062E067D4343972FA8B07E9EAEEDD233D42_il2cpp_TypeInfo_var);
+		GooglePurchasesResponseListener__ctor_m63DEA83E1FC510B36A32725CC30598C29FF603D5(L_4, L_2, L_3, NULL);
+		V_1 = L_4;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:163>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5 = __this->___m_BillingClient;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_6 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)2);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_7 = L_6;
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_8 = V_0;
+		NullCheck(L_7);
+		ArrayElementTypeCheck (L_7, L_8);
+		(L_7)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_8);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_9 = L_7;
+		GooglePurchasesResponseListener_tFFD56062E067D4343972FA8B07E9EAEEDD233D42* L_10 = V_1;
+		NullCheck(L_9);
+		ArrayElementTypeCheck (L_9, L_10);
+		(L_9)->SetAt(static_cast<il2cpp_array_size_t>(1), (RuntimeObject*)L_10);
+		NullCheck(L_5);
+		AndroidJavaObject_Call_mDEF7846E2AB1C5379069BB21049ED55A9D837B1C(L_5, _stringLiteralF6E05D2223FEAB96CFC1CB43F18B0AC110ED5872, L_9, NULL);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:164>
+		return;
+	}
+}
+// Method Definition Index: 81675
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleBillingClient_QueryProductDetailsAsync_m010251BA933B255DA6693B448178BFFFBDD6F1CE (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* ___0_products, String_t* ___1_type, Action_2_t48A4D16145E3E6532845F8D1F1631C7922F46B5A* ___2_onProductDetailsResponseAction, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ProductDetailsResponseListener_tC344C020B1D1F4A4B70300985477D02E90973D2A_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral15B1C50AC67290F0E9030156D927C2ED672B7886);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	ProductDetailsResponseListener_tC344C020B1D1F4A4B70300985477D02E90973D2A* V_1 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:169>
+		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_0 = ___0_products;
+		String_t* L_1 = ___1_type;
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = GoogleBillingClient_QueryProductDetailsParams_mA55F60BC8B9FDEC0DA88E9596E66D12CC59ACD05(L_0, L_1, NULL);
+		V_0 = L_2;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_003b:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_0;
+					if (!L_3)
+					{
+						goto IL_0044;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4 = V_0;
+					NullCheck(L_4);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_4);
+				}
+
+IL_0044:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:170>
+			Action_2_t48A4D16145E3E6532845F8D1F1631C7922F46B5A* L_5 = ___2_onProductDetailsResponseAction;
+			RuntimeObject* L_6 = __this->___m_Util;
+			RuntimeObject* L_7 = __this->___m_TelemetryDiagnostics;
+			ProductDetailsResponseListener_tC344C020B1D1F4A4B70300985477D02E90973D2A* L_8 = (ProductDetailsResponseListener_tC344C020B1D1F4A4B70300985477D02E90973D2A*)il2cpp_codegen_object_new(ProductDetailsResponseListener_tC344C020B1D1F4A4B70300985477D02E90973D2A_il2cpp_TypeInfo_var);
+			ProductDetailsResponseListener__ctor_m5B2BC4C527DDDCC4557B6558AAA7938A387503C0(L_8, L_5, L_6, L_7, NULL);
+			V_1 = L_8;
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:171>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_9 = __this->___m_BillingClient;
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_10 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)2);
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_11 = L_10;
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_12 = V_0;
+			NullCheck(L_11);
+			ArrayElementTypeCheck (L_11, L_12);
+			(L_11)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_12);
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_13 = L_11;
+			ProductDetailsResponseListener_tC344C020B1D1F4A4B70300985477D02E90973D2A* L_14 = V_1;
+			NullCheck(L_13);
+			ArrayElementTypeCheck (L_13, L_14);
+			(L_13)->SetAt(static_cast<il2cpp_array_size_t>(1), (RuntimeObject*)L_14);
+			NullCheck(L_9);
+			AndroidJavaObject_Call_mDEF7846E2AB1C5379069BB21049ED55A9D837B1C(L_9, _stringLiteral15B1C50AC67290F0E9030156D927C2ED672B7886, L_13, NULL);
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:172>
+			goto IL_0045;
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_0045:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:172>
+		return;
+	}
+}
+// Method Definition Index: 81676
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_QueryProductDetailsParams_mA55F60BC8B9FDEC0DA88E9596E66D12CC59ACD05 (List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* ___0_products, String_t* ___1_type, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral340DB43651243B0EB46CD1418A871184AEEFC6DA);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_1 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_2 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:176>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0;
+		L_0 = GoogleBillingClient_GetQueryProductDetailsParamsParamsClass_mC878CCF44080DEEB7C22AF587E5E26AA27AAE80E(NULL);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63(L_0, _stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B, L_1, AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		V_0 = L_2;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_0054:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_0;
+					if (!L_3)
+					{
+						goto IL_005d;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4 = V_0;
+					NullCheck(L_4);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_4);
+				}
+
+IL_005d:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			{
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:177>
+				List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_5 = ___0_products;
+				String_t* L_6 = ___1_type;
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_7;
+				L_7 = GoogleBillingClient_QueryProductDetailsParamsProductList_m37F2F1601AE0662C5E28A92774EBF865B238877C(L_5, L_6, NULL);
+				V_1 = L_7;
+			}
+			{
+				auto __finallyBlock = il2cpp::utils::Finally([&]
+				{
+
+FINALLY_004a_1:
+					{
+						{
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_8 = V_1;
+							if (!L_8)
+							{
+								goto IL_0053_1;
+							}
+						}
+						{
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_9 = V_1;
+							NullCheck(L_9);
+							InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_9);
+						}
+
+IL_0053_1:
+						{
+							return;
+						}
+					}
+				});
+				try
+				{
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:178>
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_10 = V_0;
+					ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_11 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+					ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_12 = L_11;
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_13 = V_1;
+					NullCheck(L_12);
+					ArrayElementTypeCheck (L_12, L_13);
+					(L_12)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_13);
+					NullCheck(L_10);
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_14;
+					L_14 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_10, _stringLiteral340DB43651243B0EB46CD1418A871184AEEFC6DA, L_12, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+					NullCheck(L_14);
+					AndroidJavaObject_Dispose_m2B1593C20B3CE1C8FF95982F638F50985F9DD9E6(L_14, NULL);
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:179>
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_15 = V_0;
+					ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_16;
+					L_16 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+					NullCheck(L_15);
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_17;
+					L_17 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_15, _stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728, L_16, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+					V_2 = L_17;
+					goto IL_005e;
+				}
+				catch(Il2CppExceptionWrapper& e)
+				{
+					__finallyBlock.StoreException(e.ex);
+				}
+			}
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_005e:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:180>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_18 = V_2;
+		return L_18;
+	}
+}
+// Method Definition Index: 81677
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_QueryProductDetailsParamsProductList_m37F2F1601AE0662C5E28A92774EBF865B238877C (List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* ___0_products, String_t* ___1_type, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Enumerable_Select_TisString_t_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m1397BFA25F4085D1F52D402001A44DC3237EC1E0_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Enumerable_ToList_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m2C093DAAAEB4344056B8E407A80D09DB41B8C092_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Func_2_t6F18BD99DBFD8DEA66D59FD826E9068B8B427900_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ListExtension_ToJava_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mB5F6B722712F762F6108F66E1C475F6EAA79DC6D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass47_0_U3CQueryProductDetailsParamsProductListU3Eb__0_m60D473A127D8299775F46A5F5E47A140D9D1CF5D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6* V_0 = NULL;
+	{
+		U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6* L_0 = (U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6*)il2cpp_codegen_object_new(U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6_il2cpp_TypeInfo_var);
+		U3CU3Ec__DisplayClass47_0__ctor_m8E2E4387DE5C9106243CEFD62450EDEA6E6B7B88(L_0, NULL);
+		V_0 = L_0;
+		U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6* L_1 = V_0;
+		String_t* L_2 = ___1_type;
+		NullCheck(L_1);
+		L_1->___type = L_2;
+		Il2CppCodeGenWriteBarrier((void**)(&L_1->___type), (void*)L_2);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:184>
+		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_3 = ___0_products;
+		U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6* L_4 = V_0;
+		Func_2_t6F18BD99DBFD8DEA66D59FD826E9068B8B427900* L_5 = (Func_2_t6F18BD99DBFD8DEA66D59FD826E9068B8B427900*)il2cpp_codegen_object_new(Func_2_t6F18BD99DBFD8DEA66D59FD826E9068B8B427900_il2cpp_TypeInfo_var);
+		Func_2__ctor_m7D2682100AFBB959BA191E8181D6DCB9538B8DAD(L_5, L_4, (intptr_t)((void*)U3CU3Ec__DisplayClass47_0_U3CQueryProductDetailsParamsProductListU3Eb__0_m60D473A127D8299775F46A5F5E47A140D9D1CF5D_RuntimeMethod_var), NULL);
+		RuntimeObject* L_6;
+		L_6 = Enumerable_Select_TisString_t_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m1397BFA25F4085D1F52D402001A44DC3237EC1E0(L_3, L_5, Enumerable_Select_TisString_t_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m1397BFA25F4085D1F52D402001A44DC3237EC1E0_RuntimeMethod_var);
+		List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* L_7;
+		L_7 = Enumerable_ToList_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m2C093DAAAEB4344056B8E407A80D09DB41B8C092(L_6, Enumerable_ToList_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m2C093DAAAEB4344056B8E407A80D09DB41B8C092_RuntimeMethod_var);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:185>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_8;
+		L_8 = ListExtension_ToJava_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mB5F6B722712F762F6108F66E1C475F6EAA79DC6D(L_7, ListExtension_ToJava_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mB5F6B722712F762F6108F66E1C475F6EAA79DC6D_RuntimeMethod_var);
+		return L_8;
+	}
+}
+// Method Definition Index: 81678
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_QueryProductDetailsParamsProduct_m71EF9D220B32679DED6D6054A6B75CAD1F1657C4 (String_t* ___0_type, String_t* ___1_product, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral4194D75E2C3FBBD4C69049055CAC47A6027C0917);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE565812FFC020552DFFD77790BE8337143B047AB);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_1 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:190>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0;
+		L_0 = GoogleBillingClient_GetProductParamsClass_m9933D8ED390711C6744A31B2DE552A6235C9629E(NULL);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63(L_0, _stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B, L_1, AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		V_0 = L_2;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_005c:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_0;
+					if (!L_3)
+					{
+						goto IL_0065;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4 = V_0;
+					NullCheck(L_4);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_4);
+				}
+
+IL_0065:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:191>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5 = V_0;
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_6 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_7 = L_6;
+			String_t* L_8 = ___1_product;
+			NullCheck(L_7);
+			ArrayElementTypeCheck (L_7, L_8);
+			(L_7)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_8);
+			NullCheck(L_5);
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_9;
+			L_9 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_5, _stringLiteral4194D75E2C3FBBD4C69049055CAC47A6027C0917, L_7, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+			NullCheck(L_9);
+			AndroidJavaObject_Dispose_m2B1593C20B3CE1C8FF95982F638F50985F9DD9E6(L_9, NULL);
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:192>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_10 = V_0;
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_11 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_12 = L_11;
+			String_t* L_13 = ___0_type;
+			NullCheck(L_12);
+			ArrayElementTypeCheck (L_12, L_13);
+			(L_12)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_13);
+			NullCheck(L_10);
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_14;
+			L_14 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_10, _stringLiteralE565812FFC020552DFFD77790BE8337143B047AB, L_12, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+			NullCheck(L_14);
+			AndroidJavaObject_Dispose_m2B1593C20B3CE1C8FF95982F638F50985F9DD9E6(L_14, NULL);
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:193>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_15 = V_0;
+			ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_16;
+			L_16 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+			NullCheck(L_15);
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_17;
+			L_17 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_15, _stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728, L_16, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:194>
+			V_1 = L_17;
+			goto IL_0066;
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_0066:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:195>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_18 = V_1;
+		return L_18;
+	}
+}
+// Method Definition Index: 81679
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_LaunchBillingFlow_mA42A241D0E0E979E99B11F28053144F8990EA303 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_productDetails, String_t* ___1_oldPurchaseToken, Nullable_1_t970AE010F8F8B45699EB795FCDE562216915208C ___2_replacementMode, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Enumerable_FirstOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m00C8BBE56D2D629169750D64CB161CEBF99AEF01_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Enumerable_ToList_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m2C093DAAAEB4344056B8E407A80D09DB41B8C092_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ListExtension_ToJava_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mB5F6B722712F762F6108F66E1C475F6EAA79DC6D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_Add_m46CE58AEE4E46E07AFB03138AA5A356BDD33DABF_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1__ctor_m21BC8DD8763514B160D7ECC2657F94E5E8031390_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral0473EFA899319A8DA704762486EF8E16B6B52F4A);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral185EA08EFC15CA94E2EEC2396C949698CC067FDB);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral5A76D7A13D6D89B55DBECE0F9BCD1BAB6886FE68);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral6A966D8AB32F294E048C82F71CC1D3707B8B30B5);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral7EAA36A2FA423A2F4EC17CAF0D570368377D98FE);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	String_t* V_1 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_2 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_3 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_4 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_5 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* G_B4_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* G_B6_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* G_B5_0 = NULL;
+	String_t* G_B7_0 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:200>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_0 = ___0_productDetails;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_0, _stringLiteral0473EFA899319A8DA704762486EF8E16B6B52F4A, L_1, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		V_0 = L_2;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_00f1:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_0;
+					if (!L_3)
+					{
+						goto IL_00fa;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4 = V_0;
+					NullCheck(L_4);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_4);
+				}
+
+IL_00fa:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			{
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:201>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5 = V_0;
+				if (L_5)
+				{
+					goto IL_0017_1;
+				}
+			}
+			{
+				G_B4_0 = ((AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0*)(NULL));
+				goto IL_0027_1;
+			}
+
+IL_0017_1:
+			{
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_6 = V_0;
+				RuntimeObject* L_7;
+				L_7 = AndroidJavaObjectExtensions_Enumerate_m8D1A4474E054713477508C758D378DA9BE10E01F(L_6, NULL);
+				List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* L_8;
+				L_8 = Enumerable_ToList_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m2C093DAAAEB4344056B8E407A80D09DB41B8C092(L_7, Enumerable_ToList_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m2C093DAAAEB4344056B8E407A80D09DB41B8C092_RuntimeMethod_var);
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_9;
+				L_9 = Enumerable_FirstOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m00C8BBE56D2D629169750D64CB161CEBF99AEF01(L_8, Enumerable_FirstOrDefault_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m00C8BBE56D2D629169750D64CB161CEBF99AEF01_RuntimeMethod_var);
+				G_B4_0 = L_9;
+			}
+
+IL_0027_1:
+			{
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:202>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_10 = G_B4_0;
+				if (L_10)
+				{
+					G_B6_0 = L_10;
+					goto IL_002e_1;
+				}
+				G_B5_0 = L_10;
+			}
+			{
+				G_B7_0 = ((String_t*)(NULL));
+				goto IL_003d_1;
+			}
+
+IL_002e_1:
+			{
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_11;
+				L_11 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(G_B6_0);
+				String_t* L_12;
+				L_12 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(G_B6_0, _stringLiteral5A76D7A13D6D89B55DBECE0F9BCD1BAB6886FE68, L_11, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+				G_B7_0 = L_12;
+			}
+
+IL_003d_1:
+			{
+				V_1 = G_B7_0;
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:204>
+				AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_13;
+				L_13 = GoogleBillingClient_GetProductDetailsParamsClass_m770E75D7716ED518ACE946142900BB072B80B312(NULL);
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_14;
+				L_14 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_13);
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_15;
+				L_15 = AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63(L_13, _stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B, L_14, AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+				V_2 = L_15;
+			}
+			{
+				auto __finallyBlock = il2cpp::utils::Finally([&]
+				{
+
+FINALLY_00e7_1:
+					{
+						{
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_16 = V_2;
+							if (!L_16)
+							{
+								goto IL_00f0_1;
+							}
+						}
+						{
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_17 = V_2;
+							NullCheck(L_17);
+							InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_17);
+						}
+
+IL_00f0_1:
+						{
+							return;
+						}
+					}
+				});
+				try
+				{
+					{
+						//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:205>
+						AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_18 = V_2;
+						ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_19 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+						ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_20 = L_19;
+						AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_21 = ___0_productDetails;
+						NullCheck(L_20);
+						ArrayElementTypeCheck (L_20, L_21);
+						(L_20)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_21);
+						NullCheck(L_18);
+						AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_22;
+						L_22 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_18, _stringLiteral7EAA36A2FA423A2F4EC17CAF0D570368377D98FE, L_20, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+						NullCheck(L_22);
+						AndroidJavaObject_Dispose_m2B1593C20B3CE1C8FF95982F638F50985F9DD9E6(L_22, NULL);
+						//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:206>
+						String_t* L_23 = V_1;
+						if (!L_23)
+						{
+							goto IL_008a_2;
+						}
+					}
+					{
+						//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:208>
+						AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_24 = V_2;
+						ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_25 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+						ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_26 = L_25;
+						String_t* L_27 = V_1;
+						NullCheck(L_26);
+						ArrayElementTypeCheck (L_26, L_27);
+						(L_26)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_27);
+						NullCheck(L_24);
+						AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_28;
+						L_28 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_24, _stringLiteral6A966D8AB32F294E048C82F71CC1D3707B8B30B5, L_26, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+						NullCheck(L_28);
+						AndroidJavaObject_Dispose_m2B1593C20B3CE1C8FF95982F638F50985F9DD9E6(L_28, NULL);
+					}
+
+IL_008a_2:
+					{
+						//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:210>
+						AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_29 = V_2;
+						ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_30;
+						L_30 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+						NullCheck(L_29);
+						AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_31;
+						L_31 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_29, _stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728, L_30, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+						V_3 = L_31;
+					}
+					{
+						auto __finallyBlock = il2cpp::utils::Finally([&]
+						{
+
+FINALLY_00dd_2:
+							{
+								{
+									AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_32 = V_3;
+									if (!L_32)
+									{
+										goto IL_00e6_2;
+									}
+								}
+								{
+									AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_33 = V_3;
+									NullCheck(L_33);
+									InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_33);
+								}
+
+IL_00e6_2:
+								{
+									return;
+								}
+							}
+						});
+						try
+						{
+							//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:211>
+							List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* L_34 = (List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF*)il2cpp_codegen_object_new(List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF_il2cpp_TypeInfo_var);
+							List_1__ctor_m21BC8DD8763514B160D7ECC2657F94E5E8031390(L_34, List_1__ctor_m21BC8DD8763514B160D7ECC2657F94E5E8031390_RuntimeMethod_var);
+							List_1_t75A593D0EA566755481CBE3EAF0CD9CACD223EAF* L_35 = L_34;
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_36 = V_3;
+							NullCheck(L_35);
+							List_1_Add_m46CE58AEE4E46E07AFB03138AA5A356BDD33DABF_inline(L_35, L_36, List_1_Add_m46CE58AEE4E46E07AFB03138AA5A356BDD33DABF_RuntimeMethod_var);
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_37;
+							L_37 = ListExtension_ToJava_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mB5F6B722712F762F6108F66E1C475F6EAA79DC6D(L_35, ListExtension_ToJava_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_mB5F6B722712F762F6108F66E1C475F6EAA79DC6D_RuntimeMethod_var);
+							V_4 = L_37;
+							//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:213>
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_38 = __this->___m_BillingClient;
+							ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_39 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)2);
+							ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_40 = L_39;
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_41;
+							L_41 = UnityActivity_GetCurrentActivity_mC19BD54968E675FC7F34D410C3449D0A862EE7D7(NULL);
+							NullCheck(L_40);
+							ArrayElementTypeCheck (L_40, L_41);
+							(L_40)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_41);
+							ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_42 = L_40;
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_43 = V_4;
+							String_t* L_44 = ___1_oldPurchaseToken;
+							Nullable_1_t970AE010F8F8B45699EB795FCDE562216915208C L_45 = ___2_replacementMode;
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_46;
+							L_46 = GoogleBillingClient_MakeBillingFlowParams_m31839CFF58E904615A50E55DD5432B162EFC8A95(__this, L_43, L_44, L_45, NULL);
+							NullCheck(L_42);
+							ArrayElementTypeCheck (L_42, L_46);
+							(L_42)->SetAt(static_cast<il2cpp_array_size_t>(1), (RuntimeObject*)L_46);
+							NullCheck(L_38);
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_47;
+							L_47 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_38, _stringLiteral185EA08EFC15CA94E2EEC2396C949698CC067FDB, L_42, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+							V_5 = L_47;
+							goto IL_00fb;
+						}
+						catch(Il2CppExceptionWrapper& e)
+						{
+							__finallyBlock.StoreException(e.ex);
+						}
+					}
+				}
+				catch(Il2CppExceptionWrapper& e)
+				{
+					__finallyBlock.StoreException(e.ex);
+				}
+			}
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_00fb:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:214>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_48 = V_5;
+		return L_48;
+	}
+}
+// Method Definition Index: 81680
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_MakeBillingFlowParams_m31839CFF58E904615A50E55DD5432B162EFC8A95 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_productDetailsParamsList, String_t* ___1_oldPurchaseToken, Nullable_1_t970AE010F8F8B45699EB795FCDE562216915208C ___2_replacementMode, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Nullable_1_get_HasValue_m30DA1D5C19144217811E70B7C5C6F5215B507CC4_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Nullable_1_get_Value_m460192D5360724FA3AE999B367D5BE0A6FFFB08D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral2EEF37D6A386B319CBF0D882768298D398E12027);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralFDDA0E2D635BC7B9C335D0CAD680D884795E20A6);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_1 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:218>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0;
+		L_0 = GoogleBillingClient_GetBillingFlowParamClass_mBCB69527450763953EBF8202141435877E7986A4(NULL);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63(L_0, _stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B, L_1, AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		V_0 = L_2;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:220>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_0;
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4;
+		L_4 = GoogleBillingClient_SetObfuscatedAccountIdIfNeeded_mD846549B2F8442B012028DDE1C102590E3727654(__this, L_3, NULL);
+		V_0 = L_4;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:221>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5 = V_0;
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_6;
+		L_6 = GoogleBillingClient_SetObfuscatedProfileIdIfNeeded_m53DDFFD0B1549169957D1EB7A67EB4F42EE68A06(__this, L_5, NULL);
+		V_0 = L_6;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:223>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_7 = V_0;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_8 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_9 = L_8;
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_10 = ___0_productDetailsParamsList;
+		NullCheck(L_9);
+		ArrayElementTypeCheck (L_9, L_10);
+		(L_9)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_10);
+		NullCheck(L_7);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_11;
+		L_11 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_7, _stringLiteral2EEF37D6A386B319CBF0D882768298D398E12027, L_9, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		V_0 = L_11;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:225>
+		String_t* L_12 = ___1_oldPurchaseToken;
+		if (!L_12)
+		{
+			goto IL_006b;
+		}
+	}
+	{
+		bool L_13;
+		L_13 = Nullable_1_get_HasValue_m30DA1D5C19144217811E70B7C5C6F5215B507CC4_inline((&___2_replacementMode), Nullable_1_get_HasValue_m30DA1D5C19144217811E70B7C5C6F5215B507CC4_RuntimeMethod_var);
+		if (!L_13)
+		{
+			goto IL_006b;
+		}
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:227>
+		String_t* L_14 = ___1_oldPurchaseToken;
+		int32_t L_15;
+		L_15 = Nullable_1_get_Value_m460192D5360724FA3AE999B367D5BE0A6FFFB08D((&___2_replacementMode), Nullable_1_get_Value_m460192D5360724FA3AE999B367D5BE0A6FFFB08D_RuntimeMethod_var);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_16;
+		L_16 = GoogleBillingClient_BuildSubscriptionUpdateParams_mBE148B4BCB647C882CA5BF9BE8A7843D368879CF(L_14, L_15, NULL);
+		V_1 = L_16;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:228>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_17 = V_0;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_18 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_19 = L_18;
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_20 = V_1;
+		NullCheck(L_19);
+		ArrayElementTypeCheck (L_19, L_20);
+		(L_19)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_20);
+		NullCheck(L_17);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_21;
+		L_21 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_17, _stringLiteralFDDA0E2D635BC7B9C335D0CAD680D884795E20A6, L_19, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		V_0 = L_21;
+	}
+
+IL_006b:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:231>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_22 = V_0;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_23;
+		L_23 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_22);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_24;
+		L_24 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_22, _stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728, L_23, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		V_0 = L_24;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:232>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_25 = V_0;
+		return L_25;
+	}
+}
+// Method Definition Index: 81681
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_BuildSubscriptionUpdateParams_mBE148B4BCB647C882CA5BF9BE8A7843D368879CF (String_t* ___0_oldPurchaseToken, int32_t ___1_replacementMode, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral749B5A6C4E6A22041D2FDE23D4F777D502935009);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral808C861A40EFD3D5D20185A5FF95455AD503CED1);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:237>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0;
+		L_0 = GoogleBillingClient_GetSubscriptionUpdateParamClass_m4FF587F8D5936BAA96D9A517B2BA2B75CA6C482C(NULL);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63(L_0, _stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B, L_1, AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:239>
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_3 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_4 = L_3;
+		int32_t L_5 = ___1_replacementMode;
+		int32_t L_6 = ((int32_t)L_5);
+		RuntimeObject* L_7 = Box(il2cpp_defaults.int32_class, &L_6);
+		NullCheck(L_4);
+		ArrayElementTypeCheck (L_4, L_7);
+		(L_4)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_7);
+		NullCheck(L_2);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_8;
+		L_8 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_2, _stringLiteral749B5A6C4E6A22041D2FDE23D4F777D502935009, L_4, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:240>
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_9 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_10 = L_9;
+		String_t* L_11 = ___0_oldPurchaseToken;
+		NullCheck(L_10);
+		ArrayElementTypeCheck (L_10, L_11);
+		(L_10)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_11);
+		NullCheck(L_8);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_12;
+		L_12 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_8, _stringLiteral808C861A40EFD3D5D20185A5FF95455AD503CED1, L_10, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:242>
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_13;
+		L_13 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_12);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_14;
+		L_14 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_12, _stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728, L_13, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:243>
+		return L_14;
+	}
+}
+// Method Definition Index: 81682
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_SetObfuscatedProfileIdIfNeeded_m53DDFFD0B1549169957D1EB7A67EB4F42EE68A06 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_billingFlowParams, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral4AF84F16421B44F3C9DB949CA6917212BBB501AB);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:248>
+		String_t* L_0 = __this->___m_ObfuscatedProfileId;
+		if (!L_0)
+		{
+			goto IL_0024;
+		}
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:250>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_1 = ___0_billingFlowParams;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_2 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_3 = L_2;
+		String_t* L_4 = __this->___m_ObfuscatedProfileId;
+		NullCheck(L_3);
+		ArrayElementTypeCheck (L_3, L_4);
+		(L_3)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_4);
+		NullCheck(L_1);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5;
+		L_5 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_1, _stringLiteral4AF84F16421B44F3C9DB949CA6917212BBB501AB, L_3, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		___0_billingFlowParams = L_5;
+	}
+
+IL_0024:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:253>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_6 = ___0_billingFlowParams;
+		return L_6;
+	}
+}
+// Method Definition Index: 81683
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GoogleBillingClient_SetObfuscatedAccountIdIfNeeded_mD846549B2F8442B012028DDE1C102590E3727654 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_billingFlowParams, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral27353943B75B826B09C910934BD0E73236675429);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:258>
+		String_t* L_0 = __this->___m_ObfuscatedAccountId;
+		if (!L_0)
+		{
+			goto IL_0024;
+		}
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:260>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_1 = ___0_billingFlowParams;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_2 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_3 = L_2;
+		String_t* L_4 = __this->___m_ObfuscatedAccountId;
+		NullCheck(L_3);
+		ArrayElementTypeCheck (L_3, L_4);
+		(L_3)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_4);
+		NullCheck(L_1);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5;
+		L_5 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_1, _stringLiteral27353943B75B826B09C910934BD0E73236675429, L_3, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		___0_billingFlowParams = L_5;
+	}
+
+IL_0024:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:263>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_6 = ___0_billingFlowParams;
+		return L_6;
+	}
+}
+// Method Definition Index: 81684
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleBillingClient_ConsumeAsync_m2E230335296205BD6D1312AE9D9EBBF05F64ED86 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, String_t* ___0_purchaseToken, Action_1_tBBC611382C7211FB870AB6B82164F24B27C1B421* ___1_onConsume, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleConsumeResponseListener_t0ED2834EA7D01A19742CD5903E3AD759E9762616_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral24D3DE153958E752CFE514CB0421AEAA5D3AC266);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral5E9A8B9490715BE488FC276751AC092CED72E331);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_1 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:268>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0;
+		L_0 = GoogleBillingClient_GetConsumeParamsClass_m90083037251795E7FB2C46D4CB81ED65BE7C896D(NULL);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63(L_0, _stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B, L_1, AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		V_0 = L_2;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_0075:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_0;
+					if (!L_3)
+					{
+						goto IL_007e;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4 = V_0;
+					NullCheck(L_4);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_4);
+				}
+
+IL_007e:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			{
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:269>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5 = V_0;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_6 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_7 = L_6;
+				String_t* L_8 = ___0_purchaseToken;
+				NullCheck(L_7);
+				ArrayElementTypeCheck (L_7, L_8);
+				(L_7)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_8);
+				NullCheck(L_5);
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_9;
+				L_9 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_5, _stringLiteral24D3DE153958E752CFE514CB0421AEAA5D3AC266, L_7, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+				NullCheck(L_9);
+				AndroidJavaObject_Dispose_m2B1593C20B3CE1C8FF95982F638F50985F9DD9E6(L_9, NULL);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:270>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_10 = V_0;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_11;
+				L_11 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_10);
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_12;
+				L_12 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_10, _stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728, L_11, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+				V_1 = L_12;
+			}
+			{
+				auto __finallyBlock = il2cpp::utils::Finally([&]
+				{
+
+FINALLY_006b_1:
+					{
+						{
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_13 = V_1;
+							if (!L_13)
+							{
+								goto IL_0074_1;
+							}
+						}
+						{
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_14 = V_1;
+							NullCheck(L_14);
+							InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_14);
+						}
+
+IL_0074_1:
+						{
+							return;
+						}
+					}
+				});
+				try
+				{
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:272>
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_15 = __this->___m_BillingClient;
+					ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_16 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)2);
+					ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_17 = L_16;
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_18 = V_1;
+					NullCheck(L_17);
+					ArrayElementTypeCheck (L_17, L_18);
+					(L_17)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_18);
+					ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_19 = L_17;
+					Action_1_tBBC611382C7211FB870AB6B82164F24B27C1B421* L_20 = ___1_onConsume;
+					RuntimeObject* L_21 = __this->___m_Util;
+					GoogleConsumeResponseListener_t0ED2834EA7D01A19742CD5903E3AD759E9762616* L_22 = (GoogleConsumeResponseListener_t0ED2834EA7D01A19742CD5903E3AD759E9762616*)il2cpp_codegen_object_new(GoogleConsumeResponseListener_t0ED2834EA7D01A19742CD5903E3AD759E9762616_il2cpp_TypeInfo_var);
+					GoogleConsumeResponseListener__ctor_mED0599ABBE1BA935F5167F9ED6DC74FADD35EF9B(L_22, L_20, L_21, NULL);
+					NullCheck(L_19);
+					ArrayElementTypeCheck (L_19, L_22);
+					(L_19)->SetAt(static_cast<il2cpp_array_size_t>(1), (RuntimeObject*)L_22);
+					NullCheck(L_15);
+					AndroidJavaObject_Call_mDEF7846E2AB1C5379069BB21049ED55A9D837B1C(L_15, _stringLiteral5E9A8B9490715BE488FC276751AC092CED72E331, L_19, NULL);
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:273>
+					goto IL_007f;
+				}
+				catch(Il2CppExceptionWrapper& e)
+				{
+					__finallyBlock.StoreException(e.ex);
+				}
+			}
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_007f:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:273>
+		return;
+	}
+}
+// Method Definition Index: 81685
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleBillingClient_AcknowledgePurchase_mFB4B9A6836CABF352D30E07D717727281C5BED97 (GoogleBillingClient_t4EEB5FBD2B0851BDD13CCDD4FA905F0CD5A9CD54* __this, String_t* ___0_purchaseToken, Action_1_tBBC611382C7211FB870AB6B82164F24B27C1B421* ___1_onAcknowledge, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GoogleAcknowledgePurchaseListener_tAEDDA2EA0541273BEB1B3EB3FD570C52607D5709_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral24D3DE153958E752CFE514CB0421AEAA5D3AC266);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral7FEA58AAF24C61EE697135803E8D03C83500C3F5);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_1 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:277>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0;
+		L_0 = GoogleBillingClient_GetAcknowledgePurchaseParamsClass_m70D378309742C7A24601031613A3C914E9BAF974(NULL);
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63(L_0, _stringLiteralF89E2B8AEFEFD95D439A48449E4C25ACB8455C5B, L_1, AndroidJavaObject_CallStatic_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m398EA96C1DE1BB885F2B1DD0E00E8BBA86B49E63_RuntimeMethod_var);
+		V_0 = L_2;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_0075:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_0;
+					if (!L_3)
+					{
+						goto IL_007e;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4 = V_0;
+					NullCheck(L_4);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_4);
+				}
+
+IL_007e:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			{
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:278>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5 = V_0;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_6 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)1);
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_7 = L_6;
+				String_t* L_8 = ___0_purchaseToken;
+				NullCheck(L_7);
+				ArrayElementTypeCheck (L_7, L_8);
+				(L_7)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_8);
+				NullCheck(L_5);
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_9;
+				L_9 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_5, _stringLiteral24D3DE153958E752CFE514CB0421AEAA5D3AC266, L_7, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+				NullCheck(L_9);
+				AndroidJavaObject_Dispose_m2B1593C20B3CE1C8FF95982F638F50985F9DD9E6(L_9, NULL);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:279>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_10 = V_0;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_11;
+				L_11 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_10);
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_12;
+				L_12 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_10, _stringLiteralA733C7FC19A8317471D21AD091D1A9A6F973A728, L_11, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+				V_1 = L_12;
+			}
+			{
+				auto __finallyBlock = il2cpp::utils::Finally([&]
+				{
+
+FINALLY_006b_1:
+					{
+						{
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_13 = V_1;
+							if (!L_13)
+							{
+								goto IL_0074_1;
+							}
+						}
+						{
+							AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_14 = V_1;
+							NullCheck(L_14);
+							InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_14);
+						}
+
+IL_0074_1:
+						{
+							return;
+						}
+					}
+				});
+				try
+				{
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:281>
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_15 = __this->___m_BillingClient;
+					ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_16 = (ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918*)SZArrayNew(ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918_il2cpp_TypeInfo_var, (uint32_t)2);
+					ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_17 = L_16;
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_18 = V_1;
+					NullCheck(L_17);
+					ArrayElementTypeCheck (L_17, L_18);
+					(L_17)->SetAt(static_cast<il2cpp_array_size_t>(0), (RuntimeObject*)L_18);
+					ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_19 = L_17;
+					Action_1_tBBC611382C7211FB870AB6B82164F24B27C1B421* L_20 = ___1_onAcknowledge;
+					RuntimeObject* L_21 = __this->___m_Util;
+					GoogleAcknowledgePurchaseListener_tAEDDA2EA0541273BEB1B3EB3FD570C52607D5709* L_22 = (GoogleAcknowledgePurchaseListener_tAEDDA2EA0541273BEB1B3EB3FD570C52607D5709*)il2cpp_codegen_object_new(GoogleAcknowledgePurchaseListener_tAEDDA2EA0541273BEB1B3EB3FD570C52607D5709_il2cpp_TypeInfo_var);
+					GoogleAcknowledgePurchaseListener__ctor_m0F0D4ED62D9D55952F332ADA773937B00EFC805E(L_22, L_20, L_21, NULL);
+					NullCheck(L_19);
+					ArrayElementTypeCheck (L_19, L_22);
+					(L_19)->SetAt(static_cast<il2cpp_array_size_t>(1), (RuntimeObject*)L_22);
+					NullCheck(L_15);
+					AndroidJavaObject_Call_mDEF7846E2AB1C5379069BB21049ED55A9D837B1C(L_15, _stringLiteral7FEA58AAF24C61EE697135803E8D03C83500C3F5, L_19, NULL);
+					//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:282>
+					goto IL_007f;
+				}
+				catch(Il2CppExceptionWrapper& e)
+				{
+					__finallyBlock.StoreException(e.ex);
+				}
+			}
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_007f:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:282>
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81686
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass47_0__ctor_m8E2E4387DE5C9106243CEFD62450EDEA6E6B7B88 (U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+// Method Definition Index: 81687
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* U3CU3Ec__DisplayClass47_0_U3CQueryProductDetailsParamsProductListU3Eb__0_m60D473A127D8299775F46A5F5E47A140D9D1CF5D (U3CU3Ec__DisplayClass47_0_t8CC225D77A648E50BE938F39DB0314891F6F6EC6* __this, String_t* ___0_product, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingClient.cs:184>
+		String_t* L_0 = __this->___type;
+		String_t* L_1 = ___0_product;
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = GoogleBillingClient_QueryProductDetailsParamsProduct_m71EF9D220B32679DED6D6054A6B75CAD1F1657C4(L_0, L_1, NULL);
+		return L_2;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81688
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t GoogleBillingResult_get_responseCode_mE7321C12119424808C67C83280B7A9369E4A917E (GoogleBillingResult_tC73DBFC9ADA1CAB5A40242B2B802FE310FF5BBD7* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingResult.cs:11>
+		int32_t L_0 = __this->___U3CresponseCodeU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81689
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GoogleBillingResult_get_debugMessage_m3FF61FE50233C1F5AA6A5C851888A4494C5742F3 (GoogleBillingResult_tC73DBFC9ADA1CAB5A40242B2B802FE310FF5BBD7* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingResult.cs:12>
+		String_t* L_0 = __this->___U3CdebugMessageU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81690
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GoogleBillingResult__ctor_mE8820658B4232D855E3A330C73B19D0764789611 (GoogleBillingResult_tC73DBFC9ADA1CAB5A40242B2B802FE310FF5BBD7* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_billingResult, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral4DA292056609E91DF87CFB0BE26ACC4860B8C273);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral63C24B473E127CB6B089ACEF244BCB238A34E135);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingResult.cs:13>
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingResult.cs:15>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_0 = ___0_billingResult;
+		if (!L_0)
+		{
+			goto IL_0035;
+		}
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingResult.cs:17>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_1 = ___0_billingResult;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_2;
+		L_2 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_1);
+		int32_t L_3;
+		L_3 = AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC(L_1, _stringLiteral4DA292056609E91DF87CFB0BE26ACC4860B8C273, L_2, AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC_RuntimeMethod_var);
+		__this->___U3CresponseCodeU3Ek__BackingField = L_3;
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingResult.cs:18>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4 = ___0_billingResult;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_5;
+		L_5 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_4);
+		String_t* L_6;
+		L_6 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_4, _stringLiteral63C24B473E127CB6B089ACEF244BCB238A34E135, L_5, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+		__this->___U3CdebugMessageU3Ek__BackingField = L_6;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CdebugMessageU3Ek__BackingField), (void*)L_6);
+	}
+
+IL_0035:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingResult.cs:21>
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81691
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GoogleBillingStrings_getWarningMessageMoreThanOneSkuFound_m0E4C344C00974DDD11AC535B6E68825241E5A981 (String_t* ___0_sku, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral2778FD4BAB0076B85A6DC02C1B233BF0A7848FC0);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral9C65AE428D66E9596028DEE3D50639FC92DA9E83);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleBillingStrings.cs:11>
+		String_t* L_0 = ___0_sku;
+		String_t* L_1;
+		L_1 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(_stringLiteral2778FD4BAB0076B85A6DC02C1B233BF0A7848FC0, L_0, _stringLiteral9C65AE428D66E9596028DEE3D50639FC92DA9E83, NULL);
+		return L_1;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81692
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GoogleProductTypeEnum_InApp_mC6F756C1C12C66528473DC2358BCC6869128430F (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralA44250C90C4461C6F602B3B9DC9B873627787D3B);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleProductTypeEnum.cs:13>
+		return _stringLiteralA44250C90C4461C6F602B3B9DC9B873627787D3B;
+	}
+}
+// Method Definition Index: 81693
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GoogleProductTypeEnum_Sub_mB8FEFEEBC839731C199BA724ADF136226CAECFD7 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralC5EE8C59C90DE1E698A3010542A9B964C720ED30);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GoogleProductTypeEnum.cs:18>
+		return _stringLiteralC5EE8C59C90DE1E698A3010542A9B964C720ED30;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81694
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GooglePurchase_get_isAcknowledged_m90BA9B98EB4FD3FB04FD6B190ECE8FB99930B992 (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:17>
+		bool L_0 = __this->___U3CisAcknowledgedU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81695
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t GooglePurchase_get_purchaseState_m42D242B28567F9992C0CA65D378C39F7AAC54EEC (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:18>
+		int32_t L_0 = __this->___U3CpurchaseStateU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81696
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* GooglePurchase_get_skus_m574D192E03986558B7D9DE98FFAAD2D900CB65E2 (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:19>
+		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_0 = __this->___U3CskusU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81697
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GooglePurchase_get_orderId_m7793B3A3A157317C9A0D2874B099305C1C90A859 (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:20>
+		String_t* L_0 = __this->___U3CorderIdU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81698
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GooglePurchase_get_receipt_m9D2B1D638F3E4672BAACC1A3321A41707FCFE02B (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:21>
+		String_t* L_0 = __this->___U3CreceiptU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81699
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GooglePurchase_get_signature_m8A776170C8CFD23F5D3270E0B69280E44EBF113C (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:22>
+		String_t* L_0 = __this->___U3CsignatureU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81700
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GooglePurchase_get_originalJson_m9D4A74B07B177710AF4DEB9F780A41C08517E0F9 (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:23>
+		String_t* L_0 = __this->___U3CoriginalJsonU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81701
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GooglePurchase_get_purchaseToken_m6D43C04117C390A683CCA45DB0C84A956C3A6790 (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:24>
+		String_t* L_0 = __this->___U3CpurchaseTokenU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81702
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GooglePurchase_get_obfuscatedAccountId_m76520F17145EA7371C9BFA17671925AD687BE6FD (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:25>
+		String_t* L_0 = __this->___U3CobfuscatedAccountIdU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81703
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GooglePurchase_get_obfuscatedProfileId_mDDCD7303EEA15311276DBCF0A80B1D4B2A2123B3 (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:26>
+		String_t* L_0 = __this->___U3CobfuscatedProfileIdU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81704
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GooglePurchase_get_productDescriptions_m57445048AE1A7BCEDE6C412C8AABCC46D86CFBF5 (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:27>
+		RuntimeObject* L_0 = __this->___U3CproductDescriptionsU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81705
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GooglePurchase_get_sku_m45FF1021C3D015FE40DED7825C926CE41628098F (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Enumerable_FirstOrDefault_TisString_t_m9CA8A9DE7F8DCB619529414D42C259BDF6C05A5B_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:29>
+		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_0;
+		L_0 = GooglePurchase_get_skus_m574D192E03986558B7D9DE98FFAAD2D900CB65E2_inline(__this, NULL);
+		String_t* L_1;
+		L_1 = Enumerable_FirstOrDefault_TisString_t_m9CA8A9DE7F8DCB619529414D42C259BDF6C05A5B(L_0, Enumerable_FirstOrDefault_TisString_t_m9CA8A9DE7F8DCB619529414D42C259BDF6C05A5B_RuntimeMethod_var);
+		return L_1;
+	}
+}
+// Method Definition Index: 81706
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GooglePurchase__ctor_m10B1D452CF6B7E2F2B55FC3819324B780DD3F377 (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_purchase, RuntimeObject* ___1_productDetailsEnum, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObjectExtensions_Enumerate_TisString_t_mB0A198813D8F760A00C172560F00E08F0C804AD9_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisBoolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_m05D3284A3FA772D032190A0FE82363C61000F1DF_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Enumerable_Select_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_TisProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_m53902C59EEF8BB9BAAFA26EBDC081A0D48653D64_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Enumerable_Select_TisProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_TisString_t_m90AA13353DD751E3AF62A950C34555F4CAFB3A02_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Enumerable_ToList_TisString_t_m86360148F90DE6EA1A8363F38B7C2A88FD139131_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_U3C_ctorU3Eb__35_0_mD347A18E9AC629CF093484358EEE83354B1C5070_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_U3C_ctorU3Eb__35_1_mF59A13B28D299ABB17BED498DB48D2F404C61819_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral001453AEE96196C60F5094DBB37BD7779972F12D);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral3017ACDB93239AED1C27BEDC754A553B57D50C27);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral450C8EF3D0450ABCD23C53730AAA221835C6A350);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral87C956E84393E45F047CF04B48F5CDAC75666A87);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral9303FDBBA3EA9F42A781A1107ABF8F1702BF684C);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralBB74BE2DE5EB08D80D4BB578E88FC96BDC00CCB4);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralC0996A36415E22F8B9021DA5470FAD41831458D9);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralD1BC95382E937429BD5741792056300D87684F48);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF169275544223C785E8F3C2E7F2BB05FB2885329);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralFE1CF444AC0595C59BD4C4EB8FA8AC9EF446A337);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_1 = NULL;
+	List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* V_2 = NULL;
+	Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512* G_B3_0 = NULL;
+	RuntimeObject* G_B3_1 = NULL;
+	GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* G_B3_2 = NULL;
+	Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512* G_B2_0 = NULL;
+	RuntimeObject* G_B2_1 = NULL;
+	GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* G_B2_2 = NULL;
+	Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E* G_B5_0 = NULL;
+	RuntimeObject* G_B5_1 = NULL;
+	Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E* G_B4_0 = NULL;
+	RuntimeObject* G_B4_1 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:31>
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:33>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_0 = ___0_purchase;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1;
+		L_1 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+		NullCheck(L_0);
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2;
+		L_2 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_0, _stringLiteralBB74BE2DE5EB08D80D4BB578E88FC96BDC00CCB4, L_1, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+		V_0 = L_2;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_015e:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_0;
+					if (!L_3)
+					{
+						goto IL_0167;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4 = V_0;
+					NullCheck(L_4);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_4);
+				}
+
+IL_0167:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			{
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:35>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_5 = ___0_purchase;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_6;
+				L_6 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_5);
+				bool L_7;
+				L_7 = AndroidJavaObject_Call_TisBoolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_m05D3284A3FA772D032190A0FE82363C61000F1DF(L_5, _stringLiteral001453AEE96196C60F5094DBB37BD7779972F12D, L_6, AndroidJavaObject_Call_TisBoolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_m05D3284A3FA772D032190A0FE82363C61000F1DF_RuntimeMethod_var);
+				__this->___U3CisAcknowledgedU3Ek__BackingField = L_7;
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:36>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_8 = ___0_purchase;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_9;
+				L_9 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_8);
+				int32_t L_10;
+				L_10 = AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC(L_8, _stringLiteralC0996A36415E22F8B9021DA5470FAD41831458D9, L_9, AndroidJavaObject_Call_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mDC5FD095AFC55DFE596907E5B055B5774DA5B5AC_RuntimeMethod_var);
+				__this->___U3CpurchaseStateU3Ek__BackingField = L_10;
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:37>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_11 = V_0;
+				RuntimeObject* L_12;
+				L_12 = AndroidJavaObjectExtensions_Enumerate_TisString_t_mB0A198813D8F760A00C172560F00E08F0C804AD9(L_11, AndroidJavaObjectExtensions_Enumerate_TisString_t_mB0A198813D8F760A00C172560F00E08F0C804AD9_RuntimeMethod_var);
+				List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_13;
+				L_13 = Enumerable_ToList_TisString_t_m86360148F90DE6EA1A8363F38B7C2A88FD139131(L_12, Enumerable_ToList_TisString_t_m86360148F90DE6EA1A8363F38B7C2A88FD139131_RuntimeMethod_var);
+				__this->___U3CskusU3Ek__BackingField = L_13;
+				Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CskusU3Ek__BackingField), (void*)L_13);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:38>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_14 = ___0_purchase;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_15;
+				L_15 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_14);
+				String_t* L_16;
+				L_16 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_14, _stringLiteralD1BC95382E937429BD5741792056300D87684F48, L_15, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+				__this->___U3CorderIdU3Ek__BackingField = L_16;
+				Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CorderIdU3Ek__BackingField), (void*)L_16);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:39>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_17 = ___0_purchase;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_18;
+				L_18 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_17);
+				String_t* L_19;
+				L_19 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_17, _stringLiteral9303FDBBA3EA9F42A781A1107ABF8F1702BF684C, L_18, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+				__this->___U3CoriginalJsonU3Ek__BackingField = L_19;
+				Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CoriginalJsonU3Ek__BackingField), (void*)L_19);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:40>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_20 = ___0_purchase;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_21;
+				L_21 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_20);
+				String_t* L_22;
+				L_22 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_20, _stringLiteral450C8EF3D0450ABCD23C53730AAA221835C6A350, L_21, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+				__this->___U3CsignatureU3Ek__BackingField = L_22;
+				Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CsignatureU3Ek__BackingField), (void*)L_22);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:41>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_23 = ___0_purchase;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_24;
+				L_24 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_23);
+				String_t* L_25;
+				L_25 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_23, _stringLiteralF169275544223C785E8F3C2E7F2BB05FB2885329, L_24, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+				__this->___U3CpurchaseTokenU3Ek__BackingField = L_25;
+				Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CpurchaseTokenU3Ek__BackingField), (void*)L_25);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:42>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_26 = ___0_purchase;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_27;
+				L_27 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_26);
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_28;
+				L_28 = AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D(L_26, _stringLiteral87C956E84393E45F047CF04B48F5CDAC75666A87, L_27, AndroidJavaObject_Call_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_m020246E0988293B6126B690BD6CE4D894276AA3D_RuntimeMethod_var);
+				V_1 = L_28;
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:43>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_29 = V_1;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_30;
+				L_30 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_29);
+				String_t* L_31;
+				L_31 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_29, _stringLiteral3017ACDB93239AED1C27BEDC754A553B57D50C27, L_30, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+				__this->___U3CobfuscatedAccountIdU3Ek__BackingField = L_31;
+				Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CobfuscatedAccountIdU3Ek__BackingField), (void*)L_31);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:44>
+				AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_32 = V_1;
+				ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_33;
+				L_33 = Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_inline(Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_RuntimeMethod_var);
+				NullCheck(L_32);
+				String_t* L_34;
+				L_34 = AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40(L_32, _stringLiteralFE1CF444AC0595C59BD4C4EB8FA8AC9EF446A337, L_33, AndroidJavaObject_Call_TisString_t_m67FC2931E81004C3F259008314180511C3D2AF40_RuntimeMethod_var);
+				__this->___U3CobfuscatedProfileIdU3Ek__BackingField = L_34;
+				Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CobfuscatedProfileIdU3Ek__BackingField), (void*)L_34);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:45>
+				RuntimeObject* L_35 = ___1_productDetailsEnum;
+				il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var);
+				Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512* L_36 = ((U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var))->___U3CU3E9__35_0;
+				Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512* L_37 = L_36;
+				if (L_37)
+				{
+					G_B3_0 = L_37;
+					G_B3_1 = L_35;
+					G_B3_2 = __this;
+					goto IL_010a_1;
+				}
+				G_B2_0 = L_37;
+				G_B2_1 = L_35;
+				G_B2_2 = __this;
+			}
+			{
+				il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var);
+				U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379* L_38 = ((U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var))->___U3CU3E9;
+				Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512* L_39 = (Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512*)il2cpp_codegen_object_new(Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512_il2cpp_TypeInfo_var);
+				Func_2__ctor_m96DF6BDABFCDDECB24E7669CE08B5616F42BF27A(L_39, L_38, (intptr_t)((void*)U3CU3Ec_U3C_ctorU3Eb__35_0_mD347A18E9AC629CF093484358EEE83354B1C5070_RuntimeMethod_var), NULL);
+				Func_2_t264845B36F0F51F8C1758EFAF768A8997E13C512* L_40 = L_39;
+				((U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var))->___U3CU3E9__35_0 = L_40;
+				Il2CppCodeGenWriteBarrier((void**)(&((U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var))->___U3CU3E9__35_0), (void*)L_40);
+				G_B3_0 = L_40;
+				G_B3_1 = G_B2_1;
+				G_B3_2 = G_B2_2;
+			}
+
+IL_010a_1:
+			{
+				RuntimeObject* L_41;
+				L_41 = Enumerable_Select_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_TisProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_m53902C59EEF8BB9BAAFA26EBDC081A0D48653D64(G_B3_1, G_B3_0, Enumerable_Select_TisAndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0_TisProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_m53902C59EEF8BB9BAAFA26EBDC081A0D48653D64_RuntimeMethod_var);
+				NullCheck(G_B3_2);
+				G_B3_2->___U3CproductDescriptionsU3Ek__BackingField = L_41;
+				Il2CppCodeGenWriteBarrier((void**)(&G_B3_2->___U3CproductDescriptionsU3Ek__BackingField), (void*)L_41);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:47>
+				RuntimeObject* L_42;
+				L_42 = GooglePurchase_get_productDescriptions_m57445048AE1A7BCEDE6C412C8AABCC46D86CFBF5_inline(__this, NULL);
+				il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var);
+				Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E* L_43 = ((U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var))->___U3CU3E9__35_1;
+				Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E* L_44 = L_43;
+				if (L_44)
+				{
+					G_B5_0 = L_44;
+					G_B5_1 = L_42;
+					goto IL_0139_1;
+				}
+				G_B4_0 = L_44;
+				G_B4_1 = L_42;
+			}
+			{
+				il2cpp_codegen_runtime_class_init_inline(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var);
+				U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379* L_45 = ((U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var))->___U3CU3E9;
+				Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E* L_46 = (Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E*)il2cpp_codegen_object_new(Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E_il2cpp_TypeInfo_var);
+				Func_2__ctor_m3A32A29D6B1AB1877A37DD736EBE30B64D4E9371(L_46, L_45, (intptr_t)((void*)U3CU3Ec_U3C_ctorU3Eb__35_1_mF59A13B28D299ABB17BED498DB48D2F404C61819_RuntimeMethod_var), NULL);
+				Func_2_tEC05E70C904028D11AD51BA7CAE05A8760E3FC6E* L_47 = L_46;
+				((U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var))->___U3CU3E9__35_1 = L_47;
+				Il2CppCodeGenWriteBarrier((void**)(&((U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var))->___U3CU3E9__35_1), (void*)L_47);
+				G_B5_0 = L_47;
+				G_B5_1 = G_B4_1;
+			}
+
+IL_0139_1:
+			{
+				RuntimeObject* L_48;
+				L_48 = Enumerable_Select_TisProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_TisString_t_m90AA13353DD751E3AF62A950C34555F4CAFB3A02(G_B5_1, G_B5_0, Enumerable_Select_TisProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A_TisString_t_m90AA13353DD751E3AF62A950C34555F4CAFB3A02_RuntimeMethod_var);
+				List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_49;
+				L_49 = Enumerable_ToList_TisString_t_m86360148F90DE6EA1A8363F38B7C2A88FD139131(L_48, Enumerable_ToList_TisString_t_m86360148F90DE6EA1A8363F38B7C2A88FD139131_RuntimeMethod_var);
+				V_2 = L_49;
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:48>
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:49>
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:50>
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:51>
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:52>
+				String_t* L_50;
+				L_50 = GooglePurchase_get_originalJson_m9D4A74B07B177710AF4DEB9F780A41C08517E0F9_inline(__this, NULL);
+				String_t* L_51;
+				L_51 = GooglePurchase_get_signature_m8A776170C8CFD23F5D3270E0B69280E44EBF113C_inline(__this, NULL);
+				List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_52 = V_2;
+				String_t* L_53;
+				L_53 = GoogleReceiptEncoder_EncodeReceipt_m46507D51C076795F860F0693B1F5EEEEE4B8F5EA(L_50, L_51, L_52, NULL);
+				__this->___U3CreceiptU3Ek__BackingField = L_53;
+				Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CreceiptU3Ek__BackingField), (void*)L_53);
+				//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:53>
+				goto IL_0168;
+			}
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_0168:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:53>
+		return;
+	}
+}
+// Method Definition Index: 81707
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GooglePurchase_IsAcknowledged_m161B75648B127B517234DB2335C7C6B3D46D8CB4 (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:55>
+		bool L_0;
+		L_0 = GooglePurchase_get_isAcknowledged_m90BA9B98EB4FD3FB04FD6B190ECE8FB99930B992_inline(__this, NULL);
+		return L_0;
+	}
+}
+// Method Definition Index: 81708
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GooglePurchase_IsPurchased_m59E1F2C26B827F098E8B89C6C0AB0CBA5B78B6A0 (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:57>
+		int32_t L_0;
+		L_0 = GooglePurchase_get_purchaseState_m42D242B28567F9992C0CA65D378C39F7AAC54EEC_inline(__this, NULL);
+		int32_t L_1;
+		L_1 = GooglePurchaseStateEnum_Purchased_mD9A2EBCB6E7B9FD3768753582179B2694F19E517(NULL);
+		return (bool)((((int32_t)L_0) == ((int32_t)L_1))? 1 : 0);
+	}
+}
+// Method Definition Index: 81709
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GooglePurchase_IsPending_m8A9C7057E5264C3BF7DB1C3D3E6A4C0D4BC076DA (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:59>
+		int32_t L_0;
+		L_0 = GooglePurchase_get_purchaseState_m42D242B28567F9992C0CA65D378C39F7AAC54EEC_inline(__this, NULL);
+		int32_t L_1;
+		L_1 = GooglePurchaseStateEnum_Pending_m3973290BEAD55785E750BF5EBC327A0D9D741725(NULL);
+		return (bool)((((int32_t)L_0) == ((int32_t)L_1))? 1 : 0);
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81710
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__cctor_m084271D5E992BAD81D4904BB2A55C0C9B27FE0BB (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379* L_0 = (U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379*)il2cpp_codegen_object_new(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var);
+		U3CU3Ec__ctor_m3F1145D558B77812A015206A962A853EC2EF9395(L_0, NULL);
+		((U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var))->___U3CU3E9 = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&((U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_StaticFields*)il2cpp_codegen_static_fields_for(U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379_il2cpp_TypeInfo_var))->___U3CU3E9), (void*)L_0);
+		return;
+	}
+}
+// Method Definition Index: 81711
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__ctor_m3F1145D558B77812A015206A962A853EC2EF9395 (U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+// Method Definition Index: 81712
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* U3CU3Ec_U3C_ctorU3Eb__35_0_mD347A18E9AC629CF093484358EEE83354B1C5070 (U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379* __this, AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* ___0_productDetails, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:45>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_0 = ___0_productDetails;
+		ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* L_1;
+		L_1 = ProductDetailsConverter_BuildProductDescription_m8C1B83009FE220F61D0A60F144380137291E82D3(L_0, 3, NULL);
+		return L_1;
+	}
+}
+// Method Definition Index: 81713
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* U3CU3Ec_U3C_ctorU3Eb__35_1_mF59A13B28D299ABB17BED498DB48D2F404C61819 (U3CU3Ec_t6AD9FA2BC6CD7C7B6852078F582662D0E6031379* __this, ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* ___0_productDescription, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:47>
+		ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* L_0 = ___0_productDescription;
+		NullCheck(L_0);
+		ProductMetadata_t2D6C6454A305A6790D8903169E3B136EB13417E1* L_1;
+		L_1 = ProductDescription_get_metadata_m90B0E9E6F346FA02655F72A548C2BDB80A4C3C37_inline(L_0, NULL);
+		GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* L_2;
+		L_2 = GetGoogleProductMetadataExtension_GetGoogleProductMetadata_mAB672AE881936A32B2FDF8D567B984DE9C045809(L_1, NULL);
+		NullCheck(L_2);
+		String_t* L_3;
+		L_3 = GoogleProductMetadata_get_originalJson_mFDBDA75AED91FA6E2D104BC4EF5EEF0990BC9D06_inline(L_2, NULL);
+		return L_3;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81714
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* GooglePurchaseStateEnum_GetPurchaseStateJavaObject_m94E33E05CB38C082A52F4EBDB0228134D27A9F2B (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralF3DB8521ADB71488B0A3D538F58F98B35E326552);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchaseStateEnum.cs:13>
+		AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03* L_0 = (AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03*)il2cpp_codegen_object_new(AndroidJavaClass_tE6296B30CC4BF84434A9B765267F3FD0DD8DDB03_il2cpp_TypeInfo_var);
+		AndroidJavaClass__ctor_mB5466169E1151B8CC44C8FED234D79984B431389(L_0, _stringLiteralF3DB8521ADB71488B0A3D538F58F98B35E326552, NULL);
+		return L_0;
+	}
+}
+// Method Definition Index: 81715
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t GooglePurchaseStateEnum_Purchased_mD9A2EBCB6E7B9FD3768753582179B2694F19E517 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_GetStatic_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m740F3401DEA4A75BADD753EFF71D2328B4147BFC_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Nullable_1__ctor_m141FA88563AC0B5179132FB929EABD02C47FF703_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Nullable_1_get_Value_m0DF3B826A745419D26A168689AEB4BE6F8698ECA_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral6DAB35E4EA4BBD5AF1473155FA1288D974D1DAD9);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchaseStateEnum.cs:19>
+		bool L_0;
+		L_0 = Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_inline((&((GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_StaticFields*)il2cpp_codegen_static_fields_for(GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_il2cpp_TypeInfo_var))->___s_Purchased), Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_RuntimeMethod_var);
+		if (L_0)
+		{
+			goto IL_0033;
+		}
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchaseStateEnum.cs:21>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_1;
+		L_1 = GooglePurchaseStateEnum_GetPurchaseStateJavaObject_m94E33E05CB38C082A52F4EBDB0228134D27A9F2B(NULL);
+		V_0 = L_1;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_0029:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2 = V_0;
+					if (!L_2)
+					{
+						goto IL_0032;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_0;
+					NullCheck(L_3);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_3);
+				}
+
+IL_0032:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchaseStateEnum.cs:22>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4 = V_0;
+			NullCheck(L_4);
+			int32_t L_5;
+			L_5 = AndroidJavaObject_GetStatic_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m740F3401DEA4A75BADD753EFF71D2328B4147BFC(L_4, _stringLiteral6DAB35E4EA4BBD5AF1473155FA1288D974D1DAD9, AndroidJavaObject_GetStatic_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m740F3401DEA4A75BADD753EFF71D2328B4147BFC_RuntimeMethod_var);
+			Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28 L_6;
+			memset((&L_6), 0, sizeof(L_6));
+			Nullable_1__ctor_m141FA88563AC0B5179132FB929EABD02C47FF703((&L_6), L_5, Nullable_1__ctor_m141FA88563AC0B5179132FB929EABD02C47FF703_RuntimeMethod_var);
+			((GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_StaticFields*)il2cpp_codegen_static_fields_for(GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_il2cpp_TypeInfo_var))->___s_Purchased = L_6;
+			goto IL_0033;
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_0033:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchaseStateEnum.cs:24>
+		int32_t L_7;
+		L_7 = Nullable_1_get_Value_m0DF3B826A745419D26A168689AEB4BE6F8698ECA((&((GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_StaticFields*)il2cpp_codegen_static_fields_for(GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_il2cpp_TypeInfo_var))->___s_Purchased), Nullable_1_get_Value_m0DF3B826A745419D26A168689AEB4BE6F8698ECA_RuntimeMethod_var);
+		return L_7;
+	}
+}
+// Method Definition Index: 81716
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t GooglePurchaseStateEnum_Pending_m3973290BEAD55785E750BF5EBC327A0D9D741725 (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&AndroidJavaObject_GetStatic_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m740F3401DEA4A75BADD753EFF71D2328B4147BFC_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Nullable_1__ctor_m141FA88563AC0B5179132FB929EABD02C47FF703_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Nullable_1_get_Value_m0DF3B826A745419D26A168689AEB4BE6F8698ECA_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE621E6581BCE23AE171A5EFE8813FCCCF6DC45FF);
+		s_Il2CppMethodInitialized = true;
+	}
+	AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* V_0 = NULL;
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchaseStateEnum.cs:30>
+		bool L_0;
+		L_0 = Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_inline((&((GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_StaticFields*)il2cpp_codegen_static_fields_for(GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_il2cpp_TypeInfo_var))->___s_Pending), Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_RuntimeMethod_var);
+		if (L_0)
+		{
+			goto IL_0033;
+		}
+	}
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchaseStateEnum.cs:32>
+		AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_1;
+		L_1 = GooglePurchaseStateEnum_GetPurchaseStateJavaObject_m94E33E05CB38C082A52F4EBDB0228134D27A9F2B(NULL);
+		V_0 = L_1;
+	}
+	{
+		auto __finallyBlock = il2cpp::utils::Finally([&]
+		{
+
+FINALLY_0029:
+			{
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_2 = V_0;
+					if (!L_2)
+					{
+						goto IL_0032;
+					}
+				}
+				{
+					AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_3 = V_0;
+					NullCheck(L_3);
+					InterfaceActionInvoker0::Invoke(0, IDisposable_t030E0496B4E0E4E4F086825007979AF51F7248C5_il2cpp_TypeInfo_var, L_3);
+				}
+
+IL_0032:
+				{
+					return;
+				}
+			}
+		});
+		try
+		{
+			//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchaseStateEnum.cs:33>
+			AndroidJavaObject_t8FFB930F335C1178405B82AC2BF512BB1EEF9EB0* L_4 = V_0;
+			NullCheck(L_4);
+			int32_t L_5;
+			L_5 = AndroidJavaObject_GetStatic_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m740F3401DEA4A75BADD753EFF71D2328B4147BFC(L_4, _stringLiteralE621E6581BCE23AE171A5EFE8813FCCCF6DC45FF, AndroidJavaObject_GetStatic_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_m740F3401DEA4A75BADD753EFF71D2328B4147BFC_RuntimeMethod_var);
+			Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28 L_6;
+			memset((&L_6), 0, sizeof(L_6));
+			Nullable_1__ctor_m141FA88563AC0B5179132FB929EABD02C47FF703((&L_6), L_5, Nullable_1__ctor_m141FA88563AC0B5179132FB929EABD02C47FF703_RuntimeMethod_var);
+			((GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_StaticFields*)il2cpp_codegen_static_fields_for(GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_il2cpp_TypeInfo_var))->___s_Pending = L_6;
+			goto IL_0033;
+		}
+		catch(Il2CppExceptionWrapper& e)
+		{
+			__finallyBlock.StoreException(e.ex);
+		}
+	}
+
+IL_0033:
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchaseStateEnum.cs:35>
+		int32_t L_7;
+		L_7 = Nullable_1_get_Value_m0DF3B826A745419D26A168689AEB4BE6F8698ECA((&((GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_StaticFields*)il2cpp_codegen_static_fields_for(GooglePurchaseStateEnum_t818595AE0EEE878FA1F2BE940D08BA403CF406C4_il2cpp_TypeInfo_var))->___s_Pending), Nullable_1_get_Value_m0DF3B826A745419D26A168689AEB4BE6F8698ECA_RuntimeMethod_var);
+		return L_7;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81717
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t GooglePurchaseStateEnumProvider_Purchased_m7DC202FC3D2642AB92ECA839F17AC031F69963EA (GooglePurchaseStateEnumProvider_t011E4AA2923CC14A6C617ABAAD1C5AEE9FDE8029* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchaseStateEnumProvider.cs:11>
+		int32_t L_0;
+		L_0 = GooglePurchaseStateEnum_Purchased_mD9A2EBCB6E7B9FD3768753582179B2694F19E517(NULL);
+		return L_0;
+	}
+}
+// Method Definition Index: 81718
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t GooglePurchaseStateEnumProvider_Pending_mC3B04CC72B337CE24272E7C9435FA91F56A446D7 (GooglePurchaseStateEnumProvider_t011E4AA2923CC14A6C617ABAAD1C5AEE9FDE8029* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchaseStateEnumProvider.cs:16>
+		int32_t L_0;
+		L_0 = GooglePurchaseStateEnum_Pending_m3973290BEAD55785E750BF5EBC327A0D9D741725(NULL);
+		return L_0;
+	}
+}
+// Method Definition Index: 81719
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GooglePurchaseStateEnumProvider__ctor_mA65CD564EBD0B061252867B2BE4CF949F6AAEDA1 (GooglePurchaseStateEnumProvider_t011E4AA2923CC14A6C617ABAAD1C5AEE9FDE8029* __this, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// Method Definition Index: 81753
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint32_t U3CPrivateImplementationDetailsU3E_ComputeStringHash_m362A86DC54CA35FAC9A66D6E96F63822390A580F (String_t* ___0_s, const RuntimeMethod* method) 
+{
+	uint32_t V_0 = 0;
+	int32_t V_1 = 0;
+	{
+		String_t* L_0 = ___0_s;
+		if (!L_0)
+		{
+			goto IL_002a;
+		}
+	}
+	{
+		V_0 = ((int32_t)-2128831035);
+		V_1 = 0;
+		goto IL_0021;
+	}
+
+IL_000d:
+	{
+		String_t* L_1 = ___0_s;
+		int32_t L_2 = V_1;
+		NullCheck(L_1);
+		Il2CppChar L_3;
+		L_3 = String_get_Chars_mC49DF0CD2D3BE7BE97B3AD9C995BE3094F8E36D3(L_1, L_2, NULL);
+		uint32_t L_4 = V_0;
+		V_0 = ((int32_t)il2cpp_codegen_multiply(((int32_t)((int32_t)L_3^(int32_t)L_4)), ((int32_t)16777619)));
+		int32_t L_5 = V_1;
+		V_1 = ((int32_t)il2cpp_codegen_add(L_5, 1));
+	}
+
+IL_0021:
+	{
+		int32_t L_6 = V_1;
+		String_t* L_7 = ___0_s;
+		NullCheck(L_7);
+		int32_t L_8;
+		L_8 = String_get_Length_m42625D67623FA5CC7A44D47425CE86FB946542D2_inline(L_7, NULL);
+		if ((((int32_t)L_6) < ((int32_t)L_8)))
+		{
+			goto IL_000d;
+		}
+	}
+
+IL_002a:
+	{
+		uint32_t L_9 = V_0;
+		return L_9;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+// Method Definition Index: 79678
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* ProductDefinition_get_storeSpecificId_m67EC5C2564476BD154C8164613AB62A4DBEADEAC_inline (ProductDefinition_tB486F56477C49E81BA6704C2DD31F373CDCCC1BD* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Purchasing/ProductDefinition.cs:96>
+		String_t* L_0 = __this->___U3CstoreSpecificIdU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 79680
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t ProductDefinition_get_type_m06713F1930454961F16BB38AD5B74695FB880371_inline (ProductDefinition_tB486F56477C49E81BA6704C2DD31F373CDCCC1BD* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Purchasing/ProductDefinition.cs:101>
+		int32_t L_0 = __this->___U3CtypeU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 58329
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* Debug_get_unityLogger_m4FDE4D41C187123244FE13124DA636BB50C9C1E1_inline (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		RuntimeObject* L_0 = ((Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_StaticFields*)il2cpp_codegen_static_fields_for(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var))->___s_Logger;
+		return L_0;
+	}
+}
+// Method Definition Index: 79736
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GoogleProductMetadata_set_originalJson_m1CD3B7963F3DDE1DF16C1AB10B2AE2996E409182_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, String_t* ___0_value, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Purchasing/Stores/Android/GooglePlay/Models/GoogleProductMetadata.cs:15>
+		String_t* L_0 = ___0_value;
+		__this->___U3CoriginalJsonU3Ek__BackingField = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CoriginalJsonU3Ek__BackingField), (void*)L_0);
+		return;
+	}
+}
+// Method Definition Index: 79738
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GoogleProductMetadata_set_subscriptionPeriod_mF7AEF5E06802701CEEFE6076C0715D7517AD9131_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, String_t* ___0_value, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Purchasing/Stores/Android/GooglePlay/Models/GoogleProductMetadata.cs:19>
+		String_t* L_0 = ___0_value;
+		__this->___U3CsubscriptionPeriodU3Ek__BackingField = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CsubscriptionPeriodU3Ek__BackingField), (void*)L_0);
+		return;
+	}
+}
+// Method Definition Index: 79742
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GoogleProductMetadata_set_introductoryPrice_m655641DF8A070224F6880BF2829DEFE5EA22331F_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, String_t* ___0_value, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Purchasing/Stores/Android/GooglePlay/Models/GoogleProductMetadata.cs:27>
+		String_t* L_0 = ___0_value;
+		__this->___U3CintroductoryPriceU3Ek__BackingField = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CintroductoryPriceU3Ek__BackingField), (void*)L_0);
+		return;
+	}
+}
+// Method Definition Index: 79746
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GoogleProductMetadata_set_introductoryPriceCycles_m64051344F0F3ECC241F1CAFD47EEE89014ECC36C_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, int32_t ___0_value, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Purchasing/Stores/Android/GooglePlay/Models/GoogleProductMetadata.cs:35>
+		int32_t L_0 = ___0_value;
+		__this->___U3CintroductoryPriceCyclesU3Ek__BackingField = L_0;
+		return;
+	}
+}
+// Method Definition Index: 79744
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GoogleProductMetadata_set_introductoryPricePeriod_mB5B8B6895220EE7E2F6591F43446CE8F6548CA3D_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, String_t* ___0_value, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Purchasing/Stores/Android/GooglePlay/Models/GoogleProductMetadata.cs:31>
+		String_t* L_0 = ___0_value;
+		__this->___U3CintroductoryPricePeriodU3Ek__BackingField = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CintroductoryPricePeriodU3Ek__BackingField), (void*)L_0);
+		return;
+	}
+}
+// Method Definition Index: 79740
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void GoogleProductMetadata_set_freeTrialPeriod_mD7E8977A3BCA72875CD414C65B2547C6D15F2598_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, String_t* ___0_value, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Purchasing/Stores/Android/GooglePlay/Models/GoogleProductMetadata.cs:23>
+		String_t* L_0 = ___0_value;
+		__this->___U3CfreeTrialPeriodU3Ek__BackingField = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CfreeTrialPeriodU3Ek__BackingField), (void*)L_0);
+		return;
+	}
+}
+// Method Definition Index: 81696
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* GooglePurchase_get_skus_m574D192E03986558B7D9DE98FFAAD2D900CB65E2_inline (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:19>
+		List_1_tF470A3BE5C1B5B68E1325EF3F109D172E60BD7CD* L_0 = __this->___U3CskusU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81704
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR RuntimeObject* GooglePurchase_get_productDescriptions_m57445048AE1A7BCEDE6C412C8AABCC46D86CFBF5_inline (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:27>
+		RuntimeObject* L_0 = __this->___U3CproductDescriptionsU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81700
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* GooglePurchase_get_originalJson_m9D4A74B07B177710AF4DEB9F780A41C08517E0F9_inline (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:23>
+		String_t* L_0 = __this->___U3CoriginalJsonU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81699
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* GooglePurchase_get_signature_m8A776170C8CFD23F5D3270E0B69280E44EBF113C_inline (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:22>
+		String_t* L_0 = __this->___U3CsignatureU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81694
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool GooglePurchase_get_isAcknowledged_m90BA9B98EB4FD3FB04FD6B190ECE8FB99930B992_inline (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:17>
+		bool L_0 = __this->___U3CisAcknowledgedU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 81695
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t GooglePurchase_get_purchaseState_m42D242B28567F9992C0CA65D378C39F7AAC54EEC_inline (GooglePurchase_t09BF6E09D26DA15E603C042ED4F3794FEBA79FD0* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Stores/Android/GooglePlay/AAR/Models/GooglePurchase.cs:18>
+		int32_t L_0 = __this->___U3CpurchaseStateU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 80004
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ProductMetadata_t2D6C6454A305A6790D8903169E3B136EB13417E1* ProductDescription_get_metadata_m90B0E9E6F346FA02655F72A548C2BDB80A4C3C37_inline (ProductDescription_t1E61258FE3B049F43A5F1A3F5DE9BB55A2C1075A* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Purchasing/Extension/ProductDescription.cs:76>
+		ProductMetadata_t2D6C6454A305A6790D8903169E3B136EB13417E1* L_0 = __this->___U3CmetadataU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 79735
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* GoogleProductMetadata_get_originalJson_mFDBDA75AED91FA6E2D104BC4EF5EEF0990BC9D06_inline (GoogleProductMetadata_t368F189D1E98418601036407881C7D8C81B92F23* __this, const RuntimeMethod* method) 
+{
+	{
+		//<source_info:./Library/PackageCache/com.unity.purchasing@fccfea3d9a46/Runtime/Purchasing/Stores/Android/GooglePlay/Models/GoogleProductMetadata.cs:15>
+		String_t* L_0 = __this->___U3CoriginalJsonU3Ek__BackingField;
+		return L_0;
+	}
+}
+// Method Definition Index: 696
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t String_get_Length_m42625D67623FA5CC7A44D47425CE86FB946542D2_inline (String_t* __this, const RuntimeMethod* method) 
+{
+	{
+		int32_t L_0 = __this->____stringLength;
+		return L_0;
+	}
+}
+// Method Definition Index: 3255
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* Array_Empty_TisRuntimeObject_mFB8A63D602BB6974D31E20300D9EB89C6FE7C278_gshared_inline (const RuntimeMethod* method) 
+{
+	il2cpp_rgctx_method_init(method);
+	{
+		il2cpp_codegen_runtime_class_init_inline(il2cpp_rgctx_data(method->rgctx_data, 2));
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_0 = ((EmptyArray_1_tDF0DD7256B115243AA6BD5558417387A734240EE_StaticFields*)il2cpp_codegen_static_fields_for(il2cpp_rgctx_data(method->rgctx_data, 2)))->___Value;
+		return L_0;
+	}
+}
+// Method Definition Index: 11260
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void List_1_Add_mEBCF994CC3814631017F46A387B1A192ED6C85C7_gshared_inline (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, RuntimeObject* ___0_item, const RuntimeMethod* method) 
+{
+	ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* V_0 = NULL;
+	int32_t V_1 = 0;
+	{
+		int32_t L_0 = __this->____version;
+		__this->____version = ((int32_t)il2cpp_codegen_add(L_0, 1));
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_1 = __this->____items;
+		V_0 = L_1;
+		int32_t L_2 = __this->____size;
+		V_1 = L_2;
+		int32_t L_3 = V_1;
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_4 = V_0;
+		NullCheck(L_4);
+		if ((!(((uint32_t)L_3) < ((uint32_t)((int32_t)(((RuntimeArray*)L_4)->max_length))))))
+		{
+			goto IL_0034;
+		}
+	}
+	{
+		int32_t L_5 = V_1;
+		__this->____size = ((int32_t)il2cpp_codegen_add(L_5, 1));
+		ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918* L_6 = V_0;
+		int32_t L_7 = V_1;
+		RuntimeObject* L_8 = ___0_item;
+		NullCheck(L_6);
+		(L_6)->SetAt(static_cast<il2cpp_array_size_t>(L_7), (RuntimeObject*)L_8);
+		return;
+	}
+
+IL_0034:
+	{
+		RuntimeObject* L_9 = ___0_item;
+		List_1_AddWithResize_m79A9BF770BEF9C06BE40D5401E55E375F2726CC4(__this, L_9, il2cpp_rgctx_method(method->klass->rgctx_data, 14));
+		return;
+	}
+}
+// Method Definition Index: 11249
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t List_1_get_Count_m4407E4C389F22B8CEC282C15D56516658746C383_gshared_inline (List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9A8D* __this, const RuntimeMethod* method) 
+{
+	{
+		int32_t L_0 = __this->____size;
+		return L_0;
+	}
+}
+// Method Definition Index: 2174
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Nullable_1_get_HasValue_mB1F55188CDD50D6D725D41F55D2F2540CD15FB20_gshared_inline (Nullable_1_t163D49A1147F217B7BD43BE8ACC8A5CC6B846D14* __this, const RuntimeMethod* method) 
+{
+	{
+		bool L_0 = __this->___hasValue;
+		return L_0;
+	}
+}
+// Method Definition Index: 2174
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Nullable_1_get_HasValue_mCF2FD8B3055FA87FC9C504F2122B3B0FAEDE3EC9_gshared_inline (Nullable_1_tCF32C56A2641879C053C86F273C0C6EC1B40BC28* __this, const RuntimeMethod* method) 
+{
+	{
+		bool L_0 = __this->___hasValue;
+		return L_0;
+	}
+}

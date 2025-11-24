@@ -480,6 +480,7 @@ MonoBehaviour:
   roomLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  playerSpawnPoint: {fileID: 0}
   connectors:
   - {fileID: 3349358440667648939}
   - {fileID: 5911051546482679293}
