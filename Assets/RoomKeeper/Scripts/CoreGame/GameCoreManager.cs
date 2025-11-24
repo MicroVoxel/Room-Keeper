@@ -12,11 +12,8 @@ public class GameCoreManager : MonoBehaviour
     public float totalGameDuration = 90f;
 
     [Header("VIP Bonuses")]
-    [Tooltip("เวลาที่จะบวกเพิ่มให้ถ้ามี VIP 1")]
     public float vip1TimeBonus = 10f;
-    [Tooltip("เวลาที่จะบวกเพิ่มให้ถ้ามี VIP 2")]
     public float vip2TimeBonus = 20f;
-    [Tooltip("เวลาที่จะบวกเพิ่มให้ถ้ามี VIP 3")]
     public float vip3TimeBonus = 30f;
 
     [Header("Progress")]
@@ -25,13 +22,11 @@ public class GameCoreManager : MonoBehaviour
     private float currentGameTime;
 
     [Header("Star Thresholds")]
-    [Tooltip("จำนวนห้องที่ต้องผ่านเพื่อให้ได้ 1 ดาว")]
     [SerializeField] private int star1Threshold = 1;
-    [Tooltip("จำนวนห้องที่ต้องผ่านเพื่อให้ได้ 2 ดาว")]
     [SerializeField] private int star2Threshold = 2;
 
     [Header("Revive Settings")]
-    [Tooltip("เวลาที่จะได้รับเพิ่มเมื่อกด Revive")]
+    [Tooltip("เวลาที่จะได้เพิ่มเมื่อชุบชีวิต (Fallback กรณี Ads ไม่ส่งค่ามา)")]
     public float reviveTimeBonus = 30f;
 
     [Header("Systems")]
@@ -48,7 +43,15 @@ public class GameCoreManager : MonoBehaviour
 
     private RoomData spawnRoom;
     private bool isGameActive = false;
+
     private List<string> _taskPriorityDeck = new List<string>();
+
+    // ป้องกัน Revive ซ้ำ
+    private bool isWaitingForReviveReward = false;
+
+    // ★ Added: ตัวแปรเช็คว่าใช้สิทธิ์ชุบชีวิตในรอบนี้ไปหรือยัง
+    private bool hasRevivedThisSession = false;
+
 
     private void Awake()
     {
@@ -58,7 +61,6 @@ public class GameCoreManager : MonoBehaviour
 
     private void OnValidate()
     {
-        // ป้องกันการตั้งค่าผิดพลาดใน Inspector
         if (star2Threshold >= totalRoomsToWin) star2Threshold = totalRoomsToWin - 1;
         if (star1Threshold >= star2Threshold) star1Threshold = star2Threshold - 1;
         if (star1Threshold < 1) star1Threshold = 1;
@@ -66,13 +68,25 @@ public class GameCoreManager : MonoBehaviour
 
     private void Start()
     {
-        // ใช้ FindAnyObjectByType แทน FindObjectOfType ใน Unity 6 เพื่อ Performance ที่ดีกว่า
         if (playerController == null) playerController = FindAnyObjectByType<PlayerController>();
-        if (dungeonGenerator != null) StartGameInitialization();
+
+        if (dungeonGenerator != null)
+        {
+            StartGameInitialization();
+        }
+        else
+        {
+            Debug.LogError("[GameCoreManager] DungeonGenerator reference is missing!");
+        }
     }
 
     private void StartGameInitialization()
     {
+        isWaitingForReviveReward = false;
+
+        // ★ Reset: เริ่มเกมใหม่ รีเซ็ตสิทธิ์การชุบชีวิต
+        hasRevivedThisSession = false;
+
         RefillTaskDeck();
         spawnRoom = dungeonGenerator.GenerateSpawn();
 
@@ -80,30 +94,14 @@ public class GameCoreManager : MonoBehaviour
         {
             spawnRoom.SpawnAndInitAllTasks();
 
-            // --- VIP Logic Calculation ---
             float finalGameTime = totalGameDuration;
 
             if (IAPManager.Instance != null)
             {
-                if (IAPManager.Instance.IsOwned(IAPManager.ID_VIP1))
-                {
-                    finalGameTime += vip1TimeBonus;
-                    Debug.Log($"[VIP] VIP1 Bonus Applied: +{vip1TimeBonus}s");
-                }
-
-                if (IAPManager.Instance.IsOwned(IAPManager.ID_VIP2))
-                {
-                    finalGameTime += vip2TimeBonus;
-                    Debug.Log($"[VIP] VIP2 Bonus Applied: +{vip2TimeBonus}s");
-                }
-
-                if (IAPManager.Instance.IsOwned(IAPManager.ID_VIP3))
-                {
-                    finalGameTime += vip3TimeBonus;
-                    Debug.Log($"[VIP] VIP3 Bonus Applied: +{vip3TimeBonus}s");
-                }
+                if (IAPManager.Instance.IsOwned(IAPManager.ID_VIP1)) finalGameTime += vip1TimeBonus;
+                if (IAPManager.Instance.IsOwned(IAPManager.ID_VIP2)) finalGameTime += vip2TimeBonus;
+                if (IAPManager.Instance.IsOwned(IAPManager.ID_VIP3)) finalGameTime += vip3TimeBonus;
             }
-            // -----------------------------
 
             roomCreationTimer = roomCreationInterval;
             currentGameTime = finalGameTime;
@@ -114,18 +112,28 @@ public class GameCoreManager : MonoBehaviour
 
             StartCoroutine(GameLoopCoroutine());
         }
+        else
+        {
+            Debug.LogError("[GameCoreManager] Failed to generate Spawn Room.");
+        }
     }
 
     private IEnumerator GameLoopCoroutine()
     {
         while (currentGameTime > 0 && isGameActive)
         {
+            // Soft Pause Logic
+            if (AdsManager.Instance != null && AdsManager.Instance.IsAdShowing)
+            {
+                yield return null;
+                continue;
+            }
+
             currentGameTime -= Time.deltaTime;
             roomCreationTimer += Time.deltaTime;
 
             RefreshUI();
 
-            // เช็คเงื่อนไขชนะ (3 ดาวอัตโนมัติถ้าครบจำนวนห้องสูงสุด)
             if (roomsCompleted >= totalRoomsToWin)
             {
                 EndGame(true);
@@ -141,10 +149,8 @@ public class GameCoreManager : MonoBehaviour
             yield return null;
         }
 
-        // เวลาหมด
         if (isGameActive)
         {
-            // ตรวจสอบว่าดาวถึงขั้นต่ำไหม (1 ดาวขึ้นไปถือว่าผ่าน)
             EndGame(roomsCompleted >= star1Threshold);
         }
     }
@@ -159,6 +165,8 @@ public class GameCoreManager : MonoBehaviour
 
     private void EndGame(bool isVictory)
     {
+        isWaitingForReviveReward = false;
+
         if (!isGameActive) return;
         isGameActive = false;
         StopAllCoroutines();
@@ -177,7 +185,11 @@ public class GameCoreManager : MonoBehaviour
             }
             else
             {
-                GameUIManager.Instance.ShowGameOver();
+                // ★ Logic: ส่งค่าไปบอก UI ว่ารอบนี้ "ยังชุบได้ไหม?"
+                // ถ้ายังไม่เคยชุบ (!hasRevivedThisSession) -> ปุ่มขึ้น
+                // ถ้าชุบไปแล้ว -> ปุ่มหาย
+                bool canRevive = !hasRevivedThisSession;
+                GameUIManager.Instance.ShowGameOver(canRevive);
             }
         }
 
@@ -187,27 +199,48 @@ public class GameCoreManager : MonoBehaviour
         }
     }
 
-    // --- Revive System ---
-
     public void OnClickReviveWithAd()
     {
+        if (isWaitingForReviveReward) return;
+
+        // ★ Guard: ถ้าเคยชุบไปแล้ว ห้ามกดอีก (กันเหนียวเผื่อปุ่มไม่หาย)
+        if (hasRevivedThisSession) return;
+
+        if (!isGameActive && currentGameTime > 0) return;
+
+        isWaitingForReviveReward = true;
+
         if (AdsManager.Instance != null)
         {
-            AdsManager.Instance.ShowRewardedVideoAds(ReviveGame);
+            AdsManager.Instance.ShowRewardedVideoAds((rewardAmount) =>
+            {
+                if (GameUIManager.Instance == null) return;
+
+                isWaitingForReviveReward = false;
+                ReviveGame((float)rewardAmount);
+            });
         }
         else
         {
-            Debug.LogWarning("AdsManager not found! Reviving immediately (Dev Mode).");
+            Debug.LogWarning("[GameCoreManager] AdsManager not found, instant revive (Debug Mode).");
+            isWaitingForReviveReward = false;
             ReviveGame();
         }
     }
 
-    public void ReviveGame()
+    public void ReviveGame(float specificTimeBonus = 0)
     {
         Debug.Log("Resurrecting Player...");
 
+        // ★ Mark Flag: บันทึกว่ารอบนี้ใช้สิทธิ์ไปแล้ว
+        hasRevivedThisSession = true;
+
         isGameActive = true;
-        currentGameTime += reviveTimeBonus;
+
+        float timeToAdd = (specificTimeBonus > 0) ? specificTimeBonus : reviveTimeBonus;
+
+        currentGameTime += timeToAdd;
+        Debug.Log($"Revive Bonus Added: {timeToAdd} seconds");
 
         if (playerController != null)
         {
@@ -216,20 +249,15 @@ public class GameCoreManager : MonoBehaviour
 
         TeleportPlayerToSpawn();
 
-        if (GameUIManager.Instance != null)
-        {
-            GameUIManager.Instance.SwitchUIState(UIState.Gameplay);
-        }
+        GameUIManager.Instance?.SwitchUIState(UIState.Gameplay);
 
         RefreshUI();
+
         StartCoroutine(GameLoopCoroutine());
     }
 
-    // --- Task Management System ---
-
     public void CloseAllOpenTasks()
     {
-        // Unity 6.2 Best Practice: FindObjectsByType
         TaskBase[] activeTasks = FindObjectsByType<TaskBase>(FindObjectsSortMode.None);
 
         foreach (var task in activeTasks)
@@ -239,19 +267,10 @@ public class GameCoreManager : MonoBehaviour
                 Destroy(task.gameObject);
             }
         }
-
-        Debug.Log($"Closed {activeTasks.Length} active tasks.");
     }
-
-    // -----------------------------
 
     private int CalculateStars()
     {
-        // Logic นี้ถูกต้องแล้ว:
-        // ถ้าครบ 3 ห้อง (totalRoomsToWin) -> 3 ดาว
-        // ถ้าไม่ครบ แต่มากกว่า star2Threshold -> 2 ดาว
-        // ถ้ามากกว่า star1Threshold -> 1 ดาว
-        // น้อยกว่านั้น -> 0 ดาว
         if (roomsCompleted >= totalRoomsToWin) return 3;
         if (roomsCompleted >= star2Threshold) return 2;
         if (roomsCompleted >= star1Threshold) return 1;
@@ -351,10 +370,7 @@ public class GameCoreManager : MonoBehaviour
                 }
             }
 
-            if (!roomCreatedInThisSlot)
-            {
-                break;
-            }
+            if (!roomCreatedInThisSlot) break;
 
             yield return null;
         }
@@ -419,7 +435,7 @@ public class GameCoreManager : MonoBehaviour
 
     private bool IsPlayerInRoom(RoomData room)
     {
-        if (playerController == null || playerController.transform == null || room.roomBoundsCollider == null) return false;
+        if (playerController == null || room.roomBoundsCollider == null) return false;
         Vector3 playerPos = playerController.transform.position;
         return room.roomBoundsCollider.bounds.Contains(playerPos);
     }
@@ -436,8 +452,11 @@ public class GameCoreManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Spawn Room does not have a 'Player Spawn Point' assigned. Using bounds center as fallback.");
-            targetPosition = spawnRoom.roomBoundsCollider != null ? spawnRoom.roomBoundsCollider.bounds.center : spawnRoom.transform.position;
+            Debug.LogWarning("Spawn Room missing spawn point. Using fallback.");
+            targetPosition = spawnRoom.roomBoundsCollider != null
+                ? spawnRoom.roomBoundsCollider.bounds.center
+                : spawnRoom.transform.position;
+
             targetPosition.y = playerController.transform.position.y;
         }
 
@@ -474,8 +493,8 @@ public class GameCoreManager : MonoBehaviour
 
         for (int i = 0; i < _taskPriorityDeck.Count; i++)
         {
-            string taskNameInDeck = _taskPriorityDeck[i];
-            TaskBase match = candidates.FirstOrDefault(t => CleanTaskName(t.name) == taskNameInDeck);
+            string deckName = _taskPriorityDeck[i];
+            TaskBase match = candidates.FirstOrDefault(t => CleanTaskName(t.name) == deckName);
 
             if (match != null)
             {
@@ -484,13 +503,7 @@ public class GameCoreManager : MonoBehaviour
             }
         }
 
-        if (candidates.Count > 0)
-        {
-            int rnd = Random.Range(0, candidates.Count);
-            return candidates[rnd];
-        }
-
-        return null;
+        return candidates.Count > 0 ? candidates[Random.Range(0, candidates.Count)] : null;
     }
 
     private void RefillTaskDeck()
@@ -501,10 +514,7 @@ public class GameCoreManager : MonoBehaviour
 
         foreach (TaskBase taskPrefab in allTaskPrefabsMasterList)
         {
-            if (taskPrefab != null)
-            {
-                _taskPriorityDeck.Add(taskPrefab.name);
-            }
+            if (taskPrefab != null) _taskPriorityDeck.Add(taskPrefab.name);
         }
 
         int n = _taskPriorityDeck.Count;
@@ -512,9 +522,9 @@ public class GameCoreManager : MonoBehaviour
         {
             n--;
             int k = Random.Range(0, n + 1);
-            string value = _taskPriorityDeck[k];
+            string temp = _taskPriorityDeck[k];
             _taskPriorityDeck[k] = _taskPriorityDeck[n];
-            _taskPriorityDeck[n] = value;
+            _taskPriorityDeck[n] = temp;
         }
     }
 

@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using Unity.Services.LevelPlay;
 using System;
+using System.Collections;
 
 public class AdsManager : MonoBehaviour
 {
     public static AdsManager Instance { get; private set; }
 
+    [Header("Debug Settings")]
+    public bool enableDebugLogs = true;
+
+    // สถานะสำหรับ GameCoreManager เอาไปใช้ทำ Soft Pause
     public bool IsAdShowing { get; private set; }
 
     private LevelPlayBannerAd bannerAd;
@@ -13,9 +18,11 @@ public class AdsManager : MonoBehaviour
     private LevelPlayRewardedAd rewardedVideoAd;
 
     private bool isAdsInitialized = false;
-    private Action onRewardCompleteCallback;
 
-    private bool _isRewardClaimedInSession = false;
+    private Action<double> onRewardCompleteCallback;
+
+    private bool _rewardEventTriggered = false;
+    private double _earnedRewardAmount = 0;
 
     private void Awake()
     {
@@ -30,10 +37,14 @@ public class AdsManager : MonoBehaviour
 
     private void Start()
     {
-        if (Application.internetReachability == NetworkReachability.NotReachable) return;
+        // ขั้นตอนที่ 1: ตรวจสอบ Integration (จะแจ้งเตือนใน Console ถ้าขาด Adapter ตัวไหน)
+        LevelPlay.ValidateIntegration();
 
         LevelPlay.OnInitSuccess += SdkInitCompletedEvent;
         LevelPlay.OnInitFailed += SdkInitFailedEvent;
+
+        DebugLog("Initializing LevelPlay SDK...");
+        // ขั้นตอนที่ 2: เริ่มต้น SDK ด้วย App Key จาก Config
         LevelPlay.Init(AdConfig.AppKey);
     }
 
@@ -58,12 +69,18 @@ public class AdsManager : MonoBehaviour
         }
     }
 
-    private void SdkInitFailedEvent(LevelPlayInitError error) => isAdsInitialized = false;
+    private void SdkInitFailedEvent(LevelPlayInitError error)
+    {
+        DebugLog($"Init Failed: {error.ErrorMessage}");
+        isAdsInitialized = false;
+    }
 
     private void SdkInitCompletedEvent(LevelPlayConfiguration configuration)
     {
-        Debug.Log("[AdsManager] Init Completed");
+        DebugLog("Init Completed");
         isAdsInitialized = true;
+
+        // ขั้นตอนที่ 3: เมื่อ SDK พร้อม ให้สร้างและโหลด Ad Units ทันที
         InitializeAdUnits();
     }
 
@@ -71,109 +88,117 @@ public class AdsManager : MonoBehaviour
     {
         if (!isAdsInitialized) return;
 
-        // Banner
         CreateBannerAd();
 
-        // Interstitial
+        // Setup Interstitial
         interstitialAd = new LevelPlayInterstitialAd(AdConfig.InterstitialAdUnitId);
         interstitialAd.OnAdDisplayed += OnAdDisplayed;
         interstitialAd.OnAdClosed += OnAdClosed;
 
-        // Rewarded
+        // Setup Rewarded Video
         rewardedVideoAd = new LevelPlayRewardedAd(AdConfig.RewardedVideoAdUnitId);
         rewardedVideoAd.OnAdRewarded += OnAdRewarded;
         rewardedVideoAd.OnAdDisplayFailed += OnAdDisplayFailed;
         rewardedVideoAd.OnAdDisplayed += OnAdDisplayed;
         rewardedVideoAd.OnAdClosed += OnAdClosed;
 
+        // Load Ads ล่วงหน้า (Preload) เพื่อ Performance ที่ดี
         LoadBannerAds();
         LoadInterstitialAds();
         LoadRewardedVideoAds();
     }
 
-    // --- Pause / Resume Logic ---
+    // --- Core Logic ---
 
     private void OnAdDisplayed(LevelPlayAdInfo info)
     {
         IsAdShowing = true;
+        _rewardEventTriggered = false;
 
-        // 1. ซ่อน Banner ทันทีที่โฆษณาเต็มจอเด้งขึ้นมา
-        HideBannerAds();
+        HideBannerAds(); // ซ่อน Banner ไม่ให้บัง
+        GameUIManager.Instance?.SwitchUIState(UIState.Ads);
 
-        // 2. สั่ง UI Manager ให้ปิด Panel ทั้งหมด
-        if (GameUIManager.Instance != null)
-        {
-            GameUIManager.Instance.SwitchUIState(UIState.Ads);
-        }
+        Time.timeScale = 1f; // ปล่อยเวลาให้เดิน เพื่อให้ SDK ทำงานได้
+        AudioListener.pause = true; // แต่ปิดเสียงเกม
 
-        // 3. บังคับเวลาเดิน เพื่อให้ Test Ad ทำงานได้
-        Time.timeScale = 1f;
-        AudioListener.pause = true;
+        DebugLog($"Ad Displayed ({info.AdUnitId})");
+    }
 
-        Debug.Log("Ad Displayed -> UI Hidden, Banner Hidden");
+    private void OnAdRewarded(LevelPlayAdInfo info, LevelPlayReward reward)
+    {
+        _earnedRewardAmount = reward.Amount;
+        _rewardEventTriggered = true;
+        DebugLog($"<color=green>OnAdRewarded Triggered. Amount: {_earnedRewardAmount}</color>");
     }
 
     private void OnAdClosed(LevelPlayAdInfo info)
     {
+        DebugLog("Ad Closed. Waiting for potential late reward...");
+        // เรียก Coroutine เพื่อรอเช็คผลรางวัล
+        StartCoroutine(WaitAndProcessRewardRoutine());
+    }
+
+    private IEnumerator WaitAndProcessRewardRoutine()
+    {
+        // รอ 0.5 วินาที (Realtime) เผื่อ Reward มาช้ากว่า Event Close
+        yield return new WaitForSecondsRealtime(0.1f);
+
+        bool wasSuccessful = _rewardEventTriggered;
+
+        // จบการแสดงผล
         IsAdShowing = false;
         AudioListener.pause = false;
 
-        // เรียก Banner กลับมาแสดงใหม่เมื่อดูจบ (ฟังก์ชัน LoadBannerAds จะเช็ค IAP ให้เอง ถ้าซื้อแล้วจะไม่โชว์)
-        LoadBannerAds();
-
-        // เช็ค Reward
-        if (_isRewardClaimedInSession && onRewardCompleteCallback != null)
+        if (wasSuccessful)
         {
-            onRewardCompleteCallback.Invoke();
+            DebugLog($"Processing Reward -> <color=green>SUCCESS ({_earnedRewardAmount})</color>");
+            onRewardCompleteCallback?.Invoke(_earnedRewardAmount);
+        }
+        else
+        {
+            DebugLog("Processing Reward -> <color=red>FAILED / SKIPPED</color>");
         }
 
-        // แจ้ง UI Manager
-        if (GameUIManager.Instance != null)
-        {
-            GameUIManager.Instance.ResumeFromAds(_isRewardClaimedInSession);
-        }
-
+        // Cleanup
         onRewardCompleteCallback = null;
+        _rewardEventTriggered = false;
+        _earnedRewardAmount = 0;
+
+        // โหลดโฆษณาตัวถัดไปมารอ
+        LoadBannerAds();
         LoadRewardedVideoAds();
 
-        Debug.Log($"Ad Closed -> Banner Reloaded Check, Reward Claimed: {_isRewardClaimedInSession}");
-    }
-
-    // ----------------------------
-
-    private void OnAdRewarded(LevelPlayAdInfo info, LevelPlayReward reward)
-    {
-        Debug.Log($"Reward Earned: {reward.Name}");
-        _isRewardClaimedInSession = true;
+        // แจ้ง UI ให้ทำงานต่อ
+        GameUIManager.Instance?.ResumeFromAds(wasSuccessful);
     }
 
     private void OnAdDisplayFailed(LevelPlayAdInfo info, LevelPlayAdError error)
     {
-        Debug.LogWarning($"Rewarded Video Display Failed: {error.ErrorMessage}");
-
+        DebugLog($"Ad Display Failed: {error.ErrorMessage}");
         IsAdShowing = false;
         AudioListener.pause = false;
 
-        LoadBannerAds();
-
-        if (GameUIManager.Instance != null)
-        {
-            GameUIManager.Instance.ResumeFromAds(false);
-        }
-
         onRewardCompleteCallback = null;
+        _rewardEventTriggered = false;
+
+        LoadBannerAds();
+        GameUIManager.Instance?.ResumeFromAds(false);
         LoadRewardedVideoAds();
     }
+
+    // --- Banner Logic ---
 
     private void CreateBannerAd()
     {
         DisposeBanner();
+        // สร้าง Config Banner (วางด้านล่าง)
         var config = new LevelPlayBannerAd.Config.Builder()
             .SetSize(LevelPlayAdSize.BANNER)
             .SetPosition(LevelPlayBannerPosition.BottomCenter)
             .Build();
+
         bannerAd = new LevelPlayBannerAd(AdConfig.BannerAdUnitId, config);
-        bannerAd.OnAdLoadFailed += (error) => Debug.LogWarning($"Banner Load Failed: {error}");
+        bannerAd.OnAdLoadFailed += (error) => DebugLog($"Banner Load Failed: {error.ErrorMessage}");
     }
 
     private void DisposeBanner()
@@ -188,15 +213,12 @@ public class AdsManager : MonoBehaviour
     public void LoadBannerAds()
     {
         if (!isAdsInitialized) return;
-
-        // [IAP Check] ตรวจสอบสถานะ Remove Ads
-        // ถ้าผู้เล่นซื้อแพ็กเกจ VIP4 (Remove Ads) แล้ว ให้ซ่อน Banner และออกจากฟังก์ชันทันที
+        // เช็ค IAP No Ads
         if (IAPManager.Instance != null && IAPManager.Instance.IsOwned(IAPManager.ID_REMOVE_ADS))
         {
-            HideBannerAds(); // make sure it's hidden
+            HideBannerAds();
             return;
         }
-
         if (bannerAd == null) CreateBannerAd();
         bannerAd.LoadAd();
         bannerAd.ShowAd();
@@ -211,17 +233,12 @@ public class AdsManager : MonoBehaviour
         }
     }
 
+    // --- Interstitial Logic ---
+
     public void ShowInterstitialAds()
     {
         if (!isAdsInitialized) return;
-
-        // [IAP Check] ตรวจสอบสถานะ Remove Ads
-        // ถ้าซื้อ Remove Ads แล้ว จะไม่โชว์ Interstitial (โฆษณาคั่น)
-        if (IAPManager.Instance != null && IAPManager.Instance.IsOwned(IAPManager.ID_REMOVE_ADS))
-        {
-            Debug.Log("[AdsManager] User has Remove Ads. Skipping Interstitial.");
-            return;
-        }
+        if (IAPManager.Instance != null && IAPManager.Instance.IsOwned(IAPManager.ID_REMOVE_ADS)) return;
 
         if (interstitialAd != null && interstitialAd.IsAdReady())
             interstitialAd.ShowAd();
@@ -231,28 +248,34 @@ public class AdsManager : MonoBehaviour
 
     public void LoadInterstitialAds()
     {
-        if (interstitialAd != null) interstitialAd.LoadAd();
+        interstitialAd?.LoadAd();
     }
 
-    // Rewarded Video ปกติจะไม่เช็ค Remove Ads เพราะเป็นการสมัครใจดูแลกของรางวัล
-    public void ShowRewardedVideoAds(Action onSuccess)
+    // --- Rewarded Video Logic ---
+
+    public void ShowRewardedVideoAds(Action<double> onSuccess)
     {
-        _isRewardClaimedInSession = false;
+        _rewardEventTriggered = false;
+        _earnedRewardAmount = 0;
 
         if (!isAdsInitialized)
         {
-            Debug.LogWarning("Ads SDK not initialized yet.");
+            DebugLog("SDK Not Initialized");
             return;
         }
 
+        onRewardCompleteCallback = onSuccess;
+
         if (rewardedVideoAd != null && rewardedVideoAd.IsAdReady())
         {
-            onRewardCompleteCallback = onSuccess;
+            DebugLog("Showing Rewarded Video...");
             rewardedVideoAd.ShowAd();
         }
         else
         {
-            Debug.Log("Rewarded Ad not ready, reloading...");
+            DebugLog("Rewarded Not Ready. Reloading...");
+            onRewardCompleteCallback = null;
+            // ลองโหลดใหม่เผื่อรอบหน้าจะพร้อม
             LoadRewardedVideoAds();
         }
     }
@@ -261,5 +284,11 @@ public class AdsManager : MonoBehaviour
     {
         if (rewardedVideoAd != null && !rewardedVideoAd.IsAdReady())
             rewardedVideoAd.LoadAd();
+    }
+
+    private void DebugLog(string message)
+    {
+        if (enableDebugLogs)
+            Debug.Log($"<color=#00FF00>[AdsManager]</color> {message}");
     }
 }

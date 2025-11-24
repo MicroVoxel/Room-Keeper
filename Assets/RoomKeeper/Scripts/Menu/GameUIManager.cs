@@ -57,6 +57,8 @@ public class GameUIManager : MonoBehaviour
             {
                 if (GameCoreManager.Instance != null)
                 {
+                    // ปิดปุ่มชั่วคราวเพื่อป้องกันการกดรัว
+                    reviveAdsButton.interactable = false;
                     GameCoreManager.Instance.OnClickReviveWithAd();
                 }
             });
@@ -73,7 +75,7 @@ public class GameUIManager : MonoBehaviour
 
         _currentState = newState;
 
-        // 2. ถ้าไม่ใช่หน้า Gameplay ให้สั่งปิด Task ที่ค้างอยู่ทิ้งให้หมด
+        // 2. ถ้าไม่ใช่หน้า Gameplay ให้ปิด Task ที่ค้างอยู่
         if (newState != UIState.Gameplay)
         {
             if (GameCoreManager.Instance != null)
@@ -92,15 +94,16 @@ public class GameUIManager : MonoBehaviour
         if (victoryPanel) victoryPanel.SetActive(newState == UIState.Victory);
         if (gameOverPanel) gameOverPanel.SetActive(newState == UIState.GameOver);
 
-        // 5. จัดการเวลาในเกม
+        // 5. จัดการเวลาในเกม (AdsManager จัดการเองตอน Ads, ตรงนี้สำหรับ state อื่น)
         if (newState != UIState.Ads)
         {
             Time.timeScale = (newState == UIState.Gameplay) ? 1f : 0f;
         }
 
-        // 6. จัดการปุ่ม Revive
+        // 6. จัดการปุ่ม Revive (Logic หลักจะถูก Override โดย ShowGameOver(bool) อีกที)
         if (newState == UIState.GameOver && reviveAdsButton != null)
         {
+            // Default เปิดไว้ก่อน แต่จริงๆ ShowGameOver จะเป็นตัวกำหนด final state
             reviveAdsButton.interactable = true;
         }
     }
@@ -109,11 +112,17 @@ public class GameUIManager : MonoBehaviour
     {
         if (rewardClaimed)
         {
-            // ReviveGame() จะสั่ง SwitchUIState(Gameplay) ให้เอง
+            // ถ้าได้รางวัล Logic ReviveGame() จะพาไปหน้า Gameplay เอง
         }
         else
         {
+            // ถ้าดูไม่จบ กลับไปสถานะเดิม
             SwitchUIState(_lastStateBeforeAds);
+
+            if (_lastStateBeforeAds == UIState.GameOver && reviveAdsButton != null)
+            {
+                reviveAdsButton.interactable = true;
+            }
         }
     }
 
@@ -135,9 +144,8 @@ public class GameUIManager : MonoBehaviour
             timeText.text = string.Format("{0:0}:{1:00}", t.Minutes, t.Seconds);
         }
 
-        // --- FIXED LOGIC ---
-        // เปลี่ยนเงื่อนไขเป็น i < starCount (เพราะ Array เริ่มที่ 0)
-        // ตัวอย่าง: ได้ 1 ดาว (starCount=1) -> i=0 (<1 จริง เปิด), i=1 (<1 เท็จ ปิด) -> ถูกต้อง
+        if (starFills == null) return;
+
         for (int i = 0; i < starFills.Length; i++)
         {
             if (starFills[i]) starFills[i].SetActive(i < starCount);
@@ -148,10 +156,12 @@ public class GameUIManager : MonoBehaviour
     {
         SwitchUIState(UIState.Victory);
 
-        // --- FIXED LOGIC ---
-        for (int i = 0; i < victoryStars.Length; i++)
+        if (victoryStars != null)
         {
-            if (victoryStars[i]) victoryStars[i].SetActive(i < starsEarned);
+            for (int i = 0; i < victoryStars.Length; i++)
+            {
+                if (victoryStars[i]) victoryStars[i].SetActive(i < starsEarned);
+            }
         }
 
         if (victoryTimeText)
@@ -161,8 +171,18 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
-    public void ShowGameOver()
+    // ★ Updated: เพิ่ม Parameter canRevive
+    public void ShowGameOver(bool canRevive = true)
     {
         SwitchUIState(UIState.GameOver);
+
+        if (reviveAdsButton != null)
+        {
+            // ซ่อนปุ่มไปเลย ถ้าชุบไม่ได้แล้ว
+            reviveAdsButton.gameObject.SetActive(canRevive);
+
+            // หรือถ้าอยากแค่กดไม่ได้แต่ปุ่มยังอยู่ ให้ใช้:
+            // reviveAdsButton.interactable = canRevive;
+        }
     }
 }
